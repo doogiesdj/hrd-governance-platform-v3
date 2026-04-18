@@ -810,41 +810,222 @@ const App = {
   // --- Talent View ---
   _renderTalent() {
     const d = HRDData;
-    this._setKPI('talentCount', (d.programs.length * 120).toLocaleString());
-    this._setKPI('employmentRate', '76%');
-    this._setKPI('competencyAchievement', '82%');
-    this._setKPI('avgRating', '4.3');
+
+    // Derive real stats from programs
+    const orgsFromProgs = [...new Set(d.programs.map(p => p.org).filter(Boolean))];
+    const strategiesFromProgs = [...new Set(d.programs.map(p => p.alignedStrategy).filter(Boolean))];
+    const compCatsFromProgs = [...new Set(d.programs.map(p => p.competencyCategory).filter(Boolean))];
+
+    this._setKPI('talentCount', d.programs.length + '개 과정');
+    this._setKPI('employmentRate', orgsFromProgs.length + '개 기관');
+    this._setKPI('competencyAchievement', compCatsFromProgs.length + '개 역량분야');
+    this._setKPI('avgRating', strategiesFromProgs.length + '개 전략');
+
+    const view = document.getElementById('view-talent');
+
+    if (view && !view.querySelector('.talent-class-bar')) {
+      const chartContainer = view.querySelector('.chart-container');
+      const bar = document.createElement('div');
+      bar.className = 'talent-class-bar policy-class-bar';
+      bar.innerHTML = `
+        <button class="talent-class-btn policy-class-btn active" data-mode="competency">역량별</button>
+        <button class="talent-class-btn policy-class-btn" data-mode="org">기관별</button>
+        <button class="talent-class-btn policy-class-btn" data-mode="strategy">전략별</button>
+        <button class="talent-class-btn policy-class-btn" data-mode="target">대상별</button>
+      `;
+      chartContainer.parentNode.insertBefore(bar, chartContainer);
+      bar.querySelectorAll('.talent-class-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          bar.querySelectorAll('.talent-class-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          this._talentClassMode = btn.dataset.mode;
+          this._updateTalentChart();
+        });
+      });
+    }
+
+    if (!this._talentClassMode) this._talentClassMode = 'competency';
+    this._updateTalentChart();
+    this._renderTalentStats();
+  },
+
+  _updateTalentChart() {
+    const d = HRDData;
+    const mode = this._talentClassMode || 'competency';
+
+    // Build group → program count map
+    const groupCount = {};
+    d.programs.forEach(p => {
+      let key;
+      switch (mode) {
+        case 'competency': key = p.competencyCategory || '미분류'; break;
+        case 'org':        key = p.org || '미분류'; break;
+        case 'strategy':   key = p.alignedStrategy
+          ? (d.strategies.find(s => s.id === p.alignedStrategy) || {}).name || p.alignedStrategy
+          : '미분류'; break;
+        case 'target':     key = p.targetGroup || '미분류'; break;
+        default:           key = '기타';
+      }
+      groupCount[key] = (groupCount[key] || 0) + 1;
+    });
+
+    const entries = Object.entries(groupCount).sort((a, b) => b[1] - a[1]).slice(0, 8);
+    const labels = entries.map(e => e[0]);
+    const counts = entries.map(e => e[1]);
+    const maxCount = Math.max(...counts, 1);
+
+    // Normalize to 30–90 for current level; target = min(100, current + 10~15)
+    const currentData = counts.map(c => Math.round(30 + (c / maxCount) * 60));
+    const targetData  = currentData.map(v => Math.min(100, Math.round(v * 1.15)));
+
+    const modeLabel = { competency: '역량 분야별', org: '기관별', strategy: '전략별', target: '대상 그룹별' };
 
     this._chart('talentChart', 'radar', {
-      labels: ['기술역량', '직무역량', '리더십', '협업', '창의혁신', '글로벌'],
+      labels,
       datasets: [{
-        label: '현재 수준',
-        data: [82, 75, 68, 88, 71, 65],
+        label: '현재 프로그램 수준',
+        data: currentData,
         backgroundColor: 'rgba(0,212,255,0.2)',
         borderColor: '#00d4ff',
         borderWidth: 2,
         pointBackgroundColor: '#00d4ff',
       }, {
         label: '목표 수준',
-        data: [90, 85, 80, 92, 85, 80],
-        backgroundColor: 'rgba(0,255,65,0.1)',
+        data: targetData,
+        backgroundColor: 'rgba(0,255,65,0.08)',
         borderColor: '#00ff41',
         borderWidth: 2,
         borderDash: [5, 5],
         pointBackgroundColor: '#00ff41',
       }],
+    }, {
+      plugins: {
+        legend: {
+          display: true,
+          labels: { color: '#c0ccd8', font: { size: 11 } },
+        },
+        tooltip: {
+          callbacks: {
+            label: ctx => {
+              const entry = entries[ctx.dataIndex];
+              if (!entry) return ctx.dataset.label + ': ' + ctx.parsed.r;
+              return ctx.datasetIndex === 0
+                ? `현재: ${entry[1]}개 프로그램 (지수 ${ctx.parsed.r})`
+                : `목표: 지수 ${ctx.parsed.r}`;
+            },
+          },
+        },
+      },
+      scales: {
+        r: {
+          min: 0, max: 100,
+          ticks: { display: false },
+          grid: { color: 'rgba(0,212,255,0.15)' },
+          angleLines: { color: 'rgba(0,212,255,0.2)' },
+          pointLabels: { color: '#c0ccd8', font: { size: 10 } },
+        },
+      },
+    });
+  },
+
+  _renderTalentStats() {
+    const d = HRDData;
+    const statsEl = document.getElementById('talentStats');
+    if (!statsEl) return;
+
+    // Group programs by org
+    const orgMap = {};
+    d.programs.forEach(p => {
+      const key = p.org || '미분류';
+      if (!orgMap[key]) orgMap[key] = [];
+      orgMap[key].push(p);
     });
 
-    const statsEl = document.getElementById('talentStats');
-    if (statsEl) {
-      statsEl.innerHTML = d.organizations.slice(0, 12).map(o => `
-        <div class="stat-card">
-          <div class="stat-card-label">${o.abbr || o.name.slice(0, 6)}</div>
-          <div class="stat-card-value">${Math.floor(Math.random() * 500 + 100)}</div>
-          <div class="stat-card-label" style="margin-top:4px;font-size:10px">${o.type}</div>
+    const entries = Object.entries(orgMap).sort((a, b) => b[1].length - a[1].length);
+
+    statsEl.innerHTML = entries.map(([orgName, progs]) => {
+      const abbr = (d.organizations.find(o => o.name === orgName) || {}).abbr || orgName.slice(0, 4);
+      const cats = [...new Set(progs.map(p => p.competencyCategory).filter(Boolean))].length;
+      return `<div class="stat-card talent-stat-card" data-org="${orgName.replace(/"/g, '&quot;')}" style="cursor:pointer">
+        <div class="stat-card-label">${abbr}</div>
+        <div class="stat-card-value">${progs.length}</div>
+        <div class="stat-card-label" style="margin-top:4px;font-size:10px">${cats}개 역량분야</div>
+      </div>`;
+    }).join('');
+
+    statsEl.querySelectorAll('.talent-stat-card').forEach(card => {
+      card.addEventListener('click', () => {
+        const orgName = card.dataset.org;
+        this._showTalentOrgDetail(orgName, orgMap[orgName] || []);
+      });
+    });
+  },
+
+  _showTalentOrgDetail(orgName, programs) {
+    const d = HRDData;
+    const orgInfo = d.organizations.find(o => o.name === orgName) || {};
+    const strategies = [...new Set(programs.map(p => {
+      if (!p.alignedStrategy) return null;
+      return (d.strategies.find(s => s.id === p.alignedStrategy) || {}).name || p.alignedStrategy;
+    }).filter(Boolean))];
+    const compCats = [...new Set(programs.map(p => p.competencyCategory).filter(Boolean))];
+    const targetGroups = [...new Set(programs.map(p => p.targetGroup).filter(Boolean))];
+    const totalHours = programs.reduce((s, p) => s + (parseInt(p.hours) || 0), 0);
+
+    const stratHtml = strategies.length
+      ? strategies.map(s => `<span class="detail-tag org">${s}</span>`).join('')
+      : '<span class="detail-empty">없음</span>';
+    const compHtml = compCats.length
+      ? compCats.map(c => `<span class="detail-tag comp">${c}</span>`).join('')
+      : '<span class="detail-empty">없음</span>';
+    const targetHtml = targetGroups.length
+      ? targetGroups.map(t => `<span class="detail-tag">${t}</span>`).join('')
+      : '<span class="detail-empty">없음</span>';
+
+    const progListHtml = programs.map(p => `
+      <div class="detail-list-item">
+        <span class="detail-dot"></span>
+        <span style="flex:1">${p.name}</span>
+        <span style="color:#a0aab8;font-size:11px">${p.competencyCategory || ''} · ${p.hours || '?'}h</span>
+      </div>
+    `).join('');
+
+    const html = `
+      <div class="detail-header-block">
+        <div class="detail-strategy-label">MANAGING ORGANIZATION</div>
+        <h2 class="detail-title">${orgName}</h2>
+        <div class="detail-en">${orgInfo.en || ''}</div>
+      </div>
+
+      <div class="detail-grid-2">
+        <div class="detail-section">
+          <div class="detail-section-title">운영 프로그램 수</div>
+          <div class="detail-budget-value">${programs.length}개</div>
         </div>
-      `).join('');
-    }
+        <div class="detail-section">
+          <div class="detail-section-title">총 교육 시간</div>
+          <div class="detail-budget-value">${totalHours.toLocaleString()}h</div>
+        </div>
+      </div>
+
+      <div class="detail-section">
+        <div class="detail-section-title">연관 전략</div>
+        <div class="detail-tags">${stratHtml}</div>
+      </div>
+      <div class="detail-section">
+        <div class="detail-section-title">역량 분야</div>
+        <div class="detail-tags">${compHtml}</div>
+      </div>
+      <div class="detail-section">
+        <div class="detail-section-title">교육 대상</div>
+        <div class="detail-tags">${targetHtml}</div>
+      </div>
+      <div class="detail-section">
+        <div class="detail-section-title">프로그램 목록</div>
+        <div class="detail-list">${progListHtml}</div>
+      </div>
+    `;
+    this._openDetail(html);
   },
 
   // --- Competency View ---
