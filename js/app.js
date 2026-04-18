@@ -1114,29 +1114,320 @@ const App = {
   },
 
   // --- Competency View ---
+
+  // Ontology-based classification maps
+  _COMP_CLASS_MAP: {
+    'AI·인프라 역량': 'HardSkill', '기술보안 역량': 'HardSkill',
+    '데이터 활용 역량': 'HardSkill', '소프트웨어 개발 역량': 'HardSkill',
+    '반도체 설계 역량': 'HardSkill', '바이오헬스 역량': 'HardSkill',
+    '방위산업 역량': 'HardSkill', '미래 모빌리티 역량': 'HardSkill',
+    '조선해양 역량': 'HardSkill', '우주항공 역량': 'HardSkill',
+    '행정법무 역량': 'HardSkill', '디자인 역량': 'HardSkill',
+    '마케팅 전략 역량': 'HardSkill', '녹색기술·탄소중립 역량': 'HardSkill',
+    'COMPCAT_Technical': 'HardSkill',
+    'COMPCAT_Thinking': 'Literacy', 'COMPCAT_Strategic': 'Literacy',
+    'COMPCAT_Communication': 'Literacy', 'COMPCAT_Learning': 'Literacy',
+    '리더십 역량': 'SoftSkill', 'COMPCAT_Interpersonal': 'SoftSkill',
+    'COMPCAT_Personal': 'SoftSkill', 'COMPCAT_Values': 'SoftSkill',
+    'COMPCAT_Capability': 'SoftSkill',
+  },
+
+  _COMP_CAT_LABEL: {
+    'COMPCAT_Technical': '기술직무', 'COMPCAT_Thinking': '사고력',
+    'COMPCAT_Strategic': '전략기획', 'COMPCAT_Communication': '커뮤니케이션',
+    'COMPCAT_Learning': '학습역량', '리더십 역량': '리더십',
+    'COMPCAT_Interpersonal': '대인관계', 'COMPCAT_Personal': '개인역량',
+    'COMPCAT_Values': '가치관', 'COMPCAT_Capability': '실행역량',
+    'AI·인프라 역량': 'AI·디지털 인프라', '기술보안 역량': '기술보안',
+    '데이터 활용 역량': '데이터 활용', '소프트웨어 개발 역량': 'SW 개발',
+    '반도체 설계 역량': '반도체·소재', '바이오헬스 역량': '바이오헬스',
+    '방위산업 역량': '방위산업', '미래 모빌리티 역량': '미래모빌리티',
+    '조선해양 역량': '조선해양', '우주항공 역량': '우주항공',
+    '행정법무 역량': '행정·법무', '디자인 역량': '디자인',
+    '마케팅 전략 역량': '마케팅 전략', '녹색기술·탄소중립 역량': '녹색기술',
+  },
+
+  _COMP_CAT_DESC: {
+    'AI·인프라 역량': 'AI·클라우드·데이터 인프라 설계 및 프롬프트 엔지니어링 역량',
+    '기술보안 역량': '사이버보안·클라우드 보안·정보보호 전문 기술',
+    '데이터 활용 역량': '데이터 수집·분석·시각화 및 의사결정 지원 역량',
+    '소프트웨어 개발 역량': '파이썬 등 프로그래밍 언어 기반 SW 개발 역량',
+    '반도체 설계 역량': '반도체 회로 설계, 공정 및 첨단소재 개발 역량',
+    '바이오헬스 역량': '바이오·헬스케어 기술 및 임상·산업 응용 역량',
+    '방위산업 역량': '국방·방산기술 개발 및 방위산업 전문 역량',
+    '미래 모빌리티 역량': '자율주행·친환경 차량 등 미래 이동수단 기술 역량',
+    '조선해양 역량': '선박 설계·해양 공학 및 스마트 조선 기술 역량',
+    '우주항공 역량': '우주탐사·항공기 설계 및 우주산업 전문 역량',
+    '행정법무 역량': '공공행정·법무·정책 기획 및 규제 대응 역량',
+    '디자인 역량': 'UX/UI 서비스 디자인 및 사용자 경험 설계 역량',
+    '마케팅 전략 역량': '디지털 마케팅·브랜딩·시장 분석 전략 역량',
+    '녹색기술·탄소중립 역량': '탄소중립·친환경 에너지 전환 기술 역량',
+    'COMPCAT_Technical': '프로젝트·예산·재무·IT 관리 등 업무 기술 역량',
+    'COMPCAT_Thinking': '창의적 문제해결·분석적 사고·시스템 사고 역량',
+    'COMPCAT_Strategic': '비즈니스 전략 수립·시장분석·경쟁분석 역량',
+    'COMPCAT_Communication': '문서작성·프레젠테이션·비즈니스 커뮤니케이션 역량',
+    'COMPCAT_Learning': '자기주도 학습·지식관리·벤치마킹·역량 개발 역량',
+    '리더십 역량': '비전 설정·조직관리·코칭·멘토링 등 리더십 역량',
+    'COMPCAT_Interpersonal': '팀빌딩·네트워킹·협상·신뢰구축 대인관계 역량',
+    'COMPCAT_Personal': '시간관리·윤리의식·책임감·적응력 개인 역량',
+    'COMPCAT_Values': '고객지향·혁신마인드·협업정신·성과지향 가치관',
+    'COMPCAT_Capability': '멀티태스킹·성과관리·실행력 등 업무 수행 역량',
+  },
+
   _renderCompetency() {
     const d = HRDData;
-    this._setKPI('totalCompetencies', d.competencies.length);
-    this._setKPI('developmentTarget', Math.round(d.competencies.length * 0.4));
-    this._setKPI('avgProficiency', '3.2');
-    this._setKPI('improvementRate', '18%');
+    const classMap = this._COMP_CLASS_MAP;
+    const hardCount = d.competencies.filter(c => classMap[c.category] === 'HardSkill').length;
+    const litCount  = d.competencies.filter(c => classMap[c.category] === 'Literacy').length;
+    const softCount = d.competencies.filter(c => classMap[c.category] === 'SoftSkill').length;
 
-    const sample = d.competencies.slice(0, 8);
-    this._chart('competencyChart', 'bar', {
-      labels: sample.map(c => c.name.slice(0, 14)),
-      datasets: [{
-        label: '숙련도 점수',
-        data: sample.map(() => Math.floor(Math.random() * 40 + 60)),
-        backgroundColor: 'rgba(0,255,65,0.3)',
-        borderColor: '#00ff41',
-        borderWidth: 1,
-      }],
+    this._setKPI('totalCompetencies', d.competencies.length);
+    this._setKPI('developmentTarget', hardCount + '개 전문기술');
+    this._setKPI('avgProficiency', litCount + '개 기초소양');
+    this._setKPI('improvementRate', softCount + '개 소프트스킬');
+
+    const view = document.getElementById('view-competency');
+
+    if (view && !view.querySelector('.comp-class-bar')) {
+      const chartContainer = view.querySelector('.chart-container');
+      const bar = document.createElement('div');
+      bar.className = 'comp-class-bar policy-class-bar';
+      bar.innerHTML = `
+        <button class="comp-class-btn policy-class-btn active" data-mode="all">전체</button>
+        <button class="comp-class-btn policy-class-btn" data-mode="HardSkill">Hard Skill</button>
+        <button class="comp-class-btn policy-class-btn" data-mode="Literacy">Literacy</button>
+        <button class="comp-class-btn policy-class-btn" data-mode="SoftSkill">Soft Skill</button>
+      `;
+      chartContainer.parentNode.insertBefore(bar, chartContainer);
+      bar.querySelectorAll('.comp-class-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          bar.querySelectorAll('.comp-class-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          this._compClassMode = btn.dataset.mode;
+          this._updateCompetencyChart();
+        });
+      });
+    }
+
+    if (view && !view.querySelector('.comp-chart-split')) {
+      const chartContainer = view.querySelector('.chart-container');
+      const split = document.createElement('div');
+      split.className = 'comp-chart-split policy-chart-split';
+      const legendDiv = document.createElement('div');
+      legendDiv.id = 'compLegend';
+      legendDiv.className = 'comp-legend-panel policy-legend-panel';
+      chartContainer.parentNode.insertBefore(split, chartContainer);
+      split.appendChild(chartContainer);
+      chartContainer.classList.add('policy-chart-half');
+      split.appendChild(legendDiv);
+    }
+
+    if (!this._compClassMode) this._compClassMode = 'all';
+    this._updateCompetencyChart();
+
+    // Competency list — all items, clickable
+    const listEl = document.getElementById('competencyList');
+    if (listEl) {
+      listEl.innerHTML = d.competencies.map(c => {
+        const cls = this._COMP_CLASS_MAP[c.category] || '미분류';
+        const catLabel = this._COMP_CAT_LABEL[c.category] || c.category;
+        const clsBadgeColor = { HardSkill: '#00d4ff', Literacy: '#ffd700', SoftSkill: '#00ff41' }[cls] || '#a0aab8';
+        return `<div class="item item-clickable" data-comp-id="${c.id}">
+          <div class="item-name">${c.name || c.en}</div>
+          <div class="item-detail">
+            <span style="color:${clsBadgeColor};font-size:10px;font-weight:600">${cls}</span>
+            · ${catLabel} · ${c.en || ''}
+          </div>
+        </div>`;
+      }).join('');
+      listEl.querySelectorAll('.item-clickable').forEach(el => {
+        el.addEventListener('click', () => {
+          const comp = d.competencies.find(c => c.id === el.dataset.compId);
+          if (comp) this._showCompetencyDetail(comp);
+        });
+      });
+    }
+  },
+
+  _updateCompetencyChart() {
+    const d = HRDData;
+    const mode = this._compClassMode || 'all';
+    const classMap = this._COMP_CLASS_MAP;
+    const catLabel = this._COMP_CAT_LABEL;
+    const palette = {
+      HardSkill: ['#00d4ff','#0099cc','#006699','#33ccff','#66ddff','#99eeff','#003366','#0055aa','#0077cc','#22aadd','#44bbee','#1188bb','#3399cc','#55aadd'],
+      Literacy:  ['#ffd700','#ffaa00','#ff8800','#ffcc33','#ffdd66','#ffee99','#cc8800'],
+      SoftSkill: ['#00ff41','#00cc33','#009922','#33ff66','#66ff88','#99ffaa','#00aa33','#22bb55','#44cc66','#55dd77'],
+    };
+    const allPalette = ['#00d4ff','#ffd700','#00ff41'];
+
+    let entries, colors, groupComps;
+
+    if (mode === 'all') {
+      // Group by main class
+      const groups = { HardSkill: [], Literacy: [], SoftSkill: [] };
+      const labels = { HardSkill: 'Hard Skill (전문기술)', Literacy: 'Literacy (기초소양)', SoftSkill: 'Soft Skill (소프트스킬)' };
+      d.competencies.forEach(c => {
+        const cls = classMap[c.category];
+        if (cls && groups[cls]) groups[cls].push(c);
+      });
+      entries = Object.entries(groups).map(([k, v]) => [labels[k], v.length]);
+      colors = allPalette;
+      groupComps = { [labels.HardSkill]: groups.HardSkill, [labels.Literacy]: groups.Literacy, [labels.SoftSkill]: groups.SoftSkill };
+    } else {
+      // Group by sub-category within the selected class
+      const subGroups = {};
+      d.competencies
+        .filter(c => classMap[c.category] === mode)
+        .forEach(c => {
+          const key = catLabel[c.category] || c.category;
+          if (!subGroups[key]) subGroups[key] = [];
+          subGroups[key].push(c);
+        });
+      const pal = palette[mode] || allPalette;
+      entries = Object.entries(subGroups).sort((a, b) => b[1].length - a[1].length);
+      colors = entries.map((_, i) => pal[i % pal.length]);
+      groupComps = Object.fromEntries(entries.map(([k, v]) => [k, v]));
+      entries = entries.map(([k, v]) => [k, v.length]);
+    }
+
+    const labels = entries.map(e => e[0]);
+    const data   = entries.map(e => e[1]);
+    const finalColors = mode === 'all' ? colors : colors;
+
+    this._chart('competencyChart', 'doughnut', {
+      labels,
+      datasets: [{ data, backgroundColor: finalColors.map(c => c + '99'), borderColor: finalColors, borderWidth: 2 }],
+    }, {
+      plugins: {
+        tooltip: { callbacks: { label: ctx => `${ctx.label}: ${ctx.parsed}개` } },
+        legend: { display: false },
+      },
     });
 
-    this._renderList('competencyList', d.competencies.slice(0, 30), c => ({
-      name: c.name,
-      detail: c.en || c.type,
-    }));
+    // Legend panel with descriptions
+    const legendEl = document.getElementById('compLegend');
+    if (!legendEl) return;
+    const catDescMap = this._COMP_CAT_DESC;
+
+    // Build reverse lookup: display label → original category key for description
+    const labelToOrigCat = {};
+    Object.entries(catLabel).forEach(([orig, disp]) => { labelToOrigCat[disp] = orig; });
+    const classOrigKey = { 'Hard Skill (전문기술)': null, 'Literacy (기초소양)': null, 'Soft Skill (소프트스킬)': null };
+
+    legendEl.innerHTML = entries.map(([label, count], i) => {
+      const origCat = labelToOrigCat[label] || label;
+      const desc = catDescMap[origCat] || '';
+      const col = mode === 'all' ? finalColors[i] : (Array.isArray(colors) ? colors[i] : finalColors[i]);
+      return `
+        <div class="policy-legend-item comp-legend-item" data-group="${label.replace(/"/g, '&quot;')}" style="flex-direction:column;align-items:flex-start;gap:2px;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.05);cursor:pointer">
+          <div style="display:flex;align-items:center;gap:6px;width:100%">
+            <span class="policy-legend-dot" style="background:${col};box-shadow:0 0 6px ${col}88;flex-shrink:0"></span>
+            <span class="policy-legend-label" style="flex:1;font-size:12px">${label}</span>
+            <span class="policy-legend-count">${count}</span>
+          </div>
+          ${desc ? `<div style="font-size:10px;color:#6a7f90;margin-left:16px;line-height:1.4">${desc}</div>` : ''}
+        </div>`;
+    }).join('');
+
+    legendEl.querySelectorAll('.comp-legend-item').forEach(item => {
+      item.addEventListener('click', () => {
+        const group = item.dataset.group;
+        this._showCompGroupPopup(group, groupComps[group] || []);
+      });
+    });
+  },
+
+  _showCompGroupPopup(groupName, comps) {
+    const classMap = this._COMP_CLASS_MAP;
+    const catLabel = this._COMP_CAT_LABEL;
+    const listHtml = comps.map(c => {
+      const cls = classMap[c.category] || '미분류';
+      const clsColor = { HardSkill: '#00d4ff', Literacy: '#ffd700', SoftSkill: '#00ff41' }[cls] || '#a0aab8';
+      return `<div class="detail-list-item comp-group-row" data-comp-id="${c.id}" style="cursor:pointer">
+        <span class="detail-dot"></span>
+        <span style="flex:1">${c.name || c.en}</span>
+        <span style="color:${clsColor};font-size:10px;font-weight:600">${c.en || ''}</span>
+      </div>`;
+    }).join('');
+
+    const html = `
+      <div class="detail-header-block">
+        <div class="detail-strategy-label">COMPETENCY GROUP</div>
+        <h2 class="detail-title">${groupName}</h2>
+        <div class="detail-en">총 ${comps.length}개 역량 · 클릭하면 상세 정보 확인</div>
+      </div>
+      <div class="detail-section">
+        <div class="detail-section-title">역량 목록</div>
+        <div class="detail-list">${listHtml}</div>
+      </div>
+    `;
+    this._openDetail(html);
+
+    document.querySelectorAll('.comp-group-row').forEach(row => {
+      row.addEventListener('click', () => {
+        const comp = HRDData.competencies.find(c => c.id === row.dataset.compId);
+        if (comp) this._showCompetencyDetail(comp);
+      });
+    });
+  },
+
+  _showCompetencyDetail(comp) {
+    const classMap = this._COMP_CLASS_MAP;
+    const catLabel = this._COMP_CAT_LABEL;
+    const catDesc  = this._COMP_CAT_DESC;
+    const cls = classMap[comp.category] || '미분류';
+    const clsKo = { HardSkill: 'Hard Skill (전문기술)', Literacy: 'Literacy (기초소양)', SoftSkill: 'Soft Skill (소프트스킬)' }[cls] || cls;
+    const clsColor = { HardSkill: '#00d4ff', Literacy: '#ffd700', SoftSkill: '#00ff41' }[cls] || '#a0aab8';
+    const catLabelStr = catLabel[comp.category] || comp.category;
+    const catDescStr  = catDesc[comp.category] || '';
+
+    // Find programs using this competency category
+    const relPrograms = HRDData.programs.filter(p => p.competencyCategory === comp.category);
+
+    const progHtml = relPrograms.length
+      ? relPrograms.slice(0, 8).map(p => `
+          <div class="detail-list-item">
+            <span class="detail-dot"></span>
+            <span style="flex:1;font-size:11px">${p.name}</span>
+            <span style="color:#a0aab8;font-size:10px">${p.org || ''}</span>
+          </div>`).join('') + (relPrograms.length > 8 ? `<div style="color:#607080;font-size:11px;padding:4px 0">외 ${relPrograms.length - 8}개 프로그램</div>` : '')
+      : '<span class="detail-empty">연관 프로그램 없음</span>';
+
+    const html = `
+      <div class="detail-header-block">
+        <div class="detail-strategy-label" style="color:${clsColor}">${clsKo}</div>
+        <h2 class="detail-title">${comp.name || comp.en}</h2>
+        <div class="detail-en">${comp.en || ''}</div>
+      </div>
+
+      <div class="detail-grid-2">
+        <div class="detail-section">
+          <div class="detail-section-title">분류 체계</div>
+          <div class="detail-tags">
+            <span class="detail-tag" style="border-color:${clsColor};color:${clsColor}">${clsKo}</span>
+          </div>
+        </div>
+        <div class="detail-section">
+          <div class="detail-section-title">하위 역량군</div>
+          <div class="detail-tags">
+            <span class="detail-tag comp">${catLabelStr}</span>
+          </div>
+        </div>
+      </div>
+
+      ${catDescStr ? `
+      <div class="detail-section">
+        <div class="detail-section-title">역량군 설명</div>
+        <div class="detail-en" style="font-size:12px;line-height:1.6">${catDescStr}</div>
+      </div>` : ''}
+
+      <div class="detail-section">
+        <div class="detail-section-title">연관 교육 프로그램 (${relPrograms.length}개)</div>
+        <div class="detail-list">${progHtml}</div>
+      </div>
+    `;
+    this._openDetail(html);
   },
 
   // --- Helpers ---
