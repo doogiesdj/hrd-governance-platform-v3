@@ -2543,13 +2543,15 @@ body {
 .coderef-sheet-name { font-size: 13px; font-weight: 600; color: #e6edf3; flex: 1; }
 .coderef-sheet-total { font-size: 11px; color: #6e7681; background: #21262d; padding: 2px 8px; border-radius: 10px; }
 .coderef-table-wrap { overflow-x: auto; }
-.coderef-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+.coderef-table { width: 100%; border-collapse: collapse; font-size: 12px; table-layout: fixed; }
+.coderef-col-code { width: 240px; }
+.coderef-col-name { width: auto; }
 .coderef-table thead tr { background: #161b22; position: sticky; top: 44px; z-index: 1; }
 .coderef-table th { border-bottom: 1px solid #30363d; color: #6e7681; font-size: 11px; font-weight: 600; padding: 6px 16px; text-align: left; text-transform: uppercase; letter-spacing: 0.05em; }
 .coderef-table td { border-bottom: 1px solid #21262d; padding: 6px 16px; vertical-align: middle; }
 .coderef-table tr:hover td { background: #161b22; }
-.coderef-code { color: #79c0ff; font-family: 'Consolas', monospace; font-size: 11.5px; white-space: nowrap; }
-.coderef-name { color: #e6edf3; }
+.coderef-code { color: #79c0ff; font-family: 'Consolas', monospace; font-size: 11.5px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.coderef-name { color: #e6edf3; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .coderef-loading, .coderef-empty { color: #6e7681; font-size: 13px; padding: 40px 20px; text-align: center; }
 .coderef-search-summary { color: #8b949e; font-size: 12px; padding: 10px 16px; border-bottom: 1px solid #21262d; }
 .coderef-search-group { margin-bottom: 0; }

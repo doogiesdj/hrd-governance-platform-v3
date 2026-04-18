@@ -56,6 +56,11 @@ const CodeRef = (() => {
     );
   }
 
+  function _colHeaders(sheet) {
+    if (sheet === '요약(Summary)') return ['시트명', '타입'];
+    return ['코드', '한글명'];
+  }
+
   function _render() {
     _buildTabs();
     const body = document.getElementById('coderefBody');
@@ -68,6 +73,7 @@ const CodeRef = (() => {
 
     const rows = _data.sheets[_activeSheet] || [];
     const info = _getLabel(_activeSheet);
+    const [h1, h2] = _colHeaders(_activeSheet);
     body.innerHTML = `
       <div class="coderef-sheet-header">
         <span class="coderef-sheet-icon">${info.icon}</span>
@@ -76,8 +82,9 @@ const CodeRef = (() => {
       </div>
       <div class="coderef-table-wrap">
         <table class="coderef-table">
+          <colgroup><col class="coderef-col-code"><col class="coderef-col-name"></colgroup>
           <thead>
-            <tr><th>코드</th><th>한글명</th></tr>
+            <tr><th>${h1}</th><th>${h2}</th></tr>
           </thead>
           <tbody>
             ${rows.map(r => `<tr><td class="coderef-code">${_esc(r.code)}</td><td class="coderef-name">${_esc(r.name)}</td></tr>`).join('')}
@@ -111,7 +118,8 @@ const CodeRef = (() => {
         <div class="coderef-search-group">
           <div class="coderef-search-group-title">${info.icon} ${sheet} <span class="coderef-tab-count">${rows.length}</span></div>
           <table class="coderef-table">
-            <thead><tr><th>코드</th><th>한글명</th></tr></thead>
+            <colgroup><col class="coderef-col-code"><col class="coderef-col-name"></colgroup>
+            <thead><tr><th>${_colHeaders(sheet)[0]}</th><th>${_colHeaders(sheet)[1]}</th></tr></thead>
             <tbody>
               ${rows.map(r => `<tr><td class="coderef-code">${_highlight(r.code, q)}</td><td class="coderef-name">${_highlight(r.name, q)}</td></tr>`).join('')}
             </tbody>
