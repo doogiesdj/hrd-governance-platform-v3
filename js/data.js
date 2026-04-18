@@ -66,6 +66,14 @@ const HRDData = {
   get programs() { return this.raw?.programs || []; },
   get competencies() { return this.raw?.competencies || []; },
   get targetGroups() { return this.raw?.targetGroups || []; },
+  get persons() { return this.raw?.persons || []; },
+  get outcomes() { return this.raw?.outcomes || []; },
+  get benefits() { return this.raw?.benefits || []; },
+  get competencyAssessments() { return this.raw?.competencyAssessments || []; },
+  get policyParticipations() { return this.raw?.policyParticipations || []; },
+  get recommendations() { return this.raw?.recommendations || []; },
+  get competencyGaps() { return this.raw?.competencyGaps || []; },
+  get programEnrollments() { return this.raw?.programEnrollments || []; },
 
   totalBudget() {
     return this.budgets.reduce((s, b) => s + (b.amount || 0), 0);

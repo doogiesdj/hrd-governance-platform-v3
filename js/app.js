@@ -543,6 +543,28 @@ const App = {
         </div>
       </div>` : '';
 
+    const relOrgsHtml = policy.relatedOrgs && policy.relatedOrgs.length
+      ? (() => {
+          const d = HRDData;
+          return policy.relatedOrgs.map(orgId => {
+            const org = d.organizations.find(o => o.id === orgId);
+            return `<span class="detail-tag org">${org ? org.name : orgId}</span>`;
+          }).join('');
+        })()
+      : '';
+
+    const relBudgetsHtml = policy.relatedBudgets && policy.relatedBudgets.length
+      ? (() => {
+          const d = HRDData;
+          return policy.relatedBudgets.map(bId => {
+            const b = d.budgets.find(x => x.id === bId);
+            return b
+              ? `<div class="detail-list-item"><span class="detail-dot perf"></span>${b.name}<span style="color:#ffd700;font-size:11px;margin-left:6px">${b.amountStr || ''}</span></div>`
+              : `<div class="detail-list-item"><span class="detail-dot"></span>${bId}</div>`;
+          }).join('');
+        })()
+      : '';
+
     const html = `
       <div class="detail-header-block">
         <div class="detail-strategy-label">PUBLIC POLICY</div>
@@ -571,6 +593,18 @@ const App = {
       </div>
 
       ${orgBlock}
+
+      ${relOrgsHtml ? `
+      <div class="detail-section">
+        <div class="detail-section-title">연관 기관 (${policy.relatedOrgs.length}개)</div>
+        <div class="detail-tags">${relOrgsHtml}</div>
+      </div>` : ''}
+
+      ${relBudgetsHtml ? `
+      <div class="detail-section">
+        <div class="detail-section-title">연관 예산 (${policy.relatedBudgets.length}건)</div>
+        <div class="detail-list">${relBudgetsHtml}</div>
+      </div>` : ''}
 
       <div class="detail-section">
         <div class="detail-section-title">역량 분야</div>
@@ -762,7 +796,17 @@ const App = {
     const d = HRDData;
     const stratId = budget.relatedStrategy;
     const strategy = stratId ? d.strategies.find(s => s.id === stratId) : null;
-    const relatedPolicies = stratId ? d.policies.filter(p => p.relatedStrategy === stratId) : [];
+
+    // Direct related policies from budget data, or fall back to strategy-level lookup
+    let relatedPolicies = [];
+    if (budget.relatedPolicies && budget.relatedPolicies.length) {
+      relatedPolicies = budget.relatedPolicies.map(pid => d.policies.find(p => p.id === pid)).filter(Boolean);
+    } else if (stratId) {
+      relatedPolicies = d.policies.filter(p => p.relatedStrategy === stratId);
+    }
+
+    const budgetTypeLabel = budget.budgetType === 'PolicyBudget' ? '정책예산' : budget.budgetType === 'OrgBudget' ? '기관예산' : 'Budget';
+    const typeColor = budget.budgetType === 'PolicyBudget' ? 'rgba(255,100,0,0.15);color:#ff6400;border-color:rgba(255,100,0,0.4)' : 'rgba(255,215,0,0.12);color:#ffd700;border-color:rgba(255,215,0,0.3)';
 
     const stratBlock = strategy
       ? `<div class="detail-section">
@@ -771,13 +815,34 @@ const App = {
         </div>`
       : '';
 
+    const managingOrgName = (() => {
+      if (budget.managingOrg) return budget.managingOrg;
+      if (budget.managingOrgId) {
+        const org = d.organizations.find(o => o.id === budget.managingOrgId);
+        return org ? org.name : budget.managingOrgId;
+      }
+      return null;
+    })();
+
     const polHtml = relatedPolicies.length
       ? relatedPolicies.map(p => `<div class="detail-list-item"><span class="detail-dot"></span>${p.name}${p.budgetAmountStr ? ' <span style="color:#ffd700;font-size:11px">· ' + p.budgetAmountStr + '</span>' : ''}</div>`).join('')
       : '<span class="detail-empty">연관 정책 데이터 없음</span>';
 
+    const execBlock = budget.executedAmount > 0
+      ? `<div class="detail-grid-2">
+          <div class="detail-section">
+            <div class="detail-section-title">집행 금액</div>
+            <div class="detail-budget-value">${budget.executedAmountStr || d.formatWon(budget.executedAmount)}</div>
+          </div>
+          <div class="detail-section">
+            <div class="detail-section-title">집행률</div>
+            <div class="detail-budget-value">${budget.execRate != null ? budget.execRate + '%' : '-'}</div>
+          </div>
+        </div>` : '';
+
     const html = `
       <div class="detail-header">
-        <div class="detail-type-badge" style="background:rgba(255,215,0,0.12);color:#ffd700;border-color:rgba(255,215,0,0.3)">Budget</div>
+        <div class="detail-type-badge" style="background:${typeColor}">${budgetTypeLabel}</div>
         <h2 class="detail-title">${budget.name}</h2>
         ${budget.en ? `<div class="detail-en">${budget.en}</div>` : ''}
       </div>
@@ -793,11 +858,13 @@ const App = {
         </div>
       </div>
 
+      ${execBlock}
+
       <div class="detail-section">
         <div class="detail-section-title">관리 기관</div>
         <div class="detail-tags">
-          ${budget.managingOrg
-            ? `<span class="detail-tag org">${budget.managingOrg}</span>`
+          ${managingOrgName
+            ? `<span class="detail-tag org">${managingOrgName}</span>`
             : '<span class="detail-empty">미지정</span>'}
         </div>
       </div>
@@ -805,7 +872,7 @@ const App = {
       ${stratBlock}
 
       <div class="detail-section">
-        <div class="detail-section-title">연관 전략 소속 정책 (${relatedPolicies.length}건)</div>
+        <div class="detail-section-title">연관 정책 (${relatedPolicies.length}건)</div>
         <div class="detail-list">${polHtml}</div>
       </div>
     `;
@@ -975,6 +1042,30 @@ const App = {
       ? (d.strategies.find(s => s.id === program.alignedStrategy) || {}).name || program.alignedStrategy
       : null;
 
+    const orgInfo = (() => {
+      if (program.orgId) return d.organizations.find(o => o.id === program.orgId) || null;
+      return null;
+    })();
+    const orgDisplay = orgInfo
+      ? orgInfo.name + (orgInfo.abbr ? ' (' + orgInfo.abbr + ')' : '')
+      : (program.org || '미지정') + (program.orgAbbr ? ' (' + program.orgAbbr + ')' : '');
+
+    const targetGroupInfo = (() => {
+      if (program.targetGroupId) {
+        const tg = d.targetGroups ? d.targetGroups.find(t => t.id === program.targetGroupId) : null;
+        return tg ? tg.name : program.targetGroupId;
+      }
+      return null;
+    })();
+
+    const budgetInfo = (() => {
+      if (program.budgetCode) {
+        const b = d.budgets.find(x => x.id === program.budgetCode);
+        return b ? `${b.name} (${b.amountStr || d.formatWon(b.amount || 0)})` : program.budgetCode;
+      }
+      return null;
+    })();
+
     const html = `
       <div class="detail-header-block">
         <div class="detail-strategy-label">EDUCATION PROGRAM</div>
@@ -994,7 +1085,7 @@ const App = {
       <div class="detail-grid-2">
         <div class="detail-section">
           <div class="detail-section-title">관리 기관</div>
-          <div class="detail-budget-value">${program.org || '미지정'}${program.orgAbbr ? ' (' + program.orgAbbr + ')' : ''}</div>
+          <div class="detail-budget-value" style="font-size:13px">${orgDisplay}</div>
         </div>
         <div class="detail-section">
           <div class="detail-section-title">교육 시간</div>
@@ -1014,10 +1105,16 @@ const App = {
       <div class="detail-section">
         <div class="detail-section-title">대상 그룹</div>
         <div class="detail-tags">
-          <span class="detail-tag">${program.targetGroup || '미지정'}</span>
+          <span class="detail-tag">${targetGroupInfo || program.targetGroup || '미지정'}</span>
           ${program.targetGroupEn ? `<span class="detail-tag">${program.targetGroupEn}</span>` : ''}
         </div>
       </div>
+
+      ${budgetInfo ? `
+      <div class="detail-section">
+        <div class="detail-section-title">연관 예산</div>
+        <div class="detail-tags"><span class="detail-tag" style="color:#ffd700">${budgetInfo}</span></div>
+      </div>` : ''}
 
       <div class="detail-section">
         <div class="detail-section-title">프로그램 ID</div>
@@ -1031,15 +1128,15 @@ const App = {
   _renderTalent() {
     const d = HRDData;
 
-    // Derive real stats from programs
-    const orgsFromProgs = [...new Set(d.programs.map(p => p.org).filter(Boolean))];
-    const strategiesFromProgs = [...new Set(d.programs.map(p => p.alignedStrategy).filter(Boolean))];
-    const compCatsFromProgs = [...new Set(d.programs.map(p => p.competencyCategory).filter(Boolean))];
+    // Use real Person data for KPIs
+    const personOrgs = [...new Set(d.persons.map(p => p.orgId).filter(Boolean))];
+    const personRoles = [...new Set(d.persons.map(p => p.role).filter(Boolean))];
+    const personTargets = [...new Set(d.persons.map(p => p.targetGroupId).filter(Boolean))];
 
-    this._setKPI('talentCount', d.programs.length + '개 과정');
-    this._setKPI('employmentRate', orgsFromProgs.length + '개 기관');
-    this._setKPI('competencyAchievement', compCatsFromProgs.length + '개 역량분야');
-    this._setKPI('avgRating', strategiesFromProgs.length + '개 전략');
+    this._setKPI('talentCount', d.persons.length.toLocaleString() + '명');
+    this._setKPI('employmentRate', personOrgs.length + '개 기관');
+    this._setKPI('competencyAchievement', personRoles.length + '개 역할유형');
+    this._setKPI('avgRating', d.programs.length + '개 과정');
 
     const view = document.getElementById('view-talent');
 
@@ -1238,32 +1335,125 @@ const App = {
     const statsEl = document.getElementById('talentStats');
     if (!statsEl) return;
 
-    // Group programs by org
-    const orgMap = {};
-    d.programs.forEach(p => {
-      const key = p.org || '미분류';
-      if (!orgMap[key]) orgMap[key] = [];
-      orgMap[key].push(p);
+    // Group persons by orgId
+    const orgPersonMap = {};
+    d.persons.forEach(p => {
+      const key = p.orgId || '미분류';
+      if (!orgPersonMap[key]) orgPersonMap[key] = [];
+      orgPersonMap[key].push(p);
     });
 
-    const entries = Object.entries(orgMap).sort((a, b) => b[1].length - a[1].length);
+    // Fallback: group programs by org if no person data
+    const hasPeople = d.persons.length > 0;
+    if (!hasPeople) {
+      const orgMap = {};
+      d.programs.forEach(p => {
+        const key = p.org || '미분류';
+        if (!orgMap[key]) orgMap[key] = [];
+        orgMap[key].push(p);
+      });
+      const entries = Object.entries(orgMap).sort((a, b) => b[1].length - a[1].length);
+      statsEl.innerHTML = entries.map(([orgName, progs]) => {
+        const abbr = (d.organizations.find(o => o.name === orgName) || {}).abbr || orgName.slice(0, 4);
+        const cats = [...new Set(progs.map(p => p.competencyCategory).filter(Boolean))].length;
+        return `<div class="stat-card talent-stat-card" data-org="${orgName.replace(/"/g, '&quot;')}" style="cursor:pointer">
+          <div class="stat-card-label">${abbr}</div>
+          <div class="stat-card-value">${progs.length}</div>
+          <div class="stat-card-label" style="margin-top:4px;font-size:10px">${cats}개 역량분야</div>
+        </div>`;
+      }).join('');
+      statsEl.querySelectorAll('.talent-stat-card').forEach(card => {
+        card.addEventListener('click', () => {
+          const orgName = card.dataset.org;
+          this._showTalentOrgDetail(orgName, orgMap[orgName] || []);
+        });
+      });
+      return;
+    }
 
-    statsEl.innerHTML = entries.map(([orgName, progs]) => {
-      const abbr = (d.organizations.find(o => o.name === orgName) || {}).abbr || orgName.slice(0, 4);
-      const cats = [...new Set(progs.map(p => p.competencyCategory).filter(Boolean))].length;
-      return `<div class="stat-card talent-stat-card" data-org="${orgName.replace(/"/g, '&quot;')}" style="cursor:pointer">
+    const entries = Object.entries(orgPersonMap).sort((a, b) => b[1].length - a[1].length);
+
+    statsEl.innerHTML = entries.map(([orgId, persons]) => {
+      const orgInfo = d.organizations.find(o => o.id === orgId) || {};
+      const abbr = orgInfo.abbr || orgInfo.name || orgId.slice(0, 6);
+      const roles = [...new Set(persons.map(p => p.role).filter(Boolean))].length;
+      return `<div class="stat-card talent-stat-card" data-orgid="${orgId.replace(/"/g, '&quot;')}" style="cursor:pointer">
         <div class="stat-card-label">${abbr}</div>
-        <div class="stat-card-value">${progs.length}</div>
-        <div class="stat-card-label" style="margin-top:4px;font-size:10px">${cats}개 역량분야</div>
+        <div class="stat-card-value">${persons.length.toLocaleString()}</div>
+        <div class="stat-card-label" style="margin-top:4px;font-size:10px">${roles}개 역할유형</div>
       </div>`;
     }).join('');
 
     statsEl.querySelectorAll('.talent-stat-card').forEach(card => {
       card.addEventListener('click', () => {
-        const orgName = card.dataset.org;
-        this._showTalentOrgDetail(orgName, orgMap[orgName] || []);
+        const orgId = card.dataset.orgid;
+        this._showTalentPersonDetail(orgId, orgPersonMap[orgId] || []);
       });
     });
+  },
+
+  _showTalentPersonDetail(orgId, persons) {
+    const d = HRDData;
+    const orgInfo = d.organizations.find(o => o.id === orgId) || {};
+    const roles = [...new Set(persons.map(p => p.role).filter(Boolean))];
+    const targets = [...new Set(persons.map(p => p.targetGroupId).filter(Boolean))];
+    const levels = [...new Set(persons.map(p => p.competencyLevel).filter(Boolean))];
+
+    const roleHtml = roles.length
+      ? roles.map(r => `<span class="detail-tag comp">${r}</span>`).join('')
+      : '<span class="detail-empty">없음</span>';
+    const targetHtml = targets.length
+      ? targets.map(t => `<span class="detail-tag">${t}</span>`).join('')
+      : '<span class="detail-empty">없음</span>';
+    const levelHtml = levels.length
+      ? levels.map(l => `<span class="detail-tag">${l}</span>`).join('')
+      : '<span class="detail-empty">없음</span>';
+
+    const samplePersons = persons.slice(0, 20);
+    const personListHtml = samplePersons.map(p => `
+      <div class="detail-list-item">
+        <span class="detail-dot"></span>
+        <span style="flex:1">${p.name || p.id}</span>
+        <span style="color:#a0aab8;font-size:11px">${p.role || ''} · ${p.competencyLevel || ''}</span>
+      </div>
+    `).join('') + (persons.length > 20 ? `<div class="detail-list-item" style="color:#607080;font-size:11px">… 외 ${persons.length - 20}명</div>` : '');
+
+    const html = `
+      <div class="detail-header-block">
+        <div class="detail-strategy-label">ORGANIZATION · PEOPLE</div>
+        <h2 class="detail-title">${orgInfo.name || orgId}</h2>
+        <div class="detail-en">${orgInfo.en || ''}</div>
+      </div>
+
+      <div class="detail-grid-2">
+        <div class="detail-section">
+          <div class="detail-section-title">소속 인원</div>
+          <div class="detail-budget-value">${persons.length.toLocaleString()}명</div>
+        </div>
+        <div class="detail-section">
+          <div class="detail-section-title">역할 유형 수</div>
+          <div class="detail-budget-value">${roles.length}개</div>
+        </div>
+      </div>
+
+      <div class="detail-section">
+        <div class="detail-section-title">역할 유형</div>
+        <div class="detail-tags">${roleHtml}</div>
+      </div>
+      <div class="detail-section">
+        <div class="detail-section-title">대상 그룹</div>
+        <div class="detail-tags">${targetHtml}</div>
+      </div>
+      <div class="detail-section">
+        <div class="detail-section-title">역량 수준</div>
+        <div class="detail-tags">${levelHtml}</div>
+      </div>
+      <div class="detail-section">
+        <div class="detail-section-title">인원 샘플 (최대 20명)</div>
+        <div class="detail-list">${personListHtml}</div>
+      </div>
+    `;
+    this._openDetail(html);
   },
 
   _showTalentOrgDetail(orgName, programs) {
