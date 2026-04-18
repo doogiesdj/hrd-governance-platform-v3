@@ -79,14 +79,27 @@ const App = {
   // --- SPARQL View ---
   _sparqlData: null,
 
+  _nlqInited: false,
+
   async _renderSparql() {
-    if (this._sparqlData) { this._buildSparqlUI(); return; }
+    if (this._sparqlData) {
+      this._buildSparqlUI();
+      if (!this._nlqInited && typeof NLQ !== 'undefined') {
+        NLQ.init(() => this._sparqlData);
+        this._nlqInited = true;
+      }
+      return;
+    }
     const container = document.getElementById('sparqlCategoryList');
     if (container) container.innerHTML = '<div class="sparql-loading">데이터 로딩 중...</div>';
     try {
       const resp = await fetch('data/sparql_results.json');
       this._sparqlData = await resp.json();
       this._buildSparqlUI();
+      if (!this._nlqInited && typeof NLQ !== 'undefined') {
+        NLQ.init(() => this._sparqlData);
+        this._nlqInited = true;
+      }
     } catch (e) {
       if (container) container.innerHTML = `<div class="sparql-error-msg">⚠ 데이터 로드 실패: ${e.message}</div>`;
     }

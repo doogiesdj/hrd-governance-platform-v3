@@ -326,13 +326,43 @@
                     </div>
                     <div class="sparql-layout">
                         <div class="sparql-sidebar">
+                            <!-- NLQ Panel -->
+                            <div class="nlq-panel">
+                                <div class="nlq-panel-header">
+                                    <span class="nlq-panel-title">AI 자연어 질의</span>
+                                    <div style="display:flex;align-items:center;gap:6px;">
+                                        <span id="nlqProviderBadge" class="nlq-badge nlq-badge-warn">API 키 미설정</span>
+                                        <button id="nlqSettingsBtn" class="nlq-settings-btn" title="API 설정">⚙</button>
+                                    </div>
+                                </div>
+                                <textarea id="nlqInput" class="nlq-input" rows="3"
+                                    placeholder="예: 어떤 정책이 AI 역량 개발 프로그램을 지원하나요?&#10;(Ctrl+Enter로 질의)"></textarea>
+                                <div class="nlq-examples">
+                                    <span class="nlq-example-chip" data-q="AI 관련 역량을 지원하는 정책과 예산은 어떻게 연결되어 있나요?">AI·정책·예산</span>
+                                    <span class="nlq-example-chip" data-q="어떤 교육 프로그램이 어떤 역량을 개발하고 어떤 기관이 운영하나요?">프로그램·역량·기관</span>
+                                    <span class="nlq-example-chip" data-q="인원별 보유 역량과 역량갭은 어떻게 분석할 수 있나요?">인원·역량갭 분석</span>
+                                    <span class="nlq-example-chip" data-q="정책 참여로 어떤 혜택을 받고 어떤 성과가 나타나나요?">참여·혜택·성과</span>
+                                </div>
+                                <button id="nlqQueryBtn" class="nlq-query-btn">질의 <span class="nlq-shortcut">Ctrl+↵</span></button>
+                            </div>
+                            <div class="nlq-divider"><span>또는 사전 정의 쿼리 선택</span></div>
                             <div id="sparqlCategoryList" class="sparql-category-list"></div>
                         </div>
                         <div class="sparql-result-panel">
                             <div id="sparqlPlaceholder" class="sparql-placeholder">
                                 <div class="sparql-placeholder-icon">🔍</div>
-                                <div>좌측에서 쿼리를 선택하세요</div>
-                                <div class="sparql-placeholder-sub">Select a query from the left panel</div>
+                                <div>AI 자연어 질의 또는 좌측 쿼리를 선택하세요</div>
+                                <div class="sparql-placeholder-sub">Ask in natural language or select a predefined query</div>
+                            </div>
+                            <!-- NLQ Response Panel -->
+                            <div id="nlqResponsePanel" class="nlq-response-panel" style="display:none;">
+                                <div class="nlq-response-header">
+                                    <span class="nlq-response-icon">✦</span>
+                                    <span class="nlq-response-title">AI 분석 응답</span>
+                                    <button class="nlq-close-btn" onclick="document.getElementById('nlqResponsePanel').style.display='none';document.getElementById('sparqlPlaceholder').style.display='flex';">✕</button>
+                                </div>
+                                <div id="nlqResponseBody" class="nlq-response-body"></div>
+                                <div id="nlqSources" class="nlq-sources"></div>
                             </div>
                             <div id="sparqlResultContent" class="sparql-result-content" style="display:none;">
                                 <div class="sparql-result-header">
@@ -345,6 +375,40 @@
                         </div>
                     </div>
                 </section>
+
+                <!-- NLQ Settings Modal -->
+                <div id="nlqSettingsModal" class="nlq-modal-overlay" style="display:none;">
+                    <div class="nlq-modal">
+                        <div class="nlq-modal-header">
+                            <span>AI 질의 API 설정</span>
+                            <button class="nlq-modal-close" id="nlqCancelSettings">✕</button>
+                        </div>
+                        <div class="nlq-modal-body">
+                            <p class="nlq-modal-desc">API 키는 브라우저 localStorage에만 저장되며 외부로 전송되지 않습니다.</p>
+                            <div class="nlq-field">
+                                <label>사용할 AI</label>
+                                <select id="nlqProvider" class="nlq-select">
+                                    <option value="claude">Claude (Anthropic)</option>
+                                    <option value="gemini">Gemini (Google)</option>
+                                </select>
+                            </div>
+                            <div class="nlq-field">
+                                <label>Claude API 키 <small>(claude-haiku 사용)</small></label>
+                                <input id="nlqClaudeKey" type="password" class="nlq-key-input" placeholder="sk-ant-...">
+                                <small><a href="https://console.anthropic.com" target="_blank">console.anthropic.com</a>에서 발급</small>
+                            </div>
+                            <div class="nlq-field">
+                                <label>Gemini API 키 <small>(gemini-1.5-flash 사용)</small></label>
+                                <input id="nlqGeminiKey" type="password" class="nlq-key-input" placeholder="AIza...">
+                                <small><a href="https://aistudio.google.com/app/apikey" target="_blank">aistudio.google.com</a>에서 발급 (무료)</small>
+                            </div>
+                        </div>
+                        <div class="nlq-modal-footer">
+                            <button id="nlqCancelSettings" class="nlq-btn-cancel">취소</button>
+                            <button id="nlqSaveSettings" class="nlq-btn-save">저장</button>
+                        </div>
+                    </div>
+                </div>
 
                 <!-- OntoGraf View -->
                 <section class="view" id="view-ontograf">
@@ -390,5 +454,6 @@
     <script src="js/app.js"></script>
     <script src="js/graph.js"></script>
     <script src="js/ontograf.js"></script>
+    <script src="js/nlq.js"></script>
 </body>
 </html>
