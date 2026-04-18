@@ -235,6 +235,8 @@ const App = {
     this._setKPI('policyPrograms', d.programs.length);
 
     const view = document.getElementById('view-policy');
+
+    // Inject classification toggle bar (once)
     if (view && !view.querySelector('.policy-class-bar')) {
       const chartContainer = view.querySelector('.chart-container');
       const bar = document.createElement('div');
@@ -254,6 +256,20 @@ const App = {
           this._updatePolicyChart();
         });
       });
+    }
+
+    // Restructure chart area into split layout (once)
+    if (view && !view.querySelector('.policy-chart-split')) {
+      const chartContainer = view.querySelector('.chart-container');
+      const split = document.createElement('div');
+      split.className = 'policy-chart-split';
+      const legendDiv = document.createElement('div');
+      legendDiv.id = 'policyLegend';
+      legendDiv.className = 'policy-legend-panel';
+      chartContainer.parentNode.insertBefore(split, chartContainer);
+      split.appendChild(chartContainer);
+      chartContainer.classList.add('policy-chart-half');
+      split.appendChild(legendDiv);
     }
 
     if (!this._policyClassMode) this._policyClassMode = 'strategy';
@@ -282,6 +298,7 @@ const App = {
     const palette = ['#00d4ff','#00ff41','#ffd700','#ff3333','#9933ff','#ff6b00','#00ffcc','#ff0099','#66ff00','#ff9933','#33ccff','#99ff33'];
 
     const groupMap = {};
+    const groupPolicies = {};
     d.policies.forEach(p => {
       let key;
       switch (mode) {
@@ -292,6 +309,8 @@ const App = {
         default:           key = '기타';
       }
       groupMap[key] = (groupMap[key] || 0) + 1;
+      if (!groupPolicies[key]) groupPolicies[key] = [];
+      groupPolicies[key].push(p);
     });
 
     const entries = Object.entries(groupMap).sort((a, b) => b[1] - a[1]);
@@ -305,8 +324,57 @@ const App = {
     }, {
       plugins: {
         tooltip: { callbacks: { label: ctx => `${ctx.label}: ${ctx.parsed}개` } },
-        legend: { labels: { color: '#a0aab8', font: { size: 10 } } },
+        legend: { display: false },
       },
+    });
+
+    // Render custom vertical legend
+    const legendEl = document.getElementById('policyLegend');
+    if (!legendEl) return;
+    legendEl.innerHTML = entries.map(([label, count], i) => `
+      <div class="policy-legend-item" data-group="${label.replace(/"/g, '&quot;')}">
+        <span class="policy-legend-dot" style="background:${colors[i]};box-shadow:0 0 6px ${colors[i]}88"></span>
+        <span class="policy-legend-label">${label}</span>
+        <span class="policy-legend-count">${count}</span>
+      </div>
+    `).join('');
+
+    legendEl.querySelectorAll('.policy-legend-item').forEach(item => {
+      item.addEventListener('click', () => {
+        const group = item.dataset.group;
+        this._showPolicyGroupPopup(group, groupPolicies[group] || []);
+      });
+    });
+  },
+
+  _showPolicyGroupPopup(groupName, policies) {
+    const listHtml = policies.map(p => `
+      <div class="detail-list-item policy-group-row" data-policy-id="${p.id}" style="cursor:pointer">
+        <span class="detail-dot"></span>
+        <span class="policy-group-name">${p.name}</span>
+        <span class="policy-group-budget">${p.budgetAmountStr || '미배정'}</span>
+      </div>
+    `).join('');
+
+    const html = `
+      <div class="detail-header-block">
+        <div class="detail-strategy-label">POLICY GROUP</div>
+        <h2 class="detail-title">${groupName}</h2>
+        <div class="detail-en">총 ${policies.length}개 정책 · 클릭하면 상세 정보 확인</div>
+      </div>
+      <div class="detail-section">
+        <div class="detail-section-title">정책 목록</div>
+        <div class="detail-list">${listHtml}</div>
+      </div>
+    `;
+    this._openDetail(html);
+
+    // Bind click → policy detail (replace panel content)
+    document.querySelectorAll('.policy-group-row').forEach(row => {
+      row.addEventListener('click', () => {
+        const pol = HRDData.policies.find(p => p.id === row.dataset.policyId);
+        if (pol) this._showPolicyDetail(pol);
+      });
     });
   },
 
