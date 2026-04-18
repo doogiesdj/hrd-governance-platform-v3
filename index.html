@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>국가 전략 인적자원 거버넌스 플랫폼 | National Strategic HRD Governance Platform</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="platform-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-left">
+                <h1 class="header-title">🇰🇷 AI-HRD 거버넌스 플랫폼</h1>
+                <div class="header-subtitle">National Strategic HRD Governance Platform</div>
+            </div>
+            <div class="header-center">
+                <div class="live-clock" id="liveClock">00:00:00</div>
+            </div>
+            <div class="header-right">
+                <div class="status-indicator online" id="systemStatus">
+                    <span class="pulse"></span>
+                    <span>System Online</span>
+                </div>
+                <div class="header-stats">
+                    <div class="stat-item">
+                        <span class="stat-label">전략</span>
+                        <span class="stat-value" id="strategyCount">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">정책</span>
+                        <span class="stat-value" id="policyCount">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">프로그램</span>
+                        <span class="stat-value" id="programCount">0</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <!-- Left Sidebar Navigation -->
+            <aside class="sidebar" id="sidebar">
+                <nav class="nav-menu">
+                    <button class="nav-item active" data-layer="strategy">
+                        <span class="nav-icon">⬆️</span>
+                        <span class="nav-label">전략</span>
+                        <span class="nav-text">Strategy</span>
+                    </button>
+                    <button class="nav-item" data-layer="policy">
+                        <span class="nav-icon">📋</span>
+                        <span class="nav-label">정책</span>
+                        <span class="nav-text">Policy</span>
+                    </button>
+                    <button class="nav-item" data-layer="budget">
+                        <span class="nav-icon">💰</span>
+                        <span class="nav-label">예산</span>
+                        <span class="nav-text">Budget</span>
+                    </button>
+                    <button class="nav-item" data-layer="program">
+                        <span class="nav-icon">📚</span>
+                        <span class="nav-label">프로그램</span>
+                        <span class="nav-text">Program</span>
+                    </button>
+                    <button class="nav-item" data-layer="talent">
+                        <span class="nav-icon">👥</span>
+                        <span class="nav-label">인재</span>
+                        <span class="nav-text">Talent</span>
+                    </button>
+                    <button class="nav-item" data-layer="competency">
+                        <span class="nav-icon">🎯</span>
+                        <span class="nav-label">역량</span>
+                        <span class="nav-text">Competency</span>
+                    </button>
+                </nav>
+            </aside>
+
+            <!-- Main Views Container -->
+            <main class="views-container">
+                <!-- Strategy View -->
+                <section class="view active" id="view-strategy">
+                    <div class="view-header">
+                        <h2>국가 전략 HRD 거버넌스</h2>
+                        <span class="subtitle">National Strategic HRD Governance</span>
+                    </div>
+                    <div class="view-content">
+                        <div class="kpi-grid">
+                            <div class="kpi-card">
+                                <div class="kpi-label">총 전략 수</div>
+                                <div class="kpi-value" id="strategyTotal">0</div>
+                            </div>
+                            <div class="kpi-card">
+                                <div class="kpi-label">관련 정책</div>
+                                <div class="kpi-value" id="strategyPolicies">0</div>
+                            </div>
+                            <div class="kpi-card">
+                                <div class="kpi-label">총 예산</div>
+                                <div class="kpi-value" id="strategyBudget">0원</div>
+                            </div>
+                            <div class="kpi-card">
+                                <div class="kpi-label">프로그램 수</div>
+                                <div class="kpi-value" id="strategyPrograms">0</div>
+                            </div>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="strategyChart"></canvas>
+                        </div>
+                        <div class="list-container">
+                            <h3>전략 목록 / Strategy List</h3>
+                            <div class="item-list" id="strategyList"></div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Policy View -->
+                <section class="view" id="view-policy">
+                    <div class="view-header">
+                        <h2>정책 거버넌스 분석</h2>
+                        <span class="subtitle">Policy Governance Analysis</span>
+                    </div>
+                    <div class="view-content">
+                        <div class="kpi-grid">
+                            <div class="kpi-card">
+                                <div class="kpi-label">총 정책 수</div>
+                                <div class="kpi-value" id="policyTotal">0</div>
+                            </div>
+                            <div class="kpi-card">
+                                <div class="kpi-label">활성 정책</div>
+                                <div class="kpi-value" id="activePolicies">0</div>
+                            </div>
+                            <div class="kpi-card">
+                                <div class="kpi-label">예산 규모</div>
+                                <div class="kpi-value" id="policyBudget">0원</div>
+                            </div>
+                            <div class="kpi-card">
+                                <div class="kpi-label">프로그램 링크</div>
+                                <div class="kpi-value" id="policyPrograms">0</div>
+                            </div>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="policyChart"></canvas>
+                        </div>
+                        <div class="list-container">
+                            <h3>정책 목록 / Policy List</h3>
+                            <div class="item-list" id="policyList"></div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Budget View -->
+                <section class="view" id="view-budget">
+                    <div class="view-header">
+                        <h2>예산 분석</h2>
+                        <span class="subtitle">Budget Analysis</span>
+                    </div>
+                    <div class="view-content">
+                        <div class="kpi-grid">
+                            <div class="kpi-card">
+                                <div class="kpi-label">총 예산</div>
+                                <div class="kpi-value" id="totalBudget">0원</div>
+                            </div>
+                            <div class="kpi-card">
+                                <div class="kpi-label">배정 건수</div>
+                                <div class="kpi-value" id="budgetCount">0</div>
+                            </div>
+                            <div class="kpi-card">
+                                <div class="kpi-label">평균 예산</div>
+                                <div class="kpi-value" id="avgBudget">0원</div>
+                            </div>
+                            <div class="kpi-card">
+                                <div class="kpi-label">최대 예산</div>
+                                <div class="kpi-value" id="maxBudget">0원</div>
+                            </div>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="budgetChart"></canvas>
+                        </div>
+                        <div class="list-container">
+                            <h3>예산 목록 / Budget List</h3>
+                            <div class="item-list" id="budgetList"></div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Program View -->
+                <section class="view" id="view-program">
+                    <div class="view-header">
+                        <h2>교육 프로그램 현황</h2>
+                        <span class="subtitle">Education Program Status</span>
+                    </div>
+                    <div class="view-content">
+                        <div class="kpi-grid">
+                            <div class="kpi-card">
+                                <div class="kpi-label">운영 프로그램</div>
+                                <div class="kpi-value" id="totalPrograms">0</div>
+                            </div>
+                            <div class="kpi-card">
+                                <div class="kpi-label">참여자 수</div>
+                                <div class="kpi-value" id="programParticipants">0</div>
+                            </div>
+                            <div class="kpi-card">
+                                <div class="kpi-label">이수율</div>
+                                <div class="kpi-value" id="completionRate">0%</div>
+                            </div>
+                            <div class="kpi-card">
+                                <div class="kpi-label">만족도</div>
+                                <div class="kpi-value" id="satisfaction">0%</div>
+                            </div>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="programChart"></canvas>
+                        </div>
+                        <div class="list-container">
+                            <h3>프로그램 목록 / Program List</h3>
+                            <div class="item-list" id="programList"></div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Talent View -->
+                <section class="view" id="view-talent">
+                    <div class="view-header">
+                        <h2>인재 현황</h2>
+                        <span class="subtitle">Talent Status</span>
+                    </div>
+                    <div class="view-content">
+                        <div class="kpi-grid">
+                            <div class="kpi-card">
+                                <div class="kpi-label">참여 인원</div>
+                                <div class="kpi-value" id="talentCount">0</div>
+                            </div>
+                            <div class="kpi-card">
+                                <div class="kpi-label">취업률</div>
+                                <div class="kpi-value" id="employmentRate">0%</div>
+                            </div>
+                            <div class="kpi-card">
+                                <div class="kpi-label">역량 달성도</div>
+                                <div class="kpi-value" id="competencyAchievement">0%</div>
+                            </div>
+                            <div class="kpi-card">
+                                <div class="kpi-label">평균 평점</div>
+                                <div class="kpi-value" id="avgRating">0</div>
+                            </div>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="talentChart"></canvas>
+                        </div>
+                        <div class="list-container">
+                            <h3>인재 분포 / Talent Distribution</h3>
+                            <div class="stats-grid" id="talentStats"></div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Competency View -->
+                <section class="view" id="view-competency">
+                    <div class="view-header">
+                        <h2>역량 분석</h2>
+                        <span class="subtitle">Competency Analysis</span>
+                    </div>
+                    <div class="view-content">
+                        <div class="kpi-grid">
+                            <div class="kpi-card">
+                                <div class="kpi-label">정의된 역량</div>
+                                <div class="kpi-value" id="totalCompetencies">0</div>
+                            </div>
+                            <div class="kpi-card">
+                                <div class="kpi-label">개발 대상</div>
+                                <div class="kpi-value" id="developmentTarget">0</div>
+                            </div>
+                            <div class="kpi-card">
+                                <div class="kpi-label">평균 숙련도</div>
+                                <div class="kpi-value" id="avgProficiency">0</div>
+                            </div>
+                            <div class="kpi-card">
+                                <div class="kpi-label">향상도</div>
+                                <div class="kpi-value" id="improvementRate">0%</div>
+                            </div>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="competencyChart"></canvas>
+                        </div>
+                        <div class="list-container">
+                            <h3>상위 역량 / Top Competencies</h3>
+                            <div class="item-list" id="competencyList"></div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/d3@7.8.5/dist/d3.min.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/graph.js"></script>
+</body>
+</html>
