@@ -7905,7 +7905,12 @@
       "en": "Strategic Thinking",
       "type": "Competency",
       "category": "리더십 역량",
-      "categoryEn": "Leadership"
+      "categoryEn": "Leadership",
+      "class": "SoftSkill",
+      "level2": "Interpersonal",
+      "level3": "Leadership",
+      "level2Ko": "대인관계",
+      "level3Ko": "리더십"
     },
     {
       "id": "COMP_16",
@@ -7913,7 +7918,12 @@
       "en": "Change Management",
       "type": "Competency",
       "category": "리더십 역량",
-      "categoryEn": "Leadership"
+      "categoryEn": "Leadership",
+      "class": "SoftSkill",
+      "level2": "Interpersonal",
+      "level3": "Leadership",
+      "level2Ko": "대인관계",
+      "level3Ko": "리더십"
     },
     {
       "id": "COMP_17",
@@ -7921,7 +7931,12 @@
       "en": "Decision Making",
       "type": "Competency",
       "category": "리더십 역량",
-      "categoryEn": "Leadership"
+      "categoryEn": "Leadership",
+      "class": "SoftSkill",
+      "level2": "Interpersonal",
+      "level3": "Leadership",
+      "level2Ko": "대인관계",
+      "level3Ko": "리더십"
     },
     {
       "id": "COMP_18",
@@ -7929,7 +7944,12 @@
       "en": "Negotiation",
       "type": "Competency",
       "category": "COMPCAT_Interpersonal",
-      "categoryEn": ""
+      "categoryEn": "",
+      "class": "SoftSkill",
+      "level2": "Interpersonal",
+      "level3": "Collaboration",
+      "level2Ko": "대인관계",
+      "level3Ko": "협업"
     },
     {
       "id": "COMP_19",
@@ -7937,7 +7957,12 @@
       "en": "Conflict Resolution",
       "type": "Competency",
       "category": "COMPCAT_Interpersonal",
-      "categoryEn": ""
+      "categoryEn": "",
+      "class": "SoftSkill",
+      "level2": "Interpersonal",
+      "level3": "Collaboration",
+      "level2Ko": "대인관계",
+      "level3Ko": "협업"
     },
     {
       "id": "COMP_20",
@@ -7945,7 +7970,12 @@
       "en": "Influence",
       "type": "Competency",
       "category": "COMPCAT_Interpersonal",
-      "categoryEn": ""
+      "categoryEn": "",
+      "class": "SoftSkill",
+      "level2": "Interpersonal",
+      "level3": "Collaboration",
+      "level2Ko": "대인관계",
+      "level3Ko": "협업"
     },
     {
       "id": "COMP_21",
@@ -7953,7 +7983,12 @@
       "en": "Team Building",
       "type": "Competency",
       "category": "COMPCAT_Interpersonal",
-      "categoryEn": ""
+      "categoryEn": "",
+      "class": "SoftSkill",
+      "level2": "Interpersonal",
+      "level3": "Collaboration",
+      "level2Ko": "대인관계",
+      "level3Ko": "협업"
     },
     {
       "id": "COMP_22",
@@ -7961,7 +7996,12 @@
       "en": "Communication",
       "type": "Competency",
       "category": "COMPCAT_Interpersonal",
-      "categoryEn": ""
+      "categoryEn": "",
+      "class": "SoftSkill",
+      "level2": "Interpersonal",
+      "level3": "Collaboration",
+      "level2Ko": "대인관계",
+      "level3Ko": "협업"
     },
     {
       "id": "COMP_23",
@@ -7969,7 +8009,12 @@
       "en": "Active Listening",
       "type": "Competency",
       "category": "COMPCAT_Interpersonal",
-      "categoryEn": ""
+      "categoryEn": "",
+      "class": "SoftSkill",
+      "level2": "Interpersonal",
+      "level3": "Collaboration",
+      "level2Ko": "대인관계",
+      "level3Ko": "협업"
     },
     {
       "id": "COMP_24",
@@ -7977,7 +8022,12 @@
       "en": "Emotional Intelligence",
       "type": "Competency",
       "category": "COMPCAT_Interpersonal",
-      "categoryEn": ""
+      "categoryEn": "",
+      "class": "SoftSkill",
+      "level2": "Interpersonal",
+      "level3": "Collaboration",
+      "level2Ko": "대인관계",
+      "level3Ko": "협업"
     },
     {
       "id": "COMP_25",
@@ -7985,7 +8035,12 @@
       "en": "Creativity",
       "type": "Competency",
       "category": "COMPCAT_Thinking",
-      "categoryEn": ""
+      "categoryEn": "",
+      "class": "SoftSkill",
+      "level2": "Problem_Solving",
+      "level3": "Thinking_Skill",
+      "level2Ko": "문제해결",
+      "level3Ko": "사고력"
     },
     {
       "id": "COMP_26",
@@ -7993,7 +8048,12 @@
       "en": "Problem Solving",
       "type": "Competency",
       "category": "COMPCAT_Thinking",
-      "categoryEn": ""
+      "categoryEn": "",
+      "class": "SoftSkill",
+      "level2": "Problem_Solving",
+      "level3": "Thinking_Skill",
+      "level2Ko": "문제해결",
+      "level3Ko": "사고력"
     },
     {
       "id": "COMP_27",
@@ -8001,7 +8061,12 @@
       "en": "Analytical Thinking",
       "type": "Competency",
       "category": "COMPCAT_Thinking",
-      "categoryEn": ""
+      "categoryEn": "",
+      "class": "SoftSkill",
+      "level2": "Problem_Solving",
+      "level3": "Thinking_Skill",
+      "level2Ko": "문제해결",
+      "level3Ko": "사고력"
     },
     {
       "id": "COMP_28",
@@ -8009,7 +8074,12 @@
       "en": "Logical Thinking",
       "type": "Competency",
       "category": "COMPCAT_Thinking",
-      "categoryEn": ""
+      "categoryEn": "",
+      "class": "SoftSkill",
+      "level2": "Problem_Solving",
+      "level3": "Thinking_Skill",
+      "level2Ko": "문제해결",
+      "level3Ko": "사고력"
     },
     {
       "id": "COMP_29",
@@ -8017,7 +8087,12 @@
       "en": "Critical Thinking",
       "type": "Competency",
       "category": "COMPCAT_Thinking",
-      "categoryEn": ""
+      "categoryEn": "",
+      "class": "SoftSkill",
+      "level2": "Problem_Solving",
+      "level3": "Thinking_Skill",
+      "level2Ko": "문제해결",
+      "level3Ko": "사고력"
     },
     {
       "id": "COMP_30",
@@ -8025,7 +8100,12 @@
       "en": "Learning Ability",
       "type": "Competency",
       "category": "COMPCAT_Learning",
-      "categoryEn": ""
+      "categoryEn": "",
+      "class": "SoftSkill",
+      "level2": "Self_Management",
+      "level3": "Adaptability",
+      "level2Ko": "자기관리",
+      "level3Ko": "적응력"
     },
     {
       "id": "COMP_31",
@@ -8033,7 +8113,12 @@
       "en": "Self Development",
       "type": "Competency",
       "category": "COMPCAT_Learning",
-      "categoryEn": ""
+      "categoryEn": "",
+      "class": "SoftSkill",
+      "level2": "Self_Management",
+      "level3": "Adaptability",
+      "level2Ko": "자기관리",
+      "level3Ko": "적응력"
     },
     {
       "id": "COMP_32",
@@ -8041,7 +8126,12 @@
       "en": "Knowledge Management",
       "type": "Competency",
       "category": "COMPCAT_Learning",
-      "categoryEn": ""
+      "categoryEn": "",
+      "class": "SoftSkill",
+      "level2": "Self_Management",
+      "level3": "Adaptability",
+      "level2Ko": "자기관리",
+      "level3Ko": "적응력"
     },
     {
       "id": "COMP_33",
@@ -8049,7 +8139,12 @@
       "en": "Information Gathering",
       "type": "Competency",
       "category": "COMPCAT_Learning",
-      "categoryEn": ""
+      "categoryEn": "",
+      "class": "SoftSkill",
+      "level2": "Self_Management",
+      "level3": "Adaptability",
+      "level2Ko": "자기관리",
+      "level3Ko": "적응력"
     },
     {
       "id": "COMP_34",
@@ -8057,7 +8152,12 @@
       "en": "Technical Skill Acquisition",
       "type": "Competency",
       "category": "COMPCAT_Learning",
-      "categoryEn": ""
+      "categoryEn": "",
+      "class": "SoftSkill",
+      "level2": "Self_Management",
+      "level3": "Adaptability",
+      "level2Ko": "자기관리",
+      "level3Ko": "적응력"
     },
     {
       "id": "COMP_35",
@@ -8065,7 +8165,12 @@
       "en": "Project Management",
       "type": "Competency",
       "category": "COMPCAT_Technical",
-      "categoryEn": ""
+      "categoryEn": "",
+      "class": "HardSkill",
+      "level2": "ICT_Dev",
+      "level3": "Software",
+      "level2Ko": "ICT 개발",
+      "level3Ko": "소프트웨어"
     },
     {
       "id": "COMP_36",
@@ -8073,7 +8178,12 @@
       "en": "Financial Management",
       "type": "Competency",
       "category": "COMPCAT_Technical",
-      "categoryEn": ""
+      "categoryEn": "",
+      "class": "HardSkill",
+      "level2": "ICT_Dev",
+      "level3": "Software",
+      "level2Ko": "ICT 개발",
+      "level3Ko": "소프트웨어"
     },
     {
       "id": "COMP_37",
@@ -8081,7 +8191,12 @@
       "en": "Budget Planning",
       "type": "Competency",
       "category": "COMPCAT_Technical",
-      "categoryEn": ""
+      "categoryEn": "",
+      "class": "HardSkill",
+      "level2": "ICT_Dev",
+      "level3": "Software",
+      "level2Ko": "ICT 개발",
+      "level3Ko": "소프트웨어"
     },
     {
       "id": "COMP_38",
@@ -8089,7 +8204,12 @@
       "en": "IT Proficiency",
       "type": "Competency",
       "category": "COMPCAT_Technical",
-      "categoryEn": ""
+      "categoryEn": "",
+      "class": "HardSkill",
+      "level2": "ICT_Dev",
+      "level3": "Software",
+      "level2Ko": "ICT 개발",
+      "level3Ko": "소프트웨어"
     },
     {
       "id": "COMP_39",
@@ -8097,7 +8217,12 @@
       "en": "Data Analysis",
       "type": "Competency",
       "category": "COMPCAT_Technical",
-      "categoryEn": ""
+      "categoryEn": "",
+      "class": "HardSkill",
+      "level2": "ICT_Dev",
+      "level3": "Software",
+      "level2Ko": "ICT 개발",
+      "level3Ko": "소프트웨어"
     },
     {
       "id": "COMP_40",
@@ -8105,7 +8230,12 @@
       "en": "Programming",
       "type": "Competency",
       "category": "COMPCAT_Technical",
-      "categoryEn": ""
+      "categoryEn": "",
+      "class": "HardSkill",
+      "level2": "ICT_Dev",
+      "level3": "Software",
+      "level2Ko": "ICT 개발",
+      "level3Ko": "소프트웨어"
     },
     {
       "id": "COMP_41",
@@ -8113,7 +8243,12 @@
       "en": "Time Management",
       "type": "Competency",
       "category": "COMPCAT_Personal",
-      "categoryEn": ""
+      "categoryEn": "",
+      "class": "SoftSkill",
+      "level2": "Self_Management",
+      "level3": "Adaptability",
+      "level2Ko": "자기관리",
+      "level3Ko": "적응력"
     },
     {
       "id": "COMP_42",
@@ -8121,7 +8256,12 @@
       "en": "Stress Management",
       "type": "Competency",
       "category": "COMPCAT_Personal",
-      "categoryEn": ""
+      "categoryEn": "",
+      "class": "SoftSkill",
+      "level2": "Self_Management",
+      "level3": "Adaptability",
+      "level2Ko": "자기관리",
+      "level3Ko": "적응력"
     },
     {
       "id": "COMP_43",
@@ -8129,7 +8269,12 @@
       "en": "Ethics Awareness",
       "type": "Competency",
       "category": "COMPCAT_Personal",
-      "categoryEn": ""
+      "categoryEn": "",
+      "class": "SoftSkill",
+      "level2": "Self_Management",
+      "level3": "Adaptability",
+      "level2Ko": "자기관리",
+      "level3Ko": "적응력"
     },
     {
       "id": "COMP_44",
@@ -8137,7 +8282,12 @@
       "en": "Accountability",
       "type": "Competency",
       "category": "COMPCAT_Personal",
-      "categoryEn": ""
+      "categoryEn": "",
+      "class": "SoftSkill",
+      "level2": "Self_Management",
+      "level3": "Adaptability",
+      "level2Ko": "자기관리",
+      "level3Ko": "적응력"
     },
     {
       "id": "COMP_45",
@@ -8145,7 +8295,12 @@
       "en": "Initiative",
       "type": "Competency",
       "category": "COMPCAT_Personal",
-      "categoryEn": ""
+      "categoryEn": "",
+      "class": "SoftSkill",
+      "level2": "Self_Management",
+      "level3": "Adaptability",
+      "level2Ko": "자기관리",
+      "level3Ko": "적응력"
     },
     {
       "id": "COMP_46",
@@ -8153,7 +8308,12 @@
       "en": "Perseverance",
       "type": "Competency",
       "category": "COMPCAT_Personal",
-      "categoryEn": ""
+      "categoryEn": "",
+      "class": "SoftSkill",
+      "level2": "Self_Management",
+      "level3": "Adaptability",
+      "level2Ko": "자기관리",
+      "level3Ko": "적응력"
     },
     {
       "id": "COMP_47",
@@ -8161,7 +8321,12 @@
       "en": "Adaptability",
       "type": "Competency",
       "category": "COMPCAT_Personal",
-      "categoryEn": ""
+      "categoryEn": "",
+      "class": "SoftSkill",
+      "level2": "Self_Management",
+      "level3": "Adaptability",
+      "level2Ko": "자기관리",
+      "level3Ko": "적응력"
     },
     {
       "id": "COMP_48",
@@ -8169,7 +8334,12 @@
       "en": "Flexibility",
       "type": "Competency",
       "category": "COMPCAT_Personal",
-      "categoryEn": ""
+      "categoryEn": "",
+      "class": "SoftSkill",
+      "level2": "Self_Management",
+      "level3": "Adaptability",
+      "level2Ko": "자기관리",
+      "level3Ko": "적응력"
     },
     {
       "id": "COMP_49",
@@ -8177,7 +8347,12 @@
       "en": "Customer Orientation",
       "type": "Competency",
       "category": "COMPCAT_Values",
-      "categoryEn": ""
+      "categoryEn": "",
+      "class": "Literacy",
+      "level2": "Civic_Literacy",
+      "level3": "Social_Value",
+      "level2Ko": "시민 리터러시",
+      "level3Ko": "사회적 가치"
     },
     {
       "id": "COMP_50",
@@ -8185,7 +8360,12 @@
       "en": "Innovation Mindset",
       "type": "Competency",
       "category": "COMPCAT_Values",
-      "categoryEn": ""
+      "categoryEn": "",
+      "class": "Literacy",
+      "level2": "Civic_Literacy",
+      "level3": "Social_Value",
+      "level2Ko": "시민 리터러시",
+      "level3Ko": "사회적 가치"
     },
     {
       "id": "COMP_51",
@@ -8193,7 +8373,12 @@
       "en": "Collaboration Spirit",
       "type": "Competency",
       "category": "COMPCAT_Values",
-      "categoryEn": ""
+      "categoryEn": "",
+      "class": "Literacy",
+      "level2": "Civic_Literacy",
+      "level3": "Social_Value",
+      "level2Ko": "시민 리터러시",
+      "level3Ko": "사회적 가치"
     },
     {
       "id": "COMP_52",
@@ -8201,7 +8386,12 @@
       "en": "Community Awareness",
       "type": "Competency",
       "category": "COMPCAT_Values",
-      "categoryEn": ""
+      "categoryEn": "",
+      "class": "Literacy",
+      "level2": "Civic_Literacy",
+      "level3": "Social_Value",
+      "level2Ko": "시민 리터러시",
+      "level3Ko": "사회적 가치"
     },
     {
       "id": "COMP_53",
@@ -8209,7 +8399,12 @@
       "en": "Results Orientation",
       "type": "Competency",
       "category": "COMPCAT_Values",
-      "categoryEn": ""
+      "categoryEn": "",
+      "class": "Literacy",
+      "level2": "Civic_Literacy",
+      "level3": "Social_Value",
+      "level2Ko": "시민 리터러시",
+      "level3Ko": "사회적 가치"
     },
     {
       "id": "COMP_54",
@@ -8217,7 +8412,12 @@
       "en": "Ethical Business Practice",
       "type": "Competency",
       "category": "COMPCAT_Values",
-      "categoryEn": ""
+      "categoryEn": "",
+      "class": "Literacy",
+      "level2": "Civic_Literacy",
+      "level3": "Social_Value",
+      "level2Ko": "시민 리터러시",
+      "level3Ko": "사회적 가치"
     },
     {
       "id": "COMP_55",
@@ -8225,7 +8425,12 @@
       "en": "Writing",
       "type": "Competency",
       "category": "COMPCAT_Communication",
-      "categoryEn": ""
+      "categoryEn": "",
+      "class": "Literacy",
+      "level2": "Basic_Academic",
+      "level3": "Language_and_Math",
+      "level2Ko": "기초학업",
+      "level3Ko": "언어·수리"
     },
     {
       "id": "COMP_56",
@@ -8233,7 +8438,12 @@
       "en": "Presentation",
       "type": "Competency",
       "category": "COMPCAT_Communication",
-      "categoryEn": ""
+      "categoryEn": "",
+      "class": "Literacy",
+      "level2": "Basic_Academic",
+      "level3": "Language_and_Math",
+      "level2Ko": "기초학업",
+      "level3Ko": "언어·수리"
     },
     {
       "id": "COMP_57",
@@ -8241,7 +8451,12 @@
       "en": "Negotiation Skill",
       "type": "Competency",
       "category": "COMPCAT_Communication",
-      "categoryEn": ""
+      "categoryEn": "",
+      "class": "Literacy",
+      "level2": "Basic_Academic",
+      "level3": "Language_and_Math",
+      "level2Ko": "기초학업",
+      "level3Ko": "언어·수리"
     },
     {
       "id": "COMP_58",
@@ -8249,7 +8464,12 @@
       "en": "Business Writing",
       "type": "Competency",
       "category": "COMPCAT_Communication",
-      "categoryEn": ""
+      "categoryEn": "",
+      "class": "Literacy",
+      "level2": "Basic_Academic",
+      "level3": "Language_and_Math",
+      "level2Ko": "기초학업",
+      "level3Ko": "언어·수리"
     },
     {
       "id": "COMP_59",
@@ -8257,7 +8477,12 @@
       "en": "Multitasking",
       "type": "Competency",
       "category": "COMPCAT_Capability",
-      "categoryEn": ""
+      "categoryEn": "",
+      "class": "SoftSkill",
+      "level2": "Self_Management",
+      "level3": "Reliability",
+      "level2Ko": "자기관리",
+      "level3Ko": "신뢰성"
     },
     {
       "id": "COMP_60",
@@ -8265,7 +8490,12 @@
       "en": "Performance Management",
       "type": "Competency",
       "category": "COMPCAT_Capability",
-      "categoryEn": ""
+      "categoryEn": "",
+      "class": "SoftSkill",
+      "level2": "Self_Management",
+      "level3": "Reliability",
+      "level2Ko": "자기관리",
+      "level3Ko": "신뢰성"
     },
     {
       "id": "COMP_61",
@@ -8273,7 +8503,12 @@
       "en": "Leadership",
       "type": "Competency",
       "category": "리더십 역량",
-      "categoryEn": "Leadership"
+      "categoryEn": "Leadership",
+      "class": "SoftSkill",
+      "level2": "Interpersonal",
+      "level3": "Leadership",
+      "level2Ko": "대인관계",
+      "level3Ko": "리더십"
     },
     {
       "id": "COMP_62",
@@ -8281,7 +8516,12 @@
       "en": "Vision Setting",
       "type": "Competency",
       "category": "리더십 역량",
-      "categoryEn": "Leadership"
+      "categoryEn": "Leadership",
+      "class": "SoftSkill",
+      "level2": "Interpersonal",
+      "level3": "Leadership",
+      "level2Ko": "대인관계",
+      "level3Ko": "리더십"
     },
     {
       "id": "COMP_63",
@@ -8289,7 +8529,12 @@
       "en": "Subordinate Management",
       "type": "Competency",
       "category": "리더십 역량",
-      "categoryEn": "Leadership"
+      "categoryEn": "Leadership",
+      "class": "SoftSkill",
+      "level2": "Interpersonal",
+      "level3": "Leadership",
+      "level2Ko": "대인관계",
+      "level3Ko": "리더십"
     },
     {
       "id": "COMP_64",
@@ -8297,7 +8542,12 @@
       "en": "Organization Management",
       "type": "Competency",
       "category": "리더십 역량",
-      "categoryEn": "Leadership"
+      "categoryEn": "Leadership",
+      "class": "SoftSkill",
+      "level2": "Interpersonal",
+      "level3": "Leadership",
+      "level2Ko": "대인관계",
+      "level3Ko": "리더십"
     },
     {
       "id": "COMP_65",
@@ -8305,7 +8555,12 @@
       "en": "Talent Development",
       "type": "Competency",
       "category": "리더십 역량",
-      "categoryEn": "Leadership"
+      "categoryEn": "Leadership",
+      "class": "SoftSkill",
+      "level2": "Interpersonal",
+      "level3": "Leadership",
+      "level2Ko": "대인관계",
+      "level3Ko": "리더십"
     },
     {
       "id": "COMP_66",
@@ -8313,7 +8568,12 @@
       "en": "Advanced Analysis",
       "type": "Competency",
       "category": "COMPCAT_Thinking",
-      "categoryEn": ""
+      "categoryEn": "",
+      "class": "SoftSkill",
+      "level2": "Problem_Solving",
+      "level3": "Thinking_Skill",
+      "level2Ko": "문제해결",
+      "level3Ko": "사고력"
     },
     {
       "id": "COMP_67",
@@ -8321,7 +8581,12 @@
       "en": "Systems Thinking",
       "type": "Competency",
       "category": "COMPCAT_Thinking",
-      "categoryEn": ""
+      "categoryEn": "",
+      "class": "SoftSkill",
+      "level2": "Problem_Solving",
+      "level3": "Thinking_Skill",
+      "level2Ko": "문제해결",
+      "level3Ko": "사고력"
     },
     {
       "id": "COMP_68",
@@ -8329,7 +8594,12 @@
       "en": "Enterprise Optimization",
       "type": "Competency",
       "category": "COMPCAT_Strategic",
-      "categoryEn": ""
+      "categoryEn": "",
+      "class": "HardSkill",
+      "level2": "Business_Admin",
+      "level3": "Management",
+      "level2Ko": "비즈니스 행정",
+      "level3Ko": "경영관리"
     },
     {
       "id": "COMP_69",
@@ -8337,7 +8607,12 @@
       "en": "Business Strategy",
       "type": "Competency",
       "category": "COMPCAT_Strategic",
-      "categoryEn": ""
+      "categoryEn": "",
+      "class": "HardSkill",
+      "level2": "Business_Admin",
+      "level3": "Management",
+      "level2Ko": "비즈니스 행정",
+      "level3Ko": "경영관리"
     },
     {
       "id": "COMP_70",
@@ -8345,7 +8620,12 @@
       "en": "Market Analysis",
       "type": "Competency",
       "category": "COMPCAT_Strategic",
-      "categoryEn": ""
+      "categoryEn": "",
+      "class": "HardSkill",
+      "level2": "Business_Admin",
+      "level3": "Management",
+      "level2Ko": "비즈니스 행정",
+      "level3Ko": "경영관리"
     },
     {
       "id": "COMP_71",
@@ -8353,7 +8633,12 @@
       "en": "Competitive Analysis",
       "type": "Competency",
       "category": "COMPCAT_Strategic",
-      "categoryEn": ""
+      "categoryEn": "",
+      "class": "HardSkill",
+      "level2": "Business_Admin",
+      "level3": "Management",
+      "level2Ko": "비즈니스 행정",
+      "level3Ko": "경영관리"
     },
     {
       "id": "COMP_72",
@@ -8361,7 +8646,12 @@
       "en": "Global Perspective",
       "type": "Competency",
       "category": "COMPCAT_Interpersonal",
-      "categoryEn": ""
+      "categoryEn": "",
+      "class": "SoftSkill",
+      "level2": "Interpersonal",
+      "level3": "Collaboration",
+      "level2Ko": "대인관계",
+      "level3Ko": "협업"
     },
     {
       "id": "COMP_73",
@@ -8369,7 +8659,12 @@
       "en": "Cultural Understanding",
       "type": "Competency",
       "category": "COMPCAT_Interpersonal",
-      "categoryEn": ""
+      "categoryEn": "",
+      "class": "SoftSkill",
+      "level2": "Interpersonal",
+      "level3": "Collaboration",
+      "level2Ko": "대인관계",
+      "level3Ko": "협업"
     },
     {
       "id": "COMP_74",
@@ -8377,7 +8672,12 @@
       "en": "Language Proficiency",
       "type": "Competency",
       "category": "COMPCAT_Technical",
-      "categoryEn": ""
+      "categoryEn": "",
+      "class": "HardSkill",
+      "level2": "ICT_Dev",
+      "level3": "Software",
+      "level2Ko": "ICT 개발",
+      "level3Ko": "소프트웨어"
     },
     {
       "id": "COMP_75",
@@ -8385,7 +8685,12 @@
       "en": "International Work Experience",
       "type": "Competency",
       "category": "COMPCAT_Technical",
-      "categoryEn": ""
+      "categoryEn": "",
+      "class": "HardSkill",
+      "level2": "ICT_Dev",
+      "level3": "Software",
+      "level2Ko": "ICT 개발",
+      "level3Ko": "소프트웨어"
     },
     {
       "id": "COMP_76",
@@ -8393,7 +8698,12 @@
       "en": "Negotiation Ability",
       "type": "Competency",
       "category": "COMPCAT_Interpersonal",
-      "categoryEn": ""
+      "categoryEn": "",
+      "class": "SoftSkill",
+      "level2": "Interpersonal",
+      "level3": "Collaboration",
+      "level2Ko": "대인관계",
+      "level3Ko": "협업"
     },
     {
       "id": "COMP_77",
@@ -8401,7 +8711,12 @@
       "en": "Influence Power",
       "type": "Competency",
       "category": "리더십 역량",
-      "categoryEn": "Leadership"
+      "categoryEn": "Leadership",
+      "class": "SoftSkill",
+      "level2": "Interpersonal",
+      "level3": "Leadership",
+      "level2Ko": "대인관계",
+      "level3Ko": "리더십"
     },
     {
       "id": "COMP_78",
@@ -8409,7 +8724,12 @@
       "en": "Trust Building",
       "type": "Competency",
       "category": "COMPCAT_Interpersonal",
-      "categoryEn": ""
+      "categoryEn": "",
+      "class": "SoftSkill",
+      "level2": "Interpersonal",
+      "level3": "Collaboration",
+      "level2Ko": "대인관계",
+      "level3Ko": "협업"
     },
     {
       "id": "COMP_79",
@@ -8417,7 +8737,12 @@
       "en": "Relationship Building",
       "type": "Competency",
       "category": "COMPCAT_Interpersonal",
-      "categoryEn": ""
+      "categoryEn": "",
+      "class": "SoftSkill",
+      "level2": "Interpersonal",
+      "level3": "Collaboration",
+      "level2Ko": "대인관계",
+      "level3Ko": "협업"
     },
     {
       "id": "COMP_80",
@@ -8425,7 +8750,12 @@
       "en": "Networking",
       "type": "Competency",
       "category": "COMPCAT_Interpersonal",
-      "categoryEn": ""
+      "categoryEn": "",
+      "class": "SoftSkill",
+      "level2": "Interpersonal",
+      "level3": "Collaboration",
+      "level2Ko": "대인관계",
+      "level3Ko": "협업"
     },
     {
       "id": "COMP_81",
@@ -8433,7 +8763,12 @@
       "en": "Continuous Learning",
       "type": "Competency",
       "category": "COMPCAT_Learning",
-      "categoryEn": ""
+      "categoryEn": "",
+      "class": "SoftSkill",
+      "level2": "Self_Management",
+      "level3": "Adaptability",
+      "level2Ko": "자기관리",
+      "level3Ko": "적응력"
     },
     {
       "id": "COMP_82",
@@ -8441,7 +8776,12 @@
       "en": "Mentoring",
       "type": "Competency",
       "category": "리더십 역량",
-      "categoryEn": "Leadership"
+      "categoryEn": "Leadership",
+      "class": "SoftSkill",
+      "level2": "Interpersonal",
+      "level3": "Leadership",
+      "level2Ko": "대인관계",
+      "level3Ko": "리더십"
     },
     {
       "id": "COMP_83",
@@ -8449,7 +8789,12 @@
       "en": "Coaching",
       "type": "Competency",
       "category": "리더십 역량",
-      "categoryEn": "Leadership"
+      "categoryEn": "Leadership",
+      "class": "SoftSkill",
+      "level2": "Interpersonal",
+      "level3": "Leadership",
+      "level2Ko": "대인관계",
+      "level3Ko": "리더십"
     },
     {
       "id": "COMP_84",
@@ -8457,7 +8802,12 @@
       "en": "Feedback",
       "type": "Competency",
       "category": "COMPCAT_Interpersonal",
-      "categoryEn": ""
+      "categoryEn": "",
+      "class": "SoftSkill",
+      "level2": "Interpersonal",
+      "level3": "Collaboration",
+      "level2Ko": "대인관계",
+      "level3Ko": "협업"
     },
     {
       "id": "COMP_85",
@@ -8465,7 +8815,12 @@
       "en": "Openness",
       "type": "Competency",
       "category": "COMPCAT_Personal",
-      "categoryEn": ""
+      "categoryEn": "",
+      "class": "SoftSkill",
+      "level2": "Self_Management",
+      "level3": "Adaptability",
+      "level2Ko": "자기관리",
+      "level3Ko": "적응력"
     },
     {
       "id": "COMP_86",
@@ -8473,7 +8828,12 @@
       "en": "Confidence",
       "type": "Competency",
       "category": "COMPCAT_Personal",
-      "categoryEn": ""
+      "categoryEn": "",
+      "class": "SoftSkill",
+      "level2": "Self_Management",
+      "level3": "Adaptability",
+      "level2Ko": "자기관리",
+      "level3Ko": "적응력"
     },
     {
       "id": "COMP_87",
@@ -8481,7 +8841,12 @@
       "en": "Motivation",
       "type": "Competency",
       "category": "COMPCAT_Personal",
-      "categoryEn": ""
+      "categoryEn": "",
+      "class": "SoftSkill",
+      "level2": "Self_Management",
+      "level3": "Adaptability",
+      "level2Ko": "자기관리",
+      "level3Ko": "적응력"
     },
     {
       "id": "COMP_88",
@@ -8489,7 +8854,12 @@
       "en": "Execution",
       "type": "Competency",
       "category": "COMPCAT_Capability",
-      "categoryEn": ""
+      "categoryEn": "",
+      "class": "SoftSkill",
+      "level2": "Self_Management",
+      "level3": "Reliability",
+      "level2Ko": "자기관리",
+      "level3Ko": "신뢰성"
     },
     {
       "id": "COMP_89",
@@ -8497,7 +8867,12 @@
       "en": "Quality Orientation",
       "type": "Competency",
       "category": "COMPCAT_Values",
-      "categoryEn": ""
+      "categoryEn": "",
+      "class": "Literacy",
+      "level2": "Civic_Literacy",
+      "level3": "Social_Value",
+      "level2Ko": "시민 리터러시",
+      "level3Ko": "사회적 가치"
     },
     {
       "id": "COMP_90",
@@ -8505,7 +8880,12 @@
       "en": "Efficiency Pursuit",
       "type": "Competency",
       "category": "COMPCAT_Values",
-      "categoryEn": ""
+      "categoryEn": "",
+      "class": "Literacy",
+      "level2": "Civic_Literacy",
+      "level3": "Social_Value",
+      "level2Ko": "시민 리터러시",
+      "level3Ko": "사회적 가치"
     },
     {
       "id": "COMP_91",
@@ -8513,7 +8893,12 @@
       "en": "Improvement Mindset",
       "type": "Competency",
       "category": "COMPCAT_Values",
-      "categoryEn": ""
+      "categoryEn": "",
+      "class": "Literacy",
+      "level2": "Civic_Literacy",
+      "level3": "Social_Value",
+      "level2Ko": "시민 리터러시",
+      "level3Ko": "사회적 가치"
     },
     {
       "id": "COMP_92",
@@ -8521,7 +8906,12 @@
       "en": "Knowledge Sharing",
       "type": "Competency",
       "category": "COMPCAT_Learning",
-      "categoryEn": ""
+      "categoryEn": "",
+      "class": "SoftSkill",
+      "level2": "Self_Management",
+      "level3": "Adaptability",
+      "level2Ko": "자기관리",
+      "level3Ko": "적응력"
     },
     {
       "id": "COMP_93",
@@ -8529,7 +8919,12 @@
       "en": "Best Practice Dissemination",
       "type": "Competency",
       "category": "COMPCAT_Learning",
-      "categoryEn": ""
+      "categoryEn": "",
+      "class": "SoftSkill",
+      "level2": "Self_Management",
+      "level3": "Adaptability",
+      "level2Ko": "자기관리",
+      "level3Ko": "적응력"
     },
     {
       "id": "COMP_94",
@@ -8537,7 +8932,12 @@
       "en": "Benchmarking",
       "type": "Competency",
       "category": "COMPCAT_Learning",
-      "categoryEn": ""
+      "categoryEn": "",
+      "class": "SoftSkill",
+      "level2": "Self_Management",
+      "level3": "Adaptability",
+      "level2Ko": "자기관리",
+      "level3Ko": "적응력"
     },
     {
       "id": "COMP_AI_01",
@@ -8545,7 +8945,12 @@
       "en": "Prompt Engineering",
       "type": "Competency",
       "category": "AI·인프라 역량",
-      "categoryEn": "AI & Infrastructure"
+      "categoryEn": "AI & Infrastructure",
+      "class": "HardSkill",
+      "level2": "ICT_Dev",
+      "level3": "AI_and_Infrastructure",
+      "level2Ko": "ICT 개발",
+      "level3Ko": "AI·인프라"
     },
     {
       "id": "COMP_AdminLaw",
@@ -8553,7 +8958,12 @@
       "en": "Administrative Law",
       "type": "Competency",
       "category": "행정법무 역량",
-      "categoryEn": "Administrative Law"
+      "categoryEn": "Administrative Law",
+      "class": "HardSkill",
+      "level2": "Industrial_Tech",
+      "level3": "Service_Public",
+      "level2Ko": "산업기술",
+      "level3Ko": "공공서비스"
     },
     {
       "id": "COMP_BioHealth",
@@ -8561,7 +8971,12 @@
       "en": "BioHealth",
       "type": "Competency",
       "category": "바이오헬스 역량",
-      "categoryEn": "BioHealth"
+      "categoryEn": "BioHealth",
+      "class": "HardSkill",
+      "level2": "Industrial_Tech",
+      "level3": "Manufacturing",
+      "level2Ko": "산업기술",
+      "level3Ko": "제조·생산"
     },
     {
       "id": "COMP_CloudSec",
@@ -8569,7 +8984,12 @@
       "en": "Cloud Security",
       "type": "Competency",
       "category": "기술보안 역량",
-      "categoryEn": "Tech Security"
+      "categoryEn": "Tech Security",
+      "class": "Literacy",
+      "level2": "Digital_Literacy",
+      "level3": "Tech_Security",
+      "level2Ko": "디지털 리터러시",
+      "level3Ko": "기술보안"
     },
     {
       "id": "COMP_DataAnalysis",
@@ -8577,7 +8997,12 @@
       "en": "Data Analysis",
       "type": "Competency",
       "category": "데이터 활용 역량",
-      "categoryEn": "Data Fluency"
+      "categoryEn": "Data Fluency",
+      "class": "Literacy",
+      "level2": "Digital_Literacy",
+      "level3": "Data_and_AI",
+      "level2Ko": "디지털 리터러시",
+      "level3Ko": "데이터·AI"
     },
     {
       "id": "COMP_Defense",
@@ -8585,7 +9010,12 @@
       "en": "Defense Industry Technology",
       "type": "Competency",
       "category": "방위산업 역량",
-      "categoryEn": "Defense Industry"
+      "categoryEn": "Defense Industry",
+      "class": "HardSkill",
+      "level2": "Industrial_Tech",
+      "level3": "Manufacturing",
+      "level2Ko": "산업기술",
+      "level3Ko": "제조·생산"
     },
     {
       "id": "COMP_Design",
@@ -8593,7 +9023,12 @@
       "en": "UX/UI Design",
       "type": "Competency",
       "category": "디자인 역량",
-      "categoryEn": "Design"
+      "categoryEn": "Design",
+      "class": "HardSkill",
+      "level2": "Business_Admin",
+      "level3": "Marketing_Sales",
+      "level2Ko": "비즈니스 행정",
+      "level3Ko": "마케팅·영업"
     },
     {
       "id": "COMP_DigitalMkt",
@@ -8601,7 +9036,12 @@
       "en": "Digital Marketing",
       "type": "Competency",
       "category": "마케팅 전략 역량",
-      "categoryEn": "Marketing Strategy"
+      "categoryEn": "Marketing Strategy",
+      "class": "HardSkill",
+      "level2": "Business_Admin",
+      "level3": "Marketing_Strategy",
+      "level2Ko": "비즈니스 행정",
+      "level3Ko": "마케팅 전략"
     },
     {
       "id": "COMP_Green",
@@ -8609,7 +9049,12 @@
       "en": "Green Technology & Carbon Neutrality",
       "type": "Competency",
       "category": "녹색기술·탄소중립 역량",
-      "categoryEn": "Green Technology & Carbon Neutrality"
+      "categoryEn": "Green Technology & Carbon Neutrality",
+      "class": "HardSkill",
+      "level2": "Industrial_Tech",
+      "level3": "Manufacturing",
+      "level2Ko": "산업기술",
+      "level3Ko": "제조·생산"
     },
     {
       "id": "COMP_Mobility",
@@ -8617,7 +9062,12 @@
       "en": "Future Mobility Technology",
       "type": "Competency",
       "category": "미래 모빌리티 역량",
-      "categoryEn": "Future Mobility"
+      "categoryEn": "Future Mobility",
+      "class": "HardSkill",
+      "level2": "Industrial_Tech",
+      "level3": "Manufacturing",
+      "level2Ko": "산업기술",
+      "level3Ko": "제조·생산"
     },
     {
       "id": "COMP_SW_01",
@@ -8625,7 +9075,12 @@
       "en": "Python Programming",
       "type": "Competency",
       "category": "소프트웨어 개발 역량",
-      "categoryEn": "Software Development"
+      "categoryEn": "Software Development",
+      "class": "HardSkill",
+      "level2": "ICT_Dev",
+      "level3": "Software",
+      "level2Ko": "ICT 개발",
+      "level3Ko": "소프트웨어"
     },
     {
       "id": "COMP_Semiconductor",
@@ -8633,7 +9088,12 @@
       "en": "Semiconductor Design & Process",
       "type": "Competency",
       "category": "반도체 설계 역량",
-      "categoryEn": "Semiconductor Design"
+      "categoryEn": "Semiconductor Design",
+      "class": "HardSkill",
+      "level2": "Industrial_Tech",
+      "level3": "Manufacturing",
+      "level2Ko": "산업기술",
+      "level3Ko": "제조·생산"
     },
     {
       "id": "COMP_Shipbuilding",
@@ -8641,7 +9101,12 @@
       "en": "Shipbuilding & Marine Engineering",
       "type": "Competency",
       "category": "조선해양 역량",
-      "categoryEn": "Shipbuilding & Marine"
+      "categoryEn": "Shipbuilding & Marine",
+      "class": "HardSkill",
+      "level2": "Industrial_Tech",
+      "level3": "Manufacturing",
+      "level2Ko": "산업기술",
+      "level3Ko": "제조·생산"
     },
     {
       "id": "COMP_Space",
@@ -8649,7 +9114,12 @@
       "en": "Space & Aerospace Technology",
       "type": "Competency",
       "category": "우주항공 역량",
-      "categoryEn": "Space & Aerospace"
+      "categoryEn": "Space & Aerospace",
+      "class": "HardSkill",
+      "level2": "Industrial_Tech",
+      "level3": "Manufacturing",
+      "level2Ko": "산업기술",
+      "level3Ko": "제조·생산"
     }
   ],
   "targetGroups": [

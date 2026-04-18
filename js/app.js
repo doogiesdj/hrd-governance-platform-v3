@@ -1116,70 +1116,58 @@ const App = {
   // --- Competency View ---
 
   // Ontology-based classification maps
-  _COMP_CLASS_MAP: {
-    'AI·인프라 역량': 'HardSkill', '기술보안 역량': 'HardSkill',
-    '데이터 활용 역량': 'HardSkill', '소프트웨어 개발 역량': 'HardSkill',
-    '반도체 설계 역량': 'HardSkill', '바이오헬스 역량': 'HardSkill',
-    '방위산업 역량': 'HardSkill', '미래 모빌리티 역량': 'HardSkill',
-    '조선해양 역량': 'HardSkill', '우주항공 역량': 'HardSkill',
-    '행정법무 역량': 'HardSkill', '디자인 역량': 'HardSkill',
-    '마케팅 전략 역량': 'HardSkill', '녹색기술·탄소중립 역량': 'HardSkill',
-    'COMPCAT_Technical': 'HardSkill',
-    'COMPCAT_Thinking': 'Literacy', 'COMPCAT_Strategic': 'Literacy',
-    'COMPCAT_Communication': 'Literacy', 'COMPCAT_Learning': 'Literacy',
-    '리더십 역량': 'SoftSkill', 'COMPCAT_Interpersonal': 'SoftSkill',
-    'COMPCAT_Personal': 'SoftSkill', 'COMPCAT_Values': 'SoftSkill',
-    'COMPCAT_Capability': 'SoftSkill',
+  // Protege 온톨로지 3단계 계층 구조 레이블 (Level2)
+  _COMP_L2_LABEL: {
+    'Business_Admin':   '비즈니스 행정 (Business_Admin)',
+    'ICT_Dev':          'ICT 개발 (ICT_Dev)',
+    'Industrial_Tech':  '산업기술 (Industrial_Tech)',
+    'Basic_Academic':   '기초학업 (Basic_Academic)',
+    'Civic_Literacy':   '시민 리터러시 (Civic_Literacy)',
+    'Digital_Literacy': '디지털 리터러시 (Digital_Literacy)',
+    'Interpersonal':    '대인관계 (Interpersonal)',
+    'Problem_Solving':  '문제해결 (Problem_Solving)',
+    'Self_Management':  '자기관리 (Self_Management)',
   },
 
-  _COMP_CAT_LABEL: {
-    'COMPCAT_Technical': '기술직무', 'COMPCAT_Thinking': '사고력',
-    'COMPCAT_Strategic': '전략기획', 'COMPCAT_Communication': '커뮤니케이션',
-    'COMPCAT_Learning': '학습역량', '리더십 역량': '리더십',
-    'COMPCAT_Interpersonal': '대인관계', 'COMPCAT_Personal': '개인역량',
-    'COMPCAT_Values': '가치관', 'COMPCAT_Capability': '실행역량',
-    'AI·인프라 역량': 'AI·디지털 인프라', '기술보안 역량': '기술보안',
-    '데이터 활용 역량': '데이터 활용', '소프트웨어 개발 역량': 'SW 개발',
-    '반도체 설계 역량': '반도체·소재', '바이오헬스 역량': '바이오헬스',
-    '방위산업 역량': '방위산업', '미래 모빌리티 역량': '미래모빌리티',
-    '조선해양 역량': '조선해양', '우주항공 역량': '우주항공',
-    '행정법무 역량': '행정·법무', '디자인 역량': '디자인',
-    '마케팅 전략 역량': '마케팅 전략', '녹색기술·탄소중립 역량': '녹색기술',
+  _COMP_L2_DESC: {
+    'Business_Admin':   '경영·마케팅·전략기획 등 비즈니스 행정 전문 역량. Protege 계층: HardSkill > Business_Admin',
+    'ICT_Dev':          'AI·인프라·소프트웨어 개발 등 ICT 기술 역량. Protege 계층: HardSkill > ICT_Dev',
+    'Industrial_Tech':  '제조·공공서비스 등 산업 현장 전문 기술 역량. Protege 계층: HardSkill > Industrial_Tech',
+    'Basic_Academic':   'CS·수리·언어 등 학습 기반이 되는 기초학업 역량. Protege 계층: Literacy > Basic_Academic',
+    'Civic_Literacy':   '시민의식·사회적 가치·윤리 등 시민 리터러시. Protege 계층: Literacy > Civic_Literacy',
+    'Digital_Literacy': '데이터·AI 활용 및 디지털 보안 리터러시 역량. Protege 계층: Literacy > Digital_Literacy',
+    'Interpersonal':    '협업·리더십·네트워킹 등 대인관계 역량. Protege 계층: SoftSkill > Interpersonal',
+    'Problem_Solving':  '창의성·사고력 등 문제해결 역량. Protege 계층: SoftSkill > Problem_Solving',
+    'Self_Management':  '적응력·신뢰성 등 자기관리 역량. Protege 계층: SoftSkill > Self_Management',
   },
 
-  _COMP_CAT_DESC: {
-    'AI·인프라 역량': 'AI·클라우드·데이터 인프라 설계 및 프롬프트 엔지니어링 역량',
-    '기술보안 역량': '사이버보안·클라우드 보안·정보보호 전문 기술',
-    '데이터 활용 역량': '데이터 수집·분석·시각화 및 의사결정 지원 역량',
-    '소프트웨어 개발 역량': '파이썬 등 프로그래밍 언어 기반 SW 개발 역량',
-    '반도체 설계 역량': '반도체 회로 설계, 공정 및 첨단소재 개발 역량',
-    '바이오헬스 역량': '바이오·헬스케어 기술 및 임상·산업 응용 역량',
-    '방위산업 역량': '국방·방산기술 개발 및 방위산업 전문 역량',
-    '미래 모빌리티 역량': '자율주행·친환경 차량 등 미래 이동수단 기술 역량',
-    '조선해양 역량': '선박 설계·해양 공학 및 스마트 조선 기술 역량',
-    '우주항공 역량': '우주탐사·항공기 설계 및 우주산업 전문 역량',
-    '행정법무 역량': '공공행정·법무·정책 기획 및 규제 대응 역량',
-    '디자인 역량': 'UX/UI 서비스 디자인 및 사용자 경험 설계 역량',
-    '마케팅 전략 역량': '디지털 마케팅·브랜딩·시장 분석 전략 역량',
-    '녹색기술·탄소중립 역량': '탄소중립·친환경 에너지 전환 기술 역량',
-    'COMPCAT_Technical': '프로젝트·예산·재무·IT 관리 등 업무 기술 역량',
-    'COMPCAT_Thinking': '창의적 문제해결·분석적 사고·시스템 사고 역량',
-    'COMPCAT_Strategic': '비즈니스 전략 수립·시장분석·경쟁분석 역량',
-    'COMPCAT_Communication': '문서작성·프레젠테이션·비즈니스 커뮤니케이션 역량',
-    'COMPCAT_Learning': '자기주도 학습·지식관리·벤치마킹·역량 개발 역량',
-    '리더십 역량': '비전 설정·조직관리·코칭·멘토링 등 리더십 역량',
-    'COMPCAT_Interpersonal': '팀빌딩·네트워킹·협상·신뢰구축 대인관계 역량',
-    'COMPCAT_Personal': '시간관리·윤리의식·책임감·적응력 개인 역량',
-    'COMPCAT_Values': '고객지향·혁신마인드·협업정신·성과지향 가치관',
-    'COMPCAT_Capability': '멀티태스킹·성과관리·실행력 등 업무 수행 역량',
+  // Level3 레이블
+  _COMP_L3_LABEL: {
+    'Management':           '경영관리 (Management)',
+    'Marketing_Sales':      '마케팅·영업 (Marketing_Sales)',
+    'Marketing_Strategy':   '마케팅 전략 (Marketing_Strategy)',
+    'AI_and_Infrastructure':'AI·인프라 (AI_and_Infrastructure)',
+    'Software':             '소프트웨어 (Software)',
+    'Manufacturing':        '제조·생산 (Manufacturing)',
+    'Service_Public':       '공공서비스 (Service_Public)',
+    'CS_Foundation':        'CS 기초 (CS_Foundation)',
+    'Language_and_Math':    '언어·수리 (Language_and_Math)',
+    'Social_Value':         '사회적 가치 (Social_Value)',
+    'Data_Fluency':         '데이터 활용 (Data_Fluency)',
+    'Data_and_AI':          '데이터·AI (Data_and_AI)',
+    'Tech_Security':        '기술보안 (Tech_Security)',
+    'Collaboration':        '협업 (Collaboration)',
+    'Leadership':           '리더십 (Leadership)',
+    'Thinking_Skill':       '사고력 (Thinking_Skill)',
+    'Adaptability':         '적응력 (Adaptability)',
+    'Reliability':          '신뢰성 (Reliability)',
   },
 
   _renderCompetency() {
     const d = HRDData;
-    const classMap = this._COMP_CLASS_MAP;
-    const hardCount = d.competencies.filter(c => classMap[c.category] === 'HardSkill').length;
-    const litCount  = d.competencies.filter(c => classMap[c.category] === 'Literacy').length;
-    const softCount = d.competencies.filter(c => classMap[c.category] === 'SoftSkill').length;
+    const hardCount = d.competencies.filter(c => c.class === 'HardSkill').length;
+    const litCount  = d.competencies.filter(c => c.class === 'Literacy').length;
+    const softCount = d.competencies.filter(c => c.class === 'SoftSkill').length;
 
     this._setKPI('totalCompetencies', d.competencies.length);
     this._setKPI('developmentTarget', hardCount + '개 전문기술');
@@ -1225,18 +1213,18 @@ const App = {
     if (!this._compClassMode) this._compClassMode = 'all';
     this._updateCompetencyChart();
 
-    // Competency list — all items, clickable
     const listEl = document.getElementById('competencyList');
     if (listEl) {
       listEl.innerHTML = d.competencies.map(c => {
-        const cls = this._COMP_CLASS_MAP[c.category] || '미분류';
-        const catLabel = this._COMP_CAT_LABEL[c.category] || c.category;
-        const clsBadgeColor = { HardSkill: '#00d4ff', Literacy: '#ffd700', SoftSkill: '#00ff41' }[cls] || '#a0aab8';
+        const cls = c.class || '미분류';
+        const l2 = this._COMP_L2_LABEL[c.level2] || c.level2 || '';
+        const l3 = this._COMP_L3_LABEL[c.level3] || c.level3 || '';
+        const clsColor = { HardSkill: '#00d4ff', Literacy: '#ffd700', SoftSkill: '#00ff41' }[cls] || '#a0aab8';
         return `<div class="item item-clickable" data-comp-id="${c.id}">
           <div class="item-name">${c.name || c.en}</div>
           <div class="item-detail">
-            <span style="color:${clsBadgeColor};font-size:10px;font-weight:600">${cls}</span>
-            · ${catLabel} · ${c.en || ''}
+            <span style="color:${clsColor};font-size:10px;font-weight:600">${cls}</span>
+            · ${l2} · ${l3}
           </div>
         </div>`;
       }).join('');
@@ -1252,52 +1240,67 @@ const App = {
   _updateCompetencyChart() {
     const d = HRDData;
     const mode = this._compClassMode || 'all';
-    const classMap = this._COMP_CLASS_MAP;
-    const catLabel = this._COMP_CAT_LABEL;
+    const l2Label = this._COMP_L2_LABEL;
+    const l2Desc  = this._COMP_L2_DESC;
     const palette = {
-      HardSkill: ['#00d4ff','#0099cc','#006699','#33ccff','#66ddff','#99eeff','#003366','#0055aa','#0077cc','#22aadd','#44bbee','#1188bb','#3399cc','#55aadd'],
-      Literacy:  ['#ffd700','#ffaa00','#ff8800','#ffcc33','#ffdd66','#ffee99','#cc8800'],
-      SoftSkill: ['#00ff41','#00cc33','#009922','#33ff66','#66ff88','#99ffaa','#00aa33','#22bb55','#44cc66','#55dd77'],
+      HardSkill: ['#00d4ff','#0099cc','#006699'],
+      Literacy:  ['#ffd700','#ffaa00','#ff8800'],
+      SoftSkill: ['#00ff41','#00cc33','#009922'],
     };
     const allPalette = ['#00d4ff','#ffd700','#00ff41'];
+
+    // Level2 sub-groups per main class
+    const L2_ORDER = {
+      HardSkill: ['Business_Admin','ICT_Dev','Industrial_Tech'],
+      Literacy:  ['Basic_Academic','Civic_Literacy','Digital_Literacy'],
+      SoftSkill: ['Interpersonal','Problem_Solving','Self_Management'],
+    };
 
     let entries, colors, groupComps;
 
     if (mode === 'all') {
-      // Group by main class
       const groups = { HardSkill: [], Literacy: [], SoftSkill: [] };
-      const labels = { HardSkill: 'Hard Skill (전문기술)', Literacy: 'Literacy (기초소양)', SoftSkill: 'Soft Skill (소프트스킬)' };
-      d.competencies.forEach(c => {
-        const cls = classMap[c.category];
-        if (cls && groups[cls]) groups[cls].push(c);
-      });
-      entries = Object.entries(groups).map(([k, v]) => [labels[k], v.length]);
+      const displayLabel = {
+        HardSkill: 'Hard Skill (전문기술)',
+        Literacy:  'Literacy (기초소양)',
+        SoftSkill: 'Soft Skill (소프트스킬)',
+      };
+      d.competencies.forEach(c => { if (groups[c.class]) groups[c.class].push(c); });
+      entries = ['HardSkill','Literacy','SoftSkill'].map(k => [displayLabel[k], groups[k].length]);
       colors = allPalette;
-      groupComps = { [labels.HardSkill]: groups.HardSkill, [labels.Literacy]: groups.Literacy, [labels.SoftSkill]: groups.SoftSkill };
+      groupComps = {
+        [displayLabel.HardSkill]: groups.HardSkill,
+        [displayLabel.Literacy]:  groups.Literacy,
+        [displayLabel.SoftSkill]: groups.SoftSkill,
+      };
     } else {
-      // Group by sub-category within the selected class
+      // Group by level2 within the selected main class
+      const order = L2_ORDER[mode] || [];
       const subGroups = {};
+      order.forEach(l2 => { subGroups[l2] = []; });
       d.competencies
-        .filter(c => classMap[c.category] === mode)
+        .filter(c => c.class === mode)
         .forEach(c => {
-          const key = catLabel[c.category] || c.category;
-          if (!subGroups[key]) subGroups[key] = [];
-          subGroups[key].push(c);
+          const l2 = c.level2 || 'Unknown';
+          if (!subGroups[l2]) subGroups[l2] = [];
+          subGroups[l2].push(c);
         });
       const pal = palette[mode] || allPalette;
-      entries = Object.entries(subGroups).sort((a, b) => b[1].length - a[1].length);
-      colors = entries.map((_, i) => pal[i % pal.length]);
-      groupComps = Object.fromEntries(entries.map(([k, v]) => [k, v]));
-      entries = entries.map(([k, v]) => [k, v.length]);
+      entries = order
+        .filter(l2 => subGroups[l2] && subGroups[l2].length > 0)
+        .map((l2, i) => [l2Label[l2] || l2, subGroups[l2].length, pal[i % pal.length], l2]);
+      colors = entries.map(e => e[2]);
+      groupComps = {};
+      entries.forEach(e => { groupComps[e[0]] = subGroups[e[3]]; });
+      entries = entries.map(e => [e[0], e[1]]);
     }
 
-    const labels = entries.map(e => e[0]);
-    const data   = entries.map(e => e[1]);
-    const finalColors = mode === 'all' ? colors : colors;
+    const chartLabels = entries.map(e => e[0]);
+    const chartData   = entries.map(e => e[1]);
 
     this._chart('competencyChart', 'doughnut', {
-      labels,
-      datasets: [{ data, backgroundColor: finalColors.map(c => c + '99'), borderColor: finalColors, borderWidth: 2 }],
+      labels: chartLabels,
+      datasets: [{ data: chartData, backgroundColor: colors.map(c => c + '99'), borderColor: colors, borderWidth: 2 }],
     }, {
       plugins: {
         tooltip: { callbacks: { label: ctx => `${ctx.label}: ${ctx.parsed}개` } },
@@ -1305,30 +1308,50 @@ const App = {
       },
     });
 
-    // Legend panel with descriptions
     const legendEl = document.getElementById('compLegend');
     if (!legendEl) return;
-    const catDescMap = this._COMP_CAT_DESC;
 
-    // Build reverse lookup: display label → original category key for description
-    const labelToOrigCat = {};
-    Object.entries(catLabel).forEach(([orig, disp]) => { labelToOrigCat[disp] = orig; });
-    const classOrigKey = { 'Hard Skill (전문기술)': null, 'Literacy (기초소양)': null, 'Soft Skill (소프트스킬)': null };
-
-    legendEl.innerHTML = entries.map(([label, count], i) => {
-      const origCat = labelToOrigCat[label] || label;
-      const desc = catDescMap[origCat] || '';
-      const col = mode === 'all' ? finalColors[i] : (Array.isArray(colors) ? colors[i] : finalColors[i]);
-      return `
-        <div class="policy-legend-item comp-legend-item" data-group="${label.replace(/"/g, '&quot;')}" style="flex-direction:column;align-items:flex-start;gap:2px;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.05);cursor:pointer">
-          <div style="display:flex;align-items:center;gap:6px;width:100%">
-            <span class="policy-legend-dot" style="background:${col};box-shadow:0 0 6px ${col}88;flex-shrink:0"></span>
-            <span class="policy-legend-label" style="flex:1;font-size:12px">${label}</span>
-            <span class="policy-legend-count">${count}</span>
-          </div>
-          ${desc ? `<div style="font-size:10px;color:#6a7f90;margin-left:16px;line-height:1.4">${desc}</div>` : ''}
-        </div>`;
-    }).join('');
+    if (mode === 'all') {
+      const mainDesc = {
+        'Hard Skill (전문기술)':  'HardSkill — 비즈니스 행정(Business_Admin), ICT 개발(ICT_Dev), 산업기술(Industrial_Tech) 3개 하위 그룹',
+        'Literacy (기초소양)':    'Literacy — 기초학업(Basic_Academic), 시민 리터러시(Civic_Literacy), 디지털 리터러시(Digital_Literacy) 3개 하위 그룹',
+        'Soft Skill (소프트스킬)':'SoftSkill — 대인관계(Interpersonal), 문제해결(Problem_Solving), 자기관리(Self_Management) 3개 하위 그룹',
+      };
+      legendEl.innerHTML = entries.map(([label, count], i) => {
+        const col = colors[i];
+        const desc = mainDesc[label] || '';
+        return `
+          <div class="policy-legend-item comp-legend-item" data-group="${label}" style="flex-direction:column;align-items:flex-start;gap:2px;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.05);cursor:pointer">
+            <div style="display:flex;align-items:center;gap:6px;width:100%">
+              <span class="policy-legend-dot" style="background:${col};box-shadow:0 0 6px ${col}88;flex-shrink:0"></span>
+              <span class="policy-legend-label" style="flex:1;font-size:12px">${label}</span>
+              <span class="policy-legend-count">${count}</span>
+            </div>
+            <div style="font-size:10px;color:#6a7f90;margin-left:16px;line-height:1.4">${desc}</div>
+          </div>`;
+      }).join('');
+    } else {
+      // Show level2 groups with their descriptions
+      const order = L2_ORDER[mode] || [];
+      const pal = palette[mode] || allPalette;
+      legendEl.innerHTML = order
+        .filter(l2 => groupComps[l2Label[l2] || l2] && groupComps[l2Label[l2] || l2].length > 0)
+        .map((l2, i) => {
+          const label = l2Label[l2] || l2;
+          const count = (groupComps[label] || []).length;
+          const col = pal[i % pal.length];
+          const desc = l2Desc[l2] || '';
+          return `
+            <div class="policy-legend-item comp-legend-item" data-group="${label}" style="flex-direction:column;align-items:flex-start;gap:2px;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.05);cursor:pointer">
+              <div style="display:flex;align-items:center;gap:6px;width:100%">
+                <span class="policy-legend-dot" style="background:${col};box-shadow:0 0 6px ${col}88;flex-shrink:0"></span>
+                <span class="policy-legend-label" style="flex:1;font-size:12px">${label}</span>
+                <span class="policy-legend-count">${count}</span>
+              </div>
+              ${desc ? `<div style="font-size:10px;color:#6a7f90;margin-left:16px;line-height:1.4">${desc}</div>` : ''}
+            </div>`;
+        }).join('');
+    }
 
     legendEl.querySelectorAll('.comp-legend-item').forEach(item => {
       item.addEventListener('click', () => {
@@ -1339,17 +1362,28 @@ const App = {
   },
 
   _showCompGroupPopup(groupName, comps) {
-    const classMap = this._COMP_CLASS_MAP;
-    const catLabel = this._COMP_CAT_LABEL;
-    const listHtml = comps.map(c => {
-      const cls = classMap[c.category] || '미분류';
-      const clsColor = { HardSkill: '#00d4ff', Literacy: '#ffd700', SoftSkill: '#00ff41' }[cls] || '#a0aab8';
-      return `<div class="detail-list-item comp-group-row" data-comp-id="${c.id}" style="cursor:pointer">
-        <span class="detail-dot"></span>
-        <span style="flex:1">${c.name || c.en}</span>
-        <span style="color:${clsColor};font-size:10px;font-weight:600">${c.en || ''}</span>
-      </div>`;
-    }).join('');
+    const l3Label = this._COMP_L3_LABEL;
+    // Group comps by level3 inside the popup
+    const byL3 = {};
+    comps.forEach(c => {
+      const l3key = l3Label[c.level3] || c.level3 || '기타';
+      if (!byL3[l3key]) byL3[l3key] = [];
+      byL3[l3key].push(c);
+    });
+
+    const clsColor = { HardSkill: '#00d4ff', Literacy: '#ffd700', SoftSkill: '#00ff41' };
+    const listHtml = Object.entries(byL3).map(([l3, items]) => `
+      <div style="margin-bottom:8px">
+        <div style="font-size:11px;color:#a0aab8;font-weight:600;margin-bottom:4px;padding-left:4px">${l3}</div>
+        ${items.map(c => {
+          const col = clsColor[c.class] || '#a0aab8';
+          return `<div class="detail-list-item comp-group-row" data-comp-id="${c.id}" style="cursor:pointer">
+            <span class="detail-dot"></span>
+            <span style="flex:1">${c.name || c.en}</span>
+            <span style="color:${col};font-size:10px">${c.en || ''}</span>
+          </div>`;
+        }).join('')}
+      </div>`).join('');
 
     const html = `
       <div class="detail-header-block">
@@ -1358,7 +1392,7 @@ const App = {
         <div class="detail-en">총 ${comps.length}개 역량 · 클릭하면 상세 정보 확인</div>
       </div>
       <div class="detail-section">
-        <div class="detail-section-title">역량 목록</div>
+        <div class="detail-section-title">역량 목록 (Level 3 하위분류별)</div>
         <div class="detail-list">${listHtml}</div>
       </div>
     `;
@@ -1373,16 +1407,16 @@ const App = {
   },
 
   _showCompetencyDetail(comp) {
-    const classMap = this._COMP_CLASS_MAP;
-    const catLabel = this._COMP_CAT_LABEL;
-    const catDesc  = this._COMP_CAT_DESC;
-    const cls = classMap[comp.category] || '미분류';
-    const clsKo = { HardSkill: 'Hard Skill (전문기술)', Literacy: 'Literacy (기초소양)', SoftSkill: 'Soft Skill (소프트스킬)' }[cls] || cls;
+    const l2Label = this._COMP_L2_LABEL;
+    const l3Label = this._COMP_L3_LABEL;
+    const l2Desc  = this._COMP_L2_DESC;
+    const cls = comp.class || '미분류';
+    const clsKo = { HardSkill: 'Hard Skill', Literacy: 'Literacy', SoftSkill: 'Soft Skill' }[cls] || cls;
     const clsColor = { HardSkill: '#00d4ff', Literacy: '#ffd700', SoftSkill: '#00ff41' }[cls] || '#a0aab8';
-    const catLabelStr = catLabel[comp.category] || comp.category;
-    const catDescStr  = catDesc[comp.category] || '';
+    const l2 = l2Label[comp.level2] || comp.level2 || '';
+    const l3 = l3Label[comp.level3] || comp.level3 || '';
+    const descStr = l2Desc[comp.level2] || '';
 
-    // Find programs using this competency category
     const relPrograms = HRDData.programs.filter(p => p.competencyCategory === comp.category);
 
     const progHtml = relPrograms.length
@@ -1401,25 +1435,21 @@ const App = {
         <div class="detail-en">${comp.en || ''}</div>
       </div>
 
-      <div class="detail-grid-2">
-        <div class="detail-section">
-          <div class="detail-section-title">분류 체계</div>
-          <div class="detail-tags">
-            <span class="detail-tag" style="border-color:${clsColor};color:${clsColor}">${clsKo}</span>
-          </div>
-        </div>
-        <div class="detail-section">
-          <div class="detail-section-title">하위 역량군</div>
-          <div class="detail-tags">
-            <span class="detail-tag comp">${catLabelStr}</span>
-          </div>
+      <div class="detail-section">
+        <div class="detail-section-title">Protege 온톨로지 분류 경로</div>
+        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:6px">
+          <span class="detail-tag" style="border-color:${clsColor};color:${clsColor}">${clsKo}</span>
+          <span style="color:#506070">▶</span>
+          <span class="detail-tag comp">${l2}</span>
+          <span style="color:#506070">▶</span>
+          <span class="detail-tag comp">${l3}</span>
         </div>
       </div>
 
-      ${catDescStr ? `
+      ${descStr ? `
       <div class="detail-section">
         <div class="detail-section-title">역량군 설명</div>
-        <div class="detail-en" style="font-size:12px;line-height:1.6">${catDescStr}</div>
+        <div class="detail-en" style="font-size:12px;line-height:1.6">${descStr}</div>
       </div>` : ''}
 
       <div class="detail-section">
