@@ -467,9 +467,13 @@ const App = {
     this._setKPI('avgBudget', d.formatWon(avg));
     this._setKPI('maxBudget', d.formatWon(max));
 
-    const sorted = [...d.budgets].sort((a, b) => (b.amount || 0) - (a.amount || 0)).slice(0, 10);
+    const sorted = [...d.budgets].sort((a, b) => (b.amount || 0) - (a.amount || 0));
+
+    const chartContainer = document.querySelector('#view-budget .chart-container');
+    if (chartContainer) chartContainer.style.minHeight = Math.max(400, sorted.length * 28 + 60) + 'px';
+
     this._chart('budgetChart', 'bar', {
-      labels: sorted.map(b => b.name.slice(0, 12)),
+      labels: sorted.map(b => b.name),
       datasets: [{
         label: '예산 (원)',
         data: sorted.map(b => b.amount || 0),
@@ -477,12 +481,115 @@ const App = {
         borderColor: '#ffd700',
         borderWidth: 1,
       }],
-    }, { indexAxis: 'y' });
+    }, {
+      indexAxis: 'y',
+      plugins: {
+        tooltip: {
+          callbacks: {
+            label: ctx => {
+              const b = sorted[ctx.dataIndex];
+              return [`금액: ${b.amountStr || d.formatWon(b.amount || 0)}`, `관리기관: ${b.managingOrg || '미지정'}`, `회계연도: FY${b.fiscalYear || '2026'}`];
+            },
+          },
+        },
+        legend: { display: false },
+      },
+      scales: {
+        y: {
+          ticks: {
+            color: '#c0ccd8',
+            font: { size: 11 },
+            callback(val) {
+              const name = this.getLabelForValue(val);
+              return name.length > 18 ? name.slice(0, 17) + '…' : name;
+            },
+          },
+          grid: { color: 'rgba(26,58,74,0.5)' },
+        },
+        x: {
+          ticks: {
+            color: '#a0aab8',
+            font: { size: 10 },
+            callback: v => v >= 1e10 ? (v / 1e8).toFixed(0) + '억' : v >= 1e8 ? (v / 1e8).toFixed(0) + '억' : v,
+          },
+          grid: { color: 'rgba(26,58,74,0.5)' },
+        },
+      },
+    });
 
-    this._renderList('budgetList', d.budgets, b => ({
-      name: b.name,
-      detail: `${d.formatWon(b.amount || 0)} · FY${b.fiscalYear || '2025'}`,
-    }));
+    this._renderBudgetList('budgetList', sorted);
+  },
+
+  _renderBudgetList(containerId, budgets) {
+    const el = document.getElementById(containerId);
+    if (!el) return;
+    const d = HRDData;
+    el.innerHTML = budgets.map((b, i) => {
+      const stratName = b.relatedStrategyName || (b.relatedStrategy
+        ? (d.strategies.find(s => s.id === b.relatedStrategy) || {}).name || b.relatedStrategy
+        : '');
+      return `<div class="item budget-item" data-budget-idx="${i}" style="cursor:pointer">
+        <div class="item-name">${b.name}</div>
+        <div class="item-detail">${b.amountStr || d.formatWon(b.amount || 0)} · FY${b.fiscalYear || '2026'}${stratName ? ' · ' + stratName : ''}</div>
+      </div>`;
+    }).join('');
+    el.querySelectorAll('.budget-item').forEach(row => {
+      row.addEventListener('click', () => this._showBudgetDetail(budgets[+row.dataset.budgetIdx]));
+    });
+  },
+
+  _showBudgetDetail(budget) {
+    const d = HRDData;
+    const stratId = budget.relatedStrategy;
+    const strategy = stratId ? d.strategies.find(s => s.id === stratId) : null;
+    const relatedPolicies = stratId ? d.policies.filter(p => p.relatedStrategy === stratId) : [];
+
+    const stratBlock = strategy
+      ? `<div class="detail-section">
+          <div class="detail-section-title">연관 전략</div>
+          <div class="detail-tags"><span class="detail-tag org">${strategy.name}</span></div>
+        </div>`
+      : '';
+
+    const polHtml = relatedPolicies.length
+      ? relatedPolicies.map(p => `<div class="detail-list-item"><span class="detail-dot"></span>${p.name}${p.budgetAmountStr ? ' <span style="color:#ffd700;font-size:11px">· ' + p.budgetAmountStr + '</span>' : ''}</div>`).join('')
+      : '<span class="detail-empty">연관 정책 데이터 없음</span>';
+
+    const html = `
+      <div class="detail-header">
+        <div class="detail-type-badge" style="background:rgba(255,215,0,0.12);color:#ffd700;border-color:rgba(255,215,0,0.3)">Budget</div>
+        <h2 class="detail-title">${budget.name}</h2>
+        ${budget.en ? `<div class="detail-en">${budget.en}</div>` : ''}
+      </div>
+
+      <div class="detail-grid-2">
+        <div class="detail-section">
+          <div class="detail-section-title">배정 예산</div>
+          <div class="detail-budget-value">${budget.amountStr || d.formatWon(budget.amount || 0)}</div>
+        </div>
+        <div class="detail-section">
+          <div class="detail-section-title">회계연도</div>
+          <div class="detail-budget-value">FY${budget.fiscalYear || '2026'}</div>
+        </div>
+      </div>
+
+      <div class="detail-section">
+        <div class="detail-section-title">관리 기관</div>
+        <div class="detail-tags">
+          ${budget.managingOrg
+            ? `<span class="detail-tag org">${budget.managingOrg}</span>`
+            : '<span class="detail-empty">미지정</span>'}
+        </div>
+      </div>
+
+      ${stratBlock}
+
+      <div class="detail-section">
+        <div class="detail-section-title">연관 전략 소속 정책 (${relatedPolicies.length}건)</div>
+        <div class="detail-list">${polHtml}</div>
+      </div>
+    `;
+    this._openDetail(html);
   },
 
   // --- Program View ---
