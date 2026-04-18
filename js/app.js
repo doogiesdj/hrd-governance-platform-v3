@@ -227,30 +227,158 @@ const App = {
   // --- Policy View ---
   _renderPolicy() {
     const d = HRDData;
+    const policyBudgetTotal = d.policies.reduce((s, p) => s + (p.budgetAmount || 0), 0);
+    const budgetedCount = d.policies.filter(p => p.budgetAmount > 0).length;
     this._setKPI('policyTotal', d.policies.length);
-    this._setKPI('activePolicies', Math.round(d.policies.length * 0.85));
-    this._setKPI('policyBudget', d.formatWon(d.totalBudget() * 0.6));
+    this._setKPI('activePolicies', budgetedCount);
+    this._setKPI('policyBudget', d.formatWon(policyBudgetTotal));
     this._setKPI('policyPrograms', d.programs.length);
 
-    const typeMap = {};
-    d.policies.forEach(p => { const t = p.type || 'PublicPolicy'; typeMap[t] = (typeMap[t] || 0) + 1; });
-    const labels = Object.keys(typeMap);
-    const colors = ['#00d4ff', '#00ff41', '#ffd700', '#ff3333', '#9933ff'];
+    const view = document.getElementById('view-policy');
+    if (view && !view.querySelector('.policy-class-bar')) {
+      const chartContainer = view.querySelector('.chart-container');
+      const bar = document.createElement('div');
+      bar.className = 'policy-class-bar';
+      bar.innerHTML = `
+        <button class="policy-class-btn active" data-mode="strategy">전략별</button>
+        <button class="policy-class-btn" data-mode="budget">예산 규모별</button>
+        <button class="policy-class-btn" data-mode="competency">역량 분야별</button>
+        <button class="policy-class-btn" data-mode="org">관리기관별</button>
+      `;
+      chartContainer.parentNode.insertBefore(bar, chartContainer);
+      bar.querySelectorAll('.policy-class-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          bar.querySelectorAll('.policy-class-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          this._policyClassMode = btn.dataset.mode;
+          this._updatePolicyChart();
+        });
+      });
+    }
+
+    if (!this._policyClassMode) this._policyClassMode = 'strategy';
+    this._updatePolicyChart();
+
+    const listEl = document.getElementById('policyList');
+    if (listEl) {
+      listEl.innerHTML = d.policies.map(p => `
+        <div class="item item-clickable" data-policy-id="${p.id}">
+          <div class="item-name">${p.name}</div>
+          <div class="item-detail">${p.relatedStrategyName || ''} · ${p.budgetAmountStr || '미배정'}</div>
+        </div>
+      `).join('');
+      listEl.querySelectorAll('.item-clickable').forEach(el => {
+        el.addEventListener('click', () => {
+          const pol = d.policies.find(p => p.id === el.dataset.policyId);
+          if (pol) this._showPolicyDetail(pol);
+        });
+      });
+    }
+  },
+
+  _updatePolicyChart() {
+    const d = HRDData;
+    const mode = this._policyClassMode || 'strategy';
+    const palette = ['#00d4ff','#00ff41','#ffd700','#ff3333','#9933ff','#ff6b00','#00ffcc','#ff0099','#66ff00','#ff9933','#33ccff','#99ff33'];
+
+    const groupMap = {};
+    d.policies.forEach(p => {
+      let key;
+      switch (mode) {
+        case 'strategy':   key = p.relatedStrategyName || '미분류'; break;
+        case 'budget':     key = p.budgetScale || '미배정'; break;
+        case 'competency': key = (p.competencyCategories && p.competencyCategories[0]) || '미분류'; break;
+        case 'org':        key = p.managingOrg || '미분류'; break;
+        default:           key = '기타';
+      }
+      groupMap[key] = (groupMap[key] || 0) + 1;
+    });
+
+    const entries = Object.entries(groupMap).sort((a, b) => b[1] - a[1]);
+    const labels = entries.map(e => e[0]);
+    const data = entries.map(e => e[1]);
+    const colors = labels.map((_, i) => palette[i % palette.length]);
 
     this._chart('policyChart', 'doughnut', {
       labels,
-      datasets: [{
-        data: Object.values(typeMap),
-        backgroundColor: colors.slice(0, labels.length).map(c => c + '99'),
-        borderColor: colors.slice(0, labels.length),
-        borderWidth: 2,
-      }],
+      datasets: [{ data, backgroundColor: colors.map(c => c + '99'), borderColor: colors, borderWidth: 2 }],
+    }, {
+      plugins: {
+        tooltip: { callbacks: { label: ctx => `${ctx.label}: ${ctx.parsed}개` } },
+        legend: { labels: { color: '#a0aab8', font: { size: 10 } } },
+      },
     });
+  },
 
-    this._renderList('policyList', d.policies.slice(0, 30), p => ({
-      name: p.name,
-      detail: p.en || p.type,
-    }));
+  _showPolicyDetail(policy) {
+    const compHtml = policy.competencies && policy.competencies.length
+      ? policy.competencies.map(c => `<span class="detail-tag comp">${c.name}</span>`).join('')
+      : '<span class="detail-empty">역량 데이터 없음</span>';
+
+    const catHtml = policy.competencyCategories && policy.competencyCategories.length
+      ? policy.competencyCategories.map(c => `<span class="detail-tag">${c}</span>`).join('')
+      : '<span class="detail-empty">역량 분야 데이터 없음</span>';
+
+    const perfHtml = policy.performanceGoals && policy.performanceGoals.length
+      ? policy.performanceGoals.map(g => {
+          const val = g.value ? ` (${parseInt(g.value).toLocaleString()}명)` : '';
+          return `<div class="detail-list-item"><span class="detail-dot perf"></span>${g.name}${val}</div>`;
+        }).join('')
+      : '<span class="detail-empty">성과 목표 데이터 없음</span>';
+
+    const orgBlock = policy.managingOrg ? `
+      <div class="detail-section">
+        <div class="detail-section-title">관리 기관</div>
+        <div class="detail-tags">
+          <span class="detail-tag org">${policy.managingOrg}${policy.managingOrgAbbr ? ' (' + policy.managingOrgAbbr + ')' : ''}</span>
+        </div>
+      </div>` : '';
+
+    const html = `
+      <div class="detail-header-block">
+        <div class="detail-strategy-label">PUBLIC POLICY</div>
+        <h2 class="detail-title">${policy.name}</h2>
+        <div class="detail-en">${policy.en || ''}</div>
+      </div>
+
+      <div class="detail-section">
+        <div class="detail-section-title">연관 전략</div>
+        <div class="detail-tags">
+          ${policy.relatedStrategyName
+            ? `<span class="detail-tag org">${policy.relatedStrategyName}</span>`
+            : '<span class="detail-empty">데이터 없음</span>'}
+        </div>
+      </div>
+
+      <div class="detail-grid-2">
+        <div class="detail-section">
+          <div class="detail-section-title">예산 규모</div>
+          <div class="detail-budget-value">${policy.budgetAmountStr || '미배정'}</div>
+        </div>
+        <div class="detail-section">
+          <div class="detail-section-title">규모 등급</div>
+          <div class="detail-budget-value">${policy.budgetScale || '미배정'}</div>
+        </div>
+      </div>
+
+      ${orgBlock}
+
+      <div class="detail-section">
+        <div class="detail-section-title">역량 분야</div>
+        <div class="detail-tags">${catHtml}</div>
+      </div>
+
+      <div class="detail-section">
+        <div class="detail-section-title">지원 역량</div>
+        <div class="detail-tags">${compHtml}</div>
+      </div>
+
+      <div class="detail-section">
+        <div class="detail-section-title">성과 목표</div>
+        <div class="detail-list">${perfHtml}</div>
+      </div>
+    `;
+    this._openDetail(html);
   },
 
   // --- Budget View ---

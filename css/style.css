@@ -977,6 +977,39 @@ body {
   opacity: 0.5;
 }
 
+/* Policy Classification Toggle */
+.policy-class-bar {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+}
+
+.policy-class-btn {
+  background: transparent;
+  border: 1px solid rgba(0, 212, 255, 0.25);
+  color: var(--color-text-secondary);
+  font-size: 11px;
+  font-family: var(--font-primary);
+  letter-spacing: 0.06em;
+  padding: 5px 14px;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.policy-class-btn:hover {
+  border-color: rgba(0, 212, 255, 0.6);
+  color: #e0e8f0;
+}
+
+.policy-class-btn.active {
+  background: rgba(0, 212, 255, 0.15);
+  border-color: #00d4ff;
+  color: #00d4ff;
+  font-weight: 600;
+}
+
 /* Print Styles */
 @media print {
   .header,
