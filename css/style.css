@@ -1929,6 +1929,8 @@ body {
 .og-node-grandparent rect { fill: #0d1117; stroke: #30363d; stroke-width: 1; }
 .og-node-child rect   { fill: #21262d; stroke: #58a6ff; stroke-width: 1; }
 .og-node-grandchild rect { fill: #161b22; stroke: #30363d; stroke-width: 1; }
+.og-node-context rect { fill: #161b22; stroke: #58a6ff; stroke-width: 1; }
+.og-node-grandcontext rect { fill: #0d1117; stroke: #30363d; stroke-width: 1; }
 
 .og-node circle {
   fill: #c04000;
@@ -1938,6 +1940,7 @@ body {
 }
 
 .og-node-selected-inst circle { fill: #b45309; stroke: #fbbf24; stroke-width: 2; }
+.og-node-instance circle { fill: #c04000; stroke: #e07a30; stroke-width: 1.5; }
 .og-node-more circle { fill: #333; stroke: #555; }
 
 .og-node text {
@@ -1949,6 +1952,7 @@ body {
 }
 
 .og-node-grandparent text, .og-node-grandchild text { fill: #8b949e; font-size: 9px; }
+.og-node-grandcontext text { fill: #8b949e; font-size: 9px; }
 .og-node-more text { fill: #666; font-size: 9px; }
 
 /* Links */
@@ -1999,4 +2003,78 @@ body {
   font-size: 11px;
   margin: 3px 0;
   line-height: 1.4;
+}
+
+.og-info-status {
+  margin-top: 6px;
+  font-size: 11px;
+  color: #58a6ff;
+  border-top: 1px solid #30363d;
+  padding-top: 4px;
+}
+
+/* Selection toolbar */
+.og-sel-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 8px;
+  background: #0d1117;
+  border-bottom: 1px solid #21262d;
+  flex-wrap: wrap;
+}
+
+.og-badge {
+  font-size: 11px;
+  color: #8b949e;
+  padding: 2px 8px;
+  border-radius: 10px;
+  background: #21262d;
+  border: 1px solid #30363d;
+}
+
+.og-badge-active {
+  color: #3fb950;
+  background: #1a3a1f;
+  border-color: #3fb950;
+}
+
+.og-clear-btn {
+  font-size: 11px;
+  padding: 2px 8px;
+  background: #21262d;
+  color: #f85149;
+  border: 1px solid #30363d;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.og-clear-btn:hover { background: #30363d; }
+
+/* Tree hint */
+.og-tree-hint {
+  font-size: 10px;
+  color: #6e7681;
+  padding: 4px 8px;
+  background: #0d1117;
+  border-bottom: 1px solid #21262d;
+  font-style: italic;
+}
+
+/* Instance selection highlight in tree */
+.og-tree-instance.og-sel-inst {
+  background: #451a03;
+  color: #fbbf24;
+  font-weight: 600;
+}
+
+/* Legend child node */
+.og-legend-child {
+  display: inline-block;
+  width: 11px;
+  height: 11px;
+  background: #21262d;
+  border: 1px solid #58a6ff;
+  border-radius: 2px;
+  vertical-align: middle;
 }
