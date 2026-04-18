@@ -8,7 +8,9 @@ const HRDData = {
     try {
       const res = await fetch('data/ontology.json');
       if (!res.ok) throw new Error('fetch failed');
-      this.raw = await res.json();
+      const parsed = await res.json();
+      // Handle both wrapped ({meta, strategies, ...}) and flat ({strategies, ...}) formats
+      this.raw = parsed.strategies ? parsed : (parsed.meta ? parsed : this._demo());
     } catch {
       this.raw = this._demo();
     }
@@ -18,52 +20,39 @@ const HRDData = {
   _demo() {
     return {
       strategies: [
-        { id: 'AI디지털', name: 'AI 디지털 대전환', en: 'AI and Digital Transformation', type: 'NationalStrategy' },
-        { id: '전략기술', name: '전략기술 자립·주권 확보', en: 'Strategic Technology Sovereignty', type: 'NationalStrategy' },
-        { id: '탄소중립', name: '탄소중립 및 에너지 대전환', en: 'Carbon Neutrality', type: 'NationalStrategy' },
-        { id: '미래모빌리티', name: '미래 모빌리티 산업 육성', en: 'Future Mobility Industry', type: 'NationalStrategy' },
-        { id: '포용복지', name: '포용적 복지국가 실현', en: 'Inclusive Welfare State', type: 'NationalStrategy' },
+        { id: '인공지능주권', name: 'AI 디지털 대전환', en: 'AI and Digital Transformation', type: 'NationalStrategy', policyCount: 15, programCount: 28, policies: [], programs: [], budgets: [], implementingOrgs: [], targetGroups: [], competencies: [], performanceGoals: [], totalBudget: 50000000000, totalBudgetStr: '500억원', description: 'AI 디지털 대전환은 국가 인적자원 개발의 핵심 전략입니다.' },
+        { id: '전략기술주권', name: '전략기술 자립·주권 확보', en: 'Strategic Technology Sovereignty', type: 'NationalStrategy', policyCount: 13, programCount: 29, policies: [], programs: [], budgets: [], implementingOrgs: [], targetGroups: [], competencies: [], performanceGoals: [], totalBudget: 30000000000, totalBudgetStr: '300억원', description: '전략기술 자립·주권 확보 전략입니다.' },
+        { id: '탄소중립·재생에너지', name: '탄소중립 및 에너지 대전환', en: 'Carbon Neutrality', type: 'NationalStrategy', policyCount: 2, programCount: 8, policies: [], programs: [], budgets: [], implementingOrgs: [], targetGroups: [], competencies: [], performanceGoals: [], totalBudget: 0, totalBudgetStr: '미배정', description: '탄소중립 및 에너지 대전환 전략입니다.' },
       ],
       organizations: [
-        { id: 'MSIT', name: '과학기술정보통신부', en: 'Ministry of Science and ICT', abbr: 'MSIT', type: 'CentralMinistry', role: '디지털 전환·AI·ICT 인재 양성' },
-        { id: 'MOE', name: '교육부', en: 'Ministry of Education', abbr: 'MOE', type: 'CentralMinistry', role: '학교·대학 교육정책' },
-        { id: 'MoEL', name: '고용노동부', en: 'Ministry of Employment and Labor', abbr: 'MoEL', type: 'CentralMinistry', role: '직업훈련·고용서비스' },
-        { id: 'MOTIE', name: '산업통상자원부', en: 'Ministry of Trade, Industry and Energy', abbr: 'MOTIE', type: 'CentralMinistry', role: '전략기술 인재 양성' },
-        { id: 'MOF', name: '기획재정부', en: 'Ministry of Economy and Finance', abbr: 'MOF', type: 'CentralMinistry', role: 'HRD 예산 총괄' },
+        { id: 'ORG_MINISTRY_01', name: '과학기술정보통신부', en: 'Ministry of Science and ICT', abbr: 'MSIT', type: 'CentralMinistry', role: '디지털 전환·AI·ICT 인재 양성' },
+        { id: 'ORG_MINISTRY_02', name: '교육부', en: 'Ministry of Education', abbr: 'MOE', type: 'CentralMinistry', role: '학교·대학 교육정책' },
       ],
       policies: [
-        { id: 'POL_001', name: 'AI 인재 10만 양성 정책', en: 'AI Talent 100K Policy', type: 'PublicPolicy' },
-        { id: 'POL_002', name: '디지털 새싹 캠프', en: 'Digital Sapling Camp', type: 'PublicPolicy' },
-        { id: 'POL_003', name: '국가전략기술 인재양성', en: 'National Strategic Tech Talent', type: 'PublicPolicy' },
+        { id: 'POLICY_01', name: '은퇴과학자 활용 지원사업', en: 'Retired Scientist Utilization Support', type: 'PublicPolicy' },
+        { id: 'POLICY_02', name: '디지털 전환 교육 프로그램', en: 'Digital Transformation Education', type: 'PublicPolicy' },
       ],
       budgets: [
-        { id: 'BUD_001', name: 'AI 디지털 인재양성 예산', amount: 5000000000, fiscalYear: 2025, type: 'Budget' },
-        { id: 'BUD_002', name: '직업훈련 지원 예산', amount: 3200000000, fiscalYear: 2025, type: 'Budget' },
-        { id: 'BUD_003', name: '첨단기술 R&D 인력 예산', amount: 2800000000, fiscalYear: 2025, type: 'Budget' },
+        { id: 'BUDGET_STRAT_01', name: 'AI·디지털 인재양성 전략예산', amount: 50000000000, fiscalYear: '2026', type: 'Budget' },
       ],
       programs: [
-        { id: 'PROG_001', name: 'AI 부트캠프', en: 'AI Bootcamp', type: 'EducationProgram' },
-        { id: 'PROG_002', name: '디지털 전환 교육', en: 'Digital Transformation Training', type: 'EducationProgram' },
-        { id: 'PROG_003', name: '스마트 제조 훈련', en: 'Smart Manufacturing Training', type: 'EducationProgram' },
-        { id: 'PROG_004', name: '탄소중립 전문가 과정', en: 'Carbon Neutral Expert Course', type: 'EducationProgram' },
-        { id: 'PROG_005', name: '모빌리티 기술 교육', en: 'Mobility Tech Training', type: 'EducationProgram' },
+        { id: 'HS_BAM_01', name: '전략기획실무', en: 'Strategic Planning Fundamentals', type: 'EducationProgram' },
       ],
       competencies: [
-        { id: 'COMP_001', name: 'AI·머신러닝', en: 'AI/Machine Learning', type: 'Competency' },
-        { id: 'COMP_002', name: '클라우드 컴퓨팅', en: 'Cloud Computing', type: 'Competency' },
-        { id: 'COMP_003', name: '데이터 분석', en: 'Data Analytics', type: 'Competency' },
-        { id: 'COMP_004', name: '사이버보안', en: 'Cybersecurity', type: 'Competency' },
-        { id: 'COMP_005', name: '반도체 설계', en: 'Semiconductor Design', type: 'Competency' },
+        { id: 'COMP_AI_01', name: 'AI·머신러닝', en: 'AI/Machine Learning', type: 'Competency' },
       ],
+      targetGroups: [],
     };
   },
 
+  get meta() { return this.raw?.meta || {}; },
   get strategies() { return this.raw?.strategies || []; },
   get organizations() { return this.raw?.organizations || []; },
   get policies() { return this.raw?.policies || []; },
   get budgets() { return this.raw?.budgets || []; },
   get programs() { return this.raw?.programs || []; },
   get competencies() { return this.raw?.competencies || []; },
+  get targetGroups() { return this.raw?.targetGroups || []; },
 
   totalBudget() {
     return this.budgets.reduce((s, b) => s + (b.amount || 0), 0);

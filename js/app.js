@@ -10,6 +10,7 @@ const App = {
     this._updateHeaderStats();
     this._initNav();
     this._renderView('strategy');
+    this._initDetailPanel();
   },
 
   _startClock() {
@@ -59,6 +60,112 @@ const App = {
     }
   },
 
+  // --- Detail Panel ---
+  _initDetailPanel() {
+    const overlay = document.getElementById('detailOverlay');
+    const closeBtn = document.getElementById('detailClose');
+    if (overlay) overlay.addEventListener('click', e => { if (e.target === overlay) this._closeDetail(); });
+    if (closeBtn) closeBtn.addEventListener('click', () => this._closeDetail());
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') this._closeDetail(); });
+  },
+
+  _openDetail(html) {
+    const overlay = document.getElementById('detailOverlay');
+    const body = document.getElementById('detailBody');
+    if (!overlay || !body) return;
+    body.innerHTML = html;
+    overlay.classList.add('active');
+  },
+
+  _closeDetail() {
+    const overlay = document.getElementById('detailOverlay');
+    if (overlay) overlay.classList.remove('active');
+  },
+
+  _showStrategyDetail(strategy) {
+    const budgetStr = strategy.totalBudgetStr || (strategy.totalBudget ? HRDData.formatWon(strategy.totalBudget) : '미배정');
+
+    const policiesHtml = strategy.policies && strategy.policies.length
+      ? strategy.policies.map(p => `<span class="detail-tag">${p.name}</span>`).join('')
+      : '<span class="detail-empty">연관 정책 데이터 없음</span>';
+
+    const orgsHtml = strategy.implementingOrgs && strategy.implementingOrgs.length
+      ? strategy.implementingOrgs.map(o => `<span class="detail-tag org">${o.abbr || o.name}</span>`).join('')
+      : '<span class="detail-empty">집행 기관 데이터 없음</span>';
+
+    const tgHtml = strategy.targetGroups && strategy.targetGroups.length
+      ? strategy.targetGroups.map(t => `<span class="detail-tag tg">${t}</span>`).join('')
+      : '<span class="detail-empty">수혜대상 데이터 없음</span>';
+
+    const progHtml = strategy.programs && strategy.programs.length
+      ? strategy.programs.slice(0, 12).map(p => `<div class="detail-list-item"><span class="detail-dot"></span>${p.name}</div>`).join('')
+        + (strategy.programs.length > 12 ? `<div class="detail-more">외 ${strategy.programs.length - 12}개 프로그램</div>` : '')
+      : '<span class="detail-empty">프로그램 데이터 없음</span>';
+
+    const compHtml = strategy.competencies && strategy.competencies.length
+      ? strategy.competencies.slice(0, 10).map(c => `<span class="detail-tag comp">${c.name}</span>`).join('')
+      : '<span class="detail-empty">역량 데이터 없음</span>';
+
+    const perfHtml = strategy.performanceGoals && strategy.performanceGoals.length
+      ? strategy.performanceGoals.map(g => `<div class="detail-list-item"><span class="detail-dot perf"></span>${g.name}</div>`).join('')
+      : '<span class="detail-empty">성과 목표 데이터 없음</span>';
+
+    const html = `
+      <div class="detail-header-block">
+        <div class="detail-strategy-label">NATIONAL STRATEGY</div>
+        <h2 class="detail-title">${strategy.name}</h2>
+        <div class="detail-en">${strategy.en || ''}</div>
+      </div>
+
+      <div class="detail-section">
+        <div class="detail-section-title">전략 소개</div>
+        <p class="detail-description">${strategy.description || `${strategy.name}은 국가 인적자원 개발의 핵심 전략으로, 관련 정책 및 교육 프로그램을 통해 추진됩니다.`}</p>
+      </div>
+
+      <div class="detail-grid-2">
+        <div class="detail-section">
+          <div class="detail-section-title">예산 규모</div>
+          <div class="detail-budget-value">${budgetStr}</div>
+        </div>
+        <div class="detail-section">
+          <div class="detail-section-title">연관 정책 수</div>
+          <div class="detail-budget-value">${strategy.policyCount || (strategy.policies ? strategy.policies.length : 0)}개</div>
+        </div>
+      </div>
+
+      <div class="detail-section">
+        <div class="detail-section-title">연관 정책</div>
+        <div class="detail-tags">${policiesHtml}</div>
+      </div>
+
+      <div class="detail-section">
+        <div class="detail-section-title">집행 기관</div>
+        <div class="detail-tags">${orgsHtml}</div>
+      </div>
+
+      <div class="detail-section">
+        <div class="detail-section-title">수혜 대상</div>
+        <div class="detail-tags">${tgHtml}</div>
+      </div>
+
+      <div class="detail-section">
+        <div class="detail-section-title">교육 프로그램 (${strategy.programCount || 0}개)</div>
+        <div class="detail-list">${progHtml}</div>
+      </div>
+
+      <div class="detail-section">
+        <div class="detail-section-title">연관 역량</div>
+        <div class="detail-tags">${compHtml}</div>
+      </div>
+
+      <div class="detail-section">
+        <div class="detail-section-title">성과 목표</div>
+        <div class="detail-list">${perfHtml}</div>
+      </div>
+    `;
+    this._openDetail(html);
+  },
+
   // --- Strategy View ---
   _renderStrategy() {
     const d = HRDData;
@@ -67,21 +174,54 @@ const App = {
     this._setKPI('strategyBudget', d.formatWon(d.totalBudget()));
     this._setKPI('strategyPrograms', d.programs.length);
 
+    const stratSample = d.strategies.slice(0, 11);
+    const policyNamesByStrategy = {};
+    stratSample.forEach(s => {
+      policyNamesByStrategy[s.id] = (s.policies || []).map(p => p.name);
+    });
+
     this._chart('strategyChart', 'bar', {
-      labels: d.strategies.slice(0, 8).map(s => s.name.slice(0, 14)),
+      labels: stratSample.map(s => s.name.slice(0, 14)),
       datasets: [{
         label: '관련 정책 수',
-        data: d.strategies.slice(0, 8).map(() => Math.floor(Math.random() * 10 + 2)),
+        data: stratSample.map(s => s.policyCount || (s.policies ? s.policies.length : 0)),
         backgroundColor: 'rgba(0,212,255,0.3)',
         borderColor: '#00d4ff',
         borderWidth: 1,
       }],
+    }, {
+      plugins: {
+        tooltip: {
+          callbacks: {
+            title: (items) => stratSample[items[0].dataIndex]?.name || '',
+            afterBody: (items) => {
+              const idx = items[0].dataIndex;
+              const names = policyNamesByStrategy[stratSample[idx]?.id] || [];
+              if (!names.length) return [];
+              return ['', '관련 정책:', ...names.map(n => `  • ${n}`)];
+            },
+          },
+        },
+      },
     });
 
-    this._renderList('strategyList', d.strategies, s => ({
-      name: s.name,
-      detail: s.en,
-    }));
+    const listEl = document.getElementById('strategyList');
+    if (listEl) {
+      listEl.innerHTML = d.strategies.map(s => `
+        <div class="item item-clickable" data-strategy-id="${s.id}">
+          <div class="item-name">${s.name}</div>
+          ${s.en ? `<div class="item-detail">${s.en}</div>` : ''}
+        </div>
+      `).join('');
+
+      listEl.querySelectorAll('.item-clickable').forEach(el => {
+        el.addEventListener('click', () => {
+          const sid = el.dataset.strategyId;
+          const strat = d.strategies.find(s => s.id === sid);
+          if (strat) this._showStrategyDetail(strat);
+        });
+      });
+    }
   },
 
   // --- Policy View ---
@@ -177,10 +317,6 @@ const App = {
     this._setKPI('employmentRate', '76%');
     this._setKPI('competencyAchievement', '82%');
     this._setKPI('avgRating', '4.3');
-
-    const orgTypes = d.orgsByType();
-    const labels = Object.keys(orgTypes);
-    const colors = ['#00d4ff', '#00ff41', '#ffd700', '#ff3333', '#9933ff', '#ff8800'];
 
     this._chart('talentChart', 'radar', {
       labels: ['기술역량', '직무역량', '리더십', '협업', '창의혁신', '글로벌'],
@@ -297,7 +433,15 @@ const App = {
       };
     }
 
-    const opts = Object.assign({}, baseOpts, extraOpts);
+    // Deep merge plugins
+    const mergedPlugins = Object.assign({}, baseOpts.plugins, extraOpts.plugins || {});
+    if (extraOpts.plugins?.tooltip) {
+      mergedPlugins.tooltip = Object.assign({}, baseOpts.plugins?.tooltip, extraOpts.plugins.tooltip);
+    }
+
+    const { plugins: _ep, ...restExtra } = extraOpts;
+    const opts = Object.assign({}, baseOpts, restExtra, { plugins: mergedPlugins });
+
     if (extraOpts.indexAxis === 'y' && opts.scales) {
       opts.indexAxis = 'y';
     }
