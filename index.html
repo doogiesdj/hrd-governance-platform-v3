@@ -88,6 +88,11 @@
                         <span class="nav-label">온토그라프</span>
                         <span class="nav-text">OntoGraf</span>
                     </button>
+                    <button class="nav-item" data-layer="coderef">
+                        <span class="nav-icon">📖</span>
+                        <span class="nav-label">참조</span>
+                        <span class="nav-text">Code Ref</span>
+                    </button>
                 </nav>
             </aside>
 
@@ -433,6 +438,22 @@
                         </div>
                     </div>
                 </section>
+                <!-- Code Reference View -->
+                <section class="view" id="view-coderef">
+                    <div class="view-header">
+                        <h2>코드 참조표</h2>
+                        <span class="subtitle">Code Reference — HRD_CodeMapping_v2</span>
+                    </div>
+                    <div class="view-content coderef-content">
+                        <div class="coderef-toolbar">
+                            <input type="text" id="coderefSearch" class="coderef-search" placeholder="코드 또는 한글명 검색...">
+                            <div class="coderef-tabs" id="coderefTabs"></div>
+                        </div>
+                        <div class="coderef-body" id="coderefBody">
+                            <div class="coderef-loading">데이터 로딩 중...</div>
+                        </div>
+                    </div>
+                </section>
             </main>
         </div>
     </div>
@@ -455,5 +476,6 @@
     <script src="js/graph.js"></script>
     <script src="js/ontograf.js"></script>
     <script src="js/nlq.js"></script>
+    <script src="js/coderef.js"></script>
 </body>
 </html>

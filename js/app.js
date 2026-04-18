@@ -60,6 +60,7 @@ const App = {
       case 'ontology':   this._renderOntology();   break;
       case 'sparql':     this._renderSparql();     break;
       case 'ontograf':   this._renderOntograf();   break;
+      case 'coderef':    this._renderCoderef();    break;
     }
   },
 
@@ -74,6 +75,13 @@ const App = {
     if (!el || el.dataset.initialized) return;
     el.dataset.initialized = 'true';
     setTimeout(() => OntoGraf.init('ontografMain'), 50);
+  },
+
+  _coderefInited: false,
+  _renderCoderef() {
+    if (this._coderefInited || typeof CodeRef === 'undefined') return;
+    this._coderefInited = true;
+    CodeRef.init();
   },
 
   // --- SPARQL View ---
