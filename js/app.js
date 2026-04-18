@@ -59,12 +59,21 @@ const App = {
       case 'competency': this._renderCompetency(); break;
       case 'ontology':   this._renderOntology();   break;
       case 'sparql':     this._renderSparql();     break;
+      case 'ontograf':   this._renderOntograf();   break;
     }
   },
 
   _renderOntology() {
     if (typeof VowlGraph === 'undefined') return;
     setTimeout(() => VowlGraph.build('vowl-container'), 50);
+  },
+
+  _renderOntograf() {
+    if (typeof OntoGraf === 'undefined') return;
+    const el = document.getElementById('ontografMain');
+    if (!el || el.dataset.initialized) return;
+    el.dataset.initialized = 'true';
+    setTimeout(() => OntoGraf.init('ontografMain'), 50);
   },
 
   // --- SPARQL View ---
