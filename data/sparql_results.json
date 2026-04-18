@@ -426,11 +426,11 @@
         ],
         "rows": [
           [
-            "N721109a636df487aa242e5e62135054d",
+            "N612d4056c1b14a5280e5cf35add35046",
             null
           ],
           [
-            "Na7c88487309645ae87f4a0f16d573a50",
+            "N9b9b484caba946b194d14341a73021c6",
             null
           ],
           [
@@ -11484,13 +11484,140 @@
       "id": "B6",
       "category": "B",
       "title": "인재 1명의 전체 이력서 (경력·역량·평가·추천·성과)",
-      "sparql": "PREFIX hrd:  <http://www.human-resource.go.kr/ontology/hrd#>\nPREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX owl:  <http://www.w3.org/2002/07/owl#>\nPREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>\n\nSELECT ?prop ?value\nWHERE {\n  hrd:PERSON_1 ?prop ?value .\n}\nORDER BY ?prop",
+      "sparql": "PREFIX hrd:  <http://www.human-resource.go.kr/ontology/hrd#>\nPREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX owl:  <http://www.w3.org/2002/07/owl#>\nPREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>\n\nSELECT ?section ?predicate ?value\nWHERE {\n  {\n    BIND(\"1. 경력\" AS ?section)\n    hrd:PERSON_01 hrd:hasCareerHistory ?career .\n    ?career ?predProp ?value .\n    BIND(REPLACE(STR(?predProp), \".*#\", \"\") AS ?predicate)\n    FILTER(isLiteral(?value))\n  } UNION {\n    BIND(\"2. 역량\" AS ?section)\n    hrd:PERSON_01 hrd:hasCompetencyRecord ?crec .\n    ?crec ?predProp ?value .\n    BIND(REPLACE(STR(?predProp), \".*#\", \"\") AS ?predicate)\n    FILTER(isLiteral(?value))\n  } UNION {\n    BIND(\"3. 역량평가\" AS ?section)\n    hrd:PERSON_01 hrd:hasCompetencyAssessment ?asmnt .\n    ?asmnt ?predProp ?value .\n    BIND(REPLACE(STR(?predProp), \".*#\", \"\") AS ?predicate)\n    FILTER(isLiteral(?value))\n  } UNION {\n    BIND(\"4. 추천\" AS ?section)\n    hrd:PERSON_01 hrd:receivesRecommendation ?rec .\n    ?rec ?predProp ?value .\n    BIND(REPLACE(STR(?predProp), \".*#\", \"\") AS ?predicate)\n    FILTER(isLiteral(?value))\n  } UNION {\n    BIND(\"5. 성과\" AS ?section)\n    hrd:PERSON_01 hrd:achievesOutcome ?out .\n    ?out ?predProp ?value .\n    BIND(REPLACE(STR(?predProp), \".*#\", \"\") AS ?predicate)\n    FILTER(isLiteral(?value))\n  }\n}\nORDER BY ?section ?predicate\n",
       "result": {
         "columns": [
-          "prop",
+          "section",
+          "predicate",
           "value"
         ],
-        "rows": [],
+        "rows": [
+          [
+            "1. 경력",
+            "contributionRate",
+            "1.0"
+          ],
+          [
+            "1. 경력",
+            "jobTitle",
+            "책임연구원"
+          ],
+          [
+            "1. 경력",
+            "label",
+            "국가연구소 30년 책임연구원 경력"
+          ],
+          [
+            "1. 경력",
+            "label",
+            "30-Year Principal Researcher at National Research Institute"
+          ],
+          [
+            "1. 경력",
+            "postScore",
+            "3.0"
+          ],
+          [
+            "1. 경력",
+            "preScore",
+            "2.0"
+          ],
+          [
+            "1. 경력",
+            "proficiencyLevel",
+            "5"
+          ],
+          [
+            "1. 경력",
+            "startDate",
+            "2025-01-01T00:00:00"
+          ],
+          [
+            "1. 경력",
+            "totalYearsOfExp",
+            "30"
+          ],
+          [
+            "3. 역량평가",
+            "assessmentBasis",
+            "career_history_match"
+          ],
+          [
+            "3. 역량평가",
+            "competencyLevel",
+            "5"
+          ],
+          [
+            "3. 역량평가",
+            "confidenceScore",
+            "1.0"
+          ],
+          [
+            "3. 역량평가",
+            "label",
+            "PERSON_01-COMP_AI_01 역량 평가"
+          ],
+          [
+            "3. 역량평가",
+            "label",
+            "Person 01 – AI Technology Competency Assessment"
+          ],
+          [
+            "3. 역량평가",
+            "targetScore",
+            "5.0"
+          ],
+          [
+            "5. 성과",
+            "achievementDate",
+            "2026-06-30T00:00:00"
+          ],
+          [
+            "5. 성과",
+            "comment",
+            "EconomicImpact\n컨설팅을 통한 기업 매출 증대액\n관련_수혜_ID: BENEFIT_01\n발생한 경제적 가치 (예: 5,000만 원)\n외부 기관의 검증 여부 (참/거짓)"
+          ],
+          [
+            "5. 성과",
+            "impactAmount",
+            "50000000"
+          ],
+          [
+            "5. 성과",
+            "isVerified",
+            "true"
+          ],
+          [
+            "5. 성과",
+            "label",
+            "기업 매출 증대 "
+          ],
+          [
+            "5. 성과",
+            "label",
+            "기업 매출 증대 성과"
+          ],
+          [
+            "5. 성과",
+            "label",
+            "Enterprise Revenue Growth Achievement"
+          ],
+          [
+            "5. 성과",
+            "outcomeType",
+            "경영성과"
+          ],
+          [
+            "5. 성과",
+            "outcomeTypeEn",
+            "Business Performance"
+          ],
+          [
+            "5. 성과",
+            "outcomeValue",
+            "50000000"
+          ]
+        ],
         "error": null,
         "truncated": false
       }
@@ -44829,11 +44956,173 @@
       "id": "G6",
       "category": "G",
       "title": "혜택 유형별 지급 현황",
-      "sparql": "PREFIX hrd:  <http://www.human-resource.go.kr/ontology/hrd#>\nPREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX owl:  <http://www.w3.org/2002/07/owl#>\nPREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>\n\nSELECT ?benefitType (COUNT(?b) AS ?cnt) (SUM(?amount) AS ?totalAmount)\nWHERE {\n  ?b rdf:type hrd:Benefit ;\n     hrd:benefitType ?benefitType .\n  OPTIONAL { ?b hrd:benefitAmount ?amount }\n}\nGROUP BY ?benefitType\nORDER BY DESC(?cnt)",
+      "sparql": "PREFIX hrd:  <http://www.human-resource.go.kr/ontology/hrd#>\nPREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX owl:  <http://www.w3.org/2002/07/owl#>\nPREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>\n\nSELECT ?policyName ?benefitType (SUM(?amtNum) AS ?totalBenefit) (COUNT(?benefit) AS ?cnt)\nWHERE {\n  ?policy a hrd:Policy ;\n          rdfs:label ?policyName ;\n          hrd:providesBenefit ?benefit .\n  ?benefit hrd:benefitType ?benefitType ;\n           hrd:benefitAmount ?amount .\n  BIND(xsd:decimal(STR(?amount)) AS ?amtNum)\n}\nGROUP BY ?policyName ?benefitType\nORDER BY DESC(?totalBenefit)\n",
       "result": {
-        "columns": [],
-        "rows": [],
-        "error": "rdflib.term.Literal('4000000') does not have a numeric datatype!",
+        "columns": [
+          "policyName",
+          "benefitType",
+          "totalBenefit",
+          "cnt"
+        ],
+        "rows": [
+          [
+            "시니어 창업 지원금",
+            "창업지원금",
+            "50000000",
+            "1"
+          ],
+          [
+            "Senior Startup Support Grant",
+            "창업지원금",
+            "50000000",
+            "1"
+          ],
+          [
+            "탄소중립 전환 자금 지원",
+            "창업지원금",
+            "50000000",
+            "1"
+          ],
+          [
+            "Carbon Neutral Transition Fund Support",
+            "창업지원금",
+            "50000000",
+            "1"
+          ],
+          [
+            "디지털 전환 교육 프로그램",
+            "교육훈련비지원",
+            "37000000",
+            "3"
+          ],
+          [
+            "Digital Transformation Education Program",
+            "교육훈련비지원",
+            "37000000",
+            "3"
+          ],
+          [
+            "은퇴과학자 활용 지원사업",
+            "기술자문지원",
+            "30000000",
+            "1"
+          ],
+          [
+            "Retired Scientist Utilization Support Program",
+            "기술자문지원",
+            "30000000",
+            "1"
+          ],
+          [
+            "글로벌 기술수출 바우처",
+            "해외연수지원",
+            "25000000",
+            "1"
+          ],
+          [
+            "Global Technology Export Voucher Program",
+            "해외연수지원",
+            "25000000",
+            "1"
+          ],
+          [
+            "K-컬처 콘텐츠 기획 인재 양성",
+            "해외연수지원",
+            "25000000",
+            "1"
+          ],
+          [
+            "K-Culture Content Planning Talent Development",
+            "해외연수지원",
+            "25000000",
+            "1"
+          ],
+          [
+            "지식재산(IP) 보호 강화 사업",
+            "지식재산지원",
+            "8000000",
+            "1"
+          ],
+          [
+            "Intellectual Property Protection Enhancement Program",
+            "지식재산지원",
+            "8000000",
+            "1"
+          ],
+          [
+            "글로벌 기술수출 바우처",
+            "지식재산지원",
+            "8000000",
+            "1"
+          ],
+          [
+            "Global Technology Export Voucher Program",
+            "지식재산지원",
+            "8000000",
+            "1"
+          ],
+          [
+            "은퇴과학자 활용 지원사업",
+            "컨설팅지원",
+            "5000000",
+            "1"
+          ],
+          [
+            "Retired Scientist Utilization Support Program",
+            "컨설팅지원",
+            "5000000",
+            "1"
+          ],
+          [
+            "반도체 설계 베테랑 전수 사업",
+            "컨설팅지원",
+            "5000000",
+            "1"
+          ],
+          [
+            "Semiconductor Design Veteran Knowledge Transfer Program",
+            "컨설팅지원",
+            "5000000",
+            "1"
+          ],
+          [
+            "은퇴과학자 활용 지원사업",
+            "멘토링지원",
+            "4000000",
+            "1"
+          ],
+          [
+            "Retired Scientist Utilization Support Program",
+            "멘토링지원",
+            "4000000",
+            "1"
+          ],
+          [
+            "지역사회 기술봉사 마일리지",
+            "사회공헌활동지원",
+            "3000000",
+            "1"
+          ],
+          [
+            "Community Technology Volunteering Mileage Program",
+            "사회공헌활동지원",
+            "3000000",
+            "1"
+          ],
+          [
+            "중장년 디지털 문해력 교육",
+            "사회공헌활동지원",
+            "3000000",
+            "1"
+          ],
+          [
+            "Middle-Aged Digital Literacy Education Program",
+            "사회공헌활동지원",
+            "3000000",
+            "1"
+          ]
+        ],
+        "error": null,
         "truncated": false
       }
     },
@@ -48700,11 +48989,431 @@
       "id": "I2",
       "category": "I",
       "title": "기관별 예산 현황",
-      "sparql": "PREFIX hrd:  <http://www.human-resource.go.kr/ontology/hrd#>\nPREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX owl:  <http://www.w3.org/2002/07/owl#>\nPREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>\n\nSELECT ?org ?orgLabel (SUM(?total) AS ?totalBudget) (SUM(?exec) AS ?totalExec)\nWHERE {\n  ?budget rdf:type hrd:Budget ;\n          hrd:hasAssignedAgency ?org ;\n          hrd:totalAmount ?total ;\n          hrd:executedAmount ?exec .\n  OPTIONAL { ?org rdfs:label ?orgLabel . FILTER(LANG(?orgLabel) = \"ko\") }\n}\nGROUP BY ?org ?orgLabel\nORDER BY DESC(?totalBudget)",
+      "sparql": "PREFIX hrd:  <http://www.human-resource.go.kr/ontology/hrd#>\nPREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX owl:  <http://www.w3.org/2002/07/owl#>\nPREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>\n\nSELECT ?budgetID ?policyName (SUM(?totalNum) AS ?sumTotal) (SUM(?execNum) AS ?sumExecuted)\nWHERE {\n  ?budget a hrd:Budget ;\n          rdfs:label ?budgetID ;\n          hrd:totalAmount ?total ;\n          hrd:executedAmount ?executed .\n  OPTIONAL { ?policy hrd:allocatesBudget ?budget ; rdfs:label ?policyName . }\n  BIND(xsd:decimal(STR(?total)) AS ?totalNum)\n  BIND(xsd:decimal(STR(?executed)) AS ?execNum)\n}\nGROUP BY ?budgetID ?policyName\nORDER BY DESC(?sumTotal)\n",
       "result": {
-        "columns": [],
-        "rows": [],
-        "error": "rdflib.term.Literal('20000000000') does not have a numeric datatype!",
+        "columns": [
+          "budgetID",
+          "policyName",
+          "sumTotal",
+          "sumExecuted"
+        ],
+        "rows": [
+          [
+            "반도체·첨단소재 인재양성 전략예산",
+            null,
+            "80000000000",
+            "68000000000"
+          ],
+          [
+            "Semiconductor and Advanced Materials Talent Strategy Budget",
+            null,
+            "80000000000",
+            "68000000000"
+          ],
+          [
+            "탄소중립·그린뉴딜 인재양성 전략예산",
+            null,
+            "60000000000",
+            "52000000000"
+          ],
+          [
+            "Carbon Neutral Green New Deal Talent Strategy Budget",
+            null,
+            "60000000000",
+            "52000000000"
+          ],
+          [
+            "Future Mobility Talent Development Strategy Budget",
+            null,
+            "54000000000",
+            "44800000000"
+          ],
+          [
+            "AI·디지털 인재양성 전략예산",
+            null,
+            "50000000000",
+            "42000000000"
+          ],
+          [
+            "AI and Digital Talent Development Strategy Budget",
+            null,
+            "50000000000",
+            "42000000000"
+          ],
+          [
+            "미래 모빌리티 인재양성 전략예산",
+            null,
+            "45000000000",
+            "38000000000"
+          ],
+          [
+            "콘텐츠·문화 인재양성 전략예산",
+            null,
+            "35000000000",
+            "28000000000"
+          ],
+          [
+            "Content and Culture Talent Development Strategy Budget",
+            null,
+            "35000000000",
+            "28000000000"
+          ],
+          [
+            "바이오헬스 전문인력 양성 전략예산(복지부)",
+            null,
+            "30000000000",
+            "22000000000"
+          ],
+          [
+            "Bio-Health Professional Workforce Strategy Budget (Welfare)",
+            null,
+            "30000000000",
+            "22000000000"
+          ],
+          [
+            "직업훈련 혁신 전략예산",
+            null,
+            "30000000000",
+            "23000000000"
+          ],
+          [
+            "Vocational Training Innovation Strategy Budget",
+            null,
+            "30000000000",
+            "23000000000"
+          ],
+          [
+            "미래모빌리티·인프라 인재양성 전략예산",
+            null,
+            "28000000000",
+            "20000000000"
+          ],
+          [
+            "Future Mobility and Infrastructure Talent Strategy Budget",
+            null,
+            "28000000000",
+            "20000000000"
+          ],
+          [
+            "바이오헬스 전문인력 양성 전략예산",
+            null,
+            "25000000000",
+            "19000000000"
+          ],
+          [
+            "Bio-Health Professional Workforce Strategy Budget",
+            null,
+            "25000000000",
+            "19000000000"
+          ],
+          [
+            "스타트업·벤처 인재생태계 전략예산",
+            null,
+            "22000000000",
+            "16000000000"
+          ],
+          [
+            "Startup and Venture Talent Ecosystem Strategy Budget",
+            null,
+            "22000000000",
+            "16000000000"
+          ],
+          [
+            "디지털정부 혁신 인재양성 전략예산",
+            null,
+            "20000000000",
+            "15000000000"
+          ],
+          [
+            "Digital Government Innovation Talent Strategy Budget",
+            null,
+            "20000000000",
+            "15000000000"
+          ],
+          [
+            "공공부문 AI·디지털 인재 육성 전략예산",
+            null,
+            "18000000000",
+            "12000000000"
+          ],
+          [
+            "Public Sector AI and Digital Talent Development Strategy Budget",
+            null,
+            "18000000000",
+            "12000000000"
+          ],
+          [
+            "탄소중립·환경 인재양성 전략예산(환경부)",
+            null,
+            "16000000000",
+            "11000000000"
+          ],
+          [
+            "Carbon Neutral Environmental Talent Development Strategy Budget (MOE)",
+            null,
+            "16000000000",
+            "11000000000"
+          ],
+          [
+            "방위산업 전문인력 양성 전략예산",
+            null,
+            "15000000000",
+            "10000000000"
+          ],
+          [
+            "Defense Industry Professional Workforce Strategy Budget",
+            null,
+            "15000000000",
+            "10000000000"
+          ],
+          [
+            "문화콘텐츠 창의인재 양성 전략예산",
+            null,
+            "12000000000",
+            "8000000000"
+          ],
+          [
+            "Cultural Content Creative Talent Development Strategy Budget",
+            null,
+            "12000000000",
+            "8000000000"
+          ],
+          [
+            "반도체 인재양성 전략 예산",
+            null,
+            "12000000000",
+            "9500000000"
+          ],
+          [
+            "Semiconductor Talent Development Strategy Budget",
+            null,
+            "12000000000",
+            "9500000000"
+          ],
+          [
+            "미래 모빌리티 인재양성 전략 예산",
+            null,
+            "9000000000",
+            "6800000000"
+          ],
+          [
+            "디지털 인재양성 종합방안 예산",
+            null,
+            "8500000000",
+            "6200000000"
+          ],
+          [
+            "Digital Talent Development Comprehensive Plan Budget",
+            null,
+            "8500000000",
+            "6200000000"
+          ],
+          [
+            "직업훈련 혁신 방안 예산",
+            null,
+            "7800000000",
+            "5900000000"
+          ],
+          [
+            "Vocational Training Innovation Plan Budget",
+            null,
+            "7800000000",
+            "5900000000"
+          ],
+          [
+            "소프트웨어 중심사회 인재양성 전략 예산",
+            null,
+            "7500000000",
+            "5600000000"
+          ],
+          [
+            "Software-Centered Society Talent Development Strategy Budget",
+            null,
+            "7500000000",
+            "5600000000"
+          ],
+          [
+            "바이오헬스 인재양성 종합방안 예산",
+            null,
+            "7200000000",
+            "5400000000"
+          ],
+          [
+            "Bio-Health Talent Development Comprehensive Plan Budget",
+            null,
+            "7200000000",
+            "5400000000"
+          ],
+          [
+            "AI 일상화 산업 고도화 계획 예산",
+            null,
+            "6800000000",
+            "4900000000"
+          ],
+          [
+            "AI Normalization and Industry Advancement Plan Budget",
+            null,
+            "6800000000",
+            "4900000000"
+          ],
+          [
+            "스마트제조 인재양성 방안 예산",
+            null,
+            "6500000000",
+            "4900000000"
+          ],
+          [
+            "Smart Manufacturing Talent Development Plan Budget",
+            null,
+            "6500000000",
+            "4900000000"
+          ],
+          [
+            "지역 주도형 청년 일자리 사업 예산",
+            null,
+            "6200000000",
+            "4500000000"
+          ],
+          [
+            "Region-Led Youth Employment Project Budget",
+            null,
+            "6200000000",
+            "4500000000"
+          ],
+          [
+            "K-디지털 트레이닝 예산",
+            null,
+            "6000000000",
+            "4800000000"
+          ],
+          [
+            "K-Digital Training Budget",
+            null,
+            "6000000000",
+            "4800000000"
+          ],
+          [
+            "제5차 국가인적자원개발기본계획 예산",
+            null,
+            "5500000000",
+            "3800000000"
+          ],
+          [
+            "5th National HRD Basic Plan Budget",
+            null,
+            "5500000000",
+            "3800000000"
+          ],
+          [
+            "그린뉴딜 인재양성 사업 예산",
+            null,
+            "5500000000",
+            "4000000000"
+          ],
+          [
+            "Green New Deal Talent Development Project Budget",
+            null,
+            "5500000000",
+            "4000000000"
+          ],
+          [
+            "청년 취업역량 강화 지원사업 예산",
+            null,
+            "5000000000",
+            "3800000000"
+          ],
+          [
+            "Youth Employment Capacity Enhancement Support Budget",
+            null,
+            "5000000000",
+            "3800000000"
+          ],
+          [
+            "방위산업 전문인력 양성 계획 예산",
+            null,
+            "4800000000",
+            "3400000000"
+          ],
+          [
+            "Defense Industry Professional Development Plan Budget",
+            null,
+            "4800000000",
+            "3400000000"
+          ],
+          [
+            "우주항공 전문인력 양성 계획 예산",
+            null,
+            "4500000000",
+            "3000000000"
+          ],
+          [
+            "Aerospace Professional Workforce Development Plan Budget",
+            null,
+            "4500000000",
+            "3000000000"
+          ],
+          [
+            "평생학습 활성화 방안 예산",
+            null,
+            "4200000000",
+            "3100000000"
+          ],
+          [
+            "Lifelong Learning Activation Plan Budget",
+            null,
+            "4200000000",
+            "3100000000"
+          ],
+          [
+            "공공부문 AI·디지털 인재 육성 예산",
+            null,
+            "3800000000",
+            "2700000000"
+          ],
+          [
+            "Public Sector AI and Digital Talent Cultivation Budget",
+            null,
+            "3800000000",
+            "2700000000"
+          ],
+          [
+            "K-디지털 크레딧 예산",
+            null,
+            "3500000000",
+            "2800000000"
+          ],
+          [
+            "K-Digital Credit Budget",
+            null,
+            "3500000000",
+            "2800000000"
+          ],
+          [
+            "국가기술자격제도 혁신방안 예산",
+            null,
+            "3000000000",
+            "2100000000"
+          ],
+          [
+            "National Technical Qualification System Innovation Budget",
+            null,
+            "3000000000",
+            "2100000000"
+          ],
+          [
+            "이러닝 산업 발전 인재양성 예산",
+            null,
+            "2800000000",
+            "2000000000"
+          ],
+          [
+            "e-Learning Industry Development Talent Budget",
+            null,
+            "2800000000",
+            "2000000000"
+          ]
+        ],
+        "error": null,
         "truncated": false
       }
     },
@@ -48871,11 +49580,23 @@
       "id": "I4",
       "category": "I",
       "title": "국가전략별 지원 예산 합계",
-      "sparql": "PREFIX hrd:  <http://www.human-resource.go.kr/ontology/hrd#>\nPREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX owl:  <http://www.w3.org/2002/07/owl#>\nPREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>\n\nSELECT ?strategy ?stratLabel (SUM(?total) AS ?totalBudget)\nWHERE {\n  ?budget rdf:type hrd:Budget ;\n          hrd:supportsStrategy ?strategy ;\n          hrd:totalAmount ?total .\n  OPTIONAL { ?strategy rdfs:label ?stratLabel . FILTER(LANG(?stratLabel) = \"ko\") }\n}\nGROUP BY ?strategy ?stratLabel\nORDER BY DESC(?totalBudget)",
+      "sparql": "PREFIX hrd:  <http://www.human-resource.go.kr/ontology/hrd#>\nPREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX owl:  <http://www.w3.org/2002/07/owl#>\nPREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>\n\nSELECT ?category (SUM(?totalNum) AS ?totalBudget) (AVG(?totalNum) AS ?avgBudget) (COUNT(?budget) AS ?cnt)\nWHERE {\n  ?budget a hrd:Budget ;\n          hrd:totalAmount ?total .\n  OPTIONAL { ?budget hrd:budgetCategory ?category . }\n  BIND(xsd:decimal(STR(?total)) AS ?totalNum)\n}\nGROUP BY ?category\nORDER BY DESC(?totalBudget)\n",
       "result": {
-        "columns": [],
-        "rows": [],
-        "error": "rdflib.term.Literal('20000000000') does not have a numeric datatype!",
+        "columns": [
+          "category",
+          "totalBudget",
+          "avgBudget",
+          "cnt"
+        ],
+        "rows": [
+          [
+            null,
+            "606100000000",
+            "17317142857.14285714285714286",
+            "35"
+          ]
+        ],
+        "error": null,
         "truncated": false
       }
     },
@@ -48883,11 +49604,508 @@
       "id": "I5",
       "category": "I",
       "title": "회계연도별 예산 집행 추이",
-      "sparql": "PREFIX hrd:  <http://www.human-resource.go.kr/ontology/hrd#>\nPREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX owl:  <http://www.w3.org/2002/07/owl#>\nPREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>\n\nSELECT ?fiscalYear (SUM(?total) AS ?sumTotal) (SUM(?exec) AS ?sumExec)\nWHERE {\n  ?budget rdf:type hrd:Budget ;\n          hrd:fiscalYear ?fiscalYear ;\n          hrd:totalAmount ?total ;\n          hrd:executedAmount ?exec .\n}\nGROUP BY ?fiscalYear\nORDER BY ?fiscalYear",
+      "sparql": "PREFIX hrd:  <http://www.human-resource.go.kr/ontology/hrd#>\nPREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX owl:  <http://www.w3.org/2002/07/owl#>\nPREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>\n\nSELECT ?budgetID ?policyName ?totalNum ?execNum\n       (IF(?totalNum > 0, ROUND((?execNum / ?totalNum) * 100 * 10) / 10, 0) AS ?execRate)\nWHERE {\n  {\n    SELECT ?budget ?budgetID ?policyName ?totalNum ?execNum WHERE {\n      ?budget a hrd:Budget ;\n              rdfs:label ?budgetID ;\n              hrd:totalAmount ?total ;\n              hrd:executedAmount ?executed .\n      OPTIONAL { ?policy hrd:allocatesBudget ?budget ; rdfs:label ?policyName . }\n      BIND(xsd:decimal(STR(?total)) AS ?totalNum)\n      BIND(xsd:decimal(STR(?executed)) AS ?execNum)\n    }\n  }\n}\nORDER BY DESC(?execRate)\n",
       "result": {
-        "columns": [],
-        "rows": [],
-        "error": "rdflib.term.Literal('20000000000') does not have a numeric datatype!",
+        "columns": [
+          "budgetID",
+          "policyName",
+          "totalNum",
+          "execNum",
+          "execRate"
+        ],
+        "rows": [
+          [
+            "탄소중립·그린뉴딜 인재양성 전략예산",
+            null,
+            "60000000000",
+            "52000000000",
+            "86.7"
+          ],
+          [
+            "Carbon Neutral Green New Deal Talent Strategy Budget",
+            null,
+            "60000000000",
+            "52000000000",
+            "86.7"
+          ],
+          [
+            "반도체·첨단소재 인재양성 전략예산",
+            null,
+            "80000000000",
+            "68000000000",
+            "85"
+          ],
+          [
+            "Semiconductor and Advanced Materials Talent Strategy Budget",
+            null,
+            "80000000000",
+            "68000000000",
+            "85"
+          ],
+          [
+            "미래 모빌리티 인재양성 전략예산",
+            null,
+            "45000000000",
+            "38000000000",
+            "84.4"
+          ],
+          [
+            "Future Mobility Talent Development Strategy Budget",
+            null,
+            "45000000000",
+            "38000000000",
+            "84.4"
+          ],
+          [
+            "AI·디지털 인재양성 전략예산",
+            null,
+            "50000000000",
+            "42000000000",
+            "84"
+          ],
+          [
+            "AI and Digital Talent Development Strategy Budget",
+            null,
+            "50000000000",
+            "42000000000",
+            "84"
+          ],
+          [
+            "K-디지털 트레이닝 예산",
+            null,
+            "6000000000",
+            "4800000000",
+            "80"
+          ],
+          [
+            "K-Digital Training Budget",
+            null,
+            "6000000000",
+            "4800000000",
+            "80"
+          ],
+          [
+            "K-디지털 크레딧 예산",
+            null,
+            "3500000000",
+            "2800000000",
+            "80"
+          ],
+          [
+            "K-Digital Credit Budget",
+            null,
+            "3500000000",
+            "2800000000",
+            "80"
+          ],
+          [
+            "콘텐츠·문화 인재양성 전략예산",
+            null,
+            "35000000000",
+            "28000000000",
+            "80"
+          ],
+          [
+            "Content and Culture Talent Development Strategy Budget",
+            null,
+            "35000000000",
+            "28000000000",
+            "80"
+          ],
+          [
+            "반도체 인재양성 전략 예산",
+            null,
+            "12000000000",
+            "9500000000",
+            "79.2"
+          ],
+          [
+            "Semiconductor Talent Development Strategy Budget",
+            null,
+            "12000000000",
+            "9500000000",
+            "79.2"
+          ],
+          [
+            "직업훈련 혁신 전략예산",
+            null,
+            "30000000000",
+            "23000000000",
+            "76.7"
+          ],
+          [
+            "Vocational Training Innovation Strategy Budget",
+            null,
+            "30000000000",
+            "23000000000",
+            "76.7"
+          ],
+          [
+            "청년 취업역량 강화 지원사업 예산",
+            null,
+            "5000000000",
+            "3800000000",
+            "76"
+          ],
+          [
+            "Youth Employment Capacity Enhancement Support Budget",
+            null,
+            "5000000000",
+            "3800000000",
+            "76"
+          ],
+          [
+            "바이오헬스 전문인력 양성 전략예산",
+            null,
+            "25000000000",
+            "19000000000",
+            "76"
+          ],
+          [
+            "Bio-Health Professional Workforce Strategy Budget",
+            null,
+            "25000000000",
+            "19000000000",
+            "76"
+          ],
+          [
+            "미래 모빌리티 인재양성 전략 예산",
+            null,
+            "9000000000",
+            "6800000000",
+            "75.6"
+          ],
+          [
+            "Future Mobility Talent Development Strategy Budget",
+            null,
+            "9000000000",
+            "6800000000",
+            "75.6"
+          ],
+          [
+            "직업훈련 혁신 방안 예산",
+            null,
+            "7800000000",
+            "5900000000",
+            "75.6"
+          ],
+          [
+            "Vocational Training Innovation Plan Budget",
+            null,
+            "7800000000",
+            "5900000000",
+            "75.6"
+          ],
+          [
+            "스마트제조 인재양성 방안 예산",
+            null,
+            "6500000000",
+            "4900000000",
+            "75.4"
+          ],
+          [
+            "Smart Manufacturing Talent Development Plan Budget",
+            null,
+            "6500000000",
+            "4900000000",
+            "75.4"
+          ],
+          [
+            "디지털정부 혁신 인재양성 전략예산",
+            null,
+            "20000000000",
+            "15000000000",
+            "75"
+          ],
+          [
+            "Digital Government Innovation Talent Strategy Budget",
+            null,
+            "20000000000",
+            "15000000000",
+            "75"
+          ],
+          [
+            "바이오헬스 인재양성 종합방안 예산",
+            null,
+            "7200000000",
+            "5400000000",
+            "75"
+          ],
+          [
+            "Bio-Health Talent Development Comprehensive Plan Budget",
+            null,
+            "7200000000",
+            "5400000000",
+            "75"
+          ],
+          [
+            "소프트웨어 중심사회 인재양성 전략 예산",
+            null,
+            "7500000000",
+            "5600000000",
+            "74.7"
+          ],
+          [
+            "Software-Centered Society Talent Development Strategy Budget",
+            null,
+            "7500000000",
+            "5600000000",
+            "74.7"
+          ],
+          [
+            "평생학습 활성화 방안 예산",
+            null,
+            "4200000000",
+            "3100000000",
+            "73.8"
+          ],
+          [
+            "Lifelong Learning Activation Plan Budget",
+            null,
+            "4200000000",
+            "3100000000",
+            "73.8"
+          ],
+          [
+            "바이오헬스 전문인력 양성 전략예산(복지부)",
+            null,
+            "30000000000",
+            "22000000000",
+            "73.3"
+          ],
+          [
+            "Bio-Health Professional Workforce Strategy Budget (Welfare)",
+            null,
+            "30000000000",
+            "22000000000",
+            "73.3"
+          ],
+          [
+            "디지털 인재양성 종합방안 예산",
+            null,
+            "8500000000",
+            "6200000000",
+            "72.9"
+          ],
+          [
+            "Digital Talent Development Comprehensive Plan Budget",
+            null,
+            "8500000000",
+            "6200000000",
+            "72.9"
+          ],
+          [
+            "스타트업·벤처 인재생태계 전략예산",
+            null,
+            "22000000000",
+            "16000000000",
+            "72.7"
+          ],
+          [
+            "Startup and Venture Talent Ecosystem Strategy Budget",
+            null,
+            "22000000000",
+            "16000000000",
+            "72.7"
+          ],
+          [
+            "그린뉴딜 인재양성 사업 예산",
+            null,
+            "5500000000",
+            "4000000000",
+            "72.7"
+          ],
+          [
+            "Green New Deal Talent Development Project Budget",
+            null,
+            "5500000000",
+            "4000000000",
+            "72.7"
+          ],
+          [
+            "지역 주도형 청년 일자리 사업 예산",
+            null,
+            "6200000000",
+            "4500000000",
+            "72.6"
+          ],
+          [
+            "Region-Led Youth Employment Project Budget",
+            null,
+            "6200000000",
+            "4500000000",
+            "72.6"
+          ],
+          [
+            "AI 일상화 산업 고도화 계획 예산",
+            null,
+            "6800000000",
+            "4900000000",
+            "72.1"
+          ],
+          [
+            "AI Normalization and Industry Advancement Plan Budget",
+            null,
+            "6800000000",
+            "4900000000",
+            "72.1"
+          ],
+          [
+            "미래모빌리티·인프라 인재양성 전략예산",
+            null,
+            "28000000000",
+            "20000000000",
+            "71.4"
+          ],
+          [
+            "Future Mobility and Infrastructure Talent Strategy Budget",
+            null,
+            "28000000000",
+            "20000000000",
+            "71.4"
+          ],
+          [
+            "이러닝 산업 발전 인재양성 예산",
+            null,
+            "2800000000",
+            "2000000000",
+            "71.4"
+          ],
+          [
+            "e-Learning Industry Development Talent Budget",
+            null,
+            "2800000000",
+            "2000000000",
+            "71.4"
+          ],
+          [
+            "공공부문 AI·디지털 인재 육성 예산",
+            null,
+            "3800000000",
+            "2700000000",
+            "71.1"
+          ],
+          [
+            "Public Sector AI and Digital Talent Cultivation Budget",
+            null,
+            "3800000000",
+            "2700000000",
+            "71.1"
+          ],
+          [
+            "방위산업 전문인력 양성 계획 예산",
+            null,
+            "4800000000",
+            "3400000000",
+            "70.8"
+          ],
+          [
+            "Defense Industry Professional Development Plan Budget",
+            null,
+            "4800000000",
+            "3400000000",
+            "70.8"
+          ],
+          [
+            "국가기술자격제도 혁신방안 예산",
+            null,
+            "3000000000",
+            "2100000000",
+            "70"
+          ],
+          [
+            "National Technical Qualification System Innovation Budget",
+            null,
+            "3000000000",
+            "2100000000",
+            "70"
+          ],
+          [
+            "제5차 국가인적자원개발기본계획 예산",
+            null,
+            "5500000000",
+            "3800000000",
+            "69.1"
+          ],
+          [
+            "5th National HRD Basic Plan Budget",
+            null,
+            "5500000000",
+            "3800000000",
+            "69.1"
+          ],
+          [
+            "탄소중립·환경 인재양성 전략예산(환경부)",
+            null,
+            "16000000000",
+            "11000000000",
+            "68.8"
+          ],
+          [
+            "Carbon Neutral Environmental Talent Development Strategy Budget (MOE)",
+            null,
+            "16000000000",
+            "11000000000",
+            "68.8"
+          ],
+          [
+            "방위산업 전문인력 양성 전략예산",
+            null,
+            "15000000000",
+            "10000000000",
+            "66.7"
+          ],
+          [
+            "Defense Industry Professional Workforce Strategy Budget",
+            null,
+            "15000000000",
+            "10000000000",
+            "66.7"
+          ],
+          [
+            "공공부문 AI·디지털 인재 육성 전략예산",
+            null,
+            "18000000000",
+            "12000000000",
+            "66.7"
+          ],
+          [
+            "Public Sector AI and Digital Talent Development Strategy Budget",
+            null,
+            "18000000000",
+            "12000000000",
+            "66.7"
+          ],
+          [
+            "문화콘텐츠 창의인재 양성 전략예산",
+            null,
+            "12000000000",
+            "8000000000",
+            "66.7"
+          ],
+          [
+            "Cultural Content Creative Talent Development Strategy Budget",
+            null,
+            "12000000000",
+            "8000000000",
+            "66.7"
+          ],
+          [
+            "우주항공 전문인력 양성 계획 예산",
+            null,
+            "4500000000",
+            "3000000000",
+            "66.7"
+          ],
+          [
+            "Aerospace Professional Workforce Development Plan Budget",
+            null,
+            "4500000000",
+            "3000000000",
+            "66.7"
+          ]
+        ],
+        "error": null,
         "truncated": false
       }
     },
@@ -58483,14 +59701,155 @@
       "id": "K4",
       "category": "K",
       "title": "역량분류별 평균 격차 크기",
-      "sparql": "PREFIX hrd:  <http://www.human-resource.go.kr/ontology/hrd#>\nPREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX owl:  <http://www.w3.org/2002/07/owl#>\nPREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>\n\nSELECT ?catLabel (AVG(?gapSize) AS ?avgGap) (COUNT(?gap) AS ?gapCnt)\nWHERE {\n  ?gap rdf:type hrd:CompetencyGap ;\n       hrd:gapCompetency ?comp ;\n       hrd:gapSize ?gapSize .\n  ?comp hrd:belongsToCompetencyCategory ?cat .\n  OPTIONAL { ?cat rdfs:label ?catLabel . FILTER(LANG(?catLabel) = \"ko\") }\n}\nGROUP BY ?catLabel\nORDER BY DESC(?avgGap)",
+      "sparql": "PREFIX hrd:  <http://www.human-resource.go.kr/ontology/hrd#>\nPREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX owl:  <http://www.w3.org/2002/07/owl#>\nPREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>\n\nSELECT ?catLabel (COUNT(DISTINCT ?person) AS ?personCount) (AVG(?gapSeverity) AS ?avgSeverity)\nWHERE {\n  ?gap a hrd:CompetencyGap ;\n       hrd:gapForPerson ?person ;\n       hrd:gapCompetency ?cat ;\n       hrd:gapSeverity ?gapSeverity .\n  ?cat rdfs:label ?catLabel .\n}\nGROUP BY ?catLabel\nORDER BY DESC(?avgSeverity)\n",
       "result": {
         "columns": [
           "catLabel",
-          "avgGap",
-          "gapCnt"
+          "personCount",
+          "avgSeverity"
         ],
-        "rows": [],
+        "rows": [
+          [
+            "CS Fundamentals",
+            "1",
+            "3"
+          ],
+          [
+            "컴퓨터과학 기초 역량",
+            "1",
+            "3"
+          ],
+          [
+            "Management & Planning",
+            "3",
+            "3"
+          ],
+          [
+            "경영·기획 역량",
+            "3",
+            "3"
+          ],
+          [
+            "Social Value",
+            "1",
+            "3"
+          ],
+          [
+            "사회적 가치 역량",
+            "1",
+            "3"
+          ],
+          [
+            "Marketing & Sales",
+            "2",
+            "3"
+          ],
+          [
+            "마케팅·영업 역량",
+            "2",
+            "3"
+          ],
+          [
+            "Logical & Strategic Thinking",
+            "2",
+            "3"
+          ],
+          [
+            "논리·전략적 사고 역량",
+            "2",
+            "3"
+          ],
+          [
+            "Software Development",
+            "1",
+            "3"
+          ],
+          [
+            "소프트웨어 개발 역량",
+            "1",
+            "3"
+          ],
+          [
+            "Collaboration & Interpersonal",
+            "4",
+            "3"
+          ],
+          [
+            "협업·대인관계 역량",
+            "4",
+            "3"
+          ],
+          [
+            "Creativity & Innovation",
+            "2",
+            "3"
+          ],
+          [
+            "창의·혁신 역량",
+            "2",
+            "3"
+          ],
+          [
+            "Adaptability & Self-Direction",
+            "1",
+            "3"
+          ],
+          [
+            "적응·자기주도 역량",
+            "1",
+            "3"
+          ],
+          [
+            "Data Fluency",
+            "1",
+            "3"
+          ],
+          [
+            "데이터 활용 역량",
+            "1",
+            "3"
+          ],
+          [
+            "Digital Literacy",
+            "4",
+            "3"
+          ],
+          [
+            "디지털 리터러시 역량",
+            "4",
+            "3"
+          ],
+          [
+            "Basic Academic & Quantitative",
+            "1",
+            "3"
+          ],
+          [
+            "기초학문·수학적 역량",
+            "1",
+            "3"
+          ],
+          [
+            "Leadership",
+            "4",
+            "3"
+          ],
+          [
+            "리더십 역량",
+            "4",
+            "3"
+          ],
+          [
+            "Reliability & Work Completion",
+            "1",
+            "3"
+          ],
+          [
+            "신뢰성·업무완결 역량",
+            "1",
+            "3"
+          ]
+        ],
         "error": null,
         "truncated": false
       }
@@ -58551,11 +59910,161 @@
       "id": "K6",
       "category": "K",
       "title": "정책별 성과값 합계·평균",
-      "sparql": "PREFIX hrd:  <http://www.human-resource.go.kr/ontology/hrd#>\nPREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX owl:  <http://www.w3.org/2002/07/owl#>\nPREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>\n\nSELECT ?policyLabel\n       (COUNT(?out) AS ?outCnt)\n       (SUM(?val) AS ?totalVal)\n       (AVG(?val) AS ?avgVal)\nWHERE {\n  ?out rdf:type hrd:Outcome ;\n       hrd:supportedByPolicy ?policy ;\n       hrd:outcomeValue ?val .\n  OPTIONAL { ?policy rdfs:label ?policyLabel . FILTER(LANG(?policyLabel) = \"ko\") }\n}\nGROUP BY ?policyLabel\nORDER BY DESC(?totalVal)",
+      "sparql": "PREFIX hrd:  <http://www.human-resource.go.kr/ontology/hrd#>\nPREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX owl:  <http://www.w3.org/2002/07/owl#>\nPREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>\n\nSELECT ?outcomeType (COUNT(?outcome) AS ?cnt) (SUM(?valNum) AS ?total) (AVG(?valNum) AS ?avg)\nWHERE {\n  ?outcome a hrd:Outcome ;\n           hrd:outcomeType ?outcomeType ;\n           hrd:outcomeValue ?val .\n  BIND(xsd:decimal(STR(?val)) AS ?valNum)\n}\nGROUP BY ?outcomeType\nORDER BY DESC(?total)\n",
       "result": {
-        "columns": [],
-        "rows": [],
-        "error": "rdflib.term.Literal('1', datatype=rdflib.term.URIRef('{http://www.w3.org/2001/XMLSchema#}long')) does not have a numeric datatype!",
+        "columns": [
+          "outcomeType",
+          "cnt",
+          "total",
+          "avg"
+        ],
+        "rows": [
+          [
+            "창업성과",
+            "1",
+            "1000000000",
+            "1000000000"
+          ],
+          [
+            "고용성과",
+            "3",
+            "68000001",
+            "22666667"
+          ],
+          [
+            "경영성과",
+            "3",
+            "55000200",
+            "18333400"
+          ],
+          [
+            "역량성과",
+            "3",
+            "37000000",
+            "12333333.33333333333333333333"
+          ],
+          [
+            "수출성과",
+            "1",
+            "25000000",
+            "25000000"
+          ],
+          [
+            "고용성과",
+            "9",
+            "18276500",
+            "2030722.222222222222222222222"
+          ],
+          [
+            "역량성과",
+            "34",
+            "16000811",
+            "470612.0882352941176470588235"
+          ],
+          [
+            "자격취득성과",
+            "3",
+            "15000003",
+            "5000001"
+          ],
+          [
+            "생산성과",
+            "3",
+            "11500020",
+            "3833340"
+          ],
+          [
+            "지식재산성과",
+            "2",
+            "8000002",
+            "4000001"
+          ],
+          [
+            "사회성과",
+            "1",
+            "3000000",
+            "3000000"
+          ],
+          [
+            "교육성과",
+            "45",
+            "862170",
+            "19159.33333333333333333333333"
+          ],
+          [
+            "자격취득성과",
+            "1",
+            "280000",
+            "280000"
+          ],
+          [
+            "기술성과",
+            "1",
+            "1200",
+            "1200"
+          ],
+          [
+            "사회성과",
+            "30",
+            "140",
+            "4.666666666666666666666666667"
+          ],
+          [
+            "취업성과",
+            "20",
+            "110",
+            "5.5"
+          ],
+          [
+            "복지성과",
+            "15",
+            "70",
+            "4.666666666666666666666666667"
+          ],
+          [
+            "연구성과",
+            "15",
+            "70",
+            "4.666666666666666666666666667"
+          ],
+          [
+            "환경성과",
+            "1",
+            "15",
+            "15"
+          ],
+          [
+            "교육성과",
+            "3",
+            "12",
+            "4"
+          ],
+          [
+            "연구성과",
+            "1",
+            "3",
+            "3"
+          ],
+          [
+            "기술성과",
+            "2",
+            "3",
+            "1.5"
+          ],
+          [
+            "인증성과",
+            "2",
+            "2",
+            "1"
+          ],
+          [
+            "경력성과",
+            "1",
+            "1",
+            "1"
+          ]
+        ],
+        "error": null,
         "truncated": false
       }
     },
@@ -58761,15 +60270,206 @@
       "id": "L2",
       "category": "L",
       "title": "추천은 받았으나 아직 등록하지 않은 인재 (NOT EXISTS)",
-      "sparql": "PREFIX hrd:  <http://www.human-resource.go.kr/ontology/hrd#>\nPREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX owl:  <http://www.w3.org/2002/07/owl#>\nPREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>\n\nSELECT DISTINCT ?person ?prog ?progLabel ?matchScore\nWHERE {\n  ?rec rdf:type hrd:Recommendation ;\n       hrd:recommendationTarget ?person ;\n       hrd:recommendedProgram ?prog ;\n       hrd:matchScore ?matchScore .\n  OPTIONAL { ?prog rdfs:label ?progLabel . FILTER(LANG(?progLabel) = \"ko\") }\n  FILTER NOT EXISTS {\n    ?enroll rdf:type hrd:ProgramEnrollment ;\n            hrd:enrolledPerson ?person ;\n            hrd:enrolledProgram ?prog .\n  }\n}\nORDER BY DESC(?matchScore)\nLIMIT 30",
+      "sparql": "PREFIX hrd:  <http://www.human-resource.go.kr/ontology/hrd#>\nPREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX owl:  <http://www.w3.org/2002/07/owl#>\nPREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>\n\nSELECT ?personName ?programName\nWHERE {\n  ?rec a hrd:Recommendation ;\n       hrd:recommendedToPerson ?person ;\n       hrd:recommendsProgram ?prog .\n  ?person rdfs:label ?personName .\n  ?prog rdfs:label ?programName .\n  FILTER NOT EXISTS {\n    ?enroll hrd:enrolledPerson ?person ;\n            hrd:enrolledProgram ?prog ;\n            hrd:completionStatus ?cs .\n    FILTER(?cs IN (\"수료완료\", \"completed\"))\n  }\n}\nORDER BY ?personName\nLIMIT 100\n",
       "result": {
         "columns": [
-          "person",
-          "prog",
-          "progLabel",
-          "matchScore"
+          "personName",
+          "programName"
         ],
-        "rows": [],
+        "rows": [
+          [
+            "Heo Jun",
+            "B2B영업전략"
+          ],
+          [
+            "Heo Jun",
+            "B2B Sales Strategy"
+          ],
+          [
+            "Hwang Hui",
+            "생성형AI프롬프트공학"
+          ],
+          [
+            "Hwang Hui",
+            "Generative AI Prompt Engineering"
+          ],
+          [
+            "Jang Yeong-sil",
+            "GPU컴퓨팅기초"
+          ],
+          [
+            "Jang Yeong-sil",
+            "GPU Computing Fundamentals"
+          ],
+          [
+            "Jeong Yak-yong",
+            "파이썬백엔드개발"
+          ],
+          [
+            "Jeong Yak-yong",
+            "Python Backend Development"
+          ],
+          [
+            "Kim Jeong-ho",
+            "비판적사고론"
+          ],
+          [
+            "Kim Jeong-ho",
+            "Critical Thinking"
+          ],
+          [
+            "Kim Jeong-ho",
+            "생성형AI프롬프트공학"
+          ],
+          [
+            "Kim Jeong-ho",
+            "Generative AI Prompt Engineering"
+          ],
+          [
+            "Kim Jeong-ho",
+            "디자인싱킹워크숍"
+          ],
+          [
+            "Kim Jeong-ho",
+            "Design Thinking Workshop"
+          ],
+          [
+            "Lee Sun-sin",
+            "전략기획실무"
+          ],
+          [
+            "Lee Sun-sin",
+            "Strategic Planning Fundamentals"
+          ],
+          [
+            "Lee Sun-sin",
+            "서번트리더십"
+          ],
+          [
+            "Lee Sun-sin",
+            "Servant Leadership"
+          ],
+          [
+            "Lee Sun-sin",
+            "B2B영업전략"
+          ],
+          [
+            "Lee Sun-sin",
+            "B2B Sales Strategy"
+          ],
+          [
+            "Shin Saimdang",
+            "서번트리더십"
+          ],
+          [
+            "Shin Saimdang",
+            "Servant Leadership"
+          ],
+          [
+            "Shin Saimdang",
+            "팀빌딩워크숍"
+          ],
+          [
+            "Shin Saimdang",
+            "Team Building Workshop"
+          ],
+          [
+            "김정호",
+            "비판적사고론"
+          ],
+          [
+            "김정호",
+            "Critical Thinking"
+          ],
+          [
+            "김정호",
+            "생성형AI프롬프트공학"
+          ],
+          [
+            "김정호",
+            "Generative AI Prompt Engineering"
+          ],
+          [
+            "김정호",
+            "디자인싱킹워크숍"
+          ],
+          [
+            "김정호",
+            "Design Thinking Workshop"
+          ],
+          [
+            "신사임당",
+            "서번트리더십"
+          ],
+          [
+            "신사임당",
+            "Servant Leadership"
+          ],
+          [
+            "신사임당",
+            "팀빌딩워크숍"
+          ],
+          [
+            "신사임당",
+            "Team Building Workshop"
+          ],
+          [
+            "이순신",
+            "전략기획실무"
+          ],
+          [
+            "이순신",
+            "Strategic Planning Fundamentals"
+          ],
+          [
+            "이순신",
+            "서번트리더십"
+          ],
+          [
+            "이순신",
+            "Servant Leadership"
+          ],
+          [
+            "이순신",
+            "B2B영업전략"
+          ],
+          [
+            "이순신",
+            "B2B Sales Strategy"
+          ],
+          [
+            "장영실",
+            "GPU컴퓨팅기초"
+          ],
+          [
+            "장영실",
+            "GPU Computing Fundamentals"
+          ],
+          [
+            "정약용",
+            "파이썬백엔드개발"
+          ],
+          [
+            "정약용",
+            "Python Backend Development"
+          ],
+          [
+            "허준",
+            "B2B영업전략"
+          ],
+          [
+            "허준",
+            "B2B Sales Strategy"
+          ],
+          [
+            "황희",
+            "생성형AI프롬프트공학"
+          ],
+          [
+            "황희",
+            "Generative AI Prompt Engineering"
+          ]
+        ],
         "error": null,
         "truncated": false
       }
@@ -59204,13 +60904,315 @@
       "id": "L5",
       "category": "L",
       "title": "2개 이상 정책에 참여한 인재",
-      "sparql": "PREFIX hrd:  <http://www.human-resource.go.kr/ontology/hrd#>\nPREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX owl:  <http://www.w3.org/2002/07/owl#>\nPREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>\n\nSELECT ?person (COUNT(DISTINCT ?policy) AS ?policyCnt)\nWHERE {\n  ?pp rdf:type hrd:PolicyParticipation ;\n      hrd:participationOfPerson ?person ;\n      hrd:participationInPolicy ?policy .\n}\nGROUP BY ?person\nHAVING (COUNT(DISTINCT ?policy) >= 2)\nORDER BY DESC(?policyCnt)",
+      "sparql": "PREFIX hrd:  <http://www.human-resource.go.kr/ontology/hrd#>\nPREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX owl:  <http://www.w3.org/2002/07/owl#>\nPREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>\n\nSELECT ?personName (COUNT(DISTINCT ?policy) AS ?policyCount) (GROUP_CONCAT(DISTINCT ?policyName; separator=\", \") AS ?policies)\nWHERE {\n  ?participation a hrd:PolicyParticipation ;\n                 hrd:participationOfPerson ?person ;\n                 hrd:participationInPolicy ?policy .\n  ?person rdfs:label ?personName .\n  ?policy rdfs:label ?policyName .\n}\nGROUP BY ?personName ?person\nHAVING (COUNT(DISTINCT ?policy) >= 1)\nORDER BY DESC(?policyCount)\nLIMIT 100\n",
       "result": {
         "columns": [
-          "person",
-          "policyCnt"
+          "personName",
+          "policyCount",
+          "policies"
         ],
-        "rows": [],
+        "rows": [
+          [
+            "김정호",
+            "1",
+            "글로벌 기술수출 바우처, Global Technology Export Voucher Program"
+          ],
+          [
+            "Kim Jeong-ho",
+            "1",
+            "글로벌 기술수출 바우처, Global Technology Export Voucher Program"
+          ],
+          [
+            "이순신",
+            "1",
+            "은퇴과학자 활용 지원사업, Retired Scientist Utilization Support Program"
+          ],
+          [
+            "Lee Sun-sin",
+            "1",
+            "은퇴과학자 활용 지원사업, Retired Scientist Utilization Support Program"
+          ],
+          [
+            "정약용",
+            "1",
+            "디지털 전환 교육 프로그램, Digital Transformation Education Program"
+          ],
+          [
+            "Jeong Yak-yong",
+            "1",
+            "디지털 전환 교육 프로그램, Digital Transformation Education Program"
+          ],
+          [
+            "장영실",
+            "1",
+            "디지털 전환 교육 프로그램, Digital Transformation Education Program"
+          ],
+          [
+            "Jang Yeong-sil",
+            "1",
+            "디지털 전환 교육 프로그램, Digital Transformation Education Program"
+          ],
+          [
+            "김민준",
+            "1",
+            "탄소중립 전환 자금 지원, Carbon Neutral Transition Fund Support"
+          ],
+          [
+            "Kim Min-jun",
+            "1",
+            "탄소중립 전환 자금 지원, Carbon Neutral Transition Fund Support"
+          ],
+          [
+            "이서연",
+            "1",
+            "중장년 디지털 문해력 교육, Middle-Aged Digital Literacy Education Program"
+          ],
+          [
+            "Lee Seo-yeon",
+            "1",
+            "중장년 디지털 문해력 교육, Middle-Aged Digital Literacy Education Program"
+          ],
+          [
+            "박지호",
+            "1",
+            "은퇴과학자 활용 지원사업, Retired Scientist Utilization Support Program"
+          ],
+          [
+            "Park Ji-ho",
+            "1",
+            "은퇴과학자 활용 지원사업, Retired Scientist Utilization Support Program"
+          ],
+          [
+            "최아영",
+            "1",
+            "K-컬처 콘텐츠 기획 인재 양성, K-Culture Content Planning Talent Development"
+          ],
+          [
+            "Choi A-yeong",
+            "1",
+            "K-컬처 콘텐츠 기획 인재 양성, K-Culture Content Planning Talent Development"
+          ],
+          [
+            "정현우",
+            "1",
+            "반도체 설계 베테랑 전수 사업, Semiconductor Design Veteran Knowledge Transfer Program"
+          ],
+          [
+            "Jeong Hyeon-u",
+            "1",
+            "반도체 설계 베테랑 전수 사업, Semiconductor Design Veteran Knowledge Transfer Program"
+          ],
+          [
+            "강나은",
+            "1",
+            "디지털 인재양성 종합방안, Digital Talent Development Master Plan"
+          ],
+          [
+            "Kang Na-eun",
+            "1",
+            "디지털 인재양성 종합방안, Digital Talent Development Master Plan"
+          ],
+          [
+            "조성민",
+            "1",
+            "바이오헬스 인재양성 종합방안, Bio-Health Workforce Development Comprehensive Plan"
+          ],
+          [
+            "Jo Seong-min",
+            "1",
+            "바이오헬스 인재양성 종합방안, Bio-Health Workforce Development Comprehensive Plan"
+          ],
+          [
+            "윤지수",
+            "1",
+            "시니어 창업 지원금, Senior Startup Support Grant"
+          ],
+          [
+            "Yun Ji-su",
+            "1",
+            "시니어 창업 지원금, Senior Startup Support Grant"
+          ],
+          [
+            "임태양",
+            "1",
+            "미래 모빌리티 인재양성 전략, Future Mobility Talent Development Strategy"
+          ],
+          [
+            "Im Tae-yang",
+            "1",
+            "미래 모빌리티 인재양성 전략, Future Mobility Talent Development Strategy"
+          ],
+          [
+            "한소희",
+            "1",
+            "우주항공 전문인력 양성 계획, Space and Aerospace Talent Development Plan"
+          ],
+          [
+            "Han So-hee",
+            "1",
+            "우주항공 전문인력 양성 계획, Space and Aerospace Talent Development Plan"
+          ],
+          [
+            "오준혁",
+            "1",
+            "K-디지털 트레이닝, K-Digital Training Program"
+          ],
+          [
+            "Oh Jun-hyeok",
+            "1",
+            "K-디지털 트레이닝, K-Digital Training Program"
+          ],
+          [
+            "서예진",
+            "1",
+            "은퇴과학자 활용 지원사업, Retired Scientist Utilization Support Program"
+          ],
+          [
+            "Seo Ye-jin",
+            "1",
+            "은퇴과학자 활용 지원사업, Retired Scientist Utilization Support Program"
+          ],
+          [
+            "신동혁",
+            "1",
+            "디지털 전환 교육 프로그램, Digital Transformation Education Program"
+          ],
+          [
+            "Shin Dong-hyeok",
+            "1",
+            "디지털 전환 교육 프로그램, Digital Transformation Education Program"
+          ],
+          [
+            "류미래",
+            "1",
+            "반도체 인재양성 전략, Semiconductor Workforce Development Strategy"
+          ],
+          [
+            "Ryu Mi-rae",
+            "1",
+            "반도체 인재양성 전략, Semiconductor Workforce Development Strategy"
+          ],
+          [
+            "남건우",
+            "1",
+            "AI 일상화 및 산업 고도화 계획, AI Mainstreaming and Industry Advancement Plan"
+          ],
+          [
+            "Nam Geon-u",
+            "1",
+            "AI 일상화 및 산업 고도화 계획, AI Mainstreaming and Industry Advancement Plan"
+          ],
+          [
+            "황지영",
+            "1",
+            "그린뉴딜 인재양성 사업, Green New Deal Talent Development Program"
+          ],
+          [
+            "Hwang Ji-yeong",
+            "1",
+            "그린뉴딜 인재양성 사업, Green New Deal Talent Development Program"
+          ],
+          [
+            "문성호",
+            "1",
+            "글로벌 기술수출 바우처, Global Technology Export Voucher Program"
+          ],
+          [
+            "Moon Seong-ho",
+            "1",
+            "글로벌 기술수출 바우처, Global Technology Export Voucher Program"
+          ],
+          [
+            "양은지",
+            "1",
+            "제5차 국가인적자원개발기본계획, 5th National Human Resources Development Master Plan (2021-2025)"
+          ],
+          [
+            "Yang Eun-ji",
+            "1",
+            "제5차 국가인적자원개발기본계획, 5th National Human Resources Development Master Plan (2021-2025)"
+          ],
+          [
+            "손현석",
+            "1",
+            "지역사회 기술봉사 마일리지, Community Technology Volunteering Mileage Program"
+          ],
+          [
+            "Son Hyeon-seok",
+            "1",
+            "지역사회 기술봉사 마일리지, Community Technology Volunteering Mileage Program"
+          ],
+          [
+            "백다인",
+            "1",
+            "지식재산(IP) 보호 강화 사업, Intellectual Property Protection Enhancement Program"
+          ],
+          [
+            "Baek Da-in",
+            "1",
+            "지식재산(IP) 보호 강화 사업, Intellectual Property Protection Enhancement Program"
+          ],
+          [
+            "성춘향",
+            "1",
+            "디지털 전환 교육 프로그램, Digital Transformation Education Program"
+          ],
+          [
+            "Seong Chun-hyang",
+            "1",
+            "디지털 전환 교육 프로그램, Digital Transformation Education Program"
+          ],
+          [
+            "황희",
+            "1",
+            "은퇴과학자 활용 지원사업, Retired Scientist Utilization Support Program"
+          ],
+          [
+            "Hwang Hui",
+            "1",
+            "은퇴과학자 활용 지원사업, Retired Scientist Utilization Support Program"
+          ],
+          [
+            "허준",
+            "1",
+            "글로벌 기술수출 바우처, Global Technology Export Voucher Program"
+          ],
+          [
+            "Heo Jun",
+            "1",
+            "글로벌 기술수출 바우처, Global Technology Export Voucher Program"
+          ],
+          [
+            "임상옥",
+            "1",
+            "시니어 창업 지원금, Senior Startup Support Grant"
+          ],
+          [
+            "Im Sang-ok",
+            "1",
+            "시니어 창업 지원금, Senior Startup Support Grant"
+          ],
+          [
+            "홍길동",
+            "1",
+            "은퇴과학자 활용 지원사업, Retired Scientist Utilization Support Program"
+          ],
+          [
+            "Hong Gil-dong",
+            "1",
+            "은퇴과학자 활용 지원사업, Retired Scientist Utilization Support Program"
+          ],
+          [
+            "신사임당",
+            "1",
+            "지역사회 기술봉사 마일리지, Community Technology Volunteering Mileage Program"
+          ],
+          [
+            "Shin Saimdang",
+            "1",
+            "지역사회 기술봉사 마일리지, Community Technology Volunteering Mileage Program"
+          ]
+        ],
         "error": null,
         "truncated": false
       }
@@ -59971,14 +61973,616 @@
       "id": "L7",
       "category": "L",
       "title": "교육 이수 완료 후 성과가 없는 인재 — 후속 조치 필요 대상",
-      "sparql": "PREFIX hrd:  <http://www.human-resource.go.kr/ontology/hrd#>\nPREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX owl:  <http://www.w3.org/2002/07/owl#>\nPREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>\n\nSELECT DISTINCT ?person ?prog ?progLabel\nWHERE {\n  ?enroll rdf:type hrd:ProgramEnrollment ;\n          hrd:enrolledPerson ?person ;\n          hrd:enrolledProgram ?prog ;\n          hrd:completionStatus \"완료\" .\n  OPTIONAL { ?prog rdfs:label ?progLabel . FILTER(LANG(?progLabel) = \"ko\") }\n  FILTER NOT EXISTS {\n    ?out rdf:type hrd:Outcome ;\n         hrd:achievedBy ?person .\n  }\n}\nORDER BY ?person\nLIMIT 50",
+      "sparql": "PREFIX hrd:  <http://www.human-resource.go.kr/ontology/hrd#>\nPREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX owl:  <http://www.w3.org/2002/07/owl#>\nPREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>\n\nSELECT ?personName ?programName ?completionStatus ?enrollDate\nWHERE {\n  ?enroll a hrd:ProgramEnrollment ;\n          hrd:enrolledPerson ?person ;\n          hrd:enrolledProgram ?prog ;\n          hrd:completionStatus ?completionStatus .\n  FILTER(?completionStatus IN (\"수료완료\", \"completed\"))\n  ?person rdfs:label ?personName .\n  ?prog rdfs:label ?programName .\n  OPTIONAL { ?enroll hrd:enrollmentDate ?enrollDate . }\n}\nORDER BY ?personName\nLIMIT 100\n",
       "result": {
         "columns": [
-          "person",
-          "prog",
-          "progLabel"
+          "personName",
+          "programName",
+          "completionStatus",
+          "enrollDate"
         ],
-        "rows": [],
+        "rows": [
+          [
+            "Cha Min-seok",
+            "판매촉진전략",
+            "수료완료",
+            null
+          ],
+          [
+            "Cha Min-seok",
+            "Sales Promotion Strategy",
+            "수료완료",
+            null
+          ],
+          [
+            "Cha Min-seok",
+            "운영체제이론",
+            "수료완료",
+            null
+          ],
+          [
+            "Cha Min-seok",
+            "Operating Systems",
+            "수료완료",
+            null
+          ],
+          [
+            "Go Su-bin",
+            "ESG경영전략",
+            "수료완료",
+            null
+          ],
+          [
+            "Go Su-bin",
+            "ESG Management Strategy",
+            "수료완료",
+            null
+          ],
+          [
+            "Go Su-bin",
+            "서비스경험설계",
+            "수료완료",
+            null
+          ],
+          [
+            "Go Su-bin",
+            "Service Experience Design",
+            "수료완료",
+            null
+          ],
+          [
+            "Heo Jun",
+            "다문화이해와협업",
+            "수료완료",
+            null
+          ],
+          [
+            "Heo Jun",
+            "Cross-Cultural Collaboration",
+            "수료완료",
+            null
+          ],
+          [
+            "Heo Jun",
+            "기술영어작문",
+            "수료완료",
+            null
+          ],
+          [
+            "Heo Jun",
+            "Technical English Writing",
+            "수료완료",
+            null
+          ],
+          [
+            "Hong Gil-dong",
+            "전략기획실무",
+            "수료완료",
+            null
+          ],
+          [
+            "Hong Gil-dong",
+            "Strategic Planning Fundamentals",
+            "수료완료",
+            null
+          ],
+          [
+            "Hong Gil-dong",
+            "서번트리더십",
+            "수료완료",
+            null
+          ],
+          [
+            "Hong Gil-dong",
+            "Servant Leadership",
+            "수료완료",
+            null
+          ],
+          [
+            "Hong Gil-dong",
+            "비판적사고론",
+            "수료완료",
+            null
+          ],
+          [
+            "Hong Gil-dong",
+            "Critical Thinking",
+            "수료완료",
+            null
+          ],
+          [
+            "Hwang Hui",
+            "협업도구마스터",
+            "수료완료",
+            null
+          ],
+          [
+            "Hwang Hui",
+            "Collaboration Tools Mastery",
+            "수료완료",
+            null
+          ],
+          [
+            "Hwang Hui",
+            "서번트리더십",
+            "수료완료",
+            null
+          ],
+          [
+            "Hwang Hui",
+            "Servant Leadership",
+            "수료완료",
+            null
+          ],
+          [
+            "Hwang Ji-yeong",
+            "디지털디바이스운용",
+            "수료완료",
+            null
+          ],
+          [
+            "Hwang Ji-yeong",
+            "Digital Device Proficiency",
+            "수료완료",
+            null
+          ],
+          [
+            "Hwang Ji-yeong",
+            "서버가상화실무",
+            "수료완료",
+            null
+          ],
+          [
+            "Hwang Ji-yeong",
+            "Server Virtualization",
+            "수료완료",
+            null
+          ],
+          [
+            "Im Sang-ok",
+            "전략기획실무",
+            "수료완료",
+            null
+          ],
+          [
+            "Im Sang-ok",
+            "Strategic Planning Fundamentals",
+            "수료완료",
+            null
+          ],
+          [
+            "Im Sang-ok",
+            "디자인싱킹워크숍",
+            "수료완료",
+            null
+          ],
+          [
+            "Im Sang-ok",
+            "Design Thinking Workshop",
+            "수료완료",
+            null
+          ],
+          [
+            "Im Sang-ok",
+            "시간관리와생산성",
+            "수료완료",
+            null
+          ],
+          [
+            "Im Sang-ok",
+            "Time Management & Productivity",
+            "수료완료",
+            null
+          ],
+          [
+            "Jang Yeong-sil",
+            "생성형AI프롬프트공학",
+            "수료완료",
+            null
+          ],
+          [
+            "Jang Yeong-sil",
+            "Generative AI Prompt Engineering",
+            "수료완료",
+            null
+          ],
+          [
+            "Jang Yeong-sil",
+            "학습민첩성",
+            "수료완료",
+            null
+          ],
+          [
+            "Jang Yeong-sil",
+            "Learning Agility",
+            "수료완료",
+            null
+          ],
+          [
+            "Jeon U-jin",
+            "재난안전관리시스템",
+            "수료완료",
+            null
+          ],
+          [
+            "Jeon U-jin",
+            "Disaster Safety Management Systems",
+            "수료완료",
+            null
+          ],
+          [
+            "Jeon U-jin",
+            "대인관계심리학",
+            "수료완료",
+            null
+          ],
+          [
+            "Jeon U-jin",
+            "Interpersonal Psychology",
+            "수료완료",
+            null
+          ],
+          [
+            "Jeong Yak-yong",
+            "컴퓨터네트워크",
+            "수료완료",
+            null
+          ],
+          [
+            "Jeong Yak-yong",
+            "Computer Networking",
+            "수료완료",
+            null
+          ],
+          [
+            "Jeong Yak-yong",
+            "개인정보보호수칙",
+            "수료완료",
+            null
+          ],
+          [
+            "Jeong Yak-yong",
+            "Personal Data Protection",
+            "수료완료",
+            null
+          ],
+          [
+            "Jo Seong-min",
+            "인사조직관리",
+            "수료완료",
+            null
+          ],
+          [
+            "Jo Seong-min",
+            "HR & Organization Management",
+            "수료완료",
+            null
+          ],
+          [
+            "Jo Seong-min",
+            "창의적문제해결실무",
+            "수료완료",
+            null
+          ],
+          [
+            "Jo Seong-min",
+            "Creative Problem Solving",
+            "수료완료",
+            null
+          ],
+          [
+            "Kang Na-eun",
+            "스마트시티거버넌스",
+            "수료완료",
+            null
+          ],
+          [
+            "Kang Na-eun",
+            "Smart City Governance",
+            "수료완료",
+            null
+          ],
+          [
+            "Kang Na-eun",
+            "퍼실리테이션실무",
+            "수료완료",
+            null
+          ],
+          [
+            "Kang Na-eun",
+            "Facilitation Skills",
+            "수료완료",
+            null
+          ],
+          [
+            "Kim Min-jun",
+            "데이터활용기초",
+            "수료완료",
+            null
+          ],
+          [
+            "Kim Min-jun",
+            "Data Utilization Fundamentals",
+            "수료완료",
+            null
+          ],
+          [
+            "Kim Min-jun",
+            "딥러닝프레임워크",
+            "수료완료",
+            null
+          ],
+          [
+            "Kim Min-jun",
+            "Deep Learning Frameworks",
+            "수료완료",
+            null
+          ],
+          [
+            "Lee Seo-yeon",
+            "자바프레임워크응용",
+            "수료완료",
+            null
+          ],
+          [
+            "Lee Seo-yeon",
+            "Java Framework Application",
+            "수료완료",
+            null
+          ],
+          [
+            "Lee Seo-yeon",
+            "정보통신공학개론",
+            "수료완료",
+            null
+          ],
+          [
+            "Lee Seo-yeon",
+            "Introduction to ICT Engineering",
+            "수료완료",
+            null
+          ],
+          [
+            "Moon Seong-ho",
+            "테스트자동화공학",
+            "수료완료",
+            null
+          ],
+          [
+            "Moon Seong-ho",
+            "Test Automation Engineering",
+            "수료완료",
+            null
+          ],
+          [
+            "Moon Seong-ho",
+            "자료구조론",
+            "수료완료",
+            null
+          ],
+          [
+            "Moon Seong-ho",
+            "Data Structures",
+            "수료완료",
+            null
+          ],
+          [
+            "No Ji-hyeon",
+            "컴퓨터구조론",
+            "수료완료",
+            null
+          ],
+          [
+            "No Ji-hyeon",
+            "Computer Architecture",
+            "수료완료",
+            null
+          ],
+          [
+            "No Ji-hyeon",
+            "네트워크보안기초",
+            "수료완료",
+            null
+          ],
+          [
+            "No Ji-hyeon",
+            "Network Security Fundamentals",
+            "수료완료",
+            null
+          ],
+          [
+            "Oh Jun-hyeok",
+            "소프트웨어공학",
+            "수료완료",
+            null
+          ],
+          [
+            "Oh Jun-hyeok",
+            "Software Engineering",
+            "수료완료",
+            null
+          ],
+          [
+            "Oh Jun-hyeok",
+            "클라우드보안기초",
+            "수료완료",
+            null
+          ],
+          [
+            "Oh Jun-hyeok",
+            "Cloud Security Fundamentals",
+            "수료완료",
+            null
+          ],
+          [
+            "Park Ji-ho",
+            "통합마케팅커뮤니케이션",
+            "수료완료",
+            null
+          ],
+          [
+            "Park Ji-ho",
+            "Integrated Marketing Communications",
+            "수료완료",
+            null
+          ],
+          [
+            "Park Ji-ho",
+            "회복탄력성강화",
+            "수료완료",
+            null
+          ],
+          [
+            "Park Ji-ho",
+            "Resilience Building",
+            "수료완료",
+            null
+          ],
+          [
+            "Seo Ye-jin",
+            "인권과기술",
+            "수료완료",
+            null
+          ],
+          [
+            "Seo Ye-jin",
+            "Human Rights & Technology",
+            "수료완료",
+            null
+          ],
+          [
+            "Seo Ye-jin",
+            "유통물류관리",
+            "수료완료",
+            null
+          ],
+          [
+            "Seo Ye-jin",
+            "Distribution & Logistics Management",
+            "수료완료",
+            null
+          ],
+          [
+            "Seong Chun-hyang",
+            "생성형AI프롬프트공학",
+            "수료완료",
+            null
+          ],
+          [
+            "Seong Chun-hyang",
+            "Generative AI Prompt Engineering",
+            "수료완료",
+            null
+          ],
+          [
+            "Seong Chun-hyang",
+            "비즈니스지표해석",
+            "수료완료",
+            null
+          ],
+          [
+            "Seong Chun-hyang",
+            "Business Metrics Interpretation",
+            "수료완료",
+            null
+          ],
+          [
+            "Seong Chun-hyang",
+            "협업도구마스터",
+            "수료완료",
+            null
+          ],
+          [
+            "Seong Chun-hyang",
+            "Collaboration Tools Mastery",
+            "수료완료",
+            null
+          ],
+          [
+            "Shim Jae-hyeon",
+            "환경윤리실무",
+            "수료완료",
+            null
+          ],
+          [
+            "Shim Jae-hyeon",
+            "Environmental Ethics",
+            "수료완료",
+            null
+          ],
+          [
+            "Shim Jae-hyeon",
+            "리테일마케팅",
+            "수료완료",
+            null
+          ],
+          [
+            "Shim Jae-hyeon",
+            "Retail Marketing",
+            "수료완료",
+            null
+          ],
+          [
+            "Shin Dong-hyeok",
+            "생산품질관리",
+            "수료완료",
+            null
+          ],
+          [
+            "Shin Dong-hyeok",
+            "Production Quality Management",
+            "수료완료",
+            null
+          ],
+          [
+            "Shin Dong-hyeok",
+            "알고리즘최적화",
+            "수료완료",
+            null
+          ],
+          [
+            "Shin Dong-hyeok",
+            "Algorithm Optimization",
+            "수료완료",
+            null
+          ],
+          [
+            "Shin Saimdang",
+            "기업의사회적책임",
+            "수료완료",
+            null
+          ],
+          [
+            "Shin Saimdang",
+            "Corporate Social Responsibility",
+            "수료완료",
+            null
+          ],
+          [
+            "Won So-yeong",
+            "설비보전실무",
+            "수료완료",
+            null
+          ],
+          [
+            "Won So-yeong",
+            "Equipment Maintenance Practice",
+            "수료완료",
+            null
+          ],
+          [
+            "Won So-yeong",
+            "데이터베이스정규화",
+            "수료완료",
+            null
+          ],
+          [
+            "Won So-yeong",
+            "Database Normalization",
+            "수료완료",
+            null
+          ]
+        ],
         "error": null,
         "truncated": false
       }
@@ -59987,18 +62591,1495 @@
       "id": "L8",
       "category": "L",
       "title": "전략 우선순위 1~3위 정책에 소속된 프로그램과 등록 인원",
-      "sparql": "PREFIX hrd:  <http://www.human-resource.go.kr/ontology/hrd#>\nPREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX owl:  <http://www.w3.org/2002/07/owl#>\nPREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>\n\nSELECT ?strategy ?priority ?policy ?policyLabel ?prog ?progLabel (COUNT(?person) AS ?enrollCnt)\nWHERE {\n  ?strategy rdf:type hrd:NationalStrategy ;\n            hrd:strategyPriority ?priority .\n  FILTER(?priority <= 3)\n  ?policy rdf:type hrd:Policy ;\n          hrd:alignsWithNationalStrategy ?strategy .\n  OPTIONAL { ?policy rdfs:label ?policyLabel . FILTER(LANG(?policyLabel) = \"ko\") }\n  OPTIONAL {\n    ?prog rdf:type hrd:EducationProgram ;\n          hrd:alignsWithStrategy ?strategy .\n    OPTIONAL { ?prog rdfs:label ?progLabel . FILTER(LANG(?progLabel) = \"ko\") }\n    OPTIONAL {\n      ?enroll rdf:type hrd:ProgramEnrollment ;\n              hrd:enrolledProgram ?prog ;\n              hrd:enrolledPerson ?person .\n    }\n  }\n}\nGROUP BY ?strategy ?priority ?policy ?policyLabel ?prog ?progLabel\nORDER BY ASC(?priority) ?strategy",
+      "sparql": "PREFIX hrd:  <http://www.human-resource.go.kr/ontology/hrd#>\nPREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX owl:  <http://www.w3.org/2002/07/owl#>\nPREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>\n\nSELECT ?strategyName ?programName ?strategyPriority\nWHERE {\n  ?strategy a hrd:NationalStrategy ;\n            rdfs:label ?strategyName ;\n            hrd:strategyPriority ?strategyPriority ;\n            hrd:isAlignedWithProgram ?prog .\n  FILTER(xsd:integer(STR(?strategyPriority)) <= 3)\n  ?prog rdfs:label ?programName .\n}\nORDER BY xsd:integer(STR(?strategyPriority)) ?strategyName\n",
       "result": {
         "columns": [
-          "strategy",
-          "priority",
-          "policy",
-          "policyLabel",
-          "prog",
-          "progLabel",
-          "enrollCnt"
+          "strategyName",
+          "programName",
+          "strategyPriority"
         ],
-        "rows": [],
+        "rows": [
+          [
+            "Universal Basic Income Expansion",
+            "기술영어작문",
+            "1"
+          ],
+          [
+            "Universal Basic Income Expansion",
+            "Technical English Writing",
+            "1"
+          ],
+          [
+            "Universal Basic Income Expansion",
+            "확률과통계",
+            "1"
+          ],
+          [
+            "Universal Basic Income Expansion",
+            "Probability & Statistics",
+            "1"
+          ],
+          [
+            "Universal Basic Income Expansion",
+            "새로운기술습득전략",
+            "1"
+          ],
+          [
+            "Universal Basic Income Expansion",
+            "Learning New Technologies",
+            "1"
+          ],
+          [
+            "Universal Basic Income Expansion",
+            "시간관리와생산성",
+            "1"
+          ],
+          [
+            "Universal Basic Income Expansion",
+            "Time Management & Productivity",
+            "1"
+          ],
+          [
+            "Universal Basic Income Expansion",
+            "변화적응력워크숍",
+            "1"
+          ],
+          [
+            "Universal Basic Income Expansion",
+            "Change Adaptability",
+            "1"
+          ],
+          [
+            "Universal Basic Income Expansion",
+            "업무완결성증진",
+            "1"
+          ],
+          [
+            "Universal Basic Income Expansion",
+            "Work Quality Enhancement",
+            "1"
+          ],
+          [
+            "Universal Basic Income Expansion",
+            "공공행정DX실무",
+            "1"
+          ],
+          [
+            "Universal Basic Income Expansion",
+            "Public Administration Digital Transformation",
+            "1"
+          ],
+          [
+            "Universal Basic Income Expansion",
+            "스마트시티거버넌스",
+            "1"
+          ],
+          [
+            "Universal Basic Income Expansion",
+            "Smart City Governance",
+            "1"
+          ],
+          [
+            "Universal Basic Income Expansion",
+            "지능형교통체계",
+            "1"
+          ],
+          [
+            "Universal Basic Income Expansion",
+            "Intelligent Transportation Systems",
+            "1"
+          ],
+          [
+            "Universal Basic Income Expansion",
+            "재난안전관리시스템",
+            "1"
+          ],
+          [
+            "Universal Basic Income Expansion",
+            "Disaster Safety Management Systems",
+            "1"
+          ],
+          [
+            "Universal Basic Income Expansion",
+            "에너지관리시스템",
+            "1"
+          ],
+          [
+            "Universal Basic Income Expansion",
+            "Energy Management Systems",
+            "1"
+          ],
+          [
+            "Universal Basic Income Expansion",
+            "환경기술공학",
+            "1"
+          ],
+          [
+            "Universal Basic Income Expansion",
+            "Environmental Technology Engineering",
+            "1"
+          ],
+          [
+            "Universal Basic Income Expansion",
+            "수도행정디지털화",
+            "1"
+          ],
+          [
+            "Universal Basic Income Expansion",
+            "Digital Water Administration",
+            "1"
+          ],
+          [
+            "Universal Basic Income Expansion",
+            "공공데이터개방실무",
+            "1"
+          ],
+          [
+            "Universal Basic Income Expansion",
+            "Open Government Data Practice",
+            "1"
+          ],
+          [
+            "Universal Basic Income Expansion",
+            "지능형방범시스템",
+            "1"
+          ],
+          [
+            "Universal Basic Income Expansion",
+            "AI-Based Crime Prevention Systems",
+            "1"
+          ],
+          [
+            "Universal Basic Income Expansion",
+            "전력망관리기술",
+            "1"
+          ],
+          [
+            "Universal Basic Income Expansion",
+            "Smart Grid Management",
+            "1"
+          ],
+          [
+            "Universal Basic Income Expansion",
+            "디지털전환적응훈련",
+            "1"
+          ],
+          [
+            "Universal Basic Income Expansion",
+            "Digital Transformation Readiness",
+            "1"
+          ],
+          [
+            "Universal Basic Income Expansion",
+            "약속과신뢰구축",
+            "1"
+          ],
+          [
+            "Universal Basic Income Expansion",
+            "Trust Building",
+            "1"
+          ],
+          [
+            "Universal Basic Income Expansion",
+            "목표달성실행력",
+            "1"
+          ],
+          [
+            "Universal Basic Income Expansion",
+            "Goal Achievement Execution",
+            "1"
+          ],
+          [
+            "Universal Basic Income Expansion",
+            "자기주도학습기법",
+            "1"
+          ],
+          [
+            "Universal Basic Income Expansion",
+            "Self-Directed Learning",
+            "1"
+          ],
+          [
+            "Universal Basic Income Expansion",
+            "수치해석론",
+            "1"
+          ],
+          [
+            "Universal Basic Income Expansion",
+            "Numerical Analysis",
+            "1"
+          ],
+          [
+            "Universal Basic Income Expansion",
+            "성장마인드셋",
+            "1"
+          ],
+          [
+            "Universal Basic Income Expansion",
+            "Growth Mindset",
+            "1"
+          ],
+          [
+            "Universal Basic Income Expansion",
+            "비즈니스보고서작성",
+            "1"
+          ],
+          [
+            "Universal Basic Income Expansion",
+            "Business Report Writing",
+            "1"
+          ],
+          [
+            "Universal Basic Income Expansion",
+            "불확실성대응전략",
+            "1"
+          ],
+          [
+            "Universal Basic Income Expansion",
+            "Managing Uncertainty",
+            "1"
+          ],
+          [
+            "Universal Basic Income Expansion",
+            "선형대수학기초",
+            "1"
+          ],
+          [
+            "Universal Basic Income Expansion",
+            "Linear Algebra",
+            "1"
+          ],
+          [
+            "Universal Basic Income Expansion",
+            "윤리적책임감실무",
+            "1"
+          ],
+          [
+            "Universal Basic Income Expansion",
+            "Ethical Responsibility",
+            "1"
+          ],
+          [
+            "Universal Basic Income Expansion",
+            "Enrollment Event for REC_PERSON_04_SS_SMA_01",
+            "1"
+          ],
+          [
+            "Universal Basic Income Expansion",
+            "REC_PERSON_04_SS_SMA_01 기반 등록 제안 이벤트",
+            "1"
+          ],
+          [
+            "Universal Basic Income Expansion",
+            "논리적사고와글쓰기",
+            "1"
+          ],
+          [
+            "Universal Basic Income Expansion",
+            "Logical Thinking & Writing",
+            "1"
+          ],
+          [
+            "Universal Basic Income Expansion",
+            "성과책임제이해",
+            "1"
+          ],
+          [
+            "Universal Basic Income Expansion",
+            "Performance Accountability",
+            "1"
+          ],
+          [
+            "Universal Basic Income Expansion",
+            "공학수학기초",
+            "1"
+          ],
+          [
+            "Universal Basic Income Expansion",
+            "Engineering Mathematics",
+            "1"
+          ],
+          [
+            "Universal Basic Income Expansion",
+            "프로페셔널리즘",
+            "1"
+          ],
+          [
+            "Universal Basic Income Expansion",
+            "Professionalism",
+            "1"
+          ],
+          [
+            "Universal Basic Income Expansion",
+            "감정지능관리",
+            "1"
+          ],
+          [
+            "Universal Basic Income Expansion",
+            "Emotional Intelligence",
+            "1"
+          ],
+          [
+            "Universal Basic Income Expansion",
+            "비평적텍스트읽기",
+            "1"
+          ],
+          [
+            "Universal Basic Income Expansion",
+            "Critical Reading",
+            "1"
+          ],
+          [
+            "Universal Basic Income Expansion",
+            "자기성찰과성장",
+            "1"
+          ],
+          [
+            "Universal Basic Income Expansion",
+            "Self-Reflection & Growth",
+            "1"
+          ],
+          [
+            "Universal Basic Income Expansion",
+            "스트레스관리역량",
+            "1"
+          ],
+          [
+            "Universal Basic Income Expansion",
+            "Stress Management",
+            "1"
+          ],
+          [
+            "Universal Basic Income Expansion",
+            "프레젠테이션스킬",
+            "1"
+          ],
+          [
+            "Universal Basic Income Expansion",
+            "Presentation Skills",
+            "1"
+          ],
+          [
+            "Universal Basic Income Expansion",
+            "회복탄력성강화",
+            "1"
+          ],
+          [
+            "Universal Basic Income Expansion",
+            "Resilience Building",
+            "1"
+          ],
+          [
+            "전국민 기본소득 확대",
+            "기술영어작문",
+            "1"
+          ],
+          [
+            "전국민 기본소득 확대",
+            "Technical English Writing",
+            "1"
+          ],
+          [
+            "전국민 기본소득 확대",
+            "확률과통계",
+            "1"
+          ],
+          [
+            "전국민 기본소득 확대",
+            "Probability & Statistics",
+            "1"
+          ],
+          [
+            "전국민 기본소득 확대",
+            "새로운기술습득전략",
+            "1"
+          ],
+          [
+            "전국민 기본소득 확대",
+            "Learning New Technologies",
+            "1"
+          ],
+          [
+            "전국민 기본소득 확대",
+            "시간관리와생산성",
+            "1"
+          ],
+          [
+            "전국민 기본소득 확대",
+            "Time Management & Productivity",
+            "1"
+          ],
+          [
+            "전국민 기본소득 확대",
+            "변화적응력워크숍",
+            "1"
+          ],
+          [
+            "전국민 기본소득 확대",
+            "Change Adaptability",
+            "1"
+          ],
+          [
+            "전국민 기본소득 확대",
+            "업무완결성증진",
+            "1"
+          ],
+          [
+            "전국민 기본소득 확대",
+            "Work Quality Enhancement",
+            "1"
+          ],
+          [
+            "전국민 기본소득 확대",
+            "공공행정DX실무",
+            "1"
+          ],
+          [
+            "전국민 기본소득 확대",
+            "Public Administration Digital Transformation",
+            "1"
+          ],
+          [
+            "전국민 기본소득 확대",
+            "스마트시티거버넌스",
+            "1"
+          ],
+          [
+            "전국민 기본소득 확대",
+            "Smart City Governance",
+            "1"
+          ],
+          [
+            "전국민 기본소득 확대",
+            "지능형교통체계",
+            "1"
+          ],
+          [
+            "전국민 기본소득 확대",
+            "Intelligent Transportation Systems",
+            "1"
+          ],
+          [
+            "전국민 기본소득 확대",
+            "재난안전관리시스템",
+            "1"
+          ],
+          [
+            "전국민 기본소득 확대",
+            "Disaster Safety Management Systems",
+            "1"
+          ],
+          [
+            "전국민 기본소득 확대",
+            "에너지관리시스템",
+            "1"
+          ],
+          [
+            "전국민 기본소득 확대",
+            "Energy Management Systems",
+            "1"
+          ],
+          [
+            "전국민 기본소득 확대",
+            "환경기술공학",
+            "1"
+          ],
+          [
+            "전국민 기본소득 확대",
+            "Environmental Technology Engineering",
+            "1"
+          ],
+          [
+            "전국민 기본소득 확대",
+            "수도행정디지털화",
+            "1"
+          ],
+          [
+            "전국민 기본소득 확대",
+            "Digital Water Administration",
+            "1"
+          ],
+          [
+            "전국민 기본소득 확대",
+            "공공데이터개방실무",
+            "1"
+          ],
+          [
+            "전국민 기본소득 확대",
+            "Open Government Data Practice",
+            "1"
+          ],
+          [
+            "전국민 기본소득 확대",
+            "지능형방범시스템",
+            "1"
+          ],
+          [
+            "전국민 기본소득 확대",
+            "AI-Based Crime Prevention Systems",
+            "1"
+          ],
+          [
+            "전국민 기본소득 확대",
+            "전력망관리기술",
+            "1"
+          ],
+          [
+            "전국민 기본소득 확대",
+            "Smart Grid Management",
+            "1"
+          ],
+          [
+            "전국민 기본소득 확대",
+            "디지털전환적응훈련",
+            "1"
+          ],
+          [
+            "전국민 기본소득 확대",
+            "Digital Transformation Readiness",
+            "1"
+          ],
+          [
+            "전국민 기본소득 확대",
+            "약속과신뢰구축",
+            "1"
+          ],
+          [
+            "전국민 기본소득 확대",
+            "Trust Building",
+            "1"
+          ],
+          [
+            "전국민 기본소득 확대",
+            "목표달성실행력",
+            "1"
+          ],
+          [
+            "전국민 기본소득 확대",
+            "Goal Achievement Execution",
+            "1"
+          ],
+          [
+            "전국민 기본소득 확대",
+            "자기주도학습기법",
+            "1"
+          ],
+          [
+            "전국민 기본소득 확대",
+            "Self-Directed Learning",
+            "1"
+          ],
+          [
+            "전국민 기본소득 확대",
+            "수치해석론",
+            "1"
+          ],
+          [
+            "전국민 기본소득 확대",
+            "Numerical Analysis",
+            "1"
+          ],
+          [
+            "전국민 기본소득 확대",
+            "성장마인드셋",
+            "1"
+          ],
+          [
+            "전국민 기본소득 확대",
+            "Growth Mindset",
+            "1"
+          ],
+          [
+            "전국민 기본소득 확대",
+            "비즈니스보고서작성",
+            "1"
+          ],
+          [
+            "전국민 기본소득 확대",
+            "Business Report Writing",
+            "1"
+          ],
+          [
+            "전국민 기본소득 확대",
+            "불확실성대응전략",
+            "1"
+          ],
+          [
+            "전국민 기본소득 확대",
+            "Managing Uncertainty",
+            "1"
+          ],
+          [
+            "전국민 기본소득 확대",
+            "선형대수학기초",
+            "1"
+          ],
+          [
+            "전국민 기본소득 확대",
+            "Linear Algebra",
+            "1"
+          ],
+          [
+            "전국민 기본소득 확대",
+            "윤리적책임감실무",
+            "1"
+          ],
+          [
+            "전국민 기본소득 확대",
+            "Ethical Responsibility",
+            "1"
+          ],
+          [
+            "전국민 기본소득 확대",
+            "Enrollment Event for REC_PERSON_04_SS_SMA_01",
+            "1"
+          ],
+          [
+            "전국민 기본소득 확대",
+            "REC_PERSON_04_SS_SMA_01 기반 등록 제안 이벤트",
+            "1"
+          ],
+          [
+            "전국민 기본소득 확대",
+            "논리적사고와글쓰기",
+            "1"
+          ],
+          [
+            "전국민 기본소득 확대",
+            "Logical Thinking & Writing",
+            "1"
+          ],
+          [
+            "전국민 기본소득 확대",
+            "성과책임제이해",
+            "1"
+          ],
+          [
+            "전국민 기본소득 확대",
+            "Performance Accountability",
+            "1"
+          ],
+          [
+            "전국민 기본소득 확대",
+            "공학수학기초",
+            "1"
+          ],
+          [
+            "전국민 기본소득 확대",
+            "Engineering Mathematics",
+            "1"
+          ],
+          [
+            "전국민 기본소득 확대",
+            "프로페셔널리즘",
+            "1"
+          ],
+          [
+            "전국민 기본소득 확대",
+            "Professionalism",
+            "1"
+          ],
+          [
+            "전국민 기본소득 확대",
+            "감정지능관리",
+            "1"
+          ],
+          [
+            "전국민 기본소득 확대",
+            "Emotional Intelligence",
+            "1"
+          ],
+          [
+            "전국민 기본소득 확대",
+            "비평적텍스트읽기",
+            "1"
+          ],
+          [
+            "전국민 기본소득 확대",
+            "Critical Reading",
+            "1"
+          ],
+          [
+            "전국민 기본소득 확대",
+            "자기성찰과성장",
+            "1"
+          ],
+          [
+            "전국민 기본소득 확대",
+            "Self-Reflection & Growth",
+            "1"
+          ],
+          [
+            "전국민 기본소득 확대",
+            "스트레스관리역량",
+            "1"
+          ],
+          [
+            "전국민 기본소득 확대",
+            "Stress Management",
+            "1"
+          ],
+          [
+            "전국민 기본소득 확대",
+            "프레젠테이션스킬",
+            "1"
+          ],
+          [
+            "전국민 기본소득 확대",
+            "Presentation Skills",
+            "1"
+          ],
+          [
+            "전국민 기본소득 확대",
+            "회복탄력성강화",
+            "1"
+          ],
+          [
+            "전국민 기본소득 확대",
+            "Resilience Building",
+            "1"
+          ],
+          [
+            "AI and Digital Great Transformation",
+            "디자인싱킹워크숍",
+            "2"
+          ],
+          [
+            "AI and Digital Great Transformation",
+            "Design Thinking Workshop",
+            "2"
+          ],
+          [
+            "AI and Digital Great Transformation",
+            "GPU컴퓨팅기초",
+            "2"
+          ],
+          [
+            "AI and Digital Great Transformation",
+            "GPU Computing Fundamentals",
+            "2"
+          ],
+          [
+            "AI and Digital Great Transformation",
+            "딥러닝프레임워크",
+            "2"
+          ],
+          [
+            "AI and Digital Great Transformation",
+            "Deep Learning Frameworks",
+            "2"
+          ],
+          [
+            "AI and Digital Great Transformation",
+            "클라우드아키텍처",
+            "2"
+          ],
+          [
+            "AI and Digital Great Transformation",
+            "Cloud Architecture",
+            "2"
+          ],
+          [
+            "AI and Digital Great Transformation",
+            "서버가상화실무",
+            "2"
+          ],
+          [
+            "AI and Digital Great Transformation",
+            "Server Virtualization",
+            "2"
+          ],
+          [
+            "AI and Digital Great Transformation",
+            "빅데이터플랫폼구축",
+            "2"
+          ],
+          [
+            "AI and Digital Great Transformation",
+            "Big Data Platform Development",
+            "2"
+          ],
+          [
+            "AI and Digital Great Transformation",
+            "MLOps엔지니어링",
+            "2"
+          ],
+          [
+            "AI and Digital Great Transformation",
+            "MLOps Engineering",
+            "2"
+          ],
+          [
+            "AI and Digital Great Transformation",
+            "네트워크인프라설계",
+            "2"
+          ],
+          [
+            "AI and Digital Great Transformation",
+            "Network Infrastructure Design",
+            "2"
+          ],
+          [
+            "AI and Digital Great Transformation",
+            "분산시스템기초",
+            "2"
+          ],
+          [
+            "AI and Digital Great Transformation",
+            "Distributed Systems",
+            "2"
+          ],
+          [
+            "AI and Digital Great Transformation",
+            "컨테이너오케스트레이션",
+            "2"
+          ],
+          [
+            "AI and Digital Great Transformation",
+            "Container Orchestration",
+            "2"
+          ],
+          [
+            "AI and Digital Great Transformation",
+            "고성능컴퓨팅",
+            "2"
+          ],
+          [
+            "AI and Digital Great Transformation",
+            "High Performance Computing",
+            "2"
+          ],
+          [
+            "AI and Digital Great Transformation",
+            "가설수립과검증",
+            "2"
+          ],
+          [
+            "AI and Digital Great Transformation",
+            "Hypothesis Testing",
+            "2"
+          ],
+          [
+            "AI and Digital Great Transformation",
+            "연역적추론실무",
+            "2"
+          ],
+          [
+            "AI and Digital Great Transformation",
+            "Deductive Reasoning",
+            "2"
+          ],
+          [
+            "AI and Digital Great Transformation",
+            "서비스경험설계",
+            "2"
+          ],
+          [
+            "AI and Digital Great Transformation",
+            "Service Experience Design",
+            "2"
+          ],
+          [
+            "AI and Digital Great Transformation",
+            "비판적사고론",
+            "2"
+          ],
+          [
+            "AI and Digital Great Transformation",
+            "Critical Thinking",
+            "2"
+          ],
+          [
+            "AI and Digital Great Transformation",
+            "복잡계이론의이해",
+            "2"
+          ],
+          [
+            "AI and Digital Great Transformation",
+            "Complex Systems Theory",
+            "2"
+          ],
+          [
+            "AI and Digital Great Transformation",
+            "시스템다이내믹스",
+            "2"
+          ],
+          [
+            "AI and Digital Great Transformation",
+            "System Dynamics",
+            "2"
+          ],
+          [
+            "AI and Digital Great Transformation",
+            "전략적사고훈련",
+            "2"
+          ],
+          [
+            "AI and Digital Great Transformation",
+            "Strategic Thinking",
+            "2"
+          ],
+          [
+            "AI and Digital Great Transformation",
+            "직관적사고훈련",
+            "2"
+          ],
+          [
+            "AI and Digital Great Transformation",
+            "Intuitive Thinking Training",
+            "2"
+          ],
+          [
+            "AI and Digital Great Transformation",
+            "아이디어발상기법",
+            "2"
+          ],
+          [
+            "AI and Digital Great Transformation",
+            "Idea Generation Techniques",
+            "2"
+          ],
+          [
+            "AI and Digital Great Transformation",
+            "브레인스토밍기법",
+            "2"
+          ],
+          [
+            "AI and Digital Great Transformation",
+            "Brainstorming Techniques",
+            "2"
+          ],
+          [
+            "AI and Digital Great Transformation",
+            "혁신비즈니스모델",
+            "2"
+          ],
+          [
+            "AI and Digital Great Transformation",
+            "Innovation Business Model",
+            "2"
+          ],
+          [
+            "AI and Digital Great Transformation",
+            "마인드맵과시각화",
+            "2"
+          ],
+          [
+            "AI and Digital Great Transformation",
+            "Mind Mapping & Visualization",
+            "2"
+          ],
+          [
+            "AI and Digital Great Transformation",
+            "데이터기반논리",
+            "2"
+          ],
+          [
+            "AI and Digital Great Transformation",
+            "Data-Driven Logic",
+            "2"
+          ],
+          [
+            "AI and Digital Great Transformation",
+            "창의적조직문화",
+            "2"
+          ],
+          [
+            "AI and Digital Great Transformation",
+            "Creative Organizational Culture",
+            "2"
+          ],
+          [
+            "AI and Digital Great Transformation",
+            "창의적문제해결실무",
+            "2"
+          ],
+          [
+            "AI and Digital Great Transformation",
+            "Creative Problem Solving",
+            "2"
+          ],
+          [
+            "AI and Digital Great Transformation",
+            "분석적사고기법",
+            "2"
+          ],
+          [
+            "AI and Digital Great Transformation",
+            "Analytical Thinking",
+            "2"
+          ],
+          [
+            "AI and Digital Great Transformation",
+            "구조적사고워크숍",
+            "2"
+          ],
+          [
+            "AI and Digital Great Transformation",
+            "Structured Thinking Workshop",
+            "2"
+          ],
+          [
+            "AI 디지털 대전환",
+            "디자인싱킹워크숍",
+            "2"
+          ],
+          [
+            "AI 디지털 대전환",
+            "Design Thinking Workshop",
+            "2"
+          ],
+          [
+            "AI 디지털 대전환",
+            "GPU컴퓨팅기초",
+            "2"
+          ],
+          [
+            "AI 디지털 대전환",
+            "GPU Computing Fundamentals",
+            "2"
+          ],
+          [
+            "AI 디지털 대전환",
+            "딥러닝프레임워크",
+            "2"
+          ],
+          [
+            "AI 디지털 대전환",
+            "Deep Learning Frameworks",
+            "2"
+          ],
+          [
+            "AI 디지털 대전환",
+            "클라우드아키텍처",
+            "2"
+          ],
+          [
+            "AI 디지털 대전환",
+            "Cloud Architecture",
+            "2"
+          ],
+          [
+            "AI 디지털 대전환",
+            "서버가상화실무",
+            "2"
+          ],
+          [
+            "AI 디지털 대전환",
+            "Server Virtualization",
+            "2"
+          ],
+          [
+            "AI 디지털 대전환",
+            "빅데이터플랫폼구축",
+            "2"
+          ],
+          [
+            "AI 디지털 대전환",
+            "Big Data Platform Development",
+            "2"
+          ],
+          [
+            "AI 디지털 대전환",
+            "MLOps엔지니어링",
+            "2"
+          ],
+          [
+            "AI 디지털 대전환",
+            "MLOps Engineering",
+            "2"
+          ],
+          [
+            "AI 디지털 대전환",
+            "네트워크인프라설계",
+            "2"
+          ],
+          [
+            "AI 디지털 대전환",
+            "Network Infrastructure Design",
+            "2"
+          ],
+          [
+            "AI 디지털 대전환",
+            "분산시스템기초",
+            "2"
+          ],
+          [
+            "AI 디지털 대전환",
+            "Distributed Systems",
+            "2"
+          ],
+          [
+            "AI 디지털 대전환",
+            "컨테이너오케스트레이션",
+            "2"
+          ],
+          [
+            "AI 디지털 대전환",
+            "Container Orchestration",
+            "2"
+          ],
+          [
+            "AI 디지털 대전환",
+            "고성능컴퓨팅",
+            "2"
+          ],
+          [
+            "AI 디지털 대전환",
+            "High Performance Computing",
+            "2"
+          ],
+          [
+            "AI 디지털 대전환",
+            "가설수립과검증",
+            "2"
+          ],
+          [
+            "AI 디지털 대전환",
+            "Hypothesis Testing",
+            "2"
+          ],
+          [
+            "AI 디지털 대전환",
+            "연역적추론실무",
+            "2"
+          ],
+          [
+            "AI 디지털 대전환",
+            "Deductive Reasoning",
+            "2"
+          ],
+          [
+            "AI 디지털 대전환",
+            "서비스경험설계",
+            "2"
+          ],
+          [
+            "AI 디지털 대전환",
+            "Service Experience Design",
+            "2"
+          ],
+          [
+            "AI 디지털 대전환",
+            "비판적사고론",
+            "2"
+          ],
+          [
+            "AI 디지털 대전환",
+            "Critical Thinking",
+            "2"
+          ],
+          [
+            "AI 디지털 대전환",
+            "복잡계이론의이해",
+            "2"
+          ],
+          [
+            "AI 디지털 대전환",
+            "Complex Systems Theory",
+            "2"
+          ],
+          [
+            "AI 디지털 대전환",
+            "시스템다이내믹스",
+            "2"
+          ],
+          [
+            "AI 디지털 대전환",
+            "System Dynamics",
+            "2"
+          ],
+          [
+            "AI 디지털 대전환",
+            "전략적사고훈련",
+            "2"
+          ],
+          [
+            "AI 디지털 대전환",
+            "Strategic Thinking",
+            "2"
+          ],
+          [
+            "AI 디지털 대전환",
+            "직관적사고훈련",
+            "2"
+          ],
+          [
+            "AI 디지털 대전환",
+            "Intuitive Thinking Training",
+            "2"
+          ],
+          [
+            "AI 디지털 대전환",
+            "아이디어발상기법",
+            "2"
+          ],
+          [
+            "AI 디지털 대전환",
+            "Idea Generation Techniques",
+            "2"
+          ],
+          [
+            "AI 디지털 대전환",
+            "브레인스토밍기법",
+            "2"
+          ],
+          [
+            "AI 디지털 대전환",
+            "Brainstorming Techniques",
+            "2"
+          ],
+          [
+            "AI 디지털 대전환",
+            "혁신비즈니스모델",
+            "2"
+          ],
+          [
+            "AI 디지털 대전환",
+            "Innovation Business Model",
+            "2"
+          ],
+          [
+            "AI 디지털 대전환",
+            "마인드맵과시각화",
+            "2"
+          ],
+          [
+            "AI 디지털 대전환",
+            "Mind Mapping & Visualization",
+            "2"
+          ],
+          [
+            "AI 디지털 대전환",
+            "데이터기반논리",
+            "2"
+          ],
+          [
+            "AI 디지털 대전환",
+            "Data-Driven Logic",
+            "2"
+          ],
+          [
+            "AI 디지털 대전환",
+            "창의적조직문화",
+            "2"
+          ],
+          [
+            "AI 디지털 대전환",
+            "Creative Organizational Culture",
+            "2"
+          ],
+          [
+            "AI 디지털 대전환",
+            "창의적문제해결실무",
+            "2"
+          ],
+          [
+            "AI 디지털 대전환",
+            "Creative Problem Solving",
+            "2"
+          ],
+          [
+            "AI 디지털 대전환",
+            "분석적사고기법",
+            "2"
+          ],
+          [
+            "AI 디지털 대전환",
+            "Analytical Thinking",
+            "2"
+          ],
+          [
+            "AI 디지털 대전환",
+            "구조적사고워크숍",
+            "2"
+          ],
+          [
+            "AI 디지털 대전환",
+            "Structured Thinking Workshop",
+            "2"
+          ],
+          [
+            "Carbon Neutrality and Energy Great Transformation",
+            "커뮤니티비즈니스",
+            "3"
+          ],
+          [
+            "Carbon Neutrality and Energy Great Transformation",
+            "Community Business",
+            "3"
+          ],
+          [
+            "Carbon Neutrality and Energy Great Transformation",
+            "지속가능발전론",
+            "3"
+          ],
+          [
+            "Carbon Neutrality and Energy Great Transformation",
+            "Sustainable Development",
+            "3"
+          ],
+          [
+            "Carbon Neutrality and Energy Great Transformation",
+            "환경윤리실무",
+            "3"
+          ],
+          [
+            "Carbon Neutrality and Energy Great Transformation",
+            "Environmental Ethics",
+            "3"
+          ],
+          [
+            "Carbon Neutrality and Energy Great Transformation",
+            "인권과기술",
+            "3"
+          ],
+          [
+            "Carbon Neutrality and Energy Great Transformation",
+            "Human Rights & Technology",
+            "3"
+          ],
+          [
+            "Carbon Neutrality and Energy Great Transformation",
+            "Enrollment Event for REC_PERSON_09_LT_CSV_01",
+            "3"
+          ],
+          [
+            "Carbon Neutrality and Energy Great Transformation",
+            "REC_PERSON_09_LT_CSV_01 기반 등록 제안 이벤트",
+            "3"
+          ],
+          [
+            "Carbon Neutrality and Energy Great Transformation",
+            "사회혁신방법론",
+            "3"
+          ],
+          [
+            "Carbon Neutrality and Energy Great Transformation",
+            "Social Innovation Methods",
+            "3"
+          ],
+          [
+            "Carbon Neutrality and Energy Great Transformation",
+            "탄소중립과사회",
+            "3"
+          ],
+          [
+            "Carbon Neutrality and Energy Great Transformation",
+            "Carbon Neutrality & Society",
+            "3"
+          ],
+          [
+            "Carbon Neutrality and Energy Great Transformation",
+            "민주주의와거버넌스",
+            "3"
+          ],
+          [
+            "Carbon Neutrality and Energy Great Transformation",
+            "Democracy & Governance",
+            "3"
+          ],
+          [
+            "Carbon Neutrality and Energy Great Transformation",
+            "기술윤리론",
+            "3"
+          ],
+          [
+            "Carbon Neutrality and Energy Great Transformation",
+            "Technology Ethics",
+            "3"
+          ],
+          [
+            "탄소중립 및 에너지 대전환",
+            "커뮤니티비즈니스",
+            "3"
+          ],
+          [
+            "탄소중립 및 에너지 대전환",
+            "Community Business",
+            "3"
+          ],
+          [
+            "탄소중립 및 에너지 대전환",
+            "지속가능발전론",
+            "3"
+          ],
+          [
+            "탄소중립 및 에너지 대전환",
+            "Sustainable Development",
+            "3"
+          ],
+          [
+            "탄소중립 및 에너지 대전환",
+            "환경윤리실무",
+            "3"
+          ],
+          [
+            "탄소중립 및 에너지 대전환",
+            "Environmental Ethics",
+            "3"
+          ],
+          [
+            "탄소중립 및 에너지 대전환",
+            "인권과기술",
+            "3"
+          ],
+          [
+            "탄소중립 및 에너지 대전환",
+            "Human Rights & Technology",
+            "3"
+          ],
+          [
+            "탄소중립 및 에너지 대전환",
+            "Enrollment Event for REC_PERSON_09_LT_CSV_01",
+            "3"
+          ],
+          [
+            "탄소중립 및 에너지 대전환",
+            "REC_PERSON_09_LT_CSV_01 기반 등록 제안 이벤트",
+            "3"
+          ],
+          [
+            "탄소중립 및 에너지 대전환",
+            "사회혁신방법론",
+            "3"
+          ],
+          [
+            "탄소중립 및 에너지 대전환",
+            "Social Innovation Methods",
+            "3"
+          ],
+          [
+            "탄소중립 및 에너지 대전환",
+            "탄소중립과사회",
+            "3"
+          ],
+          [
+            "탄소중립 및 에너지 대전환",
+            "Carbon Neutrality & Society",
+            "3"
+          ],
+          [
+            "탄소중립 및 에너지 대전환",
+            "민주주의와거버넌스",
+            "3"
+          ],
+          [
+            "탄소중립 및 에너지 대전환",
+            "Democracy & Governance",
+            "3"
+          ],
+          [
+            "탄소중립 및 에너지 대전환",
+            "기술윤리론",
+            "3"
+          ],
+          [
+            "탄소중립 및 에너지 대전환",
+            "Technology Ethics",
+            "3"
+          ]
+        ],
         "error": null,
         "truncated": false
       }
