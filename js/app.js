@@ -844,6 +844,20 @@ const App = {
       });
     }
 
+    // Split layout: radar left, description right
+    if (view && !view.querySelector('.talent-chart-split')) {
+      const chartContainer = view.querySelector('.chart-container');
+      const split = document.createElement('div');
+      split.className = 'talent-chart-split policy-chart-split';
+      const descDiv = document.createElement('div');
+      descDiv.id = 'talentDesc';
+      descDiv.className = 'talent-desc-panel policy-legend-panel';
+      chartContainer.parentNode.insertBefore(split, chartContainer);
+      split.appendChild(chartContainer);
+      chartContainer.classList.add('policy-chart-half');
+      split.appendChild(descDiv);
+    }
+
     if (!this._talentClassMode) this._talentClassMode = 'competency';
     this._updateTalentChart();
     this._renderTalentStats();
@@ -878,7 +892,40 @@ const App = {
     const currentData = counts.map(c => Math.round(30 + (c / maxCount) * 60));
     const targetData  = currentData.map(v => Math.min(100, Math.round(v * 1.15)));
 
-    const modeLabel = { competency: '역량 분야별', org: '기관별', strategy: '전략별', target: '대상 그룹별' };
+    const modeDescriptions = {
+      competency: {
+        'AI·인프라 역량':     'AI·클라우드·데이터 인프라 설계 및 운영 역량',
+        '기술보안 역량':      '사이버보안·정보보호 전문 기술 역량',
+        '녹색기술·탄소중립 역량': '탄소중립·친환경 기술 및 에너지 전환 역량',
+        '데이터 활용 역량':   '데이터 분석·시각화·의사결정 지원 역량',
+        '디자인 역량':        'UX/UI 및 서비스 디자인 창의적 역량',
+        '마케팅 전략 역량':   '디지털 마케팅·브랜딩·시장 전략 역량',
+        '바이오헬스 역량':    '바이오·헬스케어 기술 및 임상 역량',
+        '반도체 설계 역량':   '반도체 회로 설계 및 첨단소재 개발 역량',
+        '소프트웨어 개발 역량': '프로그래밍·SW 아키텍처 설계 역량',
+        '행정법무 역량':      '공공행정·법무·정책 기획 역량',
+      },
+      org: {
+        '고용노동부':         '직업훈련·고용서비스·노동시장 정책 총괄',
+        '과학기술정보통신부': 'AI·ICT·디지털 전환 R&D 및 인재 양성',
+        '교육부':             '학교·대학 교육과정 및 평생학습 정책',
+        '국방부':             '국방 전문인력 양성 및 방산기술 역량 개발',
+        '문화체육관광부':     '문화콘텐츠·관광·스포츠 분야 인재 육성',
+        '산업통상자원부':     '산업기술·에너지·통상 분야 전문인력 지원',
+        '인사혁신처':         '공무원 역량개발 및 공직 인재 경쟁력 강화',
+      },
+      strategy: {},
+      target: {
+        '경력단절여성': '경력 단절 후 재취업을 준비하는 여성 대상',
+        '다문화가정':   '다문화 배경 구성원의 역량 강화 지원',
+        '은퇴자':       '퇴직 후 사회 재참여 및 재취업 준비 인력',
+        '일반인':       '특별한 제한 없이 참여 가능한 일반 시민',
+        '재직자':       '현재 직장에 재직 중인 종사자 대상 향상 교육',
+        '전문가':       '해당 분야 전문 지식 보유자 심화 역량 개발',
+        '청소년':       '미래 인재 육성을 위한 청소년 대상 교육',
+        '취약계층':     '경제적·사회적 취약 계층의 자립 역량 지원',
+      },
+    };
 
     this._chart('talentChart', 'radar', {
       labels,
@@ -926,6 +973,44 @@ const App = {
         },
       },
     });
+
+    // Right-side description panel
+    const descEl = document.getElementById('talentDesc');
+    if (!descEl) return;
+    const descMap = mode === 'strategy'
+      ? Object.fromEntries(d.strategies.map(s => [s.name, s.description || s.en || '국가 핵심 전략 분야']))
+      : (modeDescriptions[mode] || {});
+
+    const gapLabel = { competency: '역량분야', org: '기관', strategy: '전략', target: '대상그룹' };
+    descEl.innerHTML = `
+      <div style="font-size:11px;color:#00d4ff;font-weight:600;letter-spacing:.06em;margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid rgba(0,212,255,0.2)">
+        ${gapLabel[mode] || ''} 현황 · 목표 갭
+      </div>
+      ${entries.map(([label, count], i) => {
+        const current = currentData[i];
+        const target  = targetData[i];
+        const gap     = target - current;
+        const desc    = descMap[label] || '';
+        const pct     = Math.round((current / 100) * 100);
+        return `
+          <div class="talent-desc-item" style="margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,0.05)">
+            <div style="display:flex;align-items:center;gap:6px;margin-bottom:3px">
+              <span style="width:8px;height:8px;border-radius:50%;background:#00d4ff;display:inline-block;flex-shrink:0"></span>
+              <span style="font-size:12px;font-weight:600;color:#e0e8f0">${label}</span>
+              <span style="margin-left:auto;font-size:11px;color:#00d4ff">${count}개</span>
+            </div>
+            ${desc ? `<div style="font-size:10px;color:#8090a0;margin:2px 0 4px 14px;line-height:1.4">${desc}</div>` : ''}
+            <div style="margin-left:14px">
+              <div style="display:flex;justify-content:space-between;font-size:10px;color:#607080;margin-bottom:2px">
+                <span>현재 ${current}</span><span>목표 ${target} <span style="color:#00ff41">+${gap}</span></span>
+              </div>
+              <div style="height:4px;background:rgba(255,255,255,0.08);border-radius:2px;overflow:hidden">
+                <div style="height:100%;width:${pct}%;background:linear-gradient(90deg,#00d4ff,#0099cc);border-radius:2px"></div>
+              </div>
+            </div>
+          </div>`;
+      }).join('')}
+    `;
   },
 
   _renderTalentStats() {
