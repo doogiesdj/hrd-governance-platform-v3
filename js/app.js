@@ -57,7 +57,13 @@ const App = {
       case 'program': this._renderProgram(); break;
       case 'talent': this._renderTalent(); break;
       case 'competency': this._renderCompetency(); break;
+      case 'ontology':   this._renderOntology();   break;
     }
+  },
+
+  _renderOntology() {
+    if (typeof VowlGraph === 'undefined') return;
+    setTimeout(() => VowlGraph.build('vowl-container'), 50);
   },
 
   // --- Detail Panel ---
