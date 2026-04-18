@@ -2078,3 +2078,84 @@ body {
   border-radius: 2px;
   vertical-align: middle;
 }
+
+/* Property-context nodes (classes connected via objectProp) */
+.og-node-propctx rect { fill: #0d2818; stroke: #3fb950; stroke-width: 1.5; stroke-dasharray: 4 2; }
+.og-node-propctx text { fill: #3fb950; }
+
+/* Object property edges */
+.og-link-objectProp { stroke: #3fb950; stroke-width: 1.5; stroke-dasharray: 6 3; }
+
+/* Edge labels on objectProp links */
+.og-link-label {
+  fill: #3fb950;
+  font-size: 9px;
+  font-family: 'Consolas', monospace;
+  pointer-events: none;
+}
+
+/* Info panel property rows */
+.og-prop-row {
+  padding-left: 6px;
+  border-left: 2px solid #3fb950;
+  margin: 2px 0;
+}
+.og-prop-tag {
+  color: #3fb950;
+  font-weight: bold;
+  margin-right: 4px;
+}
+
+/* Legend propctx icon */
+.og-legend-propctx {
+  display: inline-block;
+  width: 11px;
+  height: 11px;
+  background: #0d2818;
+  border: 1.5px dashed #3fb950;
+  border-radius: 2px;
+  vertical-align: middle;
+}
+
+/* Legend link type row */
+.og-legend-links {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 3px 8px;
+  font-size: 10px;
+  color: #6e7681;
+  border-bottom: 1px solid #21262d;
+}
+
+/* Link type legend icons */
+.og-legend-link-sub {
+  display: inline-block;
+  width: 22px;
+  height: 2px;
+  background: #5b9bd5;
+  vertical-align: middle;
+}
+.og-legend-link-inst {
+  display: inline-block;
+  width: 22px;
+  height: 2px;
+  background: #e08040;
+  vertical-align: middle;
+}
+.og-legend-link-prop {
+  display: inline-block;
+  width: 22px;
+  height: 2px;
+  background: #3fb950;
+  vertical-align: middle;
+}
+
+/* Info status line */
+.og-info-status {
+  margin-top: 6px;
+  font-size: 11px;
+  color: #58a6ff;
+  border-top: 1px solid #30363d;
+  padding-top: 4px;
+}
