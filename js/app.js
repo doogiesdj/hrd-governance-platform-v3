@@ -1637,7 +1637,11 @@ const App = {
     const l3 = l3Label[comp.level3] || comp.level3 || '';
     const descStr = l2Desc[comp.level2] || '';
 
-    const relPrograms = HRDData.programs.filter(p => p.competencyCategory === comp.category);
+    const relPrograms = HRDData.programs.filter(p =>
+      p.targetCompetencyId === comp.id ||
+      p.competencyCategory === comp.category ||
+      (comp.catCode && p.fieldCatCode === comp.catCode)
+    );
 
     const progHtml = relPrograms.length
       ? relPrograms.slice(0, 8).map(p => `
