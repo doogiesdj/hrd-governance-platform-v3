@@ -58,12 +58,117 @@ const App = {
       case 'talent': this._renderTalent(); break;
       case 'competency': this._renderCompetency(); break;
       case 'ontology':   this._renderOntology();   break;
+      case 'sparql':     this._renderSparql();     break;
     }
   },
 
   _renderOntology() {
     if (typeof VowlGraph === 'undefined') return;
     setTimeout(() => VowlGraph.build('vowl-container'), 50);
+  },
+
+  // --- SPARQL View ---
+  _sparqlData: null,
+
+  async _renderSparql() {
+    if (this._sparqlData) { this._buildSparqlUI(); return; }
+    const container = document.getElementById('sparqlCategoryList');
+    if (container) container.innerHTML = '<div class="sparql-loading">데이터 로딩 중...</div>';
+    try {
+      const resp = await fetch('data/sparql_results.json');
+      this._sparqlData = await resp.json();
+      this._buildSparqlUI();
+    } catch (e) {
+      if (container) container.innerHTML = `<div class="sparql-error-msg">⚠ 데이터 로드 실패: ${e.message}</div>`;
+    }
+  },
+
+  _buildSparqlUI() {
+    const data = this._sparqlData;
+    const container = document.getElementById('sparqlCategoryList');
+    if (!container) return;
+    container.innerHTML = '';
+
+    data.categories.forEach(cat => {
+      const sec = document.createElement('div');
+      sec.className = 'sparql-category';
+
+      const hdr = document.createElement('div');
+      hdr.className = 'sparql-category-header';
+      hdr.innerHTML = `<span class="sparql-category-id">${cat.id}</span><span class="sparql-category-label">${cat.label}<br><small style="opacity:.6;font-size:9px;">${cat.labelEn}</small></span><span class="sparql-category-chevron">▼</span>`;
+      hdr.addEventListener('click', () => sec.classList.toggle('collapsed'));
+
+      const list = document.createElement('div');
+      list.className = 'sparql-query-list';
+
+      cat.queries.forEach(q => {
+        const btn = document.createElement('button');
+        btn.className = 'sparql-query-btn';
+        const qdata = data.queries[q.id];
+        if (qdata && qdata.result && qdata.result.error) btn.classList.add('has-error');
+        btn.innerHTML = `<span class="sparql-qid">${q.id}</span>${q.title}`;
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.sparql-query-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          this._showSparqlResult(q.id);
+        });
+        list.appendChild(btn);
+      });
+
+      sec.appendChild(hdr);
+      sec.appendChild(list);
+      container.appendChild(sec);
+    });
+  },
+
+  _showSparqlResult(qid) {
+    const data = this._sparqlData;
+    const qdata = data.queries[qid];
+    if (!qdata) return;
+
+    const placeholder = document.getElementById('sparqlPlaceholder');
+    const content = document.getElementById('sparqlResultContent');
+    const titleEl = document.getElementById('sparqlResultTitle');
+    const codeEl = document.getElementById('sparqlCode');
+    const tableWrap = document.getElementById('sparqlTableWrap');
+    const toggleBtn = document.getElementById('sparqlToggleBtn');
+
+    if (placeholder) placeholder.style.display = 'none';
+    if (content) content.style.display = 'flex';
+    if (titleEl) titleEl.textContent = `[${qid}] ${qdata.title}`;
+    if (codeEl) { codeEl.textContent = qdata.sparql; codeEl.style.display = 'none'; }
+
+    if (toggleBtn) {
+      toggleBtn.classList.remove('active');
+      toggleBtn.onclick = () => {
+        const visible = codeEl.style.display !== 'none';
+        codeEl.style.display = visible ? 'none' : 'block';
+        toggleBtn.classList.toggle('active', !visible);
+        toggleBtn.textContent = visible ? 'SPARQL 보기' : 'SPARQL 숨기기';
+      };
+    }
+
+    if (!tableWrap) return;
+    const res = qdata.result;
+
+    if (res.error) {
+      tableWrap.innerHTML = `<div class="sparql-error-msg">⚠ 쿼리 오류: ${res.error}</div>`;
+      return;
+    }
+    if (!res.rows || res.rows.length === 0) {
+      tableWrap.innerHTML = '<div class="sparql-empty-msg">결과 없음 (0 rows)</div>';
+      return;
+    }
+
+    const truncNote = res.truncated ? `<div class="sparql-truncated-note">⚠ 결과가 500행으로 제한되었습니다.</div>` : '';
+    const rowCount = `<div class="sparql-row-count">${res.rows.length}개 결과${res.truncated ? ' (truncated)' : ''}</div>`;
+
+    const thead = `<thead><tr>${res.columns.map(c => `<th>${c}</th>`).join('')}</tr></thead>`;
+    const tbody = `<tbody>${res.rows.map(row =>
+      `<tr>${row.map(cell => `<td title="${(cell || '').replace(/"/g, '&quot;')}">${cell != null ? cell : ''}</td>`).join('')}</tr>`
+    ).join('')}</tbody>`;
+
+    tableWrap.innerHTML = rowCount + `<table class="sparql-result-table">${thead}${tbody}</table>` + truncNote;
   },
 
   // --- Detail Panel ---

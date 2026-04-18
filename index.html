@@ -78,6 +78,11 @@
                         <span class="nav-label">온톨로지</span>
                         <span class="nav-text">Ontology</span>
                     </button>
+                    <button class="nav-item" data-layer="sparql">
+                        <span class="nav-icon">🔍</span>
+                        <span class="nav-label">SPARQL</span>
+                        <span class="nav-text">SPARQL</span>
+                    </button>
                 </nav>
             </aside>
 
@@ -292,6 +297,34 @@
                         </div>
                     </div>
                 </section>
+                <!-- SPARQL View -->
+                <section class="view" id="view-sparql">
+                    <div class="view-header">
+                        <h2>SPARQL 쿼리 탐색기</h2>
+                        <span class="subtitle">SPARQL Query Explorer</span>
+                    </div>
+                    <div class="sparql-layout">
+                        <div class="sparql-sidebar">
+                            <div id="sparqlCategoryList" class="sparql-category-list"></div>
+                        </div>
+                        <div class="sparql-result-panel">
+                            <div id="sparqlPlaceholder" class="sparql-placeholder">
+                                <div class="sparql-placeholder-icon">🔍</div>
+                                <div>좌측에서 쿼리를 선택하세요</div>
+                                <div class="sparql-placeholder-sub">Select a query from the left panel</div>
+                            </div>
+                            <div id="sparqlResultContent" class="sparql-result-content" style="display:none;">
+                                <div class="sparql-result-header">
+                                    <div class="sparql-result-title" id="sparqlResultTitle"></div>
+                                    <button class="sparql-sparql-toggle" id="sparqlToggleBtn">SPARQL 보기</button>
+                                </div>
+                                <pre id="sparqlCode" class="sparql-code" style="display:none;"></pre>
+                                <div id="sparqlTableWrap" class="sparql-table-wrap"></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
                 <!-- Ontology View -->
                 <section class="view" id="view-ontology">
                     <div class="view-header">

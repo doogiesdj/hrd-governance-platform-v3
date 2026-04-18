@@ -1279,3 +1279,304 @@ body {
     page-break-after: always;
   }
 }
+
+/* ============================================================
+   SPARQL Query Explorer
+   ============================================================ */
+
+.sparql-layout {
+  display: flex;
+  gap: 0;
+  height: calc(100vh - 180px);
+  overflow: hidden;
+}
+
+.sparql-sidebar {
+  width: 280px;
+  flex-shrink: 0;
+  overflow-y: auto;
+  border-right: 1px solid var(--color-border);
+  padding: 8px;
+  background: var(--color-bg-secondary);
+}
+
+.sparql-sidebar::-webkit-scrollbar { width: 4px; }
+.sparql-sidebar::-webkit-scrollbar-track { background: transparent; }
+.sparql-sidebar::-webkit-scrollbar-thumb { background: rgba(0,212,255,0.2); border-radius: 2px; }
+
+.sparql-category {
+  margin-bottom: 8px;
+}
+
+.sparql-category-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 8px;
+  background: rgba(0, 212, 255, 0.06);
+  border: 1px solid rgba(0, 212, 255, 0.15);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  user-select: none;
+  font-size: 11px;
+  color: var(--color-cyan);
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.sparql-category-header:hover {
+  background: rgba(0, 212, 255, 0.12);
+}
+
+.sparql-category-id {
+  background: var(--color-cyan);
+  color: var(--color-bg-primary);
+  border-radius: 3px;
+  padding: 1px 5px;
+  font-size: 10px;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.sparql-category-label {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sparql-category-chevron {
+  font-size: 10px;
+  transition: transform var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.sparql-category.collapsed .sparql-category-chevron {
+  transform: rotate(-90deg);
+}
+
+.sparql-query-list {
+  padding: 4px 0 2px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.sparql-category.collapsed .sparql-query-list {
+  display: none;
+}
+
+.sparql-query-btn {
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  color: var(--color-text-secondary);
+  font-family: var(--font-primary);
+  font-size: 11px;
+  padding: 4px 8px;
+  cursor: pointer;
+  text-align: left;
+  line-height: 1.4;
+  transition: all var(--transition-fast);
+  word-break: break-all;
+}
+
+.sparql-query-btn:hover {
+  background: rgba(0, 212, 255, 0.08);
+  border-color: rgba(0, 212, 255, 0.2);
+  color: var(--color-text-primary);
+}
+
+.sparql-query-btn.active {
+  background: rgba(0, 212, 255, 0.15);
+  border-color: var(--color-cyan);
+  color: var(--color-cyan);
+}
+
+.sparql-query-btn.has-error {
+  color: var(--color-red);
+  opacity: 0.7;
+}
+
+.sparql-query-btn .sparql-qid {
+  font-size: 10px;
+  opacity: 0.6;
+  margin-right: 4px;
+}
+
+/* Result Panel */
+.sparql-result-panel {
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background: var(--color-bg-primary);
+}
+
+.sparql-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: 12px;
+  color: var(--color-text-muted);
+  font-size: 13px;
+}
+
+.sparql-placeholder-icon {
+  font-size: 36px;
+  opacity: 0.4;
+}
+
+.sparql-placeholder-sub {
+  font-size: 11px;
+  opacity: 0.6;
+}
+
+.sparql-result-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+
+.sparql-result-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-bg-secondary);
+  flex-shrink: 0;
+}
+
+.sparql-result-title {
+  flex: 1;
+  font-size: 12px;
+  color: var(--color-cyan);
+  font-weight: bold;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sparql-sparql-toggle {
+  background: transparent;
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  border-radius: var(--radius-sm);
+  color: var(--color-text-secondary);
+  font-family: var(--font-primary);
+  font-size: 10px;
+  padding: 3px 10px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.sparql-sparql-toggle:hover,
+.sparql-sparql-toggle.active {
+  background: rgba(0, 212, 255, 0.1);
+  border-color: var(--color-cyan);
+  color: var(--color-cyan);
+}
+
+.sparql-code {
+  margin: 0;
+  padding: 12px 16px;
+  background: var(--color-bg-tertiary);
+  border-bottom: 1px solid var(--color-border);
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  color: var(--color-text-secondary);
+  overflow: auto;
+  max-height: 220px;
+  flex-shrink: 0;
+  white-space: pre;
+}
+
+.sparql-table-wrap {
+  flex: 1;
+  overflow: auto;
+  padding: 12px 16px;
+}
+
+.sparql-table-wrap::-webkit-scrollbar { width: 6px; height: 6px; }
+.sparql-table-wrap::-webkit-scrollbar-track { background: transparent; }
+.sparql-table-wrap::-webkit-scrollbar-thumb { background: rgba(0,212,255,0.2); border-radius: 3px; }
+
+.sparql-error-msg {
+  padding: 20px;
+  color: var(--color-red);
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sparql-empty-msg {
+  padding: 20px;
+  color: var(--color-text-muted);
+  font-size: 12px;
+}
+
+.sparql-result-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 11px;
+  table-layout: auto;
+}
+
+.sparql-result-table th {
+  background: rgba(0, 212, 255, 0.08);
+  border: 1px solid rgba(0, 212, 255, 0.15);
+  padding: 6px 10px;
+  color: var(--color-cyan);
+  text-align: left;
+  white-space: nowrap;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  font-size: 11px;
+  letter-spacing: 0.3px;
+}
+
+.sparql-result-table td {
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 4px 10px;
+  color: var(--color-text-secondary);
+  max-width: 320px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  vertical-align: top;
+}
+
+.sparql-result-table tr:nth-child(even) td {
+  background: rgba(0, 212, 255, 0.02);
+}
+
+.sparql-result-table tr:hover td {
+  background: rgba(0, 212, 255, 0.06);
+  color: var(--color-text-primary);
+}
+
+.sparql-row-count {
+  font-size: 10px;
+  color: var(--color-text-muted);
+  margin-bottom: 8px;
+}
+
+.sparql-truncated-note {
+  font-size: 10px;
+  color: var(--color-yellow);
+  margin-top: 6px;
+}
+
+.sparql-loading {
+  padding: 30px;
+  color: var(--color-text-muted);
+  font-size: 12px;
+  text-align: center;
+}
