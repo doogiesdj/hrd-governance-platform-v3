@@ -573,27 +573,59 @@ const App = {
     this._setKPI('maxBudget', d.formatWon(max));
 
     const sorted = [...d.budgets].sort((a, b) => (b.amount || 0) - (a.amount || 0));
+    this._renderBudgetList('budgetList', sorted);
 
-    const chartContainer = document.querySelector('#view-budget .chart-container');
-    if (chartContainer) chartContainer.style.minHeight = Math.max(400, sorted.length * 28 + 60) + 'px';
+    // Category tabs
+    this._budgetCatKey = 'byOrg';
+    this._renderBudgetCatChart('byOrg');
 
-    this._chart('budgetChart', 'bar', {
-      labels: sorted.map(b => b.name),
+    const tabs = document.getElementById('budgetCatTabs');
+    if (tabs) {
+      tabs.querySelectorAll('.budget-cat-tab').forEach(btn => {
+        btn.addEventListener('click', () => {
+          tabs.querySelectorAll('.budget-cat-tab').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          this._budgetCatKey = btn.dataset.cat;
+          this._renderBudgetCatChart(btn.dataset.cat);
+        });
+      });
+    }
+  },
+
+  _renderBudgetCatChart(catKey) {
+    const ba = HRDData.budgetAnalysis;
+    if (!ba || !ba[catKey]) {
+      const el = document.getElementById('budgetCatList');
+      if (el) el.innerHTML = '<span style="color:#a0aab8">데이터 로딩 중...</span>';
+      return;
+    }
+    const groups = ba[catKey];
+    const top = groups.slice(0, 20);
+
+    const wrap = document.querySelector('.budget-cat-chart-wrap');
+    if (wrap) wrap.style.height = Math.max(320, top.length * 30 + 60) + 'px';
+
+    this._chart('budgetCatChart', 'bar', {
+      labels: top.map(g => g.key),
       datasets: [{
-        label: '예산 (원)',
-        data: sorted.map(b => b.amount || 0),
-        backgroundColor: 'rgba(255,215,0,0.3)',
-        borderColor: '#ffd700',
+        label: '예산합계',
+        data: top.map(g => g.totalAmount),
+        backgroundColor: 'rgba(255,165,0,0.35)',
+        borderColor: '#ffa500',
         borderWidth: 1,
+        borderRadius: 3,
       }],
     }, {
       indexAxis: 'y',
+      onClick: (evt, elems) => {
+        if (elems.length) this._showBudgetCatDetail(groups[elems[0].index]);
+      },
       plugins: {
         tooltip: {
           callbacks: {
             label: ctx => {
-              const b = sorted[ctx.dataIndex];
-              return [`금액: ${b.amountStr || d.formatWon(b.amount || 0)}`, `관리기관: ${b.managingOrg || '미지정'}`, `회계연도: FY${b.fiscalYear || '2026'}`];
+              const g = top[ctx.dataIndex];
+              return [`합계: ${g.totalAmountStr}`, `예산 ${g.count}건`];
             },
           },
         },
@@ -606,23 +638,76 @@ const App = {
             font: { size: 11 },
             callback(val) {
               const name = this.getLabelForValue(val);
-              return name.length > 18 ? name.slice(0, 17) + '…' : name;
+              return name.length > 16 ? name.slice(0, 15) + '…' : name;
             },
           },
-          grid: { color: 'rgba(26,58,74,0.5)' },
+          grid: { color: 'rgba(26,58,74,0.4)' },
         },
         x: {
           ticks: {
             color: '#a0aab8',
             font: { size: 10 },
-            callback: v => v >= 1e10 ? (v / 1e8).toFixed(0) + '억' : v >= 1e8 ? (v / 1e8).toFixed(0) + '억' : v,
+            callback: v => v >= 1e8 ? (v / 1e8).toFixed(0) + '억' : v,
           },
-          grid: { color: 'rgba(26,58,74,0.5)' },
+          grid: { color: 'rgba(26,58,74,0.4)' },
         },
       },
     });
 
-    this._renderBudgetList('budgetList', sorted);
+    const listEl = document.getElementById('budgetCatList');
+    if (!listEl) return;
+    listEl.innerHTML = groups.map((g, i) => `
+      <div class="budget-cat-item" data-idx="${i}">
+        <span class="budget-cat-rank">${i + 1}</span>
+        <span class="budget-cat-name">${g.key}</span>
+        <span class="budget-cat-amt">${g.totalAmountStr}</span>
+        <span class="budget-cat-cnt">${g.count}건</span>
+      </div>
+    `).join('');
+    listEl.querySelectorAll('.budget-cat-item').forEach(row => {
+      row.addEventListener('click', () => this._showBudgetCatDetail(groups[+row.dataset.idx]));
+    });
+  },
+
+  _showBudgetCatDetail(group) {
+    const d = HRDData;
+    const budgets = group.budgets || [];
+    const budgetRows = budgets.map(b => `
+      <div class="budget-popup-item">
+        <div class="budget-popup-name">${b.name}</div>
+        <div class="budget-popup-meta">
+          <span class="budget-popup-amt">${b.amountStr}</span>
+          ${b.executedAmount > 0 ? `<span class="budget-popup-exec">집행 ${b.executedAmountStr}${b.execRate != null ? ' (' + b.execRate + '%)' : ''}</span>` : ''}
+          ${b.managingOrg ? `<span class="budget-popup-org">${b.managingOrg}</span>` : ''}
+          ${b.policy ? `<span class="budget-popup-tag">정책: ${b.policy}</span>` : ''}
+          ${b.strategy ? `<span class="budget-popup-tag">전략: ${b.strategy}</span>` : ''}
+          ${b.fiscalYear ? `<span class="budget-popup-tag">FY${b.fiscalYear}</span>` : ''}
+          ${b.programs && b.programs.length ? `<span class="budget-popup-tag">프로그램 ${b.programs.length}개</span>` : ''}
+        </div>
+      </div>
+    `).join('');
+
+    const html = `
+      <div class="detail-header">
+        <div class="detail-type-badge" style="background:rgba(255,165,0,0.15);color:#ffa500;border-color:rgba(255,165,0,0.4)">예산 분류</div>
+        <h2 class="detail-title">${group.key}</h2>
+      </div>
+      <div class="detail-grid-2">
+        <div class="detail-section">
+          <div class="detail-section-title">총 예산합계</div>
+          <div class="detail-budget-value">${group.totalAmountStr}</div>
+        </div>
+        <div class="detail-section">
+          <div class="detail-section-title">예산 건수</div>
+          <div class="detail-budget-value">${group.count}건</div>
+        </div>
+      </div>
+      <div class="detail-section">
+        <div class="detail-section-title">예산 항목 (${budgets.length}건)</div>
+        <div class="budget-popup-list">${budgetRows || '<span class="detail-empty">상세 데이터 없음</span>'}</div>
+      </div>
+    `;
+    this._openDetail(html);
   },
 
   _renderBudgetList(containerId, budgets) {

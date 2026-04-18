@@ -3,16 +3,29 @@
 
 const HRDData = {
   raw: null,
+  budgetAnalysis: null,
 
   async load() {
-    try {
-      const res = await fetch('data/ontology.json');
-      if (!res.ok) throw new Error('fetch failed');
-      const parsed = await res.json();
-      // Handle both wrapped ({meta, strategies, ...}) and flat ({strategies, ...}) formats
-      this.raw = parsed.strategies ? parsed : (parsed.meta ? parsed : this._demo());
-    } catch {
-      this.raw = this._demo();
+    if (typeof OntologyData !== 'undefined') {
+      this.raw = OntologyData;
+    } else {
+      try {
+        const res = await fetch('data/ontology.json');
+        if (!res.ok) throw new Error('fetch failed');
+        const parsed = await res.json();
+        // Handle both wrapped ({meta, strategies, ...}) and flat ({strategies, ...}) formats
+        this.raw = parsed.strategies ? parsed : (parsed.meta ? parsed : this._demo());
+      } catch {
+        this.raw = this._demo();
+      }
+    }
+    if (typeof BudgetAnalysisData !== 'undefined') {
+      this.budgetAnalysis = BudgetAnalysisData;
+    } else {
+      try {
+        const res2 = await fetch('data/budget_analysis.json');
+        if (res2.ok) this.budgetAnalysis = await res2.json();
+      } catch { /* optional */ }
     }
     return this.raw;
   },
