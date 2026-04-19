@@ -246,6 +246,12 @@ const OntoGraf = (() => {
     return Object.entries(HIERARCHY).filter(([, p]) => p === cls).map(([c]) => c).sort();
   }
 
+  function _depthOf(cls) {
+    let d = 0, cur = HIERARCHY[cls];
+    while (cur) { d++; cur = HIERARCHY[cur]; }
+    return d;
+  }
+
   function _allClasses() {
     const s = new Set(ROOT_CLASSES);
     Object.keys(HIERARCHY).forEach(k => s.add(k));
@@ -304,6 +310,7 @@ const OntoGraf = (() => {
     _syncTreeHighlight();
     _updateBadge();
     _buildMultiGraph();
+    _renderInstPanel();
   }
 
   function _toggleInstance(inst, cls) {
@@ -315,6 +322,7 @@ const OntoGraf = (() => {
     _syncTreeHighlight();
     _updateBadge();
     _buildMultiGraph();
+    _renderInstPanel();
   }
 
   function _clearSelection() {
@@ -323,6 +331,7 @@ const OntoGraf = (() => {
     _syncTreeHighlight();
     _updateBadge();
     _buildMultiGraph();
+    _renderInstPanel();
   }
 
   function _syncTreeHighlight() {
@@ -586,7 +595,11 @@ const OntoGraf = (() => {
 
     // Draw nodes
     const nodeSel = g.append('g').selectAll('g.og-node').data(nodes).join('g')
-      .attr('class', d => 'og-node og-node-' + d.type)
+      .attr('class', d => {
+        const isCircle = d.type === 'instance' || d.type === 'selected-inst' || d.type === 'more';
+        const depthCls = isCircle ? '' : ` og-node-depth-${Math.min(_depthOf(d.id), 3)}`;
+        return `og-node og-node-${d.type}${depthCls}`;
+      })
       .call(d3.drag()
         .on('start', (e, d) => { if (!e.active) sim.alphaTarget(0.3).restart(); d.fx = d.x; d.fy = d.y; })
         .on('drag', (e, d) => { d.fx = e.x; d.fy = e.y; })
@@ -666,6 +679,49 @@ const OntoGraf = (() => {
     const hw = NODE_W / 2, hh = NODE_H / 2;
     const r = (Math.abs(dx) * hh > Math.abs(dy) * hw) ? hw / Math.abs(dx) : hh / Math.abs(dy);
     return s.y + dy * r;
+  }
+
+  // ── Instance list panel ───────────────────────────────────────────────────
+  function _renderInstPanel() {
+    const container = document.getElementById('og-inst-panel-list');
+    const body = document.getElementById('og-inst-panel-body');
+    if (!container || !body) return;
+
+    if (_selClasses.size === 0) {
+      container.style.display = 'none';
+      return;
+    }
+
+    let html = '';
+    _selClasses.forEach(cls => {
+      const insts = _instancesOf(cls);
+      const depth = _depthOf(cls);
+      html += `<div class="og-inst-group">`;
+      html += `<div class="og-inst-group-title og-depth-${Math.min(depth, 3)}">${cls} <span class="og-inst-count">(${insts.length}개)</span></div>`;
+      if (insts.length === 0) {
+        html += `<div class="og-inst-empty">인스턴스 없음</div>`;
+      } else {
+        insts.forEach(id => {
+          const name = _getInstanceLabel(id);
+          const isSel = _selInstances.has(id);
+          html += `<div class="og-inst-row${isSel ? ' og-inst-sel' : ''}" data-inst="${id}" data-cls="${cls}">`;
+          html += `<span class="og-inst-bullet">◉</span>`;
+          html += `<span class="og-inst-name">${name !== id ? name : id}</span>`;
+          if (name !== id) html += `<br><span class="og-inst-id-small">${id}</span>`;
+          html += `</div>`;
+        });
+      }
+      html += `</div>`;
+    });
+
+    body.innerHTML = html;
+    container.style.display = 'block';
+
+    body.querySelectorAll('.og-inst-row').forEach(el => {
+      el.addEventListener('click', () => {
+        _toggleInstance(el.dataset.inst, el.dataset.cls);
+      });
+    });
   }
 
   // ── Info panel ────────────────────────────────────────────────────────────
@@ -778,6 +834,10 @@ const OntoGraf = (() => {
           </div>
           <div class="og-tree-hint">클릭: 선택/해제 &nbsp;|&nbsp; ▶ 클릭: 펼치기</div>
           <div class="og-tree-scroll" id="og-tree-scroll"></div>
+          <div class="og-inst-panel-list" id="og-inst-panel-list" style="display:none;">
+            <div class="og-inst-panel-header">📋 인스턴스 전체 목록</div>
+            <div class="og-inst-panel-body" id="og-inst-panel-body"></div>
+          </div>
         </div>
         <div class="og-right-panel">
           <div id="og-graph-wrap" class="og-graph-wrap"></div>

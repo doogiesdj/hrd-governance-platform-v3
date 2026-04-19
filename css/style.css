@@ -1847,6 +1847,7 @@ body {
 
 .og-tree-scroll {
   flex: 1;
+  min-height: 0;
   overflow-y: auto;
   padding: 6px 0;
 }
@@ -1918,19 +1919,33 @@ body {
 
 /* SVG nodes */
 .og-node rect {
-  fill: #1f6feb;
-  stroke: #58a6ff;
+  fill: #1f2d55;
+  stroke: #4a7ae0;
   stroke-width: 1.5;
   cursor: pointer;
 }
 
-.og-node-selected rect { fill: #1a7f37; stroke: #3fb950; stroke-width: 2; }
+/* ── Depth-based class node colors ───────────────────────────── */
+/* Depth 0: Root class — Blue */
+.og-node-depth-0 rect { fill: #0d2655; stroke: #4080d0; stroke-width: 1.5; }
+/* Depth 1: SubClass — Purple */
+.og-node-depth-1 rect { fill: #2d1254; stroke: #8855cc; stroke-width: 1.5; }
+/* Depth 2: Sub-SubClass — Teal */
+.og-node-depth-2 rect { fill: #0d3d3d; stroke: #2a9d9d; stroke-width: 1.5; }
+/* Depth 3+: Deep class — Olive */
+.og-node-depth-3 rect { fill: #2a3d0d; stroke: #6a9d2a; stroke-width: 1.5; }
+
+/* grandcontext dims any depth color */
+.og-node-grandcontext rect { opacity: 0.45; }
+
+/* selected overrides depth (placed after depth rules) */
+.og-node-selected rect { fill: #1a7f37 !important; stroke: #3fb950 !important; stroke-width: 2.5; }
 .og-node-parent rect  { fill: #161b22; stroke: #58a6ff; stroke-width: 1; }
 .og-node-grandparent rect { fill: #0d1117; stroke: #30363d; stroke-width: 1; }
-.og-node-child rect   { fill: #21262d; stroke: #58a6ff; stroke-width: 1; }
+.og-node-child rect   { opacity: 1; }
 .og-node-grandchild rect { fill: #161b22; stroke: #30363d; stroke-width: 1; }
-.og-node-context rect { fill: #161b22; stroke: #58a6ff; stroke-width: 1; }
-.og-node-grandcontext rect { fill: #0d1117; stroke: #30363d; stroke-width: 1; }
+.og-node-context rect { opacity: 0.7; }
+.og-node-grandcontext rect { fill: #0d1117; stroke: #30363d; stroke-width: 1; opacity: 1; }
 
 .og-node circle {
   fill: #c04000;
@@ -2193,6 +2208,66 @@ body {
   border-top: 1px solid #30363d;
   padding-top: 4px;
 }
+
+/* ── Instance full list panel (left panel, below tree) ────────── */
+.og-inst-panel-list {
+  border-top: 1px solid #30363d;
+  margin-top: 4px;
+  flex-shrink: 0;
+  max-height: 260px;
+  overflow-y: auto;
+  background: #0d1117;
+}
+.og-inst-panel-header {
+  font-size: 11px;
+  font-weight: 700;
+  color: #79c0ff;
+  padding: 6px 10px 4px;
+  background: #161b22;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  border-bottom: 1px solid #21262d;
+}
+.og-inst-panel-body {
+  padding: 4px 0;
+}
+.og-inst-group {
+  margin-bottom: 6px;
+}
+.og-inst-group-title {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 10px;
+  color: #e6edf3;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+/* depth-based title left border */
+.og-inst-group-title.og-depth-0 { border-left: 3px solid #4080d0; }
+.og-inst-group-title.og-depth-1 { border-left: 3px solid #8855cc; }
+.og-inst-group-title.og-depth-2 { border-left: 3px solid #2a9d9d; }
+.og-inst-group-title.og-depth-3 { border-left: 3px solid #6a9d2a; }
+.og-inst-count { font-size: 10px; color: #8b949e; font-weight: 400; }
+.og-inst-empty { font-size: 10px; color: #6e7681; padding: 2px 14px; font-style: italic; }
+.og-inst-row {
+  padding: 3px 14px;
+  cursor: pointer;
+  font-size: 11px;
+  color: #c9d1d9;
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+  line-height: 1.5;
+  flex-wrap: wrap;
+}
+.og-inst-row:hover { background: #1c2128; }
+.og-inst-row.og-inst-sel { background: #1a3a1a; color: #3fb950; }
+.og-inst-row.og-inst-sel .og-inst-bullet { color: #3fb950; }
+.og-inst-bullet { color: #e08040; font-size: 9px; flex-shrink: 0; }
+.og-inst-name { color: #c9d1d9; }
+.og-inst-id-small { font-size: 9px; color: #6e7681; font-family: monospace; word-break: break-all; }
 
 /* ═══════════════════════════════════════════════════════
    NLQ — Natural Language Query Panel
