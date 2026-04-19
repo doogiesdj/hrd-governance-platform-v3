@@ -596,7 +596,7 @@ const App = {
     const body = document.getElementById('detailBody');
     this._pushDetailWith(body ? body.innerHTML : '', () => {
       const d = HRDData;
-      const policies = d.policies.filter(p => (p.relatedOrgs || []).includes(org.id));
+      const policies = d.policies.filter(p => (p.relatedOrgs || []).some(o => o.id === org.id));
       const polHtml = policies.length
         ? policies.map(p => `<div class="detail-list-item detail-clickable" data-policy-id="${p.id}"><span class="detail-dot"></span>${p.name}</div>`).join('')
         : '<span class="detail-empty">데이터 없음</span>';
