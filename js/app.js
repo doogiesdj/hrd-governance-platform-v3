@@ -202,7 +202,9 @@ const App = {
   },
 
   // --- Detail Panel ---
+  // Stack entries: { html: string, rebind: fn|null }
   _detailStack: [],
+  _currentRebind: null,
 
   _initDetailPanel() {
     const overlay = document.getElementById('detailOverlay');
@@ -219,6 +221,7 @@ const App = {
     const body = document.getElementById('detailBody');
     if (!overlay || !body) return;
     this._detailStack = [];
+    this._currentRebind = null;
     body.innerHTML = html;
     overlay.classList.add('active');
     this._updateBackBtn();
@@ -227,9 +230,17 @@ const App = {
   _pushDetail(html) {
     const body = document.getElementById('detailBody');
     if (!body) return;
-    this._detailStack.push(body.innerHTML);
+    this._detailStack.push({ html: body.innerHTML, rebind: this._currentRebind });
+    this._currentRebind = null;
     body.innerHTML = html;
     body.scrollTop = 0;
+    this._updateBackBtn();
+  },
+
+  _pushDetailWith(savedHtml, renderFn) {
+    this._detailStack.push({ html: savedHtml, rebind: this._currentRebind });
+    this._currentRebind = null;
+    renderFn();
     this._updateBackBtn();
   },
 
@@ -237,10 +248,12 @@ const App = {
     if (!this._detailStack.length) return;
     const body = document.getElementById('detailBody');
     if (!body) return;
-    body.innerHTML = this._detailStack.pop();
+    const { html, rebind } = this._detailStack.pop();
+    body.innerHTML = html;
     body.scrollTop = 0;
+    this._currentRebind = rebind;
+    if (rebind) rebind();
     this._updateBackBtn();
-    this._rebindStrategyDetailEvents();
   },
 
   _updateBackBtn() {
@@ -252,6 +265,7 @@ const App = {
     const overlay = document.getElementById('detailOverlay');
     if (overlay) overlay.classList.remove('active');
     this._detailStack = [];
+    this._currentRebind = null;
     this._updateBackBtn();
   },
 
@@ -337,7 +351,9 @@ const App = {
       </div>
     `;
     this._openDetail(html);
-    this._bindStrategyDetailClicks(strategy);
+    const rebind = () => this._bindStrategyDetailClicks(strategy);
+    this._currentRebind = rebind;
+    rebind();
   },
 
   _bindStrategyDetailClicks(strategy) {
@@ -385,14 +401,9 @@ const App = {
     });
   },
 
-  _rebindStrategyDetailEvents() {
-    // no-op: strategy detail binds are embedded in HTML; called after back-pop
-  },
-
   _showPolicyDetailPush(policy) {
     const body = document.getElementById('detailBody');
-    const savedHtml = body ? body.innerHTML : '';
-    this._pushDetailWith(savedHtml, () => this._showPolicyDetailInline(policy));
+    this._pushDetailWith(body ? body.innerHTML : '', () => this._showPolicyDetailInline(policy));
   },
 
   _showPolicyDetailInline(policy) {
@@ -470,8 +481,7 @@ const App = {
 
   _pushProgramDetail(program) {
     const body = document.getElementById('detailBody');
-    const savedHtml = body ? body.innerHTML : '';
-    this._pushDetailWith(savedHtml, () => {
+    this._pushDetailWith(body ? body.innerHTML : '', () => {
       const d = HRDData;
       const compHtml = program.competencies && program.competencies.length
         ? program.competencies.map(c => `<span class="detail-tag comp">${c.name || c}</span>`).join('')
