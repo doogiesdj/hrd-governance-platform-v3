@@ -1,0 +1,49 @@
+name: Build Data from RDF
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/HRD_Governance_Extended_v2.rdf'
+      - 'src/HRD_CodeMapping_v2.xlsx'
+      - 'src/HRD_SPARQL_Queries_v5.sparql'
+      - 'scripts/**'
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r scripts/requirements.txt
+
+      - name: Run parse_full_ontology
+        run: python scripts/parse_full_ontology.py
+
+      - name: Run extract_code_reference
+        run: python scripts/extract_code_reference.py
+
+      - name: Run run_sparql_queries
+        run: python scripts/run_sparql_queries.py
+
+      - name: Run extract_budget_analysis
+        run: python scripts/extract_budget_analysis.py
+
+      - name: Commit updated JSON files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/ js/ontology_data.js
+          git diff --staged --quiet || git commit -m "chore: auto-update data from RDF [skip ci]"
+          git push

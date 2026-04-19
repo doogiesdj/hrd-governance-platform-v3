@@ -1,0 +1,1159 @@
+# ════════════════════════════════════════════════════════════════════════════════
+# HRD Governance Ontology — SPARQL Query Collection v5
+# 대상 온톨로지 : HRD_Governance_Extended_v2.rdf
+# SPARQL 버전  : 1.1  (Protégé / Apache Jena / RDF4J 호환)
+#
+# 구성
+#   [A]  기본 조회          — 개체·레이블·타입 탐색
+#   [B]  인재 분석          — Person 프로파일·경력·배치
+#   [C]  역량 분석          — Competency 보유·수준·분류
+#   [D]  역량 격차·평가     — CompetencyGap / CompetencyAssessment
+#   [E]  교육프로그램 분석  — EducationProgram / ProgramEnrollment
+#   [F]  추천 시스템        — Recommendation / MatchScore
+#   [G]  정책 분석          — Policy / PolicyParticipation / Benefit
+#   [H]  성과 분석          — Outcome / OutcomeMeasurement
+#   [I]  예산 분석          — Budget / Organization
+#   [J]  거버넌스 체인      — Strategy → Policy → Program → Person → Outcome
+#   [K]  통계·집계          — COUNT / AVG / GROUP BY 요약
+#   [L]  고급 패턴          — OPTIONAL / MINUS / EXISTS / 서브쿼리
+# ════════════════════════════════════════════════════════════════════════════════
+
+PREFIX hrd:  <http://www.human-resource.go.kr/ontology/hrd#>
+PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl:  <http://www.w3.org/2002/07/owl#>
+PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
+
+
+# ════════════════════════════════════════════════════════════════════════════════
+# [A] 기본 조회
+# ════════════════════════════════════════════════════════════════════════════════
+
+# ── A1. 온톨로지 내 모든 클래스 목록 ──────────────────────────────────────────
+SELECT DISTINCT ?class ?label
+WHERE {
+  ?class rdf:type owl:Class .
+  OPTIONAL { ?class rdfs:label ?label . FILTER(LANG(?label) = "ko") }
+}
+ORDER BY ?class
+
+
+# ── A2. 모든 Named Individual과 타입·레이블 ───────────────────────────────────
+SELECT ?ind ?type ?labelKo ?labelEn
+WHERE {
+  ?ind rdf:type owl:NamedIndividual ;
+       rdf:type ?type .
+  FILTER(?type != owl:NamedIndividual)
+  OPTIONAL { ?ind rdfs:label ?labelKo . FILTER(LANG(?labelKo) = "ko") }
+  OPTIONAL { ?ind rdfs:label ?labelEn . FILTER(LANG(?labelEn) = "en") }
+}
+ORDER BY ?type ?ind
+
+
+# ── A3. 타입별 개체 수 요약 ────────────────────────────────────────────────────
+SELECT ?type (COUNT(?ind) AS ?cnt)
+WHERE {
+  ?ind rdf:type ?type .
+  FILTER(?type != owl:NamedIndividual)
+  FILTER(STRSTARTS(STR(?type), "http://www.human-resource.go.kr/ontology/hrd#"))
+}
+GROUP BY ?type
+ORDER BY DESC(?cnt)
+
+
+# ── A4. 특정 개체의 모든 속성·값 조회 (예: COMP_AI_01) ───────────────────────
+SELECT ?property ?value
+WHERE {
+  hrd:COMP_AI_01 ?property ?value .
+}
+ORDER BY ?property
+
+
+# ── A5. 역량 전체 목록 (한글명·영문명·분류) ────────────────────────────────────
+SELECT ?comp ?labelKo ?labelEn ?category
+WHERE {
+  ?comp rdf:type hrd:Competency .
+  OPTIONAL { ?comp rdfs:label ?labelKo . FILTER(LANG(?labelKo) = "ko") }
+  OPTIONAL { ?comp rdfs:label ?labelEn . FILTER(LANG(?labelEn) = "en") }
+  OPTIONAL { ?comp hrd:belongsToCompetencyCategory ?cat .
+             ?cat rdfs:label ?category . FILTER(LANG(?category) = "ko") }
+}
+ORDER BY ?category ?comp
+
+
+# ── A6. 역량분류(CompetencyCategory) 전체 목록 ────────────────────────────────
+SELECT ?cat ?labelKo ?labelEn
+WHERE {
+  ?cat rdf:type hrd:CompetencyCategory .
+  OPTIONAL { ?cat rdfs:label ?labelKo . FILTER(LANG(?labelKo) = "ko") }
+  OPTIONAL { ?cat rdfs:label ?labelEn . FILTER(LANG(?labelEn) = "en") }
+}
+ORDER BY ?cat
+
+
+# ── A7. 정책 전체 목록 (한글명·연도·설명) ─────────────────────────────────────
+SELECT ?policy ?labelKo ?year ?desc
+WHERE {
+  ?policy rdf:type hrd:Policy .
+  OPTIONAL { ?policy rdfs:label ?labelKo . FILTER(LANG(?labelKo) = "ko") }
+  OPTIONAL { ?policy hrd:policyYear ?year }
+  OPTIONAL { ?policy hrd:policyDescription ?desc . FILTER(LANG(?desc) = "ko") }
+}
+ORDER BY ?year ?policy
+
+
+# ════════════════════════════════════════════════════════════════════════════════
+# [B] 인재 분석
+# ════════════════════════════════════════════════════════════════════════════════
+
+# ── B1. 인재 기본 프로파일 전체 ────────────────────────────────────────────────
+SELECT ?person ?category ?empStatus ?jobGrade ?dept ?region ?exp ?profileScore
+WHERE {
+  ?person rdf:type hrd:Person ;
+          hrd:personCategory    ?category ;
+          hrd:employmentStatus  ?empStatus ;
+          hrd:jobGrade          ?jobGrade ;
+          hrd:profileCompletenessScore ?profileScore .
+  OPTIONAL { ?person hrd:department ?dept }
+  OPTIONAL { ?person hrd:regionName ?region }
+  OPTIONAL { ?person hrd:totalYearsOfExp ?exp }
+}
+ORDER BY DESC(?profileScore)
+
+
+# ── B2. 고용형태별 인원 분포 ───────────────────────────────────────────────────
+SELECT ?empStatus (COUNT(?person) AS ?cnt)
+WHERE {
+  ?person rdf:type hrd:Person ;
+          hrd:employmentStatus ?empStatus .
+}
+GROUP BY ?empStatus
+ORDER BY DESC(?cnt)
+
+
+# ── B3. 직급별 평균 경력연수 ───────────────────────────────────────────────────
+SELECT ?jobGrade (COUNT(?p) AS ?cnt) (AVG(?exp) AS ?avgExp)
+WHERE {
+  ?p rdf:type hrd:Person ;
+     hrd:jobGrade ?jobGrade ;
+     hrd:totalYearsOfExp ?exp .
+}
+GROUP BY ?jobGrade
+ORDER BY ?jobGrade
+
+
+# ── B4. 지역별 인원 현황 ───────────────────────────────────────────────────────
+SELECT ?region (COUNT(?p) AS ?cnt)
+WHERE {
+  ?p rdf:type hrd:Person ;
+     hrd:regionName ?region .
+}
+GROUP BY ?region
+ORDER BY DESC(?cnt)
+
+
+# ── B5. 국가전략에 기여하는 인재 목록 ─────────────────────────────────────────
+SELECT ?person ?strategy ?comp
+WHERE {
+  ?person rdf:type hrd:Person ;
+          hrd:contributesToNationalGoal ?strategy ;
+          hrd:hasCompetency ?comp .
+  ?strategy rdf:type hrd:NationalStrategy .
+}
+ORDER BY ?strategy ?person
+
+
+# ── B6. 인재 1명의 전체 이력서 (경력·역량·평가·추천·성과) ──────────────────────
+# 예: PERSON_1
+SELECT ?prop ?value
+WHERE {
+  hrd:PERSON_1 ?prop ?value .
+}
+ORDER BY ?prop
+
+
+# ── B7. 프로파일 완성도 하위 10명 ─────────────────────────────────────────────
+SELECT ?person ?profileScore ?empStatus ?dept
+WHERE {
+  ?person rdf:type hrd:Person ;
+          hrd:profileCompletenessScore ?profileScore ;
+          hrd:employmentStatus ?empStatus .
+  OPTIONAL { ?person hrd:department ?dept }
+}
+ORDER BY ASC(?profileScore)
+LIMIT 10
+
+
+# ── B8. 경력 이력이 있는 인재와 직위·역량 획득 ────────────────────────────────
+SELECT ?person ?jobTitle ?acquiredComp ?years
+WHERE {
+  ?person rdf:type hrd:Person ;
+          hrd:hasCareerHistory ?career .
+  ?career hrd:jobTitle ?jobTitle ;
+          hrd:totalYearsOfExp ?years .
+  OPTIONAL { ?career hrd:acquiredCompetency ?acquiredComp }
+}
+ORDER BY ?person DESC(?years)
+
+
+# ── B9. 대상집단(TargetGroup)별 인원 현황 ──────────────────────────────────────
+SELECT ?group ?groupName (COUNT(?member) AS ?memberCnt)
+WHERE {
+  ?group rdf:type hrd:TargetGroup ;
+         hrd:hasMember ?member .
+  OPTIONAL { ?group hrd:groupName ?groupName }
+}
+GROUP BY ?group ?groupName
+ORDER BY DESC(?memberCnt)
+
+
+# ════════════════════════════════════════════════════════════════════════════════
+# [C] 역량 분석
+# ════════════════════════════════════════════════════════════════════════════════
+
+# ── C1. 역량별 보유 인원 수 (상위 20) ─────────────────────────────────────────
+SELECT ?comp ?labelKo (COUNT(?person) AS ?holderCnt)
+WHERE {
+  ?person rdf:type hrd:Person ;
+          hrd:hasCompetency ?comp .
+  OPTIONAL { ?comp rdfs:label ?labelKo . FILTER(LANG(?labelKo) = "ko") }
+}
+GROUP BY ?comp ?labelKo
+ORDER BY DESC(?holderCnt)
+LIMIT 20
+
+
+# ── C2. 역량분류별 보유 인원 현황 ─────────────────────────────────────────────
+SELECT ?catLabel (COUNT(DISTINCT ?person) AS ?personCnt) (COUNT(DISTINCT ?comp) AS ?compCnt)
+WHERE {
+  ?person rdf:type hrd:Person ;
+          hrd:hasCompetency ?comp .
+  ?comp hrd:belongsToCompetencyCategory ?cat .
+  OPTIONAL { ?cat rdfs:label ?catLabel . FILTER(LANG(?catLabel) = "ko") }
+}
+GROUP BY ?catLabel
+ORDER BY DESC(?personCnt)
+
+
+# ── C3. 역량별 평균 숙련도 (proficiencyLevel) ──────────────────────────────────
+SELECT ?comp ?labelKo (AVG(?level) AS ?avgLevel) (COUNT(?p) AS ?cnt)
+WHERE {
+  ?p rdf:type hrd:Person ;
+     hrd:hasCompetency ?comp .
+  ?comp hrd:proficiencyLevel ?level .
+  OPTIONAL { ?comp rdfs:label ?labelKo . FILTER(LANG(?labelKo) = "ko") }
+}
+GROUP BY ?comp ?labelKo
+ORDER BY DESC(?avgLevel)
+
+
+# ── C4. 특정 역량을 보유한 인재 목록 (예: COMP_AI_01) ─────────────────────────
+SELECT ?person ?jobGrade ?dept ?exp
+WHERE {
+  ?person rdf:type hrd:Person ;
+          hrd:hasCompetency hrd:COMP_AI_01 .
+  OPTIONAL { ?person hrd:jobGrade ?jobGrade }
+  OPTIONAL { ?person hrd:department ?dept }
+  OPTIONAL { ?person hrd:totalYearsOfExp ?exp }
+}
+ORDER BY DESC(?exp)
+
+
+# ── C5. 역량이 어떤 성과를 향상시키는지 ───────────────────────────────────────
+SELECT ?comp ?labelKo ?outcome ?outcomeType ?outcomeValue
+WHERE {
+  ?outcome rdf:type hrd:Outcome ;
+           hrd:improves ?comp ;
+           hrd:outcomeType ?outcomeType ;
+           hrd:outcomeValue ?outcomeValue .
+  OPTIONAL { ?comp rdfs:label ?labelKo . FILTER(LANG(?labelKo) = "ko") }
+}
+ORDER BY ?comp
+
+
+# ── C6. 역량이 지원하는 정책 목록 ─────────────────────────────────────────────
+SELECT ?comp ?labelKo ?policy ?policyLabel
+WHERE {
+  ?policy rdf:type hrd:Policy ;
+          hrd:supportsCompetency ?comp .
+  OPTIONAL { ?comp rdfs:label ?labelKo . FILTER(LANG(?labelKo) = "ko") }
+  OPTIONAL { ?policy rdfs:label ?policyLabel . FILTER(LANG(?policyLabel) = "ko") }
+}
+ORDER BY ?comp
+
+
+# ── C7. 역량분류별 소속 역량 목록 ─────────────────────────────────────────────
+SELECT ?catLabel ?comp ?labelKo ?labelEn
+WHERE {
+  ?comp rdf:type hrd:Competency ;
+        hrd:belongsToCompetencyCategory ?cat .
+  OPTIONAL { ?cat  rdfs:label ?catLabel . FILTER(LANG(?catLabel) = "ko") }
+  OPTIONAL { ?comp rdfs:label ?labelKo  . FILTER(LANG(?labelKo)  = "ko") }
+  OPTIONAL { ?comp rdfs:label ?labelEn  . FILTER(LANG(?labelEn)  = "en") }
+}
+ORDER BY ?catLabel ?comp
+
+
+# ════════════════════════════════════════════════════════════════════════════════
+# [D] 역량 격차 · 평가 분석
+# ════════════════════════════════════════════════════════════════════════════════
+
+# ── D1. 역량 격차 전체 조회 (인재·역량·격차크기·심각도) ───────────────────────
+SELECT ?person ?comp ?labelKo ?gapSize ?gapSeverity
+WHERE {
+  ?person rdf:type hrd:Person ;
+          hrd:hasCompetencyGap ?gap .
+  ?gap hrd:gapCompetency ?comp ;
+       hrd:gapSize ?gapSize .
+  OPTIONAL { ?gap hrd:gapSeverity ?gapSeverity }
+  OPTIONAL { ?comp rdfs:label ?labelKo . FILTER(LANG(?labelKo) = "ko") }
+}
+ORDER BY DESC(?gapSize)
+
+
+# ── D2. 역량별 평균 격차 크기 상위 15 ─────────────────────────────────────────
+SELECT ?comp ?labelKo (AVG(?gapSize) AS ?avgGap) (COUNT(?gap) AS ?gapCnt)
+WHERE {
+  ?gap rdf:type hrd:CompetencyGap ;
+       hrd:gapCompetency ?comp ;
+       hrd:gapSize ?gapSize .
+  OPTIONAL { ?comp rdfs:label ?labelKo . FILTER(LANG(?labelKo) = "ko") }
+}
+GROUP BY ?comp ?labelKo
+ORDER BY DESC(?avgGap)
+LIMIT 15
+
+
+# ── D3. 역량 평가: 사전→사후 향상 분석 ────────────────────────────────────────
+SELECT ?person ?comp ?labelKo ?preScore ?postScore ?targetScore
+       (?postScore - ?preScore AS ?improvement)
+       (?targetScore - ?postScore AS ?remaining)
+WHERE {
+  ?person rdf:type hrd:Person ;
+          hrd:hasCompetencyAssessment ?assess .
+  ?assess hrd:assessedCompetency ?comp ;
+          hrd:preScore ?preScore ;
+          hrd:postScore ?postScore ;
+          hrd:targetScore ?targetScore .
+  OPTIONAL { ?comp rdfs:label ?labelKo . FILTER(LANG(?labelKo) = "ko") }
+}
+ORDER BY DESC(?improvement)
+
+
+# ── D4. 목표 미달 인재 (postScore < targetScore) ──────────────────────────────
+SELECT ?person ?comp ?labelKo ?postScore ?targetScore
+       (?targetScore - ?postScore AS ?deficit)
+WHERE {
+  ?person rdf:type hrd:Person ;
+          hrd:hasCompetencyAssessment ?assess .
+  ?assess hrd:assessedCompetency ?comp ;
+          hrd:postScore ?postScore ;
+          hrd:targetScore ?targetScore .
+  FILTER(?postScore < ?targetScore)
+  OPTIONAL { ?comp rdfs:label ?labelKo . FILTER(LANG(?labelKo) = "ko") }
+}
+ORDER BY DESC(?deficit)
+
+
+# ── D5. 목표 달성 인재 (postScore >= targetScore) ─────────────────────────────
+SELECT ?person ?comp ?labelKo ?postScore ?targetScore
+WHERE {
+  ?person rdf:type hrd:Person ;
+          hrd:hasCompetencyAssessment ?assess .
+  ?assess hrd:assessedCompetency ?comp ;
+          hrd:postScore ?postScore ;
+          hrd:targetScore ?targetScore .
+  FILTER(?postScore >= ?targetScore)
+  OPTIONAL { ?comp rdfs:label ?labelKo . FILTER(LANG(?labelKo) = "ko") }
+}
+ORDER BY DESC(?postScore)
+
+
+# ── D6. 역량 평가 신뢰도(confidenceScore) 기준 정렬 ───────────────────────────
+SELECT ?person ?comp ?labelKo ?preScore ?postScore ?confidence
+WHERE {
+  ?person rdf:type hrd:Person ;
+          hrd:hasCompetencyAssessment ?assess .
+  ?assess hrd:assessedCompetency ?comp ;
+          hrd:preScore ?preScore ;
+          hrd:postScore ?postScore .
+  OPTIONAL { ?assess hrd:confidenceScore ?confidence }
+  OPTIONAL { ?comp rdfs:label ?labelKo . FILTER(LANG(?labelKo) = "ko") }
+}
+ORDER BY DESC(?confidence)
+
+
+# ── D7. 평가 이벤트 기반 평가 이력 ────────────────────────────────────────────
+SELECT ?person ?event ?eventDate ?eventStatus ?assessment
+WHERE {
+  ?person rdf:type hrd:Person ;
+          hrd:hasAssessmentEvent ?event .
+  ?event hrd:generatedAssessment ?assessment .
+  OPTIONAL { ?event hrd:hasEventDate ?eventDate }
+  OPTIONAL { ?event hrd:eventStatus ?eventStatus }
+}
+ORDER BY ?person ?eventDate
+
+
+# ════════════════════════════════════════════════════════════════════════════════
+# [E] 교육프로그램 분석
+# ════════════════════════════════════════════════════════════════════════════════
+
+# ── E1. 교육프로그램 전체 목록 (목표역량·대상집단·운영기관·교육시간) ─────────────
+SELECT ?prog ?labelKo ?targetComp ?targetGroup ?operator ?hours
+WHERE {
+  ?prog rdf:type hrd:EducationProgram .
+  OPTIONAL { ?prog rdfs:label ?labelKo . FILTER(LANG(?labelKo) = "ko") }
+  OPTIONAL { ?prog hrd:targetCompetency ?targetComp }
+  OPTIONAL { ?prog hrd:targetGroup ?targetGroup }
+  OPTIONAL { ?prog hrd:operatedBy ?operator }
+  OPTIONAL { ?prog hrd:trainingHours ?hours }
+}
+ORDER BY ?prog
+
+
+# ── E2. 국가전략별 교육프로그램 수 ────────────────────────────────────────────
+SELECT ?strategy ?stratLabel (COUNT(?prog) AS ?progCnt)
+WHERE {
+  ?prog rdf:type hrd:EducationProgram ;
+        hrd:alignsWithStrategy ?strategy .
+  OPTIONAL { ?strategy rdfs:label ?stratLabel . FILTER(LANG(?stratLabel) = "ko") }
+}
+GROUP BY ?strategy ?stratLabel
+ORDER BY DESC(?progCnt)
+
+
+# ── E3. 역량 분야별 프로그램 수 ────────────────────────────────────────────────
+SELECT ?compCat ?catLabel (COUNT(?prog) AS ?cnt)
+WHERE {
+  ?prog rdf:type hrd:EducationProgram ;
+        hrd:developsCompetencyCategory ?compCat .
+  OPTIONAL { ?compCat rdfs:label ?catLabel . FILTER(LANG(?catLabel) = "ko") }
+}
+GROUP BY ?compCat ?catLabel
+ORDER BY DESC(?cnt)
+
+
+# ── E4. 운영기관별 교육프로그램 현황 ──────────────────────────────────────────
+SELECT ?org ?orgLabel (COUNT(?prog) AS ?progCnt)
+WHERE {
+  ?prog rdf:type hrd:EducationProgram ;
+        hrd:operatedBy ?org .
+  OPTIONAL { ?org rdfs:label ?orgLabel . FILTER(LANG(?orgLabel) = "ko") }
+}
+GROUP BY ?org ?orgLabel
+ORDER BY DESC(?progCnt)
+
+
+# ── E5. 프로그램 등록 현황: 이수 완료 vs 미완료 ──────────────────────────────
+SELECT ?completionStatus (COUNT(?enroll) AS ?cnt)
+WHERE {
+  ?enroll rdf:type hrd:ProgramEnrollment ;
+          hrd:completionStatus ?completionStatus .
+}
+GROUP BY ?completionStatus
+ORDER BY DESC(?cnt)
+
+
+# ── E6. 인재별 교육 이수 현황 ─────────────────────────────────────────────────
+SELECT ?person ?prog ?progLabel ?completion
+WHERE {
+  ?enroll rdf:type hrd:ProgramEnrollment ;
+          hrd:enrolledPerson ?person ;
+          hrd:enrolledProgram ?prog ;
+          hrd:completionStatus ?completion .
+  OPTIONAL { ?prog rdfs:label ?progLabel . FILTER(LANG(?progLabel) = "ko") }
+}
+ORDER BY ?person
+
+
+# ── E7. 교육프로그램별 등록 인원 수 (상위 15) ─────────────────────────────────
+SELECT ?prog ?progLabel (COUNT(?person) AS ?enrollCnt)
+WHERE {
+  ?enroll rdf:type hrd:ProgramEnrollment ;
+          hrd:enrolledProgram ?prog ;
+          hrd:enrolledPerson ?person .
+  OPTIONAL { ?prog rdfs:label ?progLabel . FILTER(LANG(?progLabel) = "ko") }
+}
+GROUP BY ?prog ?progLabel
+ORDER BY DESC(?enrollCnt)
+LIMIT 15
+
+
+# ── E8. 재원별 교육프로그램 현황 ──────────────────────────────────────────────
+SELECT ?fundingSource ?fundLabel (COUNT(?prog) AS ?cnt)
+WHERE {
+  ?prog rdf:type hrd:EducationProgram ;
+        hrd:isFundedBy ?fundingSource .
+  OPTIONAL { ?fundingSource rdfs:label ?fundLabel . FILTER(LANG(?fundLabel) = "ko") }
+}
+GROUP BY ?fundingSource ?fundLabel
+ORDER BY DESC(?cnt)
+
+
+# ════════════════════════════════════════════════════════════════════════════════
+# [F] 추천 시스템 분석
+# ════════════════════════════════════════════════════════════════════════════════
+
+# ── F1. 인재별 추천 프로그램과 매칭점수 ───────────────────────────────────────
+SELECT ?person ?prog ?progLabel ?matchScore ?reason
+WHERE {
+  ?rec rdf:type hrd:Recommendation ;
+       hrd:recommendationTarget ?person ;
+       hrd:recommendedProgram ?prog ;
+       hrd:matchScore ?matchScore .
+  OPTIONAL { ?rec hrd:recommendationReason ?reason }
+  OPTIONAL { ?prog rdfs:label ?progLabel . FILTER(LANG(?progLabel) = "ko") }
+}
+ORDER BY ?person DESC(?matchScore)
+
+
+# ── F2. 매칭점수 상위 추천 20건 ────────────────────────────────────────────────
+SELECT ?person ?prog ?progLabel ?matchScore
+WHERE {
+  ?rec rdf:type hrd:Recommendation ;
+       hrd:recommendationTarget ?person ;
+       hrd:recommendedProgram ?prog ;
+       hrd:matchScore ?matchScore .
+  OPTIONAL { ?prog rdfs:label ?progLabel . FILTER(LANG(?progLabel) = "ko") }
+}
+ORDER BY DESC(?matchScore)
+LIMIT 20
+
+
+# ── F3. 역량 갭 해소를 위한 추천 현황 ─────────────────────────────────────────
+SELECT ?person ?gapComp ?gapLabel ?prog ?progLabel ?matchScore
+WHERE {
+  ?rec rdf:type hrd:Recommendation ;
+       hrd:recommendationTarget ?person ;
+       hrd:recommendedProgram ?prog ;
+       hrd:addressesCompetencyGap ?gap ;
+       hrd:matchScore ?matchScore .
+  ?gap hrd:gapCompetency ?gapComp .
+  OPTIONAL { ?gapComp rdfs:label ?gapLabel . FILTER(LANG(?gapLabel) = "ko") }
+  OPTIONAL { ?prog rdfs:label ?progLabel . FILTER(LANG(?progLabel) = "ko") }
+}
+ORDER BY DESC(?matchScore)
+
+
+# ── F4. 역량분류별 추천 빈도 ──────────────────────────────────────────────────
+SELECT ?catLabel (COUNT(?rec) AS ?recCnt)
+WHERE {
+  ?rec rdf:type hrd:Recommendation ;
+       hrd:addressesCompetencyCategory ?cat .
+  OPTIONAL { ?cat rdfs:label ?catLabel . FILTER(LANG(?catLabel) = "ko") }
+}
+GROUP BY ?catLabel
+ORDER BY DESC(?recCnt)
+
+
+# ── F5. 추천 → 실제 등록 전환 현황 ────────────────────────────────────────────
+SELECT ?person ?prog ?matchScore ?enrollStatus
+WHERE {
+  ?rec rdf:type hrd:Recommendation ;
+       hrd:recommendationTarget ?person ;
+       hrd:recommendedProgram ?prog ;
+       hrd:matchScore ?matchScore .
+  OPTIONAL {
+    ?enroll rdf:type hrd:ProgramEnrollment ;
+            hrd:enrolledPerson ?person ;
+            hrd:enrolledProgram ?prog ;
+            hrd:completionStatus ?enrollStatus .
+  }
+}
+ORDER BY ?person DESC(?matchScore)
+
+
+# ── F6. MatchScore 분포 (점수 구간별 건수) ────────────────────────────────────
+SELECT ?scoreBand (COUNT(?rec) AS ?cnt)
+WHERE {
+  ?rec rdf:type hrd:Recommendation ;
+       hrd:matchScore ?score .
+  BIND(
+    IF(?score >= 90, "90-100",
+    IF(?score >= 80, "80-89",
+    IF(?score >= 70, "70-79",
+    IF(?score >= 60, "60-69", "60미만")))) AS ?scoreBand
+  )
+}
+GROUP BY ?scoreBand
+ORDER BY DESC(?scoreBand)
+
+
+# ════════════════════════════════════════════════════════════════════════════════
+# [G] 정책 분석
+# ════════════════════════════════════════════════════════════════════════════════
+
+# ── G1. 정책별 연계 역량·성과·예산 종합 ───────────────────────────────────────
+SELECT ?policy ?policyLabel ?comp ?compLabel ?outcome ?budget
+WHERE {
+  ?policy rdf:type hrd:Policy .
+  OPTIONAL { ?policy rdfs:label ?policyLabel . FILTER(LANG(?policyLabel) = "ko") }
+  OPTIONAL { ?policy hrd:supportsCompetency ?comp .
+             OPTIONAL { ?comp rdfs:label ?compLabel . FILTER(LANG(?compLabel) = "ko") } }
+  OPTIONAL { ?policy hrd:supportsOutcome ?outcome }
+  OPTIONAL { ?policy hrd:hasAllocatedBudget ?budget }
+}
+ORDER BY ?policy
+
+
+# ── G2. 국가전략에 정렬된 정책 목록 ───────────────────────────────────────────
+SELECT ?strategy ?stratLabel ?policy ?policyLabel
+WHERE {
+  ?policy rdf:type hrd:Policy ;
+          hrd:alignsWithNationalStrategy ?strategy .
+  OPTIONAL { ?strategy rdfs:label ?stratLabel . FILTER(LANG(?stratLabel) = "ko") }
+  OPTIONAL { ?policy rdfs:label ?policyLabel . FILTER(LANG(?policyLabel) = "ko") }
+}
+ORDER BY ?strategy ?policy
+
+
+# ── G3. 정책 참여 인원과 수령 혜택 ────────────────────────────────────────────
+SELECT ?policy ?policyLabel ?person ?benefit ?benefitType ?benefitAmount
+WHERE {
+  ?pp rdf:type hrd:PolicyParticipation ;
+      hrd:participationInPolicy ?policy ;
+      hrd:participationOfPerson ?person .
+  OPTIONAL { ?policy rdfs:label ?policyLabel . FILTER(LANG(?policyLabel) = "ko") }
+  OPTIONAL {
+    ?pp hrd:participationFromBenefit ?benefit .
+    OPTIONAL { ?benefit hrd:benefitType ?benefitType }
+    OPTIONAL { ?benefit hrd:benefitAmount ?benefitAmount }
+  }
+}
+ORDER BY ?policy ?person
+
+
+# ── G4. 정책별 참여 인원 수 ────────────────────────────────────────────────────
+SELECT ?policy ?policyLabel (COUNT(DISTINCT ?person) AS ?participantCnt)
+WHERE {
+  ?pp rdf:type hrd:PolicyParticipation ;
+      hrd:participationInPolicy ?policy ;
+      hrd:participationOfPerson ?person .
+  OPTIONAL { ?policy rdfs:label ?policyLabel . FILTER(LANG(?policyLabel) = "ko") }
+}
+GROUP BY ?policy ?policyLabel
+ORDER BY DESC(?participantCnt)
+
+
+# ── G5. 정책 참여가 생성한 성과 연계 ──────────────────────────────────────────
+SELECT ?policy ?policyLabel ?person ?outcome ?outcomeType ?outcomeValue
+WHERE {
+  ?pp rdf:type hrd:PolicyParticipation ;
+      hrd:participationInPolicy ?policy ;
+      hrd:participationOfPerson ?person ;
+      hrd:participationProducedOutcome ?outcome .
+  ?outcome hrd:outcomeType ?outcomeType ;
+           hrd:outcomeValue ?outcomeValue .
+  OPTIONAL { ?policy rdfs:label ?policyLabel . FILTER(LANG(?policyLabel) = "ko") }
+}
+ORDER BY ?policy
+
+
+# ── G6. 혜택 유형별 지급 현황 ─────────────────────────────────────────────────
+SELECT ?benefitType (COUNT(?b) AS ?cnt) (SUM(?amount) AS ?totalAmount)
+WHERE {
+  ?b rdf:type hrd:Benefit ;
+     hrd:benefitType ?benefitType .
+  OPTIONAL { ?b hrd:benefitAmount ?amount }
+}
+GROUP BY ?benefitType
+ORDER BY DESC(?cnt)
+
+
+# ── G7. 집행기관별 정책 담당 현황 ─────────────────────────────────────────────
+SELECT ?org ?orgLabel (COUNT(DISTINCT ?policy) AS ?policyCnt)
+WHERE {
+  ?policy rdf:type hrd:Policy ;
+          hrd:hasAssignedAgency ?org .
+  OPTIONAL { ?org rdfs:label ?orgLabel . FILTER(LANG(?orgLabel) = "ko") }
+}
+GROUP BY ?org ?orgLabel
+ORDER BY DESC(?policyCnt)
+
+
+# ════════════════════════════════════════════════════════════════════════════════
+# [H] 성과 분석
+# ════════════════════════════════════════════════════════════════════════════════
+
+# ── H1. 성과 유형별 현황 ───────────────────────────────────────────────────────
+SELECT ?outcomeType (COUNT(?out) AS ?cnt) (AVG(?val) AS ?avgValue)
+WHERE {
+  ?out rdf:type hrd:Outcome ;
+       hrd:outcomeType ?outcomeType ;
+       hrd:outcomeValue ?val .
+}
+GROUP BY ?outcomeType
+ORDER BY DESC(?cnt)
+
+
+# ── H2. 성과 달성 인재와 향상된 역량 연계 ─────────────────────────────────────
+SELECT ?outcome ?outcomeType ?outcomeValue ?person ?comp ?compLabel
+WHERE {
+  ?outcome rdf:type hrd:Outcome ;
+           hrd:outcomeType ?outcomeType ;
+           hrd:outcomeValue ?outcomeValue ;
+           hrd:achievedBy ?person ;
+           hrd:improves ?comp .
+  OPTIONAL { ?comp rdfs:label ?compLabel . FILTER(LANG(?compLabel) = "ko") }
+}
+ORDER BY DESC(?outcomeValue)
+
+
+# ── H3. 정책별 지원 성과 현황 ─────────────────────────────────────────────────
+SELECT ?policy ?policyLabel ?outcome ?outcomeType ?outcomeValue
+WHERE {
+  ?outcome rdf:type hrd:Outcome ;
+           hrd:supportedByPolicy ?policy ;
+           hrd:outcomeType ?outcomeType ;
+           hrd:outcomeValue ?outcomeValue .
+  OPTIONAL { ?policy rdfs:label ?policyLabel . FILTER(LANG(?policyLabel) = "ko") }
+}
+ORDER BY ?policy DESC(?outcomeValue)
+
+
+# ── H4. 역량별 성과 향상 건수 ─────────────────────────────────────────────────
+SELECT ?comp ?compLabel (COUNT(?out) AS ?outCnt) (AVG(?val) AS ?avgVal)
+WHERE {
+  ?out rdf:type hrd:Outcome ;
+       hrd:improves ?comp ;
+       hrd:outcomeValue ?val .
+  OPTIONAL { ?comp rdfs:label ?compLabel . FILTER(LANG(?compLabel) = "ko") }
+}
+GROUP BY ?comp ?compLabel
+ORDER BY DESC(?outCnt)
+
+
+# ── H5. 성과 측정 이벤트 조회 ─────────────────────────────────────────────────
+SELECT ?outcome ?measurement ?measDate ?measStatus ?comp
+WHERE {
+  ?outcome rdf:type hrd:Outcome ;
+           hrd:hasOutcomeMeasurement ?measurement .
+  OPTIONAL { ?measurement hrd:hasEventDate ?measDate }
+  OPTIONAL { ?measurement hrd:eventStatus ?measStatus }
+  OPTIONAL { ?measurement hrd:measurementOfCompetency ?comp }
+}
+ORDER BY ?measDate
+
+
+# ── H6. 성과값 상위 20건 ──────────────────────────────────────────────────────
+SELECT ?outcome ?outcomeType ?outcomeValue ?person ?comp
+WHERE {
+  ?outcome rdf:type hrd:Outcome ;
+           hrd:outcomeType ?outcomeType ;
+           hrd:outcomeValue ?outcomeValue ;
+           hrd:achievedBy ?person ;
+           hrd:improves ?comp .
+}
+ORDER BY DESC(?outcomeValue)
+LIMIT 20
+
+
+# ════════════════════════════════════════════════════════════════════════════════
+# [I] 예산 분석
+# ════════════════════════════════════════════════════════════════════════════════
+
+# ── I1. 예산 전체 현황 (배정·집행·집행률) ─────────────────────────────────────
+SELECT ?budget ?labelKo ?totalAmount ?executedAmount ?fiscalYear
+       (?executedAmount / ?totalAmount * 100 AS ?execRate)
+WHERE {
+  ?budget rdf:type hrd:Budget ;
+          hrd:totalAmount ?totalAmount ;
+          hrd:executedAmount ?executedAmount ;
+          hrd:fiscalYear ?fiscalYear .
+  OPTIONAL { ?budget rdfs:label ?labelKo . FILTER(LANG(?labelKo) = "ko") }
+}
+ORDER BY DESC(?execRate)
+
+
+# ── I2. 기관별 예산 현황 ───────────────────────────────────────────────────────
+SELECT ?org ?orgLabel (SUM(?total) AS ?totalBudget) (SUM(?exec) AS ?totalExec)
+WHERE {
+  ?budget rdf:type hrd:Budget ;
+          hrd:hasAssignedAgency ?org ;
+          hrd:totalAmount ?total ;
+          hrd:executedAmount ?exec .
+  OPTIONAL { ?org rdfs:label ?orgLabel . FILTER(LANG(?orgLabel) = "ko") }
+}
+GROUP BY ?org ?orgLabel
+ORDER BY DESC(?totalBudget)
+
+
+# ── I3. 정책별 배정 예산 ───────────────────────────────────────────────────────
+SELECT ?policy ?policyLabel ?budget ?totalAmount ?fiscalYear
+WHERE {
+  ?budget rdf:type hrd:Budget ;
+          hrd:allocatedTo ?policy ;
+          hrd:totalAmount ?totalAmount ;
+          hrd:fiscalYear ?fiscalYear .
+  OPTIONAL { ?policy rdfs:label ?policyLabel . FILTER(LANG(?policyLabel) = "ko") }
+}
+ORDER BY ?policy DESC(?totalAmount)
+
+
+# ── I4. 국가전략별 지원 예산 합계 ─────────────────────────────────────────────
+SELECT ?strategy ?stratLabel (SUM(?total) AS ?totalBudget)
+WHERE {
+  ?budget rdf:type hrd:Budget ;
+          hrd:supportsStrategy ?strategy ;
+          hrd:totalAmount ?total .
+  OPTIONAL { ?strategy rdfs:label ?stratLabel . FILTER(LANG(?stratLabel) = "ko") }
+}
+GROUP BY ?strategy ?stratLabel
+ORDER BY DESC(?totalBudget)
+
+
+# ── I5. 회계연도별 예산 집행 추이 ─────────────────────────────────────────────
+SELECT ?fiscalYear (SUM(?total) AS ?sumTotal) (SUM(?exec) AS ?sumExec)
+WHERE {
+  ?budget rdf:type hrd:Budget ;
+          hrd:fiscalYear ?fiscalYear ;
+          hrd:totalAmount ?total ;
+          hrd:executedAmount ?exec .
+}
+GROUP BY ?fiscalYear
+ORDER BY ?fiscalYear
+
+
+# ── I6. 기관 역할별 분류 및 프로그램 운영 현황 ────────────────────────────────
+SELECT ?org ?orgLabel ?orgRole ?orgType (COUNT(?prog) AS ?progCnt)
+WHERE {
+  ?org rdf:type hrd:Organization ;
+       hrd:organizationRole ?orgRole .
+  OPTIONAL { ?org rdfs:label ?orgLabel . FILTER(LANG(?orgLabel) = "ko") }
+  OPTIONAL { ?org hrd:organizationType ?orgType }
+  OPTIONAL { ?prog rdf:type hrd:EducationProgram ; hrd:operatedBy ?org }
+}
+GROUP BY ?org ?orgLabel ?orgRole ?orgType
+ORDER BY DESC(?progCnt)
+
+
+# ════════════════════════════════════════════════════════════════════════════════
+# [J] 거버넌스 체인
+# ════════════════════════════════════════════════════════════════════════════════
+
+# ── J1. 완전한 거버넌스 체인: 전략 → 정책 → 프로그램 → 인재 → 성과 ─────────────
+SELECT ?strategy ?stratLabel ?policy ?policyLabel ?prog ?progLabel
+       ?person ?comp ?compLabel ?outcome ?outcomeValue
+WHERE {
+  ?prog rdf:type hrd:EducationProgram ;
+        hrd:alignsWithStrategy ?strategy ;
+        hrd:targetCompetency ?comp .
+  OPTIONAL { ?strategy rdfs:label ?stratLabel . FILTER(LANG(?stratLabel) = "ko") }
+  OPTIONAL { ?prog rdfs:label ?progLabel . FILTER(LANG(?progLabel) = "ko") }
+  OPTIONAL { ?comp rdfs:label ?compLabel . FILTER(LANG(?compLabel) = "ko") }
+  OPTIONAL {
+    ?enroll rdf:type hrd:ProgramEnrollment ;
+            hrd:enrolledProgram ?prog ;
+            hrd:enrolledPerson ?person .
+  }
+  OPTIONAL {
+    ?policy rdf:type hrd:Policy ;
+            hrd:supportsCompetency ?comp ;
+            hrd:alignsWithNationalStrategy ?strategy .
+    OPTIONAL { ?policy rdfs:label ?policyLabel . FILTER(LANG(?policyLabel) = "ko") }
+  }
+  OPTIONAL {
+    ?outcome rdf:type hrd:Outcome ;
+             hrd:achievedBy ?person ;
+             hrd:improves ?comp ;
+             hrd:outcomeValue ?outcomeValue .
+  }
+}
+ORDER BY ?strategy ?policy ?prog
+LIMIT 200
+
+
+# ── J2. 전략 → 정책 → 예산 연계 ──────────────────────────────────────────────
+SELECT ?strategy ?stratLabel ?policy ?policyLabel ?budget ?totalAmount ?fiscalYear
+WHERE {
+  ?policy rdf:type hrd:Policy ;
+          hrd:alignsWithNationalStrategy ?strategy ;
+          hrd:hasAllocatedBudget ?budget .
+  ?budget hrd:totalAmount ?totalAmount ;
+          hrd:fiscalYear ?fiscalYear .
+  OPTIONAL { ?strategy rdfs:label ?stratLabel . FILTER(LANG(?stratLabel) = "ko") }
+  OPTIONAL { ?policy rdfs:label ?policyLabel . FILTER(LANG(?policyLabel) = "ko") }
+}
+ORDER BY ?strategy ?policy
+
+
+# ── J3. 인재 → 역량 → 성과 → 역량 향상 체인 ──────────────────────────────────
+SELECT ?person ?comp ?compLabel ?outcome ?outcomeType ?outcomeValue
+WHERE {
+  ?person rdf:type hrd:Person ;
+          hrd:hasCompetency ?comp ;
+          hrd:achievesOutcome ?outcome .
+  ?outcome hrd:improves ?comp ;
+           hrd:outcomeType ?outcomeType ;
+           hrd:outcomeValue ?outcomeValue .
+  OPTIONAL { ?comp rdfs:label ?compLabel . FILTER(LANG(?compLabel) = "ko") }
+}
+ORDER BY DESC(?outcomeValue)
+
+
+# ── J4. 정책 → 참여 → 혜택 → 성과 체인 ───────────────────────────────────────
+SELECT ?policy ?policyLabel ?person ?benefit ?benefitType ?outcome ?outcomeType
+WHERE {
+  ?pp rdf:type hrd:PolicyParticipation ;
+      hrd:participationInPolicy ?policy ;
+      hrd:participationOfPerson ?person .
+  OPTIONAL { ?policy rdfs:label ?policyLabel . FILTER(LANG(?policyLabel) = "ko") }
+  OPTIONAL {
+    ?pp hrd:participationFromBenefit ?benefit .
+    ?benefit hrd:benefitType ?benefitType .
+  }
+  OPTIONAL {
+    ?pp hrd:participationProducedOutcome ?outcome .
+    ?outcome hrd:outcomeType ?outcomeType .
+  }
+}
+ORDER BY ?policy ?person
+
+
+# ── J5. 역량 격차 → 추천 → 등록 → 성과 완전 체인 ─────────────────────────────
+SELECT ?person ?gapComp ?gapLabel ?prog ?progLabel ?enrollStatus ?outcome ?outcomeValue
+WHERE {
+  ?person rdf:type hrd:Person ;
+          hrd:hasCompetencyGap ?gap .
+  ?gap hrd:gapCompetency ?gapComp .
+  OPTIONAL { ?gapComp rdfs:label ?gapLabel . FILTER(LANG(?gapLabel) = "ko") }
+  OPTIONAL {
+    ?rec rdf:type hrd:Recommendation ;
+         hrd:recommendationTarget ?person ;
+         hrd:addressesCompetencyGap ?gap ;
+         hrd:recommendedProgram ?prog .
+    OPTIONAL { ?prog rdfs:label ?progLabel . FILTER(LANG(?progLabel) = "ko") }
+    OPTIONAL {
+      ?enroll rdf:type hrd:ProgramEnrollment ;
+              hrd:enrolledPerson ?person ;
+              hrd:enrolledProgram ?prog ;
+              hrd:completionStatus ?enrollStatus .
+    }
+    OPTIONAL {
+      ?outcome rdf:type hrd:Outcome ;
+               hrd:achievedBy ?person ;
+               hrd:improves ?gapComp ;
+               hrd:outcomeValue ?outcomeValue .
+    }
+  }
+}
+ORDER BY ?person
+
+
+# ════════════════════════════════════════════════════════════════════════════════
+# [K] 통계·집계 요약
+# ════════════════════════════════════════════════════════════════════════════════
+
+# ── K1. 전체 온톨로지 규모 요약 ────────────────────────────────────────────────
+SELECT (COUNT(?ind) AS ?totalIndividuals)
+WHERE {
+  ?ind rdf:type owl:NamedIndividual .
+}
+
+
+# ── K2. 인재 역량 보유 현황 요약 ──────────────────────────────────────────────
+SELECT
+  (COUNT(DISTINCT ?person) AS ?totalPersons)
+  (COUNT(DISTINCT ?comp)   AS ?uniqueComps)
+  (AVG(?profileScore)      AS ?avgProfileScore)
+WHERE {
+  ?person rdf:type hrd:Person ;
+          hrd:profileCompletenessScore ?profileScore .
+  OPTIONAL { ?person hrd:hasCompetency ?comp }
+}
+
+
+# ── K3. 역량 격차 심각도 분포 ─────────────────────────────────────────────────
+SELECT ?gapSeverity (COUNT(?gap) AS ?cnt)
+WHERE {
+  ?gap rdf:type hrd:CompetencyGap ;
+       hrd:gapSeverity ?gapSeverity .
+}
+GROUP BY ?gapSeverity
+ORDER BY DESC(?cnt)
+
+
+# ── K4. 역량분류별 평균 격차 크기 ─────────────────────────────────────────────
+SELECT ?catLabel (AVG(?gapSize) AS ?avgGap) (COUNT(?gap) AS ?gapCnt)
+WHERE {
+  ?gap rdf:type hrd:CompetencyGap ;
+       hrd:gapCompetency ?comp ;
+       hrd:gapSize ?gapSize .
+  ?comp hrd:belongsToCompetencyCategory ?cat .
+  OPTIONAL { ?cat rdfs:label ?catLabel . FILTER(LANG(?catLabel) = "ko") }
+}
+GROUP BY ?catLabel
+ORDER BY DESC(?avgGap)
+
+
+# ── K5. 교육 이수 완료율 by 전략 ──────────────────────────────────────────────
+SELECT ?stratLabel
+       (COUNT(?enroll) AS ?totalEnroll)
+       (SUM(IF(?status = "완료", 1, 0)) AS ?completed)
+WHERE {
+  ?enroll rdf:type hrd:ProgramEnrollment ;
+          hrd:enrolledProgram ?prog ;
+          hrd:completionStatus ?status .
+  ?prog hrd:alignsWithStrategy ?strategy .
+  OPTIONAL { ?strategy rdfs:label ?stratLabel . FILTER(LANG(?stratLabel) = "ko") }
+}
+GROUP BY ?stratLabel
+ORDER BY DESC(?completed)
+
+
+# ── K6. 정책별 성과값 합계·평균 ────────────────────────────────────────────────
+SELECT ?policyLabel
+       (COUNT(?out) AS ?outCnt)
+       (SUM(?val) AS ?totalVal)
+       (AVG(?val) AS ?avgVal)
+WHERE {
+  ?out rdf:type hrd:Outcome ;
+       hrd:supportedByPolicy ?policy ;
+       hrd:outcomeValue ?val .
+  OPTIONAL { ?policy rdfs:label ?policyLabel . FILTER(LANG(?policyLabel) = "ko") }
+}
+GROUP BY ?policyLabel
+ORDER BY DESC(?totalVal)
+
+
+# ════════════════════════════════════════════════════════════════════════════════
+# [L] 고급 패턴
+# ════════════════════════════════════════════════════════════════════════════════
+
+# ── L1. 역량 격차는 있으나 아직 추천받지 못한 인재 (MINUS) ─────────────────────
+SELECT DISTINCT ?person ?gapComp ?gapLabel ?gapSize
+WHERE {
+  ?person rdf:type hrd:Person ;
+          hrd:hasCompetencyGap ?gap .
+  ?gap hrd:gapCompetency ?gapComp ;
+       hrd:gapSize ?gapSize .
+  OPTIONAL { ?gapComp rdfs:label ?gapLabel . FILTER(LANG(?gapLabel) = "ko") }
+  MINUS {
+    ?rec rdf:type hrd:Recommendation ;
+         hrd:recommendationTarget ?person ;
+         hrd:addressesCompetencyGap ?gap .
+  }
+}
+ORDER BY DESC(?gapSize)
+LIMIT 30
+
+
+# ── L2. 추천은 받았으나 아직 등록하지 않은 인재 (NOT EXISTS) ────────────────────
+SELECT DISTINCT ?person ?prog ?progLabel ?matchScore
+WHERE {
+  ?rec rdf:type hrd:Recommendation ;
+       hrd:recommendationTarget ?person ;
+       hrd:recommendedProgram ?prog ;
+       hrd:matchScore ?matchScore .
+  OPTIONAL { ?prog rdfs:label ?progLabel . FILTER(LANG(?progLabel) = "ko") }
+  FILTER NOT EXISTS {
+    ?enroll rdf:type hrd:ProgramEnrollment ;
+            hrd:enrolledPerson ?person ;
+            hrd:enrolledProgram ?prog .
+  }
+}
+ORDER BY DESC(?matchScore)
+LIMIT 30
+
+
+# ── L3. 다중 역량 격차를 가진 인재 (서브쿼리로 격차 수 계산) ──────────────────
+SELECT ?person (COUNT(?gap) AS ?gapCnt) (AVG(?gapSize) AS ?avgGap)
+WHERE {
+  ?person rdf:type hrd:Person ;
+          hrd:hasCompetencyGap ?gap .
+  ?gap hrd:gapSize ?gapSize .
+}
+GROUP BY ?person
+HAVING (COUNT(?gap) >= 3)
+ORDER BY DESC(?gapCnt)
+
+
+# ── L4. 고성과 인재: 성과값 평균 이상 + 역량 보유 (서브쿼리) ──────────────────
+SELECT ?person ?comp ?compLabel ?outcomeValue ?profileScore
+WHERE {
+  {
+    SELECT (AVG(?val) AS ?avgVal)
+    WHERE {
+      ?out rdf:type hrd:Outcome ;
+           hrd:outcomeValue ?val .
+    }
+  }
+  ?person rdf:type hrd:Person ;
+          hrd:hasCompetency ?comp ;
+          hrd:achievesOutcome ?out ;
+          hrd:profileCompletenessScore ?profileScore .
+  ?out hrd:outcomeValue ?outcomeValue .
+  FILTER(?outcomeValue > ?avgVal)
+  OPTIONAL { ?comp rdfs:label ?compLabel . FILTER(LANG(?compLabel) = "ko") }
+}
+ORDER BY DESC(?outcomeValue)
+LIMIT 50
+
+
+# ── L5. 2개 이상 정책에 참여한 인재 ──────────────────────────────────────────
+SELECT ?person (COUNT(DISTINCT ?policy) AS ?policyCnt)
+WHERE {
+  ?pp rdf:type hrd:PolicyParticipation ;
+      hrd:participationOfPerson ?person ;
+      hrd:participationInPolicy ?policy .
+}
+GROUP BY ?person
+HAVING (COUNT(DISTINCT ?policy) >= 2)
+ORDER BY DESC(?policyCnt)
+
+
+# ── L6. 역량도 갖추고 해당 역량 성과도 달성한 인재 (EXISTS) ────────────────────
+SELECT DISTINCT ?person ?comp ?compLabel
+WHERE {
+  ?person rdf:type hrd:Person ;
+          hrd:hasCompetency ?comp .
+  OPTIONAL { ?comp rdfs:label ?compLabel . FILTER(LANG(?compLabel) = "ko") }
+  FILTER EXISTS {
+    ?out rdf:type hrd:Outcome ;
+         hrd:achievedBy ?person ;
+         hrd:improves ?comp .
+  }
+}
+ORDER BY ?comp
+
+
+# ── L7. 교육 이수 완료 후 성과가 없는 인재 — 후속 조치 필요 대상 ───────────────
+SELECT DISTINCT ?person ?prog ?progLabel
+WHERE {
+  ?enroll rdf:type hrd:ProgramEnrollment ;
+          hrd:enrolledPerson ?person ;
+          hrd:enrolledProgram ?prog ;
+          hrd:completionStatus "완료" .
+  OPTIONAL { ?prog rdfs:label ?progLabel . FILTER(LANG(?progLabel) = "ko") }
+  FILTER NOT EXISTS {
+    ?out rdf:type hrd:Outcome ;
+         hrd:achievedBy ?person .
+  }
+}
+ORDER BY ?person
+LIMIT 50
+
+
+# ── L8. 전략 우선순위 1~3위 정책에 소속된 프로그램과 등록 인원 ────────────────
+SELECT ?strategy ?priority ?policy ?policyLabel ?prog ?progLabel (COUNT(?person) AS ?enrollCnt)
+WHERE {
+  ?strategy rdf:type hrd:NationalStrategy ;
+            hrd:strategyPriority ?priority .
+  FILTER(?priority <= 3)
+  ?policy rdf:type hrd:Policy ;
+          hrd:alignsWithNationalStrategy ?strategy .
+  OPTIONAL { ?policy rdfs:label ?policyLabel . FILTER(LANG(?policyLabel) = "ko") }
+  OPTIONAL {
+    ?prog rdf:type hrd:EducationProgram ;
+          hrd:alignsWithStrategy ?strategy .
+    OPTIONAL { ?prog rdfs:label ?progLabel . FILTER(LANG(?progLabel) = "ko") }
+    OPTIONAL {
+      ?enroll rdf:type hrd:ProgramEnrollment ;
+              hrd:enrolledProgram ?prog ;
+              hrd:enrolledPerson ?person .
+    }
+  }
+}
+GROUP BY ?strategy ?priority ?policy ?policyLabel ?prog ?progLabel
+ORDER BY ASC(?priority) ?strategy
