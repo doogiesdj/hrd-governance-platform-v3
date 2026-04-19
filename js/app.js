@@ -654,27 +654,68 @@ const App = {
     const body = document.getElementById('detailBody');
     this._pushDetailWith(body ? body.innerHTML : '', () => {
       const d = HRDData;
-      const compHtml = program.competencies && program.competencies.length
-        ? program.competencies.map(c => `<span class="detail-tag comp">${c.name || c}</span>`).join('')
-        : '<span class="detail-empty">역량 데이터 없음</span>';
-      body.innerHTML = `
+      const strategy = program.alignedStrategy ? d.strategies.find(s => s.id === program.alignedStrategy) : null;
+      const stratName = strategy ? strategy.name : null;
+      const orgInfo = program.orgId ? d.organizations.find(o => o.id === program.orgId) : null;
+      const orgDisplay = orgInfo
+        ? orgInfo.name + (orgInfo.abbr ? ' (' + orgInfo.abbr + ')' : '')
+        : (program.org || '미지정') + (program.orgAbbr ? ' (' + program.orgAbbr + ')' : '');
+      const budgetObj = program.budgetCode ? d.budgets.find(x => x.id === program.budgetCode) : null;
+      const budgetInfo = budgetObj ? `${budgetObj.name} (${budgetObj.amountStr || d.formatWon(budgetObj.amount || 0)})` : null;
+      const detailBody = document.getElementById('detailBody');
+      if (!detailBody) return;
+      detailBody.innerHTML = `
         <div class="detail-header-block">
           <div class="detail-strategy-label">EDUCATION PROGRAM</div>
           <h2 class="detail-title">${program.name}</h2>
-          <div class="detail-en">${program.en || program.id || ''}</div>
+          <div class="detail-en">${program.en || ''}</div>
         </div>
-        ${program.description ? `<div class="detail-section"><div class="detail-section-title">프로그램 소개</div><p class="detail-description">${program.description}</p></div>` : ''}
-        <div class="detail-grid-2">
-          ${program.duration ? `<div class="detail-section"><div class="detail-section-title">기간</div><div class="detail-budget-value">${program.duration}</div></div>` : ''}
-          ${program.targetGroup ? `<div class="detail-section"><div class="detail-section-title">대상</div><div class="detail-budget-value">${program.targetGroup}</div></div>` : ''}
-        </div>
-        ${program.managingOrg ? `<div class="detail-section"><div class="detail-section-title">운영 기관</div><div class="detail-tags"><span class="detail-tag org">${program.managingOrg}</span></div></div>` : ''}
         <div class="detail-section">
-          <div class="detail-section-title">연관 역량</div>
-          <div class="detail-tags">${compHtml}</div>
+          <div class="detail-section-title">연관 전략 <span class="detail-hint">클릭하면 상세 정보</span></div>
+          <div class="detail-tags">
+            ${stratName
+              ? `<span class="detail-tag org detail-clickable" data-strategy-id="${program.alignedStrategy}">${stratName}</span>`
+              : '<span class="detail-empty">미분류</span>'}
+          </div>
+        </div>
+        <div class="detail-grid-2">
+          <div class="detail-section">
+            <div class="detail-section-title">관리 기관 <span class="detail-hint">클릭하면 상세 정보</span></div>
+            <div class="detail-tags">
+              ${orgInfo
+                ? `<span class="detail-tag org detail-clickable" data-org-id="${orgInfo.id}">${orgDisplay}</span>`
+                : (program.org ? `<span class="detail-tag org detail-clickable" data-org-name="${program.org}">${orgDisplay}</span>` : `<span class="detail-tag org">${orgDisplay}</span>`)}
+            </div>
+          </div>
+          <div class="detail-section">
+            <div class="detail-section-title">교육 시간</div>
+            <div class="detail-budget-value">${program.hours || '?'}시간</div>
+          </div>
+        </div>
+        <div class="detail-section">
+          <div class="detail-section-title">역량 분야</div>
+          <div class="detail-tags">
+            <span class="detail-tag comp">${program.competencyCategory || '미분류'}</span>
+            ${program.competency ? `<span class="detail-tag">${program.competency}</span>` : ''}
+            ${program.competencyEn ? `<span class="detail-tag">${program.competencyEn}</span>` : ''}
+          </div>
+        </div>
+        <div class="detail-section">
+          <div class="detail-section-title">대상 그룹</div>
+          <div class="detail-tags">
+            <span class="detail-tag">${program.targetGroup || '미지정'}</span>
+          </div>
+        </div>
+        ${budgetInfo ? `<div class="detail-section"><div class="detail-section-title">연관 예산 <span class="detail-hint">클릭하면 상세 정보</span></div><div class="detail-tags"><span class="detail-tag detail-clickable" style="color:#ffd700" data-budget-id="${program.budgetCode}">${budgetInfo}</span></div></div>` : ''}
+        <div class="detail-section">
+          <div class="detail-section-title">프로그램 ID</div>
+          <div class="detail-en" style="font-family:monospace;font-size:12px">${program.id}</div>
         </div>
       `;
-      body.scrollTop = 0;
+      detailBody.scrollTop = 0;
+      const rebind = () => this._bindProgramDetailClicks(program);
+      this._currentRebind = rebind;
+      rebind();
     });
   },
 
@@ -1220,6 +1261,68 @@ const App = {
     });
   },
 
+  _pushBudgetDetail(budget) {
+    const body = document.getElementById('detailBody');
+    this._pushDetailWith(body ? body.innerHTML : '', () => {
+      const d = HRDData;
+      const stratId = budget.relatedStrategy;
+      const strategy = stratId ? d.strategies.find(s => s.id === stratId) : null;
+      let relatedPolicies = [];
+      if (budget.relatedPolicies && budget.relatedPolicies.length) {
+        relatedPolicies = budget.relatedPolicies.map(pid => d.policies.find(p => p.id === pid)).filter(Boolean);
+      } else if (stratId) {
+        relatedPolicies = d.policies.filter(p => p.relatedStrategy === stratId);
+      }
+      const budgetTypeLabel = budget.budgetType === 'PolicyBudget' ? '정책예산' : budget.budgetType === 'OrgBudget' ? '기관예산' : 'Budget';
+      const typeColor = budget.budgetType === 'PolicyBudget' ? 'rgba(255,100,0,0.15);color:#ff6400;border-color:rgba(255,100,0,0.4)' : 'rgba(255,215,0,0.12);color:#ffd700;border-color:rgba(255,215,0,0.3)';
+      const managingOrg = (() => {
+        if (budget.managingOrgId) return d.organizations.find(o => o.id === budget.managingOrgId) || null;
+        if (budget.managingOrg) return d.organizations.find(o => o.name === budget.managingOrg || o.abbr === budget.managingOrg) || null;
+        return null;
+      })();
+      const managingOrgName = managingOrg ? managingOrg.name : (budget.managingOrg || null);
+      const stratBlock = strategy
+        ? `<div class="detail-section"><div class="detail-section-title">연관 전략 <span class="detail-hint">클릭하면 상세 정보</span></div><div class="detail-tags"><span class="detail-tag org detail-clickable" data-strategy-id="${strategy.id}">${strategy.name}</span></div></div>`
+        : '';
+      const polHtml = relatedPolicies.length
+        ? relatedPolicies.map(p => `<div class="detail-list-item detail-clickable" data-policy-id="${p.id}"><span class="detail-dot"></span>${p.name}</div>`).join('')
+        : '<span class="detail-empty">연관 정책 데이터 없음</span>';
+      const execBlock = budget.executedAmount > 0
+        ? `<div class="detail-grid-2"><div class="detail-section"><div class="detail-section-title">집행 금액</div><div class="detail-budget-value">${budget.executedAmountStr || d.formatWon(budget.executedAmount)}</div></div><div class="detail-section"><div class="detail-section-title">집행률</div><div class="detail-budget-value">${budget.execRate != null ? budget.execRate + '%' : '-'}</div></div></div>` : '';
+      const detailBody = document.getElementById('detailBody');
+      if (!detailBody) return;
+      detailBody.innerHTML = `
+        <div class="detail-header">
+          <div class="detail-type-badge" style="background:${typeColor}">${budgetTypeLabel}</div>
+          <h2 class="detail-title">${budget.name}</h2>
+          ${budget.en ? `<div class="detail-en">${budget.en}</div>` : ''}
+        </div>
+        <div class="detail-grid-2">
+          <div class="detail-section"><div class="detail-section-title">배정 예산</div><div class="detail-budget-value">${budget.amountStr || d.formatWon(budget.amount || 0)}</div></div>
+          <div class="detail-section"><div class="detail-section-title">회계연도</div><div class="detail-budget-value">FY${budget.fiscalYear || '2026'}</div></div>
+        </div>
+        ${execBlock}
+        <div class="detail-section">
+          <div class="detail-section-title">관리 기관 <span class="detail-hint">클릭하면 상세 정보</span></div>
+          <div class="detail-tags">
+            ${managingOrgName
+              ? `<span class="detail-tag org detail-clickable" ${managingOrg ? `data-org-id="${managingOrg.id}"` : `data-org-name="${managingOrgName}"`}>${managingOrgName}</span>`
+              : '<span class="detail-empty">미지정</span>'}
+          </div>
+        </div>
+        ${stratBlock}
+        <div class="detail-section">
+          <div class="detail-section-title">연관 정책 <span class="detail-hint">클릭하면 상세 정보</span> (${relatedPolicies.length}건)</div>
+          <div class="detail-list">${polHtml}</div>
+        </div>
+      `;
+      detailBody.scrollTop = 0;
+      const rebind = () => this._bindBudgetDetailClicks(budget, relatedPolicies, strategy);
+      this._currentRebind = rebind;
+      rebind();
+    });
+  },
+
   // --- Program View ---
   _renderProgram() {
     const d = HRDData;
@@ -1379,14 +1482,10 @@ const App = {
 
   _showProgramDetail(program) {
     const d = HRDData;
-    const stratName = program.alignedStrategy
-      ? (d.strategies.find(s => s.id === program.alignedStrategy) || {}).name || program.alignedStrategy
-      : null;
+    const strategy = program.alignedStrategy ? d.strategies.find(s => s.id === program.alignedStrategy) : null;
+    const stratName = strategy ? strategy.name : null;
 
-    const orgInfo = (() => {
-      if (program.orgId) return d.organizations.find(o => o.id === program.orgId) || null;
-      return null;
-    })();
+    const orgInfo = program.orgId ? d.organizations.find(o => o.id === program.orgId) : null;
     const orgDisplay = orgInfo
       ? orgInfo.name + (orgInfo.abbr ? ' (' + orgInfo.abbr + ')' : '')
       : (program.org || '미지정') + (program.orgAbbr ? ' (' + program.orgAbbr + ')' : '');
@@ -1399,13 +1498,8 @@ const App = {
       return null;
     })();
 
-    const budgetInfo = (() => {
-      if (program.budgetCode) {
-        const b = d.budgets.find(x => x.id === program.budgetCode);
-        return b ? `${b.name} (${b.amountStr || d.formatWon(b.amount || 0)})` : program.budgetCode;
-      }
-      return null;
-    })();
+    const budgetObj = program.budgetCode ? d.budgets.find(x => x.id === program.budgetCode) : null;
+    const budgetInfo = budgetObj ? `${budgetObj.name} (${budgetObj.amountStr || d.formatWon(budgetObj.amount || 0)})` : null;
 
     const html = `
       <div class="detail-header-block">
@@ -1415,18 +1509,22 @@ const App = {
       </div>
 
       <div class="detail-section">
-        <div class="detail-section-title">연관 전략</div>
+        <div class="detail-section-title">연관 전략 <span class="detail-hint">클릭하면 상세 정보</span></div>
         <div class="detail-tags">
           ${stratName
-            ? `<span class="detail-tag org">${stratName}</span>`
+            ? `<span class="detail-tag org detail-clickable" data-strategy-id="${program.alignedStrategy}">${stratName}</span>`
             : '<span class="detail-empty">미분류</span>'}
         </div>
       </div>
 
       <div class="detail-grid-2">
         <div class="detail-section">
-          <div class="detail-section-title">관리 기관</div>
-          <div class="detail-budget-value" style="font-size:13px">${orgDisplay}</div>
+          <div class="detail-section-title">관리 기관 <span class="detail-hint">클릭하면 상세 정보</span></div>
+          <div class="detail-tags">
+            ${orgInfo
+              ? `<span class="detail-tag org detail-clickable" data-org-id="${orgInfo.id}">${orgDisplay}</span>`
+              : (program.org ? `<span class="detail-tag org detail-clickable" data-org-name="${program.org}">${orgDisplay}</span>` : `<span class="detail-tag org">${orgDisplay}</span>`)}
+          </div>
         </div>
         <div class="detail-section">
           <div class="detail-section-title">교육 시간</div>
@@ -1453,8 +1551,8 @@ const App = {
 
       ${budgetInfo ? `
       <div class="detail-section">
-        <div class="detail-section-title">연관 예산</div>
-        <div class="detail-tags"><span class="detail-tag" style="color:#ffd700">${budgetInfo}</span></div>
+        <div class="detail-section-title">연관 예산 <span class="detail-hint">클릭하면 상세 정보</span></div>
+        <div class="detail-tags"><span class="detail-tag detail-clickable" style="color:#ffd700" data-budget-id="${program.budgetCode}">${budgetInfo}</span></div>
       </div>` : ''}
 
       <div class="detail-section">
@@ -1463,6 +1561,39 @@ const App = {
       </div>
     `;
     this._openDetail(html);
+    const rebind = () => this._bindProgramDetailClicks(program);
+    this._currentRebind = rebind;
+    rebind();
+  },
+
+  _bindProgramDetailClicks(program) {
+    const body = document.getElementById('detailBody');
+    if (!body) return;
+    const d = HRDData;
+    body.querySelectorAll('[data-org-id]').forEach(el => {
+      el.addEventListener('click', () => {
+        const org = d.organizations.find(o => o.id === el.dataset.orgId);
+        if (org) this._pushOrgDetail(org);
+      });
+    });
+    body.querySelectorAll('[data-org-name]').forEach(el => {
+      el.addEventListener('click', () => {
+        const org = d.organizations.find(o => o.name === el.dataset.orgName || o.abbr === el.dataset.orgName);
+        if (org) this._pushOrgDetail(org);
+      });
+    });
+    body.querySelectorAll('[data-strategy-id]').forEach(el => {
+      el.addEventListener('click', () => {
+        const strat = d.strategies.find(s => s.id === el.dataset.strategyId);
+        if (strat) this._pushStrategyDetail(strat);
+      });
+    });
+    body.querySelectorAll('[data-budget-id]').forEach(el => {
+      el.addEventListener('click', () => {
+        const budget = d.budgets.find(b => b.id === el.dataset.budgetId);
+        if (budget) this._pushBudgetDetail(budget);
+      });
+    });
   },
 
   // --- Talent View ---
@@ -1764,6 +1895,7 @@ const App = {
         <div class="detail-strategy-label">ORGANIZATION · PEOPLE</div>
         <h2 class="detail-title">${orgInfo.name || orgId}</h2>
         <div class="detail-en">${orgInfo.en || ''}</div>
+        ${orgInfo.id ? `<div class="detail-tags" style="margin-top:8px"><span class="detail-tag org detail-clickable" data-org-id="${orgInfo.id}">기관 상세보기 →</span></div>` : ''}
       </div>
 
       <div class="detail-grid-2">
@@ -1795,21 +1927,34 @@ const App = {
       </div>
     `;
     this._openDetail(html);
+    const rebind = () => {
+      const body = document.getElementById('detailBody');
+      if (!body) return;
+      body.querySelectorAll('[data-org-id]').forEach(el => {
+        el.addEventListener('click', () => {
+          const org = HRDData.organizations.find(o => o.id === el.dataset.orgId);
+          if (org) this._pushOrgDetail(org);
+        });
+      });
+    };
+    this._currentRebind = rebind;
+    rebind();
   },
 
   _showTalentOrgDetail(orgName, programs) {
     const d = HRDData;
     const orgInfo = d.organizations.find(o => o.name === orgName) || {};
-    const strategies = [...new Set(programs.map(p => {
+    const strategyObjs = [...new Map(programs.map(p => {
       if (!p.alignedStrategy) return null;
-      return (d.strategies.find(s => s.id === p.alignedStrategy) || {}).name || p.alignedStrategy;
-    }).filter(Boolean))];
+      const s = d.strategies.find(st => st.id === p.alignedStrategy);
+      return s ? [s.id, s] : null;
+    }).filter(Boolean)).values()];
     const compCats = [...new Set(programs.map(p => p.competencyCategory).filter(Boolean))];
     const targetGroups = [...new Set(programs.map(p => p.targetGroup).filter(Boolean))];
     const totalHours = programs.reduce((s, p) => s + (parseInt(p.hours) || 0), 0);
 
-    const stratHtml = strategies.length
-      ? strategies.map(s => `<span class="detail-tag org">${s}</span>`).join('')
+    const stratHtml = strategyObjs.length
+      ? strategyObjs.map(s => `<span class="detail-tag org detail-clickable" data-strategy-id="${s.id}">${s.name}</span>`).join('')
       : '<span class="detail-empty">없음</span>';
     const compHtml = compCats.length
       ? compCats.map(c => `<span class="detail-tag comp">${c}</span>`).join('')
@@ -1819,7 +1964,7 @@ const App = {
       : '<span class="detail-empty">없음</span>';
 
     const progListHtml = programs.map(p => `
-      <div class="detail-list-item">
+      <div class="detail-list-item detail-clickable" data-program-id="${p.id}">
         <span class="detail-dot"></span>
         <span style="flex:1">${p.name}</span>
         <span style="color:#a0aab8;font-size:11px">${p.competencyCategory || ''} · ${p.hours || '?'}h</span>
@@ -1831,6 +1976,7 @@ const App = {
         <div class="detail-strategy-label">MANAGING ORGANIZATION</div>
         <h2 class="detail-title">${orgName}</h2>
         <div class="detail-en">${orgInfo.en || ''}</div>
+        ${orgInfo.id ? `<div class="detail-tags" style="margin-top:8px"><span class="detail-tag org detail-clickable" data-org-id="${orgInfo.id}">기관 상세보기 →</span></div>` : ''}
       </div>
 
       <div class="detail-grid-2">
@@ -1845,7 +1991,7 @@ const App = {
       </div>
 
       <div class="detail-section">
-        <div class="detail-section-title">연관 전략</div>
+        <div class="detail-section-title">연관 전략 <span class="detail-hint">클릭하면 상세 정보</span></div>
         <div class="detail-tags">${stratHtml}</div>
       </div>
       <div class="detail-section">
@@ -1857,11 +2003,38 @@ const App = {
         <div class="detail-tags">${targetHtml}</div>
       </div>
       <div class="detail-section">
-        <div class="detail-section-title">프로그램 목록</div>
+        <div class="detail-section-title">프로그램 목록 <span class="detail-hint">클릭하면 상세 정보</span></div>
         <div class="detail-list">${progListHtml}</div>
       </div>
     `;
     this._openDetail(html);
+    const rebind = () => this._bindTalentOrgDetailClicks(orgName, strategyObjs, programs);
+    this._currentRebind = rebind;
+    rebind();
+  },
+
+  _bindTalentOrgDetailClicks(orgName, strategyObjs, programs) {
+    const body = document.getElementById('detailBody');
+    if (!body) return;
+    const d = HRDData;
+    body.querySelectorAll('[data-org-id]').forEach(el => {
+      el.addEventListener('click', () => {
+        const org = d.organizations.find(o => o.id === el.dataset.orgId);
+        if (org) this._pushOrgDetail(org);
+      });
+    });
+    body.querySelectorAll('[data-strategy-id]').forEach(el => {
+      el.addEventListener('click', () => {
+        const strat = d.strategies.find(s => s.id === el.dataset.strategyId);
+        if (strat) this._pushStrategyDetail(strat);
+      });
+    });
+    body.querySelectorAll('[data-program-id]').forEach(el => {
+      el.addEventListener('click', () => {
+        const program = d.programs.find(p => p.id === el.dataset.programId);
+        if (program) this._pushProgramDetail(program);
+      });
+    });
   },
 
   // --- Competency View ---
@@ -2177,7 +2350,7 @@ const App = {
 
     const progHtml = relPrograms.length
       ? relPrograms.slice(0, 8).map(p => `
-          <div class="detail-list-item">
+          <div class="detail-list-item detail-clickable" data-program-id="${p.id}">
             <span class="detail-dot"></span>
             <span style="flex:1;font-size:11px">${p.name}</span>
             <span style="color:#a0aab8;font-size:10px">${p.org || ''}</span>
@@ -2209,11 +2382,26 @@ const App = {
       </div>` : ''}
 
       <div class="detail-section">
-        <div class="detail-section-title">연관 교육 프로그램 (${relPrograms.length}개)</div>
+        <div class="detail-section-title">연관 교육 프로그램 (${relPrograms.length}개) <span class="detail-hint">클릭하면 상세 정보</span></div>
         <div class="detail-list">${progHtml}</div>
       </div>
     `;
     this._openDetail(html);
+    const rebind = () => this._bindCompetencyDetailClicks(comp, relPrograms);
+    this._currentRebind = rebind;
+    rebind();
+  },
+
+  _bindCompetencyDetailClicks(comp, relPrograms) {
+    const body = document.getElementById('detailBody');
+    if (!body) return;
+    const d = HRDData;
+    body.querySelectorAll('[data-program-id]').forEach(el => {
+      el.addEventListener('click', () => {
+        const program = d.programs.find(p => p.id === el.dataset.programId);
+        if (program) this._pushProgramDetail(program);
+      });
+    });
   },
 
   // --- Helpers ---
