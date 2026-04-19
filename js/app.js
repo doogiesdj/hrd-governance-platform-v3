@@ -1096,95 +1096,91 @@ const App = {
   },
 
   _showBudgetDetail(budget) {
-    const body = document.getElementById('detailBody');
-    this._pushDetailWith(body ? body.innerHTML : '', () => {
-      const d = HRDData;
-      const stratId = budget.relatedStrategy;
-      const strategy = stratId ? d.strategies.find(s => s.id === stratId) : null;
+    const d = HRDData;
+    const stratId = budget.relatedStrategy;
+    const strategy = stratId ? d.strategies.find(s => s.id === stratId) : null;
 
-      let relatedPolicies = [];
-      if (budget.relatedPolicies && budget.relatedPolicies.length) {
-        relatedPolicies = budget.relatedPolicies.map(pid => d.policies.find(p => p.id === pid)).filter(Boolean);
-      } else if (stratId) {
-        relatedPolicies = d.policies.filter(p => p.relatedStrategy === stratId);
-      }
+    let relatedPolicies = [];
+    if (budget.relatedPolicies && budget.relatedPolicies.length) {
+      relatedPolicies = budget.relatedPolicies.map(pid => d.policies.find(p => p.id === pid)).filter(Boolean);
+    } else if (stratId) {
+      relatedPolicies = d.policies.filter(p => p.relatedStrategy === stratId);
+    }
 
-      const budgetTypeLabel = budget.budgetType === 'PolicyBudget' ? '정책예산' : budget.budgetType === 'OrgBudget' ? '기관예산' : 'Budget';
-      const typeColor = budget.budgetType === 'PolicyBudget' ? 'rgba(255,100,0,0.15);color:#ff6400;border-color:rgba(255,100,0,0.4)' : 'rgba(255,215,0,0.12);color:#ffd700;border-color:rgba(255,215,0,0.3)';
+    const budgetTypeLabel = budget.budgetType === 'PolicyBudget' ? '정책예산' : budget.budgetType === 'OrgBudget' ? '기관예산' : 'Budget';
+    const typeColor = budget.budgetType === 'PolicyBudget' ? 'rgba(255,100,0,0.15);color:#ff6400;border-color:rgba(255,100,0,0.4)' : 'rgba(255,215,0,0.12);color:#ffd700;border-color:rgba(255,215,0,0.3)';
 
-      const managingOrg = (() => {
-        if (budget.managingOrgId) return d.organizations.find(o => o.id === budget.managingOrgId) || null;
-        if (budget.managingOrg) return d.organizations.find(o => o.name === budget.managingOrg || o.abbr === budget.managingOrg) || null;
-        return null;
-      })();
-      const managingOrgName = managingOrg ? managingOrg.name : (budget.managingOrg || null);
+    const managingOrg = (() => {
+      if (budget.managingOrgId) return d.organizations.find(o => o.id === budget.managingOrgId) || null;
+      if (budget.managingOrg) return d.organizations.find(o => o.name === budget.managingOrg || o.abbr === budget.managingOrg) || null;
+      return null;
+    })();
+    const managingOrgName = managingOrg ? managingOrg.name : (budget.managingOrg || null);
 
-      const stratBlock = strategy
-        ? `<div class="detail-section">
-            <div class="detail-section-title">연관 전략 <span class="detail-hint">클릭하면 상세 정보</span></div>
-            <div class="detail-tags"><span class="detail-tag org detail-clickable" data-strategy-id="${strategy.id}">${strategy.name}</span></div>
-          </div>`
-        : '';
+    const stratBlock = strategy
+      ? `<div class="detail-section">
+          <div class="detail-section-title">연관 전략 <span class="detail-hint">클릭하면 상세 정보</span></div>
+          <div class="detail-tags"><span class="detail-tag org detail-clickable" data-strategy-id="${strategy.id}">${strategy.name}</span></div>
+        </div>`
+      : '';
 
-      const polHtml = relatedPolicies.length
-        ? relatedPolicies.map(p => `<div class="detail-list-item detail-clickable" data-policy-id="${p.id}"><span class="detail-dot"></span>${p.name}${p.budgetAmountStr ? ' <span style="color:#ffd700;font-size:11px">· ' + p.budgetAmountStr + '</span>' : ''}</div>`).join('')
-        : '<span class="detail-empty">연관 정책 데이터 없음</span>';
+    const polHtml = relatedPolicies.length
+      ? relatedPolicies.map(p => `<div class="detail-list-item detail-clickable" data-policy-id="${p.id}"><span class="detail-dot"></span>${p.name}${p.budgetAmountStr ? ' <span style="color:#ffd700;font-size:11px">· ' + p.budgetAmountStr + '</span>' : ''}</div>`).join('')
+      : '<span class="detail-empty">연관 정책 데이터 없음</span>';
 
-      const execBlock = budget.executedAmount > 0
-        ? `<div class="detail-grid-2">
-            <div class="detail-section">
-              <div class="detail-section-title">집행 금액</div>
-              <div class="detail-budget-value">${budget.executedAmountStr || d.formatWon(budget.executedAmount)}</div>
-            </div>
-            <div class="detail-section">
-              <div class="detail-section-title">집행률</div>
-              <div class="detail-budget-value">${budget.execRate != null ? budget.execRate + '%' : '-'}</div>
-            </div>
-          </div>` : '';
-
-      const detailBody = document.getElementById('detailBody');
-      if (!detailBody) return;
-      detailBody.innerHTML = `
-        <div class="detail-header">
-          <div class="detail-type-badge" style="background:${typeColor}">${budgetTypeLabel}</div>
-          <h2 class="detail-title">${budget.name}</h2>
-          ${budget.en ? `<div class="detail-en">${budget.en}</div>` : ''}
-        </div>
-
-        <div class="detail-grid-2">
+    const execBlock = budget.executedAmount > 0
+      ? `<div class="detail-grid-2">
           <div class="detail-section">
-            <div class="detail-section-title">배정 예산</div>
-            <div class="detail-budget-value">${budget.amountStr || d.formatWon(budget.amount || 0)}</div>
+            <div class="detail-section-title">집행 금액</div>
+            <div class="detail-budget-value">${budget.executedAmountStr || d.formatWon(budget.executedAmount)}</div>
           </div>
           <div class="detail-section">
-            <div class="detail-section-title">회계연도</div>
-            <div class="detail-budget-value">FY${budget.fiscalYear || '2026'}</div>
+            <div class="detail-section-title">집행률</div>
+            <div class="detail-budget-value">${budget.execRate != null ? budget.execRate + '%' : '-'}</div>
           </div>
-        </div>
+        </div>` : '';
 
-        ${execBlock}
+    const html = `
+      <div class="detail-header">
+        <div class="detail-type-badge" style="background:${typeColor}">${budgetTypeLabel}</div>
+        <h2 class="detail-title">${budget.name}</h2>
+        ${budget.en ? `<div class="detail-en">${budget.en}</div>` : ''}
+      </div>
 
+      <div class="detail-grid-2">
         <div class="detail-section">
-          <div class="detail-section-title">관리 기관 <span class="detail-hint">클릭하면 상세 정보</span></div>
-          <div class="detail-tags">
-            ${managingOrgName
-              ? `<span class="detail-tag org detail-clickable" ${managingOrg ? `data-org-id="${managingOrg.id}"` : `data-org-name="${managingOrgName}"`}>${managingOrgName}</span>`
-              : '<span class="detail-empty">미지정</span>'}
-          </div>
+          <div class="detail-section-title">배정 예산</div>
+          <div class="detail-budget-value">${budget.amountStr || d.formatWon(budget.amount || 0)}</div>
         </div>
-
-        ${stratBlock}
-
         <div class="detail-section">
-          <div class="detail-section-title">연관 정책 <span class="detail-hint">클릭하면 상세 정보</span> (${relatedPolicies.length}건)</div>
-          <div class="detail-list">${polHtml}</div>
+          <div class="detail-section-title">회계연도</div>
+          <div class="detail-budget-value">FY${budget.fiscalYear || '2026'}</div>
         </div>
-      `;
-      detailBody.scrollTop = 0;
-      const rebind = () => this._bindBudgetDetailClicks(budget, relatedPolicies, strategy);
-      this._currentRebind = rebind;
-      rebind();
-    });
+      </div>
+
+      ${execBlock}
+
+      <div class="detail-section">
+        <div class="detail-section-title">관리 기관 <span class="detail-hint">클릭하면 상세 정보</span></div>
+        <div class="detail-tags">
+          ${managingOrgName
+            ? `<span class="detail-tag org detail-clickable" ${managingOrg ? `data-org-id="${managingOrg.id}"` : `data-org-name="${managingOrgName}"`}>${managingOrgName}</span>`
+            : '<span class="detail-empty">미지정</span>'}
+        </div>
+      </div>
+
+      ${stratBlock}
+
+      <div class="detail-section">
+        <div class="detail-section-title">연관 정책 <span class="detail-hint">클릭하면 상세 정보</span> (${relatedPolicies.length}건)</div>
+        <div class="detail-list">${polHtml}</div>
+      </div>
+    `;
+
+    this._openDetail(html);
+    const rebind = () => this._bindBudgetDetailClicks(budget, relatedPolicies, strategy);
+    this._currentRebind = rebind;
+    rebind();
   },
 
   _bindBudgetDetailClicks(budget, relatedPolicies, strategy) {
