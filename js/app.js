@@ -403,28 +403,63 @@ const App = {
 
   _showPolicyDetailPush(policy) {
     const body = document.getElementById('detailBody');
-    this._pushDetailWith(body ? body.innerHTML : '', () => this._showPolicyDetailInline(policy));
+    this._pushDetailWith(body ? body.innerHTML : '', () => {
+      body.innerHTML = this._buildPolicyDetailHtml(policy);
+      body.scrollTop = 0;
+      const rebind = () => this._bindPolicyDetailClicks(policy);
+      this._currentRebind = rebind;
+      rebind();
+    });
   },
 
-  _showPolicyDetailInline(policy) {
-    const body = document.getElementById('detailBody');
-    if (!body) return;
+  _buildPolicyDetailHtml(policy) {
+    const d = HRDData;
     const compHtml = policy.competencies && policy.competencies.length
-      ? policy.competencies.map(c => `<span class="detail-tag comp">${c.name}</span>`).join('')
+      ? policy.competencies.map(c => `<span class="detail-tag comp detail-clickable" data-comp-id="${c.id}">${c.name}</span>`).join('')
       : '<span class="detail-empty">역량 데이터 없음</span>';
+    const catHtml = policy.competencyCategories && policy.competencyCategories.length
+      ? policy.competencyCategories.map(c => `<span class="detail-tag">${c}</span>`).join('')
+      : '<span class="detail-empty">역량 분야 데이터 없음</span>';
     const perfHtml = policy.performanceGoals && policy.performanceGoals.length
       ? policy.performanceGoals.map(g => {
           const val = g.value ? ` (${parseInt(g.value).toLocaleString()}명)` : '';
-          return `<div class="detail-list-item"><span class="detail-dot perf"></span>${g.name}${val}</div>`;
+          return `<div class="detail-list-item detail-clickable" data-goal-name="${g.name}"><span class="detail-dot perf"></span>${g.name}${val}</div>`;
         }).join('')
       : '<span class="detail-empty">성과 목표 데이터 없음</span>';
-    body.innerHTML = `
+    const managingOrgObj = policy.managingOrg
+      ? d.organizations.find(o => o.name === policy.managingOrg || o.abbr === policy.managingOrg)
+      : null;
+    const managingOrgTag = policy.managingOrg
+      ? `<span class="detail-tag org detail-clickable" ${managingOrgObj ? `data-org-id="${managingOrgObj.id}"` : `data-org-name="${policy.managingOrg}"`}>${policy.managingOrg}${policy.managingOrgAbbr ? ' (' + policy.managingOrgAbbr + ')' : ''}</span>`
+      : '';
+    const relOrgsHtml = policy.relatedOrgs && policy.relatedOrgs.length
+      ? policy.relatedOrgs.map(orgId => {
+          const org = d.organizations.find(o => o.id === orgId);
+          return `<span class="detail-tag org detail-clickable" data-org-id="${orgId}">${org ? org.name : orgId}</span>`;
+        }).join('')
+      : '';
+    const relBudgetsHtml = policy.relatedBudgets && policy.relatedBudgets.length
+      ? policy.relatedBudgets.map(bId => {
+          const b = d.budgets.find(x => x.id === bId);
+          return b
+            ? `<div class="detail-list-item"><span class="detail-dot perf"></span>${b.name}<span style="color:#ffd700;font-size:11px;margin-left:6px">${b.amountStr || ''}</span></div>`
+            : `<div class="detail-list-item"><span class="detail-dot"></span>${bId}</div>`;
+        }).join('')
+      : '';
+    const strategyTag = policy.relatedStrategyName
+      ? `<span class="detail-tag org detail-clickable" data-strategy-id="${policy.relatedStrategy || ''}" data-strategy-name="${policy.relatedStrategyName}">${policy.relatedStrategyName}</span>`
+      : '<span class="detail-empty">데이터 없음</span>';
+    return `
       <div class="detail-header-block">
         <div class="detail-strategy-label">PUBLIC POLICY</div>
         <h2 class="detail-title">${policy.name}</h2>
         <div class="detail-en">${policy.en || ''}</div>
       </div>
       ${policy.description ? `<div class="detail-section"><div class="detail-section-title">정책 소개</div><p class="detail-description">${policy.description}</p></div>` : ''}
+      <div class="detail-section">
+        <div class="detail-section-title">연관 전략 <span class="detail-hint">클릭하면 상세 정보</span></div>
+        <div class="detail-tags">${strategyTag}</div>
+      </div>
       <div class="detail-grid-2">
         <div class="detail-section">
           <div class="detail-section-title">예산 규모</div>
@@ -432,12 +467,18 @@ const App = {
         </div>
         <div class="detail-section">
           <div class="detail-section-title">규모 등급</div>
-          <div class="detail-budget-value">${policy.budgetScale || '-'}</div>
+          <div class="detail-budget-value">${policy.budgetScale || '미배정'}</div>
         </div>
       </div>
-      ${policy.managingOrg ? `<div class="detail-section"><div class="detail-section-title">관리 기관</div><div class="detail-tags"><span class="detail-tag org">${policy.managingOrg}</span></div></div>` : ''}
+      ${managingOrgTag ? `<div class="detail-section"><div class="detail-section-title">관리 기관 <span class="detail-hint">클릭하면 상세 정보</span></div><div class="detail-tags">${managingOrgTag}</div></div>` : ''}
+      ${relOrgsHtml ? `<div class="detail-section"><div class="detail-section-title">연관 기관 (${policy.relatedOrgs.length}개) <span class="detail-hint">클릭하면 상세 정보</span></div><div class="detail-tags">${relOrgsHtml}</div></div>` : ''}
+      ${relBudgetsHtml ? `<div class="detail-section"><div class="detail-section-title">연관 예산 (${policy.relatedBudgets.length}건)</div><div class="detail-list">${relBudgetsHtml}</div></div>` : ''}
       <div class="detail-section">
-        <div class="detail-section-title">지원 역량</div>
+        <div class="detail-section-title">역량 분야</div>
+        <div class="detail-tags">${catHtml}</div>
+      </div>
+      <div class="detail-section">
+        <div class="detail-section-title">지원 역량 <span class="detail-hint">클릭하면 상세 정보</span></div>
         <div class="detail-tags">${compHtml}</div>
       </div>
       <div class="detail-section">
@@ -445,7 +486,110 @@ const App = {
         <div class="detail-list">${perfHtml}</div>
       </div>
     `;
-    body.scrollTop = 0;
+  },
+
+  _bindPolicyDetailClicks(policy) {
+    const body = document.getElementById('detailBody');
+    if (!body) return;
+    const d = HRDData;
+
+    body.querySelectorAll('[data-strategy-id],[data-strategy-name]').forEach(el => {
+      el.addEventListener('click', () => {
+        const strat = (el.dataset.strategyId ? d.strategies.find(s => s.id === el.dataset.strategyId) : null)
+          || d.strategies.find(s => s.name === el.dataset.strategyName);
+        if (strat) this._pushStrategyDetail(strat);
+      });
+    });
+
+    body.querySelectorAll('[data-org-id]').forEach(el => {
+      el.addEventListener('click', () => {
+        const org = d.organizations.find(o => o.id === el.dataset.orgId);
+        if (org) this._pushOrgDetail(org);
+      });
+    });
+
+    body.querySelectorAll('[data-org-name]').forEach(el => {
+      el.addEventListener('click', () => {
+        const org = d.organizations.find(o => o.name === el.dataset.orgName || o.abbr === el.dataset.orgName);
+        if (org) this._pushOrgDetail(org);
+      });
+    });
+
+    body.querySelectorAll('[data-comp-id]').forEach(el => {
+      el.addEventListener('click', () => {
+        const comp = d.competencies.find(c => c.id === el.dataset.compId)
+          || (policy.competencies || []).find(c => c.id === el.dataset.compId);
+        if (comp) this._pushCompDetail(comp);
+      });
+    });
+
+    body.querySelectorAll('[data-goal-name]').forEach(el => {
+      el.addEventListener('click', () => {
+        const goal = (policy.performanceGoals || []).find(g => g.name === el.dataset.goalName);
+        if (goal) this._pushGoalDetail(goal);
+      });
+    });
+  },
+
+  _pushStrategyDetail(strategy) {
+    const body = document.getElementById('detailBody');
+    this._pushDetailWith(body ? body.innerHTML : '', () => {
+      const d = HRDData;
+      const budgetStr = strategy.totalBudgetStr || (strategy.totalBudget ? d.formatWon(strategy.totalBudget) : '미배정');
+      const policiesHtml = strategy.policies && strategy.policies.length
+        ? strategy.policies.map(p => `<span class="detail-tag detail-clickable" data-policy-id="${p.id}">${p.name}</span>`).join('')
+        : '<span class="detail-empty">연관 정책 데이터 없음</span>';
+      const orgsHtml = strategy.implementingOrgs && strategy.implementingOrgs.length
+        ? strategy.implementingOrgs.map(o => `<span class="detail-tag org detail-clickable" data-org-id="${o.id}">${o.abbr || o.name}</span>`).join('')
+        : '<span class="detail-empty">집행 기관 데이터 없음</span>';
+      const compHtml = strategy.competencies && strategy.competencies.length
+        ? strategy.competencies.slice(0, 10).map(c => `<span class="detail-tag comp detail-clickable" data-comp-id="${c.id}">${c.name}</span>`).join('')
+        : '<span class="detail-empty">역량 데이터 없음</span>';
+      const perfHtml = strategy.performanceGoals && strategy.performanceGoals.length
+        ? strategy.performanceGoals.map(g => `<div class="detail-list-item detail-clickable" data-goal-name="${g.name}"><span class="detail-dot perf"></span>${g.name}</div>`).join('')
+        : '<span class="detail-empty">성과 목표 데이터 없음</span>';
+      body.innerHTML = `
+        <div class="detail-header-block">
+          <div class="detail-strategy-label">NATIONAL STRATEGY</div>
+          <h2 class="detail-title">${strategy.name}</h2>
+          <div class="detail-en">${strategy.en || ''}</div>
+        </div>
+        <div class="detail-section">
+          <div class="detail-section-title">전략 소개</div>
+          <p class="detail-description">${strategy.description || `${strategy.name}은 국가 인적자원 개발의 핵심 전략입니다.`}</p>
+        </div>
+        <div class="detail-grid-2">
+          <div class="detail-section">
+            <div class="detail-section-title">예산 규모</div>
+            <div class="detail-budget-value">${budgetStr}</div>
+          </div>
+          <div class="detail-section">
+            <div class="detail-section-title">연관 정책 수</div>
+            <div class="detail-budget-value">${strategy.policyCount || (strategy.policies ? strategy.policies.length : 0)}개</div>
+          </div>
+        </div>
+        <div class="detail-section">
+          <div class="detail-section-title">연관 정책 <span class="detail-hint">클릭하면 상세 정보</span></div>
+          <div class="detail-tags">${policiesHtml}</div>
+        </div>
+        <div class="detail-section">
+          <div class="detail-section-title">집행 기관 <span class="detail-hint">클릭하면 상세 정보</span></div>
+          <div class="detail-tags">${orgsHtml}</div>
+        </div>
+        <div class="detail-section">
+          <div class="detail-section-title">연관 역량 <span class="detail-hint">클릭하면 상세 정보</span></div>
+          <div class="detail-tags">${compHtml}</div>
+        </div>
+        <div class="detail-section">
+          <div class="detail-section-title">성과 목표</div>
+          <div class="detail-list">${perfHtml}</div>
+        </div>
+      `;
+      body.scrollTop = 0;
+      const rebind = () => this._bindStrategyDetailClicks(strategy);
+      this._currentRebind = rebind;
+      rebind();
+    });
   },
 
   _pushOrgDetail(org) {
@@ -711,7 +855,7 @@ const App = {
 
   _showPolicyGroupPopup(groupName, policies) {
     const listHtml = policies.map(p => `
-      <div class="detail-list-item policy-group-row" data-policy-id="${p.id}" style="cursor:pointer">
+      <div class="detail-list-item policy-group-row detail-clickable" data-policy-id="${p.id}">
         <span class="detail-dot"></span>
         <span class="policy-group-name">${p.name}</span>
         <span class="policy-group-budget">${p.budgetAmountStr || '미배정'}</span>
@@ -725,124 +869,29 @@ const App = {
         <div class="detail-en">총 ${policies.length}개 정책 · 클릭하면 상세 정보 확인</div>
       </div>
       <div class="detail-section">
-        <div class="detail-section-title">정책 목록</div>
+        <div class="detail-section-title">정책 목록 <span class="detail-hint">클릭하면 상세 정보</span></div>
         <div class="detail-list">${listHtml}</div>
       </div>
     `;
     this._openDetail(html);
-
-    // Bind click → policy detail (replace panel content)
-    document.querySelectorAll('.policy-group-row').forEach(row => {
-      row.addEventListener('click', () => {
-        const pol = HRDData.policies.find(p => p.id === row.dataset.policyId);
-        if (pol) this._showPolicyDetail(pol);
+    const rebind = () => {
+      document.querySelectorAll('.policy-group-row').forEach(row => {
+        row.addEventListener('click', () => {
+          const pol = HRDData.policies.find(p => p.id === row.dataset.policyId);
+          if (pol) this._showPolicyDetailPush(pol);
+        });
       });
-    });
+    };
+    this._currentRebind = rebind;
+    rebind();
   },
 
   _showPolicyDetail(policy) {
-    const compHtml = policy.competencies && policy.competencies.length
-      ? policy.competencies.map(c => `<span class="detail-tag comp">${c.name}</span>`).join('')
-      : '<span class="detail-empty">역량 데이터 없음</span>';
-
-    const catHtml = policy.competencyCategories && policy.competencyCategories.length
-      ? policy.competencyCategories.map(c => `<span class="detail-tag">${c}</span>`).join('')
-      : '<span class="detail-empty">역량 분야 데이터 없음</span>';
-
-    const perfHtml = policy.performanceGoals && policy.performanceGoals.length
-      ? policy.performanceGoals.map(g => {
-          const val = g.value ? ` (${parseInt(g.value).toLocaleString()}명)` : '';
-          return `<div class="detail-list-item"><span class="detail-dot perf"></span>${g.name}${val}</div>`;
-        }).join('')
-      : '<span class="detail-empty">성과 목표 데이터 없음</span>';
-
-    const orgBlock = policy.managingOrg ? `
-      <div class="detail-section">
-        <div class="detail-section-title">관리 기관</div>
-        <div class="detail-tags">
-          <span class="detail-tag org">${policy.managingOrg}${policy.managingOrgAbbr ? ' (' + policy.managingOrgAbbr + ')' : ''}</span>
-        </div>
-      </div>` : '';
-
-    const relOrgsHtml = policy.relatedOrgs && policy.relatedOrgs.length
-      ? (() => {
-          const d = HRDData;
-          return policy.relatedOrgs.map(orgId => {
-            const org = d.organizations.find(o => o.id === orgId);
-            return `<span class="detail-tag org">${org ? org.name : orgId}</span>`;
-          }).join('');
-        })()
-      : '';
-
-    const relBudgetsHtml = policy.relatedBudgets && policy.relatedBudgets.length
-      ? (() => {
-          const d = HRDData;
-          return policy.relatedBudgets.map(bId => {
-            const b = d.budgets.find(x => x.id === bId);
-            return b
-              ? `<div class="detail-list-item"><span class="detail-dot perf"></span>${b.name}<span style="color:#ffd700;font-size:11px;margin-left:6px">${b.amountStr || ''}</span></div>`
-              : `<div class="detail-list-item"><span class="detail-dot"></span>${bId}</div>`;
-          }).join('');
-        })()
-      : '';
-
-    const html = `
-      <div class="detail-header-block">
-        <div class="detail-strategy-label">PUBLIC POLICY</div>
-        <h2 class="detail-title">${policy.name}</h2>
-        <div class="detail-en">${policy.en || ''}</div>
-      </div>
-
-      <div class="detail-section">
-        <div class="detail-section-title">연관 전략</div>
-        <div class="detail-tags">
-          ${policy.relatedStrategyName
-            ? `<span class="detail-tag org">${policy.relatedStrategyName}</span>`
-            : '<span class="detail-empty">데이터 없음</span>'}
-        </div>
-      </div>
-
-      <div class="detail-grid-2">
-        <div class="detail-section">
-          <div class="detail-section-title">예산 규모</div>
-          <div class="detail-budget-value">${policy.budgetAmountStr || '미배정'}</div>
-        </div>
-        <div class="detail-section">
-          <div class="detail-section-title">규모 등급</div>
-          <div class="detail-budget-value">${policy.budgetScale || '미배정'}</div>
-        </div>
-      </div>
-
-      ${orgBlock}
-
-      ${relOrgsHtml ? `
-      <div class="detail-section">
-        <div class="detail-section-title">연관 기관 (${policy.relatedOrgs.length}개)</div>
-        <div class="detail-tags">${relOrgsHtml}</div>
-      </div>` : ''}
-
-      ${relBudgetsHtml ? `
-      <div class="detail-section">
-        <div class="detail-section-title">연관 예산 (${policy.relatedBudgets.length}건)</div>
-        <div class="detail-list">${relBudgetsHtml}</div>
-      </div>` : ''}
-
-      <div class="detail-section">
-        <div class="detail-section-title">역량 분야</div>
-        <div class="detail-tags">${catHtml}</div>
-      </div>
-
-      <div class="detail-section">
-        <div class="detail-section-title">지원 역량</div>
-        <div class="detail-tags">${compHtml}</div>
-      </div>
-
-      <div class="detail-section">
-        <div class="detail-section-title">성과 목표</div>
-        <div class="detail-list">${perfHtml}</div>
-      </div>
-    `;
+    const html = this._buildPolicyDetailHtml(policy);
     this._openDetail(html);
+    const rebind = () => this._bindPolicyDetailClicks(policy);
+    this._currentRebind = rebind;
+    rebind();
   },
 
   // --- Budget View ---
