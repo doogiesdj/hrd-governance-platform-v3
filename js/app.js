@@ -593,28 +593,58 @@ const App = {
   },
 
   _pushOrgDetail(org) {
-    const d = HRDData;
-    const policies = d.policies.filter(p => (p.relatedOrgs || []).includes(org.id));
-    const polHtml = policies.length
-      ? policies.map(p => `<div class="detail-list-item"><span class="detail-dot"></span>${p.name}</div>`).join('')
-      : '<span class="detail-empty">데이터 없음</span>';
-    const html = `
-      <div class="detail-header-block">
-        <div class="detail-strategy-label">ORGANIZATION</div>
-        <h2 class="detail-title">${org.name}</h2>
-        <div class="detail-en">${org.abbr || ''}</div>
-      </div>
-      <div class="detail-section">
-        <div class="detail-section-title">유형</div>
-        <div class="detail-tags"><span class="detail-tag">${org.type || '기관'}</span></div>
-      </div>
-      ${org.description ? `<div class="detail-section"><div class="detail-section-title">설명</div><p class="detail-description">${org.description}</p></div>` : ''}
-      <div class="detail-section">
-        <div class="detail-section-title">관련 정책 (${policies.length}건)</div>
-        <div class="detail-list">${polHtml}</div>
-      </div>
-    `;
-    this._pushDetail(html);
+    const body = document.getElementById('detailBody');
+    this._pushDetailWith(body ? body.innerHTML : '', () => {
+      const d = HRDData;
+      const policies = d.policies.filter(p => (p.relatedOrgs || []).includes(org.id));
+      const polHtml = policies.length
+        ? policies.map(p => `<div class="detail-list-item detail-clickable" data-policy-id="${p.id}"><span class="detail-dot"></span>${p.name}</div>`).join('')
+        : '<span class="detail-empty">데이터 없음</span>';
+      const contactHtml = (org.dept || org.mainTel || org.directTel) ? `
+        <div class="detail-section">
+          <div class="detail-section-title">담당 정보</div>
+          <div class="detail-contact-grid">
+            ${org.dept ? `<div class="detail-contact-row"><span class="detail-contact-label">담당부서</span><span class="detail-contact-value">${org.dept}</span></div>` : ''}
+            ${org.mainTel ? `<div class="detail-contact-row"><span class="detail-contact-label">대표전화</span><span class="detail-contact-value">${org.mainTel}</span></div>` : ''}
+            ${org.directTel ? `<div class="detail-contact-row"><span class="detail-contact-label">담당자전화</span><span class="detail-contact-value">${org.directTel}</span></div>` : ''}
+          </div>
+        </div>` : '';
+      const detailBody = document.getElementById('detailBody');
+      if (!detailBody) return;
+      detailBody.innerHTML = `
+        <div class="detail-header-block">
+          <div class="detail-strategy-label">ORGANIZATION</div>
+          <h2 class="detail-title">${org.name}</h2>
+          <div class="detail-en">${org.abbr || ''}</div>
+        </div>
+        <div class="detail-section">
+          <div class="detail-section-title">유형</div>
+          <div class="detail-tags"><span class="detail-tag">${org.type || '기관'}</span></div>
+        </div>
+        ${contactHtml}
+        ${org.description ? `<div class="detail-section"><div class="detail-section-title">설명</div><p class="detail-description">${org.description}</p></div>` : ''}
+        <div class="detail-section">
+          <div class="detail-section-title">관련 정책 <span class="detail-hint">클릭하면 상세 정보</span> (${policies.length}건)</div>
+          <div class="detail-list">${polHtml}</div>
+        </div>
+      `;
+      detailBody.scrollTop = 0;
+      const rebind = () => this._bindOrgDetailClicks(org, policies);
+      this._currentRebind = rebind;
+      rebind();
+    });
+  },
+
+  _bindOrgDetailClicks(org, policies) {
+    const body = document.getElementById('detailBody');
+    if (!body) return;
+    body.querySelectorAll('[data-policy-id]').forEach(el => {
+      el.addEventListener('click', () => {
+        const pol = policies.find(p => p.id === el.dataset.policyId)
+          || HRDData.policies.find(p => p.id === el.dataset.policyId);
+        if (pol) this._showPolicyDetailPush(pol);
+      });
+    });
   },
 
   _pushProgramDetail(program) {

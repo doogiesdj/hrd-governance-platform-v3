@@ -997,6 +997,19 @@ body {
   color: var(--color-text-secondary);
 }
 
+.detail-list-item.detail-clickable {
+  cursor: pointer;
+  padding: 3px 6px;
+  border-radius: 4px;
+  margin: -3px -6px;
+  transition: background 0.15s;
+}
+
+.detail-list-item.detail-clickable:hover {
+  background: rgba(0, 212, 255, 0.08);
+  color: var(--color-cyan);
+}
+
 .detail-dot {
   width: 5px;
   height: 5px;
@@ -1020,6 +1033,33 @@ body {
   font-size: 12px;
   color: var(--color-text-secondary);
   opacity: 0.5;
+}
+
+.detail-contact-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.detail-contact-row {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 12px;
+}
+
+.detail-contact-label {
+  color: var(--color-text-secondary);
+  opacity: 0.7;
+  min-width: 70px;
+  flex-shrink: 0;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+}
+
+.detail-contact-value {
+  color: var(--color-text);
+  font-weight: 500;
 }
 
 /* Policy Chart Split Layout */
