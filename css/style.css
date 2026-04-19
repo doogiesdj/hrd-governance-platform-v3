@@ -1938,8 +1938,11 @@ body {
 /* grandcontext dims any depth color */
 .og-node-grandcontext rect { opacity: 0.45; }
 
-/* selected overrides depth (placed after depth rules) */
-.og-node-selected rect { fill: #1a7f37 !important; stroke: #3fb950 !important; stroke-width: 2.5; }
+/* selected: keep depth fill, brighten stroke + thicker border to show selection */
+.og-node-depth-0.og-node-selected rect { fill: #1a3d80; stroke: #79b8ff; stroke-width: 3; }
+.og-node-depth-1.og-node-selected rect { fill: #4a1f80; stroke: #cc88ff; stroke-width: 3; }
+.og-node-depth-2.og-node-selected rect { fill: #155f5f; stroke: #56d6d6; stroke-width: 3; }
+.og-node-depth-3.og-node-selected rect { fill: #3d5a14; stroke: #a0d050; stroke-width: 3; }
 .og-node-parent rect  { fill: #161b22; stroke: #58a6ff; stroke-width: 1; }
 .og-node-grandparent rect { fill: #0d1117; stroke: #30363d; stroke-width: 1; }
 .og-node-child rect   { opacity: 1; }
