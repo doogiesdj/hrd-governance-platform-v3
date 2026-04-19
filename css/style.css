@@ -1371,47 +1371,91 @@ body {
 
 .sparql-layout {
   display: flex;
-  gap: 0;
+  flex-direction: column;
   height: calc(100vh - 180px);
   overflow: hidden;
 }
 
-.sparql-sidebar {
-  width: 280px;
+.sparql-top-bar {
   flex-shrink: 0;
-  overflow-y: auto;
-  border-right: 1px solid var(--color-border);
-  padding: 8px;
   background: var(--color-bg-secondary);
+  border-bottom: 1px solid var(--color-border);
+  overflow-y: auto;
+  max-height: 42vh;
 }
 
-.sparql-sidebar::-webkit-scrollbar { width: 4px; }
-.sparql-sidebar::-webkit-scrollbar-track { background: transparent; }
-.sparql-sidebar::-webkit-scrollbar-thumb { background: rgba(0,212,255,0.2); border-radius: 2px; }
+.sparql-top-bar::-webkit-scrollbar { height: 4px; width: 4px; }
+.sparql-top-bar::-webkit-scrollbar-track { background: transparent; }
+.sparql-top-bar::-webkit-scrollbar-thumb { background: rgba(0,212,255,0.2); border-radius: 2px; }
 
-.sparql-category {
-  margin-bottom: 8px;
+/* NLQ panel horizontal compact layout */
+.nlq-input-row {
+  display: flex;
+  gap: 6px;
+  align-items: flex-start;
+  padding: 0 8px 6px;
+}
+
+.nlq-input-row .nlq-input {
+  flex: 1;
+  resize: none;
+}
+
+.nlq-input-row .nlq-query-btn {
+  flex-shrink: 0;
+  align-self: stretch;
+}
+
+/* Pre-defined query bar */
+.sparql-predef-bar {
+  border-top: 1px solid var(--color-border);
+  padding: 6px 8px;
+  background: var(--color-bg-primary);
+}
+
+.sparql-predef-label {
+  font-size: 10px;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 5px;
+}
+
+/* Category tabs: horizontal row */
+.sparql-category-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-bottom: 6px;
 }
 
 .sparql-category-header {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 6px 8px;
+  gap: 5px;
+  padding: 5px 10px;
   background: rgba(0, 212, 255, 0.06);
   border: 1px solid rgba(0, 212, 255, 0.15);
-  border-radius: var(--radius-md);
+  border-radius: 20px;
   cursor: pointer;
   user-select: none;
   font-size: 11px;
   color: var(--color-cyan);
   font-weight: bold;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.4px;
   text-transform: uppercase;
+  white-space: nowrap;
+  transition: all var(--transition-fast);
 }
 
 .sparql-category-header:hover {
   background: rgba(0, 212, 255, 0.12);
+}
+
+.sparql-category-header.active {
+  background: rgba(0, 212, 255, 0.2);
+  border-color: var(--color-cyan);
+  box-shadow: 0 0 8px rgba(0, 212, 255, 0.2);
 }
 
 .sparql-category-id {
@@ -1425,51 +1469,36 @@ body {
 }
 
 .sparql-category-label {
-  flex: 1;
-  overflow: hidden;
-  text-overflow: ellipsis;
   white-space: nowrap;
 }
 
-.sparql-category-chevron {
-  font-size: 10px;
-  transition: transform var(--transition-fast);
-  flex-shrink: 0;
-}
-
-.sparql-category.collapsed .sparql-category-chevron {
-  transform: rotate(-90deg);
-}
-
-.sparql-query-list {
-  padding: 4px 0 2px 8px;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.sparql-category.collapsed .sparql-query-list {
+/* Query chips: horizontal row */
+.sparql-query-area {
   display: none;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.sparql-query-area.active {
+  display: flex;
 }
 
 .sparql-query-btn {
   background: transparent;
-  border: 1px solid transparent;
-  border-radius: var(--radius-sm);
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  border-radius: 20px;
   color: var(--color-text-secondary);
   font-family: var(--font-primary);
   font-size: 11px;
-  padding: 4px 8px;
+  padding: 4px 10px;
   cursor: pointer;
-  text-align: left;
-  line-height: 1.4;
+  white-space: nowrap;
   transition: all var(--transition-fast);
-  word-break: break-all;
 }
 
 .sparql-query-btn:hover {
   background: rgba(0, 212, 255, 0.08);
-  border-color: rgba(0, 212, 255, 0.2);
+  border-color: rgba(0, 212, 255, 0.4);
   color: var(--color-text-primary);
 }
 
@@ -1487,7 +1516,7 @@ body {
 .sparql-query-btn .sparql-qid {
   font-size: 10px;
   opacity: 0.6;
-  margin-right: 4px;
+  margin-right: 3px;
 }
 
 /* Result Panel */
@@ -2419,7 +2448,7 @@ body {
   font-size: 12px;
   padding: 7px 9px;
   resize: vertical;
-  min-height: 60px;
+  min-height: 44px;
   transition: border-color 0.15s;
 }
 .nlq-input:focus { outline: none; border-color: #58a6ff; }

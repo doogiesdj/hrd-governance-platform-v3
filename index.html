@@ -330,7 +330,7 @@
                         <span class="subtitle">SPARQL Query Explorer</span>
                     </div>
                     <div class="sparql-layout">
-                        <div class="sparql-sidebar">
+                        <div class="sparql-top-bar">
                             <!-- NLQ Panel -->
                             <div class="nlq-panel">
                                 <div class="nlq-panel-header">
@@ -340,23 +340,29 @@
                                         <button id="nlqSettingsBtn" class="nlq-settings-btn" title="API 설정">⚙</button>
                                     </div>
                                 </div>
-                                <textarea id="nlqInput" class="nlq-input" rows="3"
-                                    placeholder="예: 어떤 정책이 AI 역량 개발 프로그램을 지원하나요?&#10;(Ctrl+Enter로 질의)"></textarea>
+                                <div class="nlq-input-row">
+                                    <textarea id="nlqInput" class="nlq-input" rows="2"
+                                        placeholder="예: 어떤 정책이 AI 역량 개발 프로그램을 지원하나요? (Ctrl+Enter로 질의)"></textarea>
+                                    <button id="nlqQueryBtn" class="nlq-query-btn">질의 <span class="nlq-shortcut">Ctrl+↵</span></button>
+                                </div>
                                 <div class="nlq-examples">
                                     <span class="nlq-example-chip" data-q="AI 관련 역량을 지원하는 정책과 예산은 어떻게 연결되어 있나요?">AI·정책·예산</span>
                                     <span class="nlq-example-chip" data-q="어떤 교육 프로그램이 어떤 역량을 개발하고 어떤 기관이 운영하나요?">프로그램·역량·기관</span>
                                     <span class="nlq-example-chip" data-q="인원별 보유 역량과 역량갭은 어떻게 분석할 수 있나요?">인원·역량갭 분석</span>
                                     <span class="nlq-example-chip" data-q="정책 참여로 어떤 혜택을 받고 어떤 성과가 나타나나요?">참여·혜택·성과</span>
                                 </div>
-                                <button id="nlqQueryBtn" class="nlq-query-btn">질의 <span class="nlq-shortcut">Ctrl+↵</span></button>
                             </div>
-                            <div class="nlq-divider"><span>또는 사전 정의 쿼리 선택</span></div>
-                            <div id="sparqlCategoryList" class="sparql-category-list"></div>
+                            <!-- Category tabs + query chips -->
+                            <div class="sparql-predef-bar">
+                                <div class="sparql-predef-label">사전 정의 쿼리</div>
+                                <div id="sparqlCategoryList" class="sparql-category-list"></div>
+                                <div id="sparqlQueryArea" class="sparql-query-area"></div>
+                            </div>
                         </div>
                         <div class="sparql-result-panel">
                             <div id="sparqlPlaceholder" class="sparql-placeholder">
                                 <div class="sparql-placeholder-icon">🔍</div>
-                                <div>AI 자연어 질의 또는 좌측 쿼리를 선택하세요</div>
+                                <div>AI 자연어 질의 또는 위 쿼리를 선택하세요</div>
                                 <div class="sparql-placeholder-sub">Ask in natural language or select a predefined query</div>
                             </div>
                             <!-- NLQ Response Panel -->

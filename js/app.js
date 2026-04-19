@@ -116,21 +116,20 @@ const App = {
   _buildSparqlUI() {
     const data = this._sparqlData;
     const container = document.getElementById('sparqlCategoryList');
+    const queryArea = document.getElementById('sparqlQueryArea');
     if (!container) return;
     container.innerHTML = '';
+    if (queryArea) queryArea.innerHTML = '';
 
-    data.categories.forEach(cat => {
-      const sec = document.createElement('div');
-      sec.className = 'sparql-category';
-
-      const hdr = document.createElement('div');
-      hdr.className = 'sparql-category-header';
-      hdr.innerHTML = `<span class="sparql-category-id">${cat.id}</span><span class="sparql-category-label">${cat.label}<br><small style="opacity:.6;font-size:9px;">${cat.labelEn}</small></span><span class="sparql-category-chevron">▼</span>`;
-      hdr.addEventListener('click', () => sec.classList.toggle('collapsed'));
-
-      const list = document.createElement('div');
-      list.className = 'sparql-query-list';
-
+    const showCategory = (catId) => {
+      container.querySelectorAll('.sparql-category-header').forEach(h => {
+        h.classList.toggle('active', h.dataset.catId === catId);
+      });
+      if (!queryArea) return;
+      queryArea.innerHTML = '';
+      queryArea.classList.add('active');
+      const cat = data.categories.find(c => c.id === catId);
+      if (!cat) return;
       cat.queries.forEach(q => {
         const btn = document.createElement('button');
         btn.className = 'sparql-query-btn';
@@ -138,17 +137,24 @@ const App = {
         if (qdata && qdata.result && qdata.result.error) btn.classList.add('has-error');
         btn.innerHTML = `<span class="sparql-qid">${q.id}</span>${q.title}`;
         btn.addEventListener('click', () => {
-          document.querySelectorAll('.sparql-query-btn').forEach(b => b.classList.remove('active'));
+          queryArea.querySelectorAll('.sparql-query-btn').forEach(b => b.classList.remove('active'));
           btn.classList.add('active');
           this._showSparqlResult(q.id);
         });
-        list.appendChild(btn);
+        queryArea.appendChild(btn);
       });
+    };
 
-      sec.appendChild(hdr);
-      sec.appendChild(list);
-      container.appendChild(sec);
+    data.categories.forEach(cat => {
+      const hdr = document.createElement('div');
+      hdr.className = 'sparql-category-header';
+      hdr.dataset.catId = cat.id;
+      hdr.innerHTML = `<span class="sparql-category-id">${cat.id}</span><span class="sparql-category-label">${cat.label}</span>`;
+      hdr.addEventListener('click', () => showCategory(cat.id));
+      container.appendChild(hdr);
     });
+
+    if (data.categories.length > 0) showCategory(data.categories[0].id);
   },
 
   _showSparqlResult(qid) {
