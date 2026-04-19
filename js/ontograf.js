@@ -74,58 +74,89 @@ const OntoGraf = (() => {
     'CareerHistory', 'Certification', 'MatchScore', 'TargetGroup'
   ];
 
-  const INSTANCES = {
-    NationalStrategy: [
-      '인공지능주권', '전략기술주권', '탄소중립·재생에너지', '미래모빌리티',
-      '디지털플랫폼정부', '포용적복지국가', '혁신인재양성',
-    ],
-    Policy: [
-      'POLICY_01', 'POLICY_02', 'POLICY_03', 'POLICY_04', 'POLICY_05',
-      'POLICY_06', 'POLICY_07', 'POLICY_08',
-    ],
-    Organization: [
-      'ORG_MINISTRY_01', 'ORG_MINISTRY_02', 'ORG_MINISTRY_03', 'ORG_MINISTRY_04',
-      'ORG_AGENCY_01', 'ORG_AGENCY_02', 'ORG_KIRD_01',
-    ],
-    Budget: [
-      'BUDGET_01', 'BUDGET_02', 'BUDGET_03',
-      'BUDGET_STRAT_01', 'BUDGET_STRAT_02', 'BUDGET_STRAT_03',
-    ],
-    K_DigitalTraining: ['HS_IAI_01', 'HS_ISW_01', 'LT_DAI_01'],
-    WorkshopSeminar:   ['HS_BAM_01', 'SS_IPL_01', 'SS_PST_01'],
-    OnlineModule:      ['LT_BLM_01', 'LT_CSV_01'],
-    JobRetraining:     ['SS_SMA_01', 'SS_SMR_01'],
-    HumanResource: [
-      'PERSON_01', 'PERSON_02', 'PERSON_03', 'PERSON_11', 'PERSON_12', 'PERSON_13',
-    ],
-    TargetGroup: [
-      'TGROUP_Employee', 'TGROUP_Unemployed', 'TGROUP_Expert', 'TGROUP_Youth',
-    ],
-    Competency: [
-      'COMP_AI_01', 'COMP_SW_01', 'COMP_Shipbuilding', 'COMP_BioHealth',
-      'COMP_DataAnalysis', 'COMP_CloudSec', 'COMP_AdminLaw',
-    ],
-    Outcome: [
-      'OUT_01', 'OUT_02', 'OUT_03', 'OUT_11', 'OUT_12',
-    ],
-    Benefit: ['BENEFIT_11', 'BENEFIT_12', 'BENEFIT_13'],
-    CompetencyAssessment: [
-      'ASSESS_PERSON_01_COMP_AI_01', 'ASSESS_PERSON_02_COMP_SW_01',
-    ],
-    CompetencyGap: [
-      'GAP_PERSON_01_COMPCAT_Leadership', 'GAP_PERSON_01_COMPCAT_Management',
-    ],
-    Recommendation: [
-      'REC_PERSON_01_HS_BAM_01', 'REC_PERSON_01_SS_IPL_01',
-    ],
-    ProgramEnrollment: [
-      'ENROLL_PERSON_11_HS_IAI_02', 'ENROLL_PERSON_12_HS_ISW_02',
-    ],
-    Civic_Literacy: ['inst_CivicLit_01', 'inst_CivicLit_02'],
-    Digital_Literacy: ['inst_DigLit_01', 'inst_DigLit_02'],
-    Region: ['inst_Seoul_01', 'inst_Busan_01'],
-    Literacy: ['inst_Lit_Basic_01'],
-  };
+  // ── Dynamic instance index (replaces hardcoded INSTANCES dict) ───────────
+  let _idIndex = null;
+
+  function _buildIdIndex() {
+    if (_idIndex) return _idIndex;
+    _idIndex = new Map();
+    const D = (typeof OntologyData !== 'undefined') ? OntologyData : null;
+    if (!D) return _idIndex;
+    const CLS_MAP = {
+      strategies: 'NationalStrategy', policies: 'Policy', budgets: 'Budget',
+      programs: 'EducationProgram', organizations: 'Organization', persons: 'HumanResource',
+      outcomes: 'Outcome', benefits: 'Benefit', targetGroups: 'TargetGroup',
+      competencies: 'Competency', competencyAssessments: 'CompetencyAssessment',
+      competencyGaps: 'CompetencyGap', recommendations: 'Recommendation',
+      programEnrollments: 'ProgramEnrollment', policyParticipations: 'PolicyParticipation',
+    };
+    for (const [key, baseCls] of Object.entries(CLS_MAP)) {
+      const arr = D[key] || [];
+      arr.forEach(item => {
+        const cls = (item.type && HIERARCHY[item.type]) ? item.type
+                  : (item.class && HIERARCHY[item.class]) ? item.class
+                  : baseCls;
+        _idIndex.set(item.id, { name: item.name || item.id, cls });
+      });
+    }
+    return _idIndex;
+  }
+
+  function _getInstanceLabel(id) {
+    const entry = _buildIdIndex().get(id);
+    return entry ? entry.name : id;
+  }
+
+  function _getDataInstances(cls) {
+    const D = (typeof OntologyData !== 'undefined') ? OntologyData : null;
+    if (!D) return [];
+    switch (cls) {
+      case 'NationalStrategy':   return (D.strategies||[]).map(i => i.id);
+      case 'Policy':             return (D.policies||[]).map(i => i.id);
+      case 'PublicPolicy':       return (D.policies||[]).filter(i => i.type === 'PublicPolicy').map(i => i.id);
+      case 'TuitionSupport': case 'EmploymentSubsidy': case 'R_D_Project':
+      case 'VoucherProgram': case 'TrainingIncentive': return [];
+      case 'Budget':             return (D.budgets||[]).map(i => i.id);
+      case 'OrgBudget': case 'PolicyBudget': case 'StrategyBudget':
+        return (D.budgets||[]).filter(i => i.budgetType === cls || i.type === cls).map(i => i.id);
+      case 'EducationProgram':   return (D.programs||[]).map(i => i.id);
+      case 'K_DigitalTraining': case 'DegreeCourse': case 'JobRetraining':
+      case 'OnlineModule': case 'WorkshopSeminar':
+        return (D.programs||[]).filter(i => i.type === cls).map(i => i.id);
+      case 'Organization':       return (D.organizations||[]).map(i => i.id);
+      case 'CentralMinistry': case 'GovernmentAgency':
+        return (D.organizations||[]).filter(i => i.type === 'CentralMinistry').map(i => i.id);
+      case 'PublicInstitution':
+        return (D.organizations||[]).filter(i => i.type === 'PublicInstitute').map(i => i.id);
+      case 'ResearchCenter':
+        return (D.organizations||[]).filter(i => i.type === 'ResearchInstitute').map(i => i.id);
+      case 'LocalGovernment': case 'Enterprise': case 'CertificationBody': return [];
+      case 'HumanResource': case 'Person':
+        return (D.persons||[]).map(i => i.id);
+      case 'Unemployed': case 'Student': case 'Incumbent':
+      case 'RetiredProfessional': case 'HighPerformer':
+        return (D.persons||[]).filter(i => i.type === cls).map(i => i.id);
+      case 'TargetGroup':        return (D.targetGroups||[]).map(i => i.id);
+      case 'Outcome':            return (D.outcomes||[]).map(i => i.id);
+      case 'Employment': case 'Entrepreneurship': case 'EconomicImpact':
+      case 'SocialImpact': case 'SkillGrowth': case 'RevenueGrowth':
+        return (D.outcomes||[]).filter(i => i.outcomeType === cls || i.type === cls).map(i => i.id);
+      case 'Benefit':            return (D.benefits||[]).map(i => i.id);
+      case 'PolicyParticipation': return (D.policyParticipations||[]).map(i => i.id);
+      case 'CompetencyAssessment': return (D.competencyAssessments||[]).map(i => i.id);
+      case 'CompetencyGap':      return (D.competencyGaps||[]).map(i => i.id);
+      case 'Recommendation':     return (D.recommendations||[]).map(i => i.id);
+      case 'ProgramEnrollment':  return (D.programEnrollments||[]).map(i => i.id);
+      case 'Competency':         return (D.competencies||[]).map(i => i.id);
+      case 'HardSkill': case 'SoftSkill': case 'Literacy':
+        return (D.competencies||[]).filter(i => i.class === cls).map(i => i.id);
+      default: {
+        const byL2 = (D.competencies||[]).filter(i => i.level2 === cls).map(i => i.id);
+        if (byL2.length) return byL2;
+        return (D.competencies||[]).filter(i => i.level3 === cls).map(i => i.id);
+      }
+    }
+  }
 
   // ── Object Properties (Domain → Range) ───────────────────────────────────
   // Format: [sourceClass, propertyName, targetClass, korLabel]
@@ -217,7 +248,7 @@ const OntoGraf = (() => {
     return [...s];
   }
 
-  function _instancesOf(cls) { return INSTANCES[cls] || []; }
+  function _instancesOf(cls) { return _getDataInstances(cls); }
 
   // Return all OBJECT_PROPS where cls is source OR target
   function _propsOf(cls) {
@@ -227,8 +258,7 @@ const OntoGraf = (() => {
   // ── Tree builder ──────────────────────────────────────────────────────────
   function _buildTreeHTML(cls, depth) {
     const children = _childrenOf(cls);
-    const instances = _instancesOf(cls);
-    const hasChildren = children.length > 0 || instances.length > 0;
+    const hasChildren = children.length > 0;
     const pad = depth * 14;
 
     let html = `<div class="og-tree-node" style="padding-left:${pad}px">`;
@@ -240,12 +270,6 @@ const OntoGraf = (() => {
     if (hasChildren) {
       html += `<div class="og-tree-children" id="ogc-${cls}" style="display:none;">`;
       children.forEach(ch => { html += _buildTreeHTML(ch, depth + 1); });
-      instances.forEach(inst => {
-        html += `<div class="og-tree-node" style="padding-left:${(depth + 1) * 14}px">
-          <span class="og-tree-spacer"></span>
-          <span class="og-tree-instance" data-inst="${inst}" data-cls="${cls}">◉ ${inst}</span>
-        </div>`;
-      });
       html += `</div>`;
     }
     return html;
@@ -654,7 +678,16 @@ const OntoGraf = (() => {
     html += `<div class="og-info-status">${isSelCls || isSelInst ? '✅ 선택됨' : '선택 안 됨'} — 클릭하여 ${isSelCls || isSelInst ? '해제' : '추가'}</div>`;
     if (parent) html += `<div class="og-info-row"><b>subClassOf:</b> ${parent}</div>`;
     if (children.length) html += `<div class="og-info-row"><b>하위클래스(${children.length}):</b> ${children.slice(0, 5).join(', ')}${children.length > 5 ? '…' : ''}</div>`;
-    if (insts.length) html += `<div class="og-info-row"><b>인스턴스(${insts.length}):</b> ${insts.slice(0, 4).join(', ')}${insts.length > 4 ? '…' : ''}</div>`;
+    if (insts.length) {
+      html += `<div class="og-info-row"><b>인스턴스 (${insts.length}개):</b></div>`;
+      html += '<div class="og-info-inst-list">';
+      insts.slice(0, 8).forEach(id => {
+        const name = _getInstanceLabel(id);
+        html += `<div class="og-info-inst-item"><span class="og-inst-dot">◉</span> <span class="og-inst-id">${id}</span>${name !== id ? ` — ${name}` : ''}</div>`;
+      });
+      if (insts.length > 8) html += `<div class="og-info-inst-more">… 외 ${insts.length - 8}개</div>`;
+      html += '</div>';
+    }
 
     // Object properties
     const outProps = props.filter(([src]) => src === d.id);
@@ -688,9 +721,20 @@ const OntoGraf = (() => {
       if (el) el.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
       return;
     }
-    for (const [cls, insts] of Object.entries(INSTANCES)) {
-      const inst = insts.find(i => i.toLowerCase().includes(q));
-      if (inst && !_selInstances.has(inst)) { _toggleInstance(inst, cls); return; }
+    const idx = _buildIdIndex();
+    for (const [id, entry] of idx) {
+      if (id.toLowerCase().includes(q) || entry.name.toLowerCase().includes(q)) {
+        const cls = entry.cls;
+        if (!_selClasses.has(cls)) _toggleClass(cls);
+        const el = document.getElementById('og-node-' + cls);
+        if (el) el.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+        const panel = document.getElementById('og-info-panel');
+        if (panel) {
+          panel.innerHTML = `<div class="og-info-title">${id}</div><div class="og-info-row"><b>이름:</b> ${entry.name}</div><div class="og-info-row"><b>클래스:</b> ${cls}</div>`;
+          panel.style.display = 'block';
+        }
+        return;
+      }
     }
     const panel = document.getElementById('og-info-panel');
     if (panel) {

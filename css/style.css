@@ -2106,6 +2106,40 @@ body {
   margin-right: 4px;
 }
 
+/* Instance list in info panel */
+.og-info-inst-list {
+  margin: 4px 0 6px 0;
+  max-height: 160px;
+  overflow-y: auto;
+}
+.og-info-inst-item {
+  font-size: 11px;
+  color: #c9d1d9;
+  padding: 2px 4px;
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.og-inst-dot {
+  color: #58a6ff;
+  flex-shrink: 0;
+}
+.og-inst-id {
+  color: #79c0ff;
+  font-family: monospace;
+  font-size: 10px;
+  flex-shrink: 0;
+}
+.og-info-inst-more {
+  font-size: 10px;
+  color: #6e7681;
+  padding: 2px 4px;
+  font-style: italic;
+}
+
 /* Legend propctx icon */
 .og-legend-propctx {
   display: inline-block;
