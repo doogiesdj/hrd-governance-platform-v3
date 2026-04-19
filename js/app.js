@@ -448,12 +448,6 @@ const App = {
     body.scrollTop = 0;
   },
 
-  _pushDetailWith(savedHtml, renderFn) {
-    this._detailStack.push(savedHtml);
-    renderFn();
-    this._updateBackBtn();
-  },
-
   _pushOrgDetail(org) {
     const d = HRDData;
     const policies = d.policies.filter(p => (p.relatedOrgs || []).includes(org.id));
