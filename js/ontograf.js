@@ -71,11 +71,12 @@ const OntoGraf = (() => {
   };
 
   const ROOT_CLASSES = [
-    'NationalStrategy', 'Policy', 'EducationProgram', 'Organization', 'Budget',
-    'Competency', 'HumanResource', 'Region', 'Outcome', 'Event',
-    'TalentSegment', 'EmploymentStatus', 'CompetencyAssessment', 'CompetencyCategory',
-    'CompetencyGap', 'StrategicGoal', 'Recommendation', 'Occupation', 'Benefit',
-    'CareerHistory', 'Certification', 'MatchScore', 'TargetGroup'
+    'Benefit', 'Budget', 'CareerHistory', 'Certification', 'Competency',
+    'CompetencyAssessment', 'CompetencyCategory', 'CompetencyGap',
+    'EducationProgram', 'EmploymentStatus', 'Event', 'HumanResource',
+    'MatchScore', 'NationalStrategy', 'Occupation', 'Organization', 'Outcome',
+    'Policy', 'Recommendation', 'Region', 'StrategicGoal',
+    'TalentSegment', 'TargetGroup'
   ];
 
   // ── Dynamic instance index (replaces hardcoded INSTANCES dict) ───────────
@@ -242,7 +243,7 @@ const OntoGraf = (() => {
 
   // ── Helpers ───────────────────────────────────────────────────────────────
   function _childrenOf(cls) {
-    return Object.entries(HIERARCHY).filter(([, p]) => p === cls).map(([c]) => c);
+    return Object.entries(HIERARCHY).filter(([, p]) => p === cls).map(([c]) => c).sort();
   }
 
   function _allClasses() {
