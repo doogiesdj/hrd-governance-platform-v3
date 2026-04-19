@@ -41,51 +41,6 @@
       ],
       "programs": [
         {
-          "id": "LT_BLM_07",
-          "name": "수치해석론",
-          "en": "Numerical Analysis",
-          "targetGroup": "일반인",
-          "org": "고용노동부",
-          "competency": "녹색기술·탄소중립",
-          "hours": "60"
-        },
-        {
-          "id": "LT_BLM_05",
-          "name": "논리적사고와글쓰기",
-          "en": "Logical Thinking & Writing",
-          "targetGroup": "일반인",
-          "org": "고용노동부",
-          "competency": "녹색기술·탄소중립",
-          "hours": "60"
-        },
-        {
-          "id": "HS_ISP_05",
-          "name": "에너지관리시스템",
-          "en": "Energy Management Systems",
-          "targetGroup": "재직자",
-          "org": "과학기술정보통신부",
-          "competency": "파이썬 프로그래밍",
-          "hours": "32"
-        },
-        {
-          "id": "SS_SMR_04",
-          "name": "프로페셔널리즘",
-          "en": "Professionalism",
-          "targetGroup": "다문화가정",
-          "org": "인사혁신처",
-          "competency": "UX/UI 디자인",
-          "hours": "16"
-        },
-        {
-          "id": "SS_SMR_09",
-          "name": "성과책임제이해",
-          "en": "Performance Accountability",
-          "targetGroup": "다문화가정",
-          "org": "인사혁신처",
-          "competency": "UX/UI 디자인",
-          "hours": "24"
-        },
-        {
           "id": "HS_ISP_04",
           "name": "재난안전관리시스템",
           "en": "Disaster Safety Management Systems",
@@ -95,54 +50,18 @@
           "hours": "32"
         },
         {
-          "id": "SS_SMR_01",
-          "name": "시간관리와생산성",
-          "en": "Time Management & Productivity",
-          "targetGroup": "다문화가정",
-          "org": "인사혁신처",
-          "competency": "UX/UI 디자인",
-          "hours": "8"
-        },
-        {
-          "id": "SS_SMR_03",
-          "name": "윤리적책임감실무",
-          "en": "Ethical Responsibility",
-          "targetGroup": "다문화가정",
-          "org": "인사혁신처",
-          "competency": "UX/UI 디자인",
-          "hours": "8"
-        },
-        {
-          "id": "SS_SMA_06",
-          "name": "불확실성대응전략",
-          "en": "Managing Uncertainty",
-          "targetGroup": "다문화가정",
-          "org": "인사혁신처",
-          "competency": "디지털 마케팅",
-          "hours": "16"
-        },
-        {
-          "id": "SS_SMR_07",
-          "name": "약속과신뢰구축",
-          "en": "Trust Building",
-          "targetGroup": "다문화가정",
-          "org": "인사혁신처",
-          "competency": "UX/UI 디자인",
-          "hours": "16"
-        },
-        {
-          "id": "HS_ISP_08",
-          "name": "공공데이터개방실무",
-          "en": "Open Government Data Practice",
+          "id": "HS_ISP_06",
+          "name": "환경기술공학",
+          "en": "Environmental Technology Engineering",
           "targetGroup": "재직자",
           "org": "과학기술정보통신부",
           "competency": "파이썬 프로그래밍",
-          "hours": "40"
+          "hours": "32"
         },
         {
-          "id": "SS_SMA_07",
-          "name": "성장마인드셋",
-          "en": "Growth Mindset",
+          "id": "SS_SMA_05",
+          "name": "회복탄력성강화",
+          "en": "Resilience Building",
           "targetGroup": "다문화가정",
           "org": "인사혁신처",
           "competency": "디지털 마케팅",
@@ -158,31 +77,40 @@
           "hours": "8"
         },
         {
-          "id": "SS_SMA_05",
-          "name": "회복탄력성강화",
-          "en": "Resilience Building",
+          "id": "LT_BLM_03",
+          "name": "확률과통계",
+          "en": "Probability & Statistics",
+          "targetGroup": "일반인",
+          "org": "고용노동부",
+          "competency": "녹색기술·탄소중립",
+          "hours": "40"
+        },
+        {
+          "id": "SS_SMR_04",
+          "name": "프로페셔널리즘",
+          "en": "Professionalism",
           "targetGroup": "다문화가정",
           "org": "인사혁신처",
-          "competency": "디지털 마케팅",
+          "competency": "UX/UI 디자인",
           "hours": "16"
         },
         {
-          "id": "HS_ISP_07",
-          "name": "수도행정디지털화",
-          "en": "Digital Water Administration",
-          "targetGroup": "재직자",
-          "org": "과학기술정보통신부",
-          "competency": "파이썬 프로그래밍",
-          "hours": "32"
-        },
-        {
-          "id": "SS_SMA_04",
-          "name": "자기주도학습기법",
-          "en": "Self-Directed Learning",
+          "id": "SS_SMR_10",
+          "name": "자기성찰과성장",
+          "en": "Self-Reflection & Growth",
           "targetGroup": "다문화가정",
           "org": "인사혁신처",
-          "competency": "디지털 마케팅",
-          "hours": "16"
+          "competency": "UX/UI 디자인",
+          "hours": "24"
+        },
+        {
+          "id": "LT_BLM_02",
+          "name": "공학수학기초",
+          "en": "Engineering Mathematics",
+          "targetGroup": "일반인",
+          "org": "고용노동부",
+          "competency": "녹색기술·탄소중립",
+          "hours": "40"
         },
         {
           "id": "HS_ISP_09",
@@ -194,13 +122,85 @@
           "hours": "40"
         },
         {
-          "id": "HS_ISP_10",
-          "name": "전력망관리기술",
-          "en": "Smart Grid Management",
+          "id": "SS_SMR_09",
+          "name": "성과책임제이해",
+          "en": "Performance Accountability",
+          "targetGroup": "다문화가정",
+          "org": "인사혁신처",
+          "competency": "UX/UI 디자인",
+          "hours": "24"
+        },
+        {
+          "id": "HS_ISP_01",
+          "name": "공공행정DX실무",
+          "en": "Public Administration Digital Transformation",
           "targetGroup": "재직자",
           "org": "과학기술정보통신부",
           "competency": "파이썬 프로그래밍",
+          "hours": "24"
+        },
+        {
+          "id": "SS_SMA_07",
+          "name": "성장마인드셋",
+          "en": "Growth Mindset",
+          "targetGroup": "다문화가정",
+          "org": "인사혁신처",
+          "competency": "디지털 마케팅",
+          "hours": "16"
+        },
+        {
+          "id": "HS_ISP_05",
+          "name": "에너지관리시스템",
+          "en": "Energy Management Systems",
+          "targetGroup": "재직자",
+          "org": "과학기술정보통신부",
+          "competency": "파이썬 프로그래밍",
+          "hours": "32"
+        },
+        {
+          "id": "LT_BLM_05",
+          "name": "논리적사고와글쓰기",
+          "en": "Logical Thinking & Writing",
+          "targetGroup": "일반인",
+          "org": "고용노동부",
+          "competency": "녹색기술·탄소중립",
+          "hours": "60"
+        },
+        {
+          "id": "LT_BLM_01",
+          "name": "기술영어작문",
+          "en": "Technical English Writing",
+          "targetGroup": "일반인",
+          "org": "고용노동부",
+          "competency": "녹색기술·탄소중립",
           "hours": "40"
+        },
+        {
+          "id": "SS_SMA_06",
+          "name": "불확실성대응전략",
+          "en": "Managing Uncertainty",
+          "targetGroup": "다문화가정",
+          "org": "인사혁신처",
+          "competency": "디지털 마케팅",
+          "hours": "16"
+        },
+        {
+          "id": "SS_SMA_10",
+          "name": "스트레스관리역량",
+          "en": "Stress Management",
+          "targetGroup": "다문화가정",
+          "org": "인사혁신처",
+          "competency": "디지털 마케팅",
+          "hours": "24"
+        },
+        {
+          "id": "LT_BLM_09",
+          "name": "비평적텍스트읽기",
+          "en": "Critical Reading",
+          "targetGroup": "일반인",
+          "org": "고용노동부",
+          "competency": "녹색기술·탄소중립",
+          "hours": "80"
         },
         {
           "id": "LT_BLM_06",
@@ -212,9 +212,9 @@
           "hours": "60"
         },
         {
-          "id": "HS_ISP_02",
-          "name": "스마트시티거버넌스",
-          "en": "Smart City Governance",
+          "id": "HS_ISP_03",
+          "name": "지능형교통체계",
+          "en": "Intelligent Transportation Systems",
           "targetGroup": "재직자",
           "org": "과학기술정보통신부",
           "competency": "파이썬 프로그래밍",
@@ -243,12 +243,6 @@
       "totalBudgetStr": "1350억원",
       "implementingOrgs": [
         {
-          "id": "ORG_MINISTRY_04",
-          "name": "고용노동부",
-          "abbr": "MoEL",
-          "role": "직업훈련·고용서비스·국민역량 평생학습"
-        },
-        {
           "id": "ORG_MINISTRY_01",
           "name": "과학기술정보통신부",
           "abbr": "MSIT",
@@ -261,6 +255,12 @@
           "role": "국가공무원 역량개발·성과관리 총괄"
         },
         {
+          "id": "ORG_MINISTRY_04",
+          "name": "고용노동부",
+          "abbr": "MoEL",
+          "role": "직업훈련·고용서비스·국민역량 평생학습"
+        },
+        {
           "id": "ORG_MINISTRY_05",
           "name": "기획재정부",
           "abbr": "MOF",
@@ -268,17 +268,11 @@
         }
       ],
       "targetGroups": [
-        "일반인",
         "재직자",
-        "다문화가정"
+        "다문화가정",
+        "일반인"
       ],
       "competencies": [
-        {
-          "id": "COMP_Green",
-          "name": "녹색기술·탄소중립",
-          "en": "Green Technology & Carbon Neutrality",
-          "category": "녹색기술·탄소중립 역량"
-        },
         {
           "id": "COMP_SW_01",
           "name": "파이썬 프로그래밍",
@@ -286,16 +280,22 @@
           "category": "소프트웨어 개발 역량"
         },
         {
-          "id": "COMP_Design",
-          "name": "UX/UI 디자인",
-          "en": "UX/UI Design",
-          "category": "디자인 역량"
-        },
-        {
           "id": "COMP_DigitalMkt",
           "name": "디지털 마케팅",
           "en": "Digital Marketing",
           "category": "마케팅 전략 역량"
+        },
+        {
+          "id": "COMP_Green",
+          "name": "녹색기술·탄소중립",
+          "en": "Green Technology & Carbon Neutrality",
+          "category": "녹색기술·탄소중립 역량"
+        },
+        {
+          "id": "COMP_Design",
+          "name": "UX/UI 디자인",
+          "en": "UX/UI Design",
+          "category": "디자인 역량"
         }
       ],
       "performanceGoals": [
@@ -325,19 +325,9 @@
       "type": "NationalStrategy",
       "policies": [
         {
-          "id": "POLICY_14",
-          "name": "제5차 국가인적자원개발기본계획",
-          "en": "5th National Human Resources Development Master Plan (2021-2025)"
-        },
-        {
-          "id": "POLICY_30",
-          "name": "소프트웨어 중심사회 인재양성 전략",
-          "en": "Software-Centric Society Talent Development Strategy"
-        },
-        {
-          "id": "POLICY_22",
-          "name": "평생학습 활성화 방안",
-          "en": "Lifelong Learning Promotion Plan"
+          "id": "POLICY_21",
+          "name": "직업훈련 혁신 방안",
+          "en": "Vocational Training Innovation Plan"
         },
         {
           "id": "POLICY_10",
@@ -345,24 +335,14 @@
           "en": "K-Culture Content Planning Talent Development"
         },
         {
+          "id": "POLICY_07",
+          "name": "중장년 디지털 문해력 교육",
+          "en": "Middle-Aged Digital Literacy Education Program"
+        },
+        {
           "id": "POLICY_13",
           "name": "AI 일상화 및 산업 고도화 계획",
           "en": "AI Mainstreaming and Industry Advancement Plan"
-        },
-        {
-          "id": "POLICY_29",
-          "name": "공공부문 AI·디지털 인재 육성",
-          "en": "Public Sector AI and Digital Talent Development"
-        },
-        {
-          "id": "POLICY_21",
-          "name": "직업훈련 혁신 방안",
-          "en": "Vocational Training Innovation Plan"
-        },
-        {
-          "id": "POLICY_02",
-          "name": "디지털 전환 교육 프로그램 / 디지털 전환 교육 프로그램",
-          "en": "Digital Transformation Education Program"
         },
         {
           "id": "POLICY_11",
@@ -370,9 +350,24 @@
           "en": "Digital Talent Development Master Plan"
         },
         {
-          "id": "POLICY_27",
-          "name": "이러닝 산업 발전 및 인재양성",
-          "en": "E-Learning Industry Development and Talent Development"
+          "id": "POLICY_19",
+          "name": "K-디지털 크레딧",
+          "en": "K-Digital Credit Program"
+        },
+        {
+          "id": "POLICY_22",
+          "name": "평생학습 활성화 방안",
+          "en": "Lifelong Learning Promotion Plan"
+        },
+        {
+          "id": "POLICY_29",
+          "name": "공공부문 AI·디지털 인재 육성",
+          "en": "Public Sector AI and Digital Talent Development"
+        },
+        {
+          "id": "POLICY_02",
+          "name": "디지털 전환 교육 프로그램 / 디지털 전환 교육 프로그램",
+          "en": "Digital Transformation Education Program"
         },
         {
           "id": "POLICY_55",
@@ -380,9 +375,19 @@
           "en": "Science and Technology Diplomacy and ODA Talent Development Policy"
         },
         {
-          "id": "POLICY_07",
-          "name": "중장년 디지털 문해력 교육",
-          "en": "Middle-Aged Digital Literacy Education Program"
+          "id": "POLICY_49",
+          "name": "AI 융합 의료·제약 전문인력 양성 정책",
+          "en": "AI Convergence Medical and Pharmaceutical Professional Workforce Policy"
+        },
+        {
+          "id": "POLICY_30",
+          "name": "소프트웨어 중심사회 인재양성 전략",
+          "en": "Software-Centric Society Talent Development Strategy"
+        },
+        {
+          "id": "POLICY_14",
+          "name": "제5차 국가인적자원개발기본계획",
+          "en": "5th National Human Resources Development Master Plan (2021-2025)"
         },
         {
           "id": "POLICY_18",
@@ -390,25 +395,20 @@
           "en": "K-Digital Training Program"
         },
         {
-          "id": "POLICY_49",
-          "name": "AI 융합 의료·제약 전문인력 양성 정책",
-          "en": "AI Convergence Medical and Pharmaceutical Professional Workforce Policy"
-        },
-        {
-          "id": "POLICY_19",
-          "name": "K-디지털 크레딧",
-          "en": "K-Digital Credit Program"
+          "id": "POLICY_27",
+          "name": "이러닝 산업 발전 및 인재양성",
+          "en": "E-Learning Industry Development and Talent Development"
         }
       ],
       "programs": [
         {
-          "id": "HS_IAI_02",
-          "name": "딥러닝프레임워크",
-          "en": "Deep Learning Frameworks",
-          "targetGroup": "재직자",
-          "org": "과학기술정보통신부",
-          "competency": "프롬프트 엔지니어링",
-          "hours": "24"
+          "id": "SS_PSC_01",
+          "name": "디자인싱킹워크숍",
+          "en": "Design Thinking Workshop",
+          "targetGroup": "청소년",
+          "org": "교육부",
+          "competency": "파이썬 프로그래밍",
+          "hours": "8"
         },
         {
           "id": "SS_PST_05",
@@ -417,6 +417,15 @@
           "targetGroup": "청소년",
           "org": "교육부",
           "competency": "프롬프트 엔지니어링",
+          "hours": "16"
+        },
+        {
+          "id": "SS_PSC_05",
+          "name": "브레인스토밍기법",
+          "en": "Brainstorming Techniques",
+          "targetGroup": "청소년",
+          "org": "교육부",
+          "competency": "파이썬 프로그래밍",
           "hours": "16"
         },
         {
@@ -429,22 +438,103 @@
           "hours": "24"
         },
         {
-          "id": "SS_PSC_05",
-          "name": "브레인스토밍기법",
-          "en": "Brainstorming Techniques",
+          "id": "SS_PSC_04",
+          "name": "창의적문제해결실무",
+          "en": "Creative Problem Solving",
           "targetGroup": "청소년",
           "org": "교육부",
           "competency": "파이썬 프로그래밍",
           "hours": "16"
         },
         {
-          "id": "SS_PST_03",
-          "name": "시스템다이내믹스",
-          "en": "System Dynamics",
+          "id": "SS_PST_06",
+          "name": "분석적사고기법",
+          "en": "Analytical Thinking",
           "targetGroup": "청소년",
           "org": "교육부",
           "competency": "프롬프트 엔지니어링",
-          "hours": "8"
+          "hours": "16"
+        },
+        {
+          "id": "HS_IAI_09",
+          "name": "컨테이너오케스트레이션",
+          "en": "Container Orchestration",
+          "targetGroup": "재직자",
+          "org": "과학기술정보통신부",
+          "competency": "프롬프트 엔지니어링",
+          "hours": "40"
+        },
+        {
+          "id": "SS_PST_08",
+          "name": "구조적사고워크숍",
+          "en": "Structured Thinking Workshop",
+          "targetGroup": "청소년",
+          "org": "교육부",
+          "competency": "프롬프트 엔지니어링",
+          "hours": "24"
+        },
+        {
+          "id": "SS_PST_09",
+          "name": "연역적추론실무",
+          "en": "Deductive Reasoning",
+          "targetGroup": "청소년",
+          "org": "교육부",
+          "competency": "프롬프트 엔지니어링",
+          "hours": "24"
+        },
+        {
+          "id": "HS_IAI_04",
+          "name": "서버가상화실무",
+          "en": "Server Virtualization",
+          "targetGroup": "재직자",
+          "org": "과학기술정보통신부",
+          "competency": "프롬프트 엔지니어링",
+          "hours": "32"
+        },
+        {
+          "id": "HS_IAI_05",
+          "name": "빅데이터플랫폼구축",
+          "en": "Big Data Platform Development",
+          "targetGroup": "재직자",
+          "org": "과학기술정보통신부",
+          "competency": "프롬프트 엔지니어링",
+          "hours": "32"
+        },
+        {
+          "id": "SS_PSC_10",
+          "name": "창의적조직문화",
+          "en": "Creative Organizational Culture",
+          "targetGroup": "청소년",
+          "org": "교육부",
+          "competency": "파이썬 프로그래밍",
+          "hours": "24"
+        },
+        {
+          "id": "HS_IAI_06",
+          "name": "MLOps엔지니어링",
+          "en": "MLOps Engineering",
+          "targetGroup": "재직자",
+          "org": "과학기술정보통신부",
+          "competency": "프롬프트 엔지니어링",
+          "hours": "32"
+        },
+        {
+          "id": "HS_IAI_02",
+          "name": "딥러닝프레임워크",
+          "en": "Deep Learning Frameworks",
+          "targetGroup": "재직자",
+          "org": "과학기술정보통신부",
+          "competency": "프롬프트 엔지니어링",
+          "hours": "24"
+        },
+        {
+          "id": "HS_IAI_10",
+          "name": "고성능컴퓨팅",
+          "en": "High Performance Computing",
+          "targetGroup": "재직자",
+          "org": "과학기술정보통신부",
+          "competency": "프롬프트 엔지니어링",
+          "hours": "40"
         },
         {
           "id": "HS_IAI_01",
@@ -452,6 +542,24 @@
           "en": "GPU Computing Fundamentals",
           "targetGroup": "재직자",
           "org": "과학기술정보통신부",
+          "competency": "프롬프트 엔지니어링",
+          "hours": "24"
+        },
+        {
+          "id": "SS_PSC_09",
+          "name": "직관적사고훈련",
+          "en": "Intuitive Thinking Training",
+          "targetGroup": "청소년",
+          "org": "교육부",
+          "competency": "파이썬 프로그래밍",
+          "hours": "24"
+        },
+        {
+          "id": "SS_PST_10",
+          "name": "데이터기반논리",
+          "en": "Data-Driven Logic",
+          "targetGroup": "청소년",
+          "org": "교육부",
           "competency": "프롬프트 엔지니어링",
           "hours": "24"
         },
@@ -468,114 +576,6 @@
           "id": "SS_PST_04",
           "name": "전략적사고훈련",
           "en": "Strategic Thinking",
-          "targetGroup": "청소년",
-          "org": "교육부",
-          "competency": "프롬프트 엔지니어링",
-          "hours": "16"
-        },
-        {
-          "id": "SS_PSC_04",
-          "name": "창의적문제해결실무",
-          "en": "Creative Problem Solving",
-          "targetGroup": "청소년",
-          "org": "교육부",
-          "competency": "파이썬 프로그래밍",
-          "hours": "16"
-        },
-        {
-          "id": "HS_IAI_09",
-          "name": "컨테이너오케스트레이션",
-          "en": "Container Orchestration",
-          "targetGroup": "재직자",
-          "org": "과학기술정보통신부",
-          "competency": "프롬프트 엔지니어링",
-          "hours": "40"
-        },
-        {
-          "id": "SS_PSC_01",
-          "name": "디자인싱킹워크숍",
-          "en": "Design Thinking Workshop",
-          "targetGroup": "청소년",
-          "org": "교육부",
-          "competency": "파이썬 프로그래밍",
-          "hours": "8"
-        },
-        {
-          "id": "SS_PSC_06",
-          "name": "혁신비즈니스모델",
-          "en": "Innovation Business Model",
-          "targetGroup": "청소년",
-          "org": "교육부",
-          "competency": "파이썬 프로그래밍",
-          "hours": "16"
-        },
-        {
-          "id": "SS_PST_01",
-          "name": "비판적사고론",
-          "en": "Critical Thinking",
-          "targetGroup": "청소년",
-          "org": "교육부",
-          "competency": "프롬프트 엔지니어링",
-          "hours": "8"
-        },
-        {
-          "id": "HS_IAI_05",
-          "name": "빅데이터플랫폼구축",
-          "en": "Big Data Platform Development",
-          "targetGroup": "재직자",
-          "org": "과학기술정보통신부",
-          "competency": "프롬프트 엔지니어링",
-          "hours": "32"
-        },
-        {
-          "id": "SS_PST_07",
-          "name": "복잡계이론의이해",
-          "en": "Complex Systems Theory",
-          "targetGroup": "청소년",
-          "org": "교육부",
-          "competency": "프롬프트 엔지니어링",
-          "hours": "16"
-        },
-        {
-          "id": "SS_PST_08",
-          "name": "구조적사고워크숍",
-          "en": "Structured Thinking Workshop",
-          "targetGroup": "청소년",
-          "org": "교육부",
-          "competency": "프롬프트 엔지니어링",
-          "hours": "24"
-        },
-        {
-          "id": "HS_IAI_06",
-          "name": "MLOps엔지니어링",
-          "en": "MLOps Engineering",
-          "targetGroup": "재직자",
-          "org": "과학기술정보통신부",
-          "competency": "프롬프트 엔지니어링",
-          "hours": "32"
-        },
-        {
-          "id": "SS_PSC_08",
-          "name": "마인드맵과시각화",
-          "en": "Mind Mapping & Visualization",
-          "targetGroup": "청소년",
-          "org": "교육부",
-          "competency": "파이썬 프로그래밍",
-          "hours": "24"
-        },
-        {
-          "id": "SS_PSC_02",
-          "name": "아이디어발상기법",
-          "en": "Idea Generation Techniques",
-          "targetGroup": "청소년",
-          "org": "교육부",
-          "competency": "파이썬 프로그래밍",
-          "hours": "8"
-        },
-        {
-          "id": "SS_PST_06",
-          "name": "분석적사고기법",
-          "en": "Analytical Thinking",
           "targetGroup": "청소년",
           "org": "교육부",
           "competency": "프롬프트 엔지니어링",
@@ -628,16 +628,16 @@
       "totalBudgetStr": "1450억원",
       "implementingOrgs": [
         {
-          "id": "ORG_MINISTRY_01",
-          "name": "과학기술정보통신부",
-          "abbr": "MSIT",
-          "role": "디지털 전환·AI·ICT 인재 양성 정책 총괄"
-        },
-        {
           "id": "ORG_MINISTRY_02",
           "name": "교육부",
           "abbr": "MOE",
           "role": "학교·대학 교육정책, 교원 연수, 이러닝 인프라"
+        },
+        {
+          "id": "ORG_MINISTRY_01",
+          "name": "과학기술정보통신부",
+          "abbr": "MSIT",
+          "role": "디지털 전환·AI·ICT 인재 양성 정책 총괄"
         },
         {
           "id": "ORG_MINISTRY_09",
@@ -653,59 +653,53 @@
         }
       ],
       "targetGroups": [
-        "재직자",
-        "청소년"
+        "청소년",
+        "재직자"
       ],
       "competencies": [
-        {
-          "id": "COMP_AI_01",
-          "name": "프롬프트 엔지니어링",
-          "en": "Prompt Engineering",
-          "category": "AI·인프라 역량"
-        },
         {
           "id": "COMP_SW_01",
           "name": "파이썬 프로그래밍",
           "en": "Python Programming",
           "category": "소프트웨어 개발 역량"
+        },
+        {
+          "id": "COMP_AI_01",
+          "name": "프롬프트 엔지니어링",
+          "en": "Prompt Engineering",
+          "category": "AI·인프라 역량"
         }
       ],
       "performanceGoals": [
         {
-          "code": "OUT_16",
-          "name": "클라우드 보안 아키텍처 설계 완료",
-          "type": "기술성과",
+          "code": "OUT_19",
+          "name": "디지털 마케팅 캠페인 ROI 200% 달성",
+          "type": "경영성과",
+          "value": "200"
+        },
+        {
+          "code": "OUT_30",
+          "name": "직업훈련 혁신과정 이수 후 생산직 승급",
+          "type": "경력성과",
           "value": "1"
         },
         {
-          "code": "OUT_156",
-          "name": "HRD 역량 고도화",
-          "type": "역량성과",
-          "value": "1"
-        },
-        {
-          "code": "OUT_172",
-          "name": "SW 중심사회 인재 양성",
-          "type": "교육성과",
-          "value": "100000"
-        },
-        {
-          "code": "OUT_17",
-          "name": "해외 기술연수 수료 및 글로벌 네트워크 구축",
-          "type": "역량성과",
-          "value": "15000000"
-        },
-        {
-          "code": "OUT_164",
-          "name": "평생학습 참여 확대",
-          "type": "역량성과",
-          "value": "15000000"
+          "code": "OUT_163",
+          "name": "직업훈련 혁신 성과",
+          "type": "고용성과",
+          "value": "95000"
         },
         {
           "code": "OUT_198",
           "name": "K-컬처 콘텐츠 인재 양성",
           "type": "교육성과",
           "value": "2400"
+        },
+        {
+          "code": "OUT_199",
+          "name": "디지털 문해력 향상 성과",
+          "type": "역량성과",
+          "value": "320000"
         },
         {
           "code": "OUT_22",
@@ -718,6 +712,12 @@
           "name": "AI 산업 역량 향상",
           "type": "역량성과",
           "value": "80000"
+        },
+        {
+          "code": "OUT_153",
+          "name": "디지털 인재 양성 수료",
+          "type": "교육성과",
+          "value": "500000"
         }
       ],
       "policyCount": 15,
@@ -733,26 +733,17 @@
       "type": "NationalStrategy",
       "policies": [
         {
-          "id": "POLICY_20",
-          "name": "그린뉴딜 인재양성 사업",
-          "en": "Green New Deal Talent Development Program"
-        },
-        {
           "id": "POLICY_06",
           "name": "탄소중립 전환 자금 지원",
           "en": "Carbon Neutral Transition Fund Support"
+        },
+        {
+          "id": "POLICY_20",
+          "name": "그린뉴딜 인재양성 사업",
+          "en": "Green New Deal Talent Development Program"
         }
       ],
       "programs": [
-        {
-          "id": "LT_CSV_02",
-          "name": "기술윤리론",
-          "en": "Technology Ethics",
-          "targetGroup": "취약계층",
-          "org": "인사혁신처",
-          "competency": "행정법무",
-          "hours": "40"
-        },
         {
           "id": "LT_CSV_10",
           "name": "환경윤리실무",
@@ -763,36 +754,9 @@
           "hours": "80"
         },
         {
-          "id": "LT_CSV_07",
-          "name": "사회혁신방법론",
-          "en": "Social Innovation Methods",
-          "targetGroup": "취약계층",
-          "org": "인사혁신처",
-          "competency": "행정법무",
-          "hours": "60"
-        },
-        {
-          "id": "LT_CSV_04",
-          "name": "탄소중립과사회",
-          "en": "Carbon Neutrality & Society",
-          "targetGroup": "취약계층",
-          "org": "인사혁신처",
-          "competency": "행정법무",
-          "hours": "60"
-        },
-        {
           "id": "LT_CSV_05",
           "name": "지속가능발전론",
           "en": "Sustainable Development",
-          "targetGroup": "취약계층",
-          "org": "인사혁신처",
-          "competency": "행정법무",
-          "hours": "60"
-        },
-        {
-          "id": "LT_CSV_06",
-          "name": "인권과기술",
-          "en": "Human Rights & Technology",
           "targetGroup": "취약계층",
           "org": "인사혁신처",
           "competency": "행정법무",
@@ -808,6 +772,15 @@
           "hours": "80"
         },
         {
+          "id": "LT_CSV_04",
+          "name": "탄소중립과사회",
+          "en": "Carbon Neutrality & Society",
+          "targetGroup": "취약계층",
+          "org": "인사혁신처",
+          "competency": "행정법무",
+          "hours": "60"
+        },
+        {
           "id": "LT_CSV_03",
           "name": "커뮤니티비즈니스",
           "en": "Community Business",
@@ -815,6 +788,33 @@
           "org": "인사혁신처",
           "competency": "행정법무",
           "hours": "40"
+        },
+        {
+          "id": "LT_CSV_06",
+          "name": "인권과기술",
+          "en": "Human Rights & Technology",
+          "targetGroup": "취약계층",
+          "org": "인사혁신처",
+          "competency": "행정법무",
+          "hours": "60"
+        },
+        {
+          "id": "LT_CSV_02",
+          "name": "기술윤리론",
+          "en": "Technology Ethics",
+          "targetGroup": "취약계층",
+          "org": "인사혁신처",
+          "competency": "행정법무",
+          "hours": "40"
+        },
+        {
+          "id": "LT_CSV_07",
+          "name": "사회혁신방법론",
+          "en": "Social Innovation Methods",
+          "targetGroup": "취약계층",
+          "org": "인사혁신처",
+          "competency": "행정법무",
+          "hours": "60"
         }
       ],
       "budgets": [
@@ -870,6 +870,12 @@
       ],
       "performanceGoals": [
         {
+          "code": "OUT_151",
+          "name": "탄소중립 전환 역량 향상",
+          "type": "역량성과",
+          "value": "15000"
+        },
+        {
           "code": "OUT_20",
           "name": "탄소중립 프로젝트 탄소배출 15% 감축",
           "type": "환경성과",
@@ -886,12 +892,6 @@
           "name": "그린뉴딜 인재 양성",
           "type": "교육성과",
           "value": "18000"
-        },
-        {
-          "code": "OUT_151",
-          "name": "탄소중립 전환 역량 향상",
-          "type": "역량성과",
-          "value": "15000"
         }
       ],
       "policyCount": 2,
@@ -912,17 +912,35 @@
           "en": "Hydrogen Economy Workforce Development Master Plan"
         },
         {
-          "id": "POLICY_38",
-          "name": "탄소중립 녹색기술 전문인력 양성 방안",
-          "en": "Carbon Neutral Green Technology Professional Workforce Development Plan"
-        },
-        {
           "id": "POLICY_40",
           "name": "원자력 인재양성 및 전문성 강화 계획",
           "en": "Nuclear Energy Talent Development and Expertise Enhancement Plan"
+        },
+        {
+          "id": "POLICY_38",
+          "name": "탄소중립 녹색기술 전문인력 양성 방안",
+          "en": "Carbon Neutral Green Technology Professional Workforce Development Plan"
         }
       ],
       "programs": [
+        {
+          "id": "SS_IPC_08",
+          "name": "비폭력대화법",
+          "en": "Nonviolent Communication",
+          "targetGroup": "경력단절여성",
+          "org": "인사혁신처",
+          "competency": "디지털 마케팅",
+          "hours": "24"
+        },
+        {
+          "id": "SS_IPC_07",
+          "name": "다문화이해와협업",
+          "en": "Cross-Cultural Collaboration",
+          "targetGroup": "경력단절여성",
+          "org": "인사혁신처",
+          "competency": "디지털 마케팅",
+          "hours": "16"
+        },
         {
           "id": "SS_IPC_09",
           "name": "그룹의사결정론",
@@ -933,9 +951,9 @@
           "hours": "24"
         },
         {
-          "id": "SS_IPC_04",
-          "name": "협업도구마스터",
-          "en": "Collaboration Tools Mastery",
+          "id": "SS_IPC_06",
+          "name": "비즈니스네트워킹",
+          "en": "Business Networking",
           "targetGroup": "경력단절여성",
           "org": "인사혁신처",
           "competency": "디지털 마케팅",
@@ -951,15 +969,6 @@
           "hours": "8"
         },
         {
-          "id": "SS_IPC_08",
-          "name": "비폭력대화법",
-          "en": "Nonviolent Communication",
-          "targetGroup": "경력단절여성",
-          "org": "인사혁신처",
-          "competency": "디지털 마케팅",
-          "hours": "24"
-        },
-        {
           "id": "SS_IPC_10",
           "name": "워크숍디자인",
           "en": "Workshop Design",
@@ -969,18 +978,9 @@
           "hours": "24"
         },
         {
-          "id": "SS_IPC_05",
-          "name": "대인관계심리학",
-          "en": "Interpersonal Psychology",
-          "targetGroup": "경력단절여성",
-          "org": "인사혁신처",
-          "competency": "디지털 마케팅",
-          "hours": "16"
-        },
-        {
-          "id": "SS_IPC_06",
-          "name": "비즈니스네트워킹",
-          "en": "Business Networking",
+          "id": "SS_IPC_04",
+          "name": "협업도구마스터",
+          "en": "Collaboration Tools Mastery",
           "targetGroup": "경력단절여성",
           "org": "인사혁신처",
           "competency": "디지털 마케팅",
@@ -996,9 +996,9 @@
           "hours": "8"
         },
         {
-          "id": "SS_IPC_07",
-          "name": "다문화이해와협업",
-          "en": "Cross-Cultural Collaboration",
+          "id": "SS_IPC_05",
+          "name": "대인관계심리학",
+          "en": "Interpersonal Psychology",
           "targetGroup": "경력단절여성",
           "org": "인사혁신처",
           "competency": "디지털 마케팅",
@@ -1078,16 +1078,16 @@
           "value": "3500"
         },
         {
-          "code": "OUT_180",
-          "name": "탄소중립 전문인력 배출",
-          "type": "교육성과",
-          "value": "8000"
-        },
-        {
           "code": "OUT_182",
           "name": "원자력 전문인력 양성",
           "type": "교육성과",
           "value": "2000"
+        },
+        {
+          "code": "OUT_180",
+          "name": "탄소중립 전문인력 배출",
+          "type": "교육성과",
+          "value": "8000"
         }
       ],
       "policyCount": 3,
@@ -1103,9 +1103,14 @@
       "type": "NationalStrategy",
       "policies": [
         {
-          "id": "POLICY_03",
-          "name": "글로벌 기술수출 바우처",
-          "en": "Global Technology Export Voucher Program"
+          "id": "POLICY_12",
+          "name": "반도체 인재양성 전략",
+          "en": "Semiconductor Workforce Development Strategy"
+        },
+        {
+          "id": "POLICY_25",
+          "name": "스마트제조 인재양성 방안",
+          "en": "Smart Manufacturing Talent Development Plan"
         },
         {
           "id": "POLICY_26",
@@ -1123,39 +1128,9 @@
           "en": "Bio-Health Workforce Development Comprehensive Plan"
         },
         {
-          "id": "POLICY_52",
-          "name": "해양 스마트·디지털 기술인력 양성 정책",
-          "en": "Maritime Smart and Digital Technology Workforce Development Policy"
-        },
-        {
-          "id": "POLICY_12",
-          "name": "반도체 인재양성 전략",
-          "en": "Semiconductor Workforce Development Strategy"
-        },
-        {
-          "id": "POLICY_23",
-          "name": "국가기술자격제도 혁신방안",
-          "en": "National Skills Certification System Innovation Plan"
-        },
-        {
-          "id": "POLICY_51",
-          "name": "국방·안보 사이버 인재양성 정책",
-          "en": "Defense and Security Cyber Talent Development Policy"
-        },
-        {
-          "id": "POLICY_08",
-          "name": "반도체 설계 베테랑 전수 사업",
-          "en": "Semiconductor Design Veteran Knowledge Transfer Program"
-        },
-        {
-          "id": "POLICY_17",
-          "name": "우주항공 전문인력 양성 계획",
-          "en": "Space and Aerospace Talent Development Plan"
-        },
-        {
-          "id": "POLICY_25",
-          "name": "스마트제조 인재양성 방안",
-          "en": "Smart Manufacturing Talent Development Plan"
+          "id": "POLICY_09",
+          "name": "지식재산(IP) 보호 강화 사업",
+          "en": "Intellectual Property Protection Enhancement Program"
         },
         {
           "id": "POLICY_50",
@@ -1163,12 +1138,46 @@
           "en": "Cybersecurity Core Talent Intensive Development Policy"
         },
         {
-          "id": "POLICY_09",
-          "name": "지식재산(IP) 보호 강화 사업",
-          "en": "Intellectual Property Protection Enhancement Program"
+          "id": "POLICY_51",
+          "name": "국방·안보 사이버 인재양성 정책",
+          "en": "Defense and Security Cyber Talent Development Policy"
+        },
+        {
+          "id": "POLICY_17",
+          "name": "우주항공 전문인력 양성 계획",
+          "en": "Space and Aerospace Talent Development Plan"
+        },
+        {
+          "id": "POLICY_08",
+          "name": "반도체 설계 베테랑 전수 사업",
+          "en": "Semiconductor Design Veteran Knowledge Transfer Program"
+        },
+        {
+          "id": "POLICY_03",
+          "name": "글로벌 기술수출 바우처",
+          "en": "Global Technology Export Voucher Program"
+        },
+        {
+          "id": "POLICY_52",
+          "name": "해양 스마트·디지털 기술인력 양성 정책",
+          "en": "Maritime Smart and Digital Technology Workforce Development Policy"
+        },
+        {
+          "id": "POLICY_23",
+          "name": "국가기술자격제도 혁신방안",
+          "en": "National Skills Certification System Innovation Plan"
         }
       ],
       "programs": [
+        {
+          "id": "SS_IPL_04",
+          "name": "변화관리전략",
+          "en": "Change Management",
+          "targetGroup": "취약계층",
+          "org": "국방부",
+          "competency": "데이터 분석",
+          "hours": "16"
+        },
         {
           "id": "SS_IPL_02",
           "name": "애자일코칭실무",
@@ -1177,33 +1186,6 @@
           "org": "국방부",
           "competency": "데이터 분석",
           "hours": "8"
-        },
-        {
-          "id": "SS_IPL_10",
-          "name": "감성리더십실무",
-          "en": "Emotional Intelligence Leadership",
-          "targetGroup": "취약계층",
-          "org": "국방부",
-          "competency": "데이터 분석",
-          "hours": "24"
-        },
-        {
-          "id": "LT_DTS_08",
-          "name": "IT컴플라이언스",
-          "en": "IT Compliance",
-          "targetGroup": "일반인",
-          "org": "문화체육관광부",
-          "competency": "파이썬 프로그래밍",
-          "hours": "80"
-        },
-        {
-          "id": "SS_IPL_05",
-          "name": "리더의피드백기술",
-          "en": "Effective Feedback for Leaders",
-          "targetGroup": "취약계층",
-          "org": "국방부",
-          "competency": "데이터 분석",
-          "hours": "16"
         },
         {
           "id": "HS_BAM_10",
@@ -1215,15 +1197,6 @@
           "hours": "40"
         },
         {
-          "id": "SS_IPL_03",
-          "name": "목표관리OKR리더십",
-          "en": "OKR-Based Leadership",
-          "targetGroup": "취약계층",
-          "org": "국방부",
-          "competency": "데이터 분석",
-          "hours": "8"
-        },
-        {
           "id": "LT_DTS_06",
           "name": "암호화기술이해",
           "en": "Encryption Technologies",
@@ -1233,9 +1206,36 @@
           "hours": "60"
         },
         {
+          "id": "SS_IPL_06",
+          "name": "조직문화혁신론",
+          "en": "Organizational Culture Innovation",
+          "targetGroup": "취약계층",
+          "org": "국방부",
+          "competency": "데이터 분석",
+          "hours": "16"
+        },
+        {
+          "id": "HS_BAM_05",
+          "name": "리스크관리",
+          "en": "Risk Management",
+          "targetGroup": "전문가",
+          "org": "고용노동부",
+          "competency": "행정법무",
+          "hours": "32"
+        },
+        {
           "id": "LT_DTS_03",
           "name": "사이버보안인식",
           "en": "Cyber Security Awareness",
+          "targetGroup": "일반인",
+          "org": "문화체육관광부",
+          "competency": "파이썬 프로그래밍",
+          "hours": "40"
+        },
+        {
+          "id": "LT_DTS_02",
+          "name": "디지털저작권관리",
+          "en": "Digital Rights Management",
           "targetGroup": "일반인",
           "org": "문화체육관광부",
           "competency": "파이썬 프로그래밍",
@@ -1251,22 +1251,13 @@
           "hours": "60"
         },
         {
-          "id": "HS_BAM_08",
-          "name": "프로젝트파이낸싱",
-          "en": "Project Financing",
-          "targetGroup": "전문가",
-          "org": "고용노동부",
-          "competency": "행정법무",
-          "hours": "40"
-        },
-        {
-          "id": "SS_IPL_01",
-          "name": "서번트리더십",
-          "en": "Servant Leadership",
+          "id": "SS_IPL_09",
+          "name": "위기관리리더십",
+          "en": "Crisis Leadership",
           "targetGroup": "취약계층",
           "org": "국방부",
           "competency": "데이터 분석",
-          "hours": "8"
+          "hours": "24"
         },
         {
           "id": "HS_BAM_06",
@@ -1278,31 +1269,22 @@
           "hours": "32"
         },
         {
-          "id": "HS_BAM_02",
-          "name": "경영분석론",
-          "en": "Business Analytics",
-          "targetGroup": "전문가",
-          "org": "고용노동부",
-          "competency": "행정법무",
-          "hours": "24"
-        },
-        {
-          "id": "SS_IPL_04",
-          "name": "변화관리전략",
-          "en": "Change Management",
+          "id": "SS_IPL_05",
+          "name": "리더의피드백기술",
+          "en": "Effective Feedback for Leaders",
           "targetGroup": "취약계층",
           "org": "국방부",
           "competency": "데이터 분석",
           "hours": "16"
         },
         {
-          "id": "HS_BAM_04",
-          "name": "공급망관리",
-          "en": "Supply Chain Management",
+          "id": "HS_BAM_01",
+          "name": "전략기획실무",
+          "en": "Strategic Planning Fundamentals",
           "targetGroup": "전문가",
           "org": "고용노동부",
           "competency": "행정법무",
-          "hours": "32"
+          "hours": "24"
         },
         {
           "id": "LT_DTS_04",
@@ -1314,6 +1296,33 @@
           "hours": "60"
         },
         {
+          "id": "HS_BAM_03",
+          "name": "인사조직관리",
+          "en": "HR & Organization Management",
+          "targetGroup": "전문가",
+          "org": "고용노동부",
+          "competency": "행정법무",
+          "hours": "24"
+        },
+        {
+          "id": "LT_DTS_08",
+          "name": "IT컴플라이언스",
+          "en": "IT Compliance",
+          "targetGroup": "일반인",
+          "org": "문화체육관광부",
+          "competency": "파이썬 프로그래밍",
+          "hours": "80"
+        },
+        {
+          "id": "SS_IPL_01",
+          "name": "서번트리더십",
+          "en": "Servant Leadership",
+          "targetGroup": "취약계층",
+          "org": "국방부",
+          "competency": "데이터 분석",
+          "hours": "8"
+        },
+        {
           "id": "SS_IPL_07",
           "name": "전략적임파워먼트",
           "en": "Strategic Empowerment",
@@ -1323,22 +1332,13 @@
           "hours": "16"
         },
         {
-          "id": "SS_IPL_08",
-          "name": "코칭및멘토링",
-          "en": "Coaching & Mentoring",
-          "targetGroup": "취약계층",
-          "org": "국방부",
-          "competency": "데이터 분석",
-          "hours": "24"
-        },
-        {
-          "id": "HS_BAM_01",
-          "name": "전략기획실무",
-          "en": "Strategic Planning Fundamentals",
+          "id": "HS_BAM_09",
+          "name": "기업지배구조론",
+          "en": "Corporate Governance",
           "targetGroup": "전문가",
           "org": "고용노동부",
           "competency": "행정법무",
-          "hours": "24"
+          "hours": "40"
         },
         {
           "id": "HS_BAM_07",
@@ -1418,16 +1418,16 @@
           "role": "군 인력 교육훈련·방산 전문인력 개발"
         },
         {
-          "id": "ORG_MINISTRY_06",
-          "name": "문화체육관광부",
-          "abbr": "MCST",
-          "role": "문화·창의·콘텐츠 분야 인재 양성"
-        },
-        {
           "id": "ORG_MINISTRY_04",
           "name": "고용노동부",
           "abbr": "MoEL",
           "role": "직업훈련·고용서비스·국민역량 평생학습"
+        },
+        {
+          "id": "ORG_MINISTRY_06",
+          "name": "문화체육관광부",
+          "abbr": "MCST",
+          "role": "문화·창의·콘텐츠 분야 인재 양성"
         },
         {
           "id": "ORG_MINISTRY_03",
@@ -1462,8 +1462,8 @@
       ],
       "targetGroups": [
         "취약계층",
-        "일반인",
-        "전문가"
+        "전문가",
+        "일반인"
       ],
       "competencies": [
         {
@@ -1473,30 +1473,36 @@
           "category": "데이터 활용 역량"
         },
         {
-          "id": "COMP_SW_01",
-          "name": "파이썬 프로그래밍",
-          "en": "Python Programming",
-          "category": "소프트웨어 개발 역량"
-        },
-        {
           "id": "COMP_AdminLaw",
           "name": "행정법무",
           "en": "Administrative Law",
           "category": "행정법무 역량"
+        },
+        {
+          "id": "COMP_SW_01",
+          "name": "파이썬 프로그래밍",
+          "en": "Python Programming",
+          "category": "소프트웨어 개발 역량"
         }
       ],
       "performanceGoals": [
         {
-          "code": "OUT_05",
-          "name": "해외 수출 계약 달성",
-          "type": "수출성과",
-          "value": "25000000"
+          "code": "OUT_154",
+          "name": "반도체 전문인력 배출",
+          "type": "교육성과",
+          "value": "12000"
         },
         {
-          "code": "OUT_07",
-          "name": "신규 특허 등록 완료",
-          "type": "지식재산성과",
-          "value": "8000000"
+          "code": "OUT_12",
+          "name": "청년내일채움공제 만기 수령 및 재취업",
+          "type": "고용성과",
+          "value": "18000000"
+        },
+        {
+          "code": "OUT_167",
+          "name": "스마트제조 인재 배출",
+          "type": "고용성과",
+          "value": "18000000"
         },
         {
           "code": "OUT_21",
@@ -1527,12 +1533,6 @@
           "name": "바이오헬스 인재 양성",
           "type": "교육성과",
           "value": "8000"
-        },
-        {
-          "code": "OUT_194",
-          "name": "해양 스마트 기술인력 배출",
-          "type": "교육성과",
-          "value": "3500"
         }
       ],
       "policyCount": 13,
@@ -1555,129 +1555,12 @@
       ],
       "programs": [
         {
-          "id": "HS_ITM_10",
-          "name": "스마트물류자동화",
-          "en": "Smart Logistics Automation",
+          "id": "HS_ITM_01",
+          "name": "스마트팩토리제어",
+          "en": "Smart Factory Control Systems",
           "targetGroup": "재직자",
           "org": "산업통상자원부",
           "competency": "반도체 설계·공정",
-          "hours": "40"
-        },
-        {
-          "id": "HS_BAS_09",
-          "name": "판매촉진전략",
-          "en": "Sales Promotion Strategy",
-          "targetGroup": "전문가",
-          "org": "과학기술정보통신부",
-          "competency": "데이터 분석",
-          "hours": "40"
-        },
-        {
-          "id": "HS_ITM_08",
-          "name": "3D설계CAD",
-          "en": "3D Design with CAD",
-          "targetGroup": "재직자",
-          "org": "산업통상자원부",
-          "competency": "반도체 설계·공정",
-          "hours": "40"
-        },
-        {
-          "id": "HS_BMS_08",
-          "name": "마케팅ROI분석",
-          "en": "Marketing ROI Analysis",
-          "targetGroup": "전문가",
-          "org": "국방부",
-          "competency": "바이오헬스",
-          "hours": "40"
-        },
-        {
-          "id": "HS_BAS_10",
-          "name": "시장조사실무",
-          "en": "Market Research Practice",
-          "targetGroup": "전문가",
-          "org": "과학기술정보통신부",
-          "competency": "데이터 분석",
-          "hours": "40"
-        },
-        {
-          "id": "HS_ITM_09",
-          "name": "정밀공정공학",
-          "en": "Precision Process Engineering",
-          "targetGroup": "재직자",
-          "org": "산업통상자원부",
-          "competency": "반도체 설계·공정",
-          "hours": "40"
-        },
-        {
-          "id": "HS_BAS_08",
-          "name": "유통물류관리",
-          "en": "Distribution & Logistics Management",
-          "targetGroup": "전문가",
-          "org": "과학기술정보통신부",
-          "competency": "데이터 분석",
-          "hours": "40"
-        },
-        {
-          "id": "HS_BMS_09",
-          "name": "검색엔진최적화",
-          "en": "Search Engine Optimization",
-          "targetGroup": "전문가",
-          "org": "국방부",
-          "competency": "바이오헬스",
-          "hours": "40"
-        },
-        {
-          "id": "HS_BAS_03",
-          "name": "채널관리론",
-          "en": "Channel Management",
-          "targetGroup": "전문가",
-          "org": "과학기술정보통신부",
-          "competency": "데이터 분석",
-          "hours": "24"
-        },
-        {
-          "id": "HS_ITM_07",
-          "name": "설비보전실무",
-          "en": "Equipment Maintenance Practice",
-          "targetGroup": "재직자",
-          "org": "산업통상자원부",
-          "competency": "반도체 설계·공정",
-          "hours": "32"
-        },
-        {
-          "id": "HS_BMS_07",
-          "name": "소셜미디어전략",
-          "en": "Social Media Strategy",
-          "targetGroup": "전문가",
-          "org": "국방부",
-          "competency": "바이오헬스",
-          "hours": "32"
-        },
-        {
-          "id": "HS_BMS_03",
-          "name": "통합마케팅커뮤니케이션",
-          "en": "Integrated Marketing Communications",
-          "targetGroup": "전문가",
-          "org": "국방부",
-          "competency": "바이오헬스",
-          "hours": "24"
-        },
-        {
-          "id": "HS_BAS_04",
-          "name": "글로벌영업실무",
-          "en": "Global Sales Practice",
-          "targetGroup": "전문가",
-          "org": "과학기술정보통신부",
-          "competency": "데이터 분석",
-          "hours": "32"
-        },
-        {
-          "id": "HS_BMS_01",
-          "name": "디지털마케팅분석",
-          "en": "Digital Marketing Analytics",
-          "targetGroup": "전문가",
-          "org": "국방부",
-          "competency": "바이오헬스",
           "hours": "24"
         },
         {
@@ -1690,31 +1573,13 @@
           "hours": "24"
         },
         {
-          "id": "HS_BAS_05",
-          "name": "세일즈협상론",
-          "en": "Sales Negotiation Skills",
-          "targetGroup": "전문가",
-          "org": "과학기술정보통신부",
-          "competency": "데이터 분석",
-          "hours": "32"
-        },
-        {
-          "id": "HS_BMS_02",
-          "name": "브랜드자산관리",
-          "en": "Brand Asset Management",
+          "id": "HS_BMS_09",
+          "name": "검색엔진최적화",
+          "en": "Search Engine Optimization",
           "targetGroup": "전문가",
           "org": "국방부",
           "competency": "바이오헬스",
-          "hours": "24"
-        },
-        {
-          "id": "HS_BMS_05",
-          "name": "콘텐츠마케팅전략",
-          "en": "Content Marketing Strategy",
-          "targetGroup": "전문가",
-          "org": "국방부",
-          "competency": "바이오헬스",
-          "hours": "32"
+          "hours": "40"
         },
         {
           "id": "HS_BMS_04",
@@ -1726,6 +1591,132 @@
           "hours": "32"
         },
         {
+          "id": "HS_BAS_10",
+          "name": "시장조사실무",
+          "en": "Market Research Practice",
+          "targetGroup": "전문가",
+          "org": "과학기술정보통신부",
+          "competency": "데이터 분석",
+          "hours": "40"
+        },
+        {
+          "id": "HS_BAS_05",
+          "name": "세일즈협상론",
+          "en": "Sales Negotiation Skills",
+          "targetGroup": "전문가",
+          "org": "과학기술정보통신부",
+          "competency": "데이터 분석",
+          "hours": "32"
+        },
+        {
+          "id": "HS_ITM_04",
+          "name": "PLC프로그래밍",
+          "en": "PLC Programming",
+          "targetGroup": "재직자",
+          "org": "산업통상자원부",
+          "competency": "반도체 설계·공정",
+          "hours": "32"
+        },
+        {
+          "id": "HS_ITM_06",
+          "name": "산업용로봇운용",
+          "en": "Industrial Robot Operation",
+          "targetGroup": "재직자",
+          "org": "산업통상자원부",
+          "competency": "반도체 설계·공정",
+          "hours": "32"
+        },
+        {
+          "id": "HS_ITM_03",
+          "name": "생산품질관리",
+          "en": "Production Quality Management",
+          "targetGroup": "재직자",
+          "org": "산업통상자원부",
+          "competency": "반도체 설계·공정",
+          "hours": "24"
+        },
+        {
+          "id": "HS_BAS_08",
+          "name": "유통물류관리",
+          "en": "Distribution & Logistics Management",
+          "targetGroup": "전문가",
+          "org": "과학기술정보통신부",
+          "competency": "데이터 분석",
+          "hours": "40"
+        },
+        {
+          "id": "HS_BAS_03",
+          "name": "채널관리론",
+          "en": "Channel Management",
+          "targetGroup": "전문가",
+          "org": "과학기술정보통신부",
+          "competency": "데이터 분석",
+          "hours": "24"
+        },
+        {
+          "id": "HS_ITM_05",
+          "name": "제조실행시스템",
+          "en": "Manufacturing Execution Systems",
+          "targetGroup": "재직자",
+          "org": "산업통상자원부",
+          "competency": "반도체 설계·공정",
+          "hours": "32"
+        },
+        {
+          "id": "HS_BAS_04",
+          "name": "글로벌영업실무",
+          "en": "Global Sales Practice",
+          "targetGroup": "전문가",
+          "org": "과학기술정보통신부",
+          "competency": "데이터 분석",
+          "hours": "32"
+        },
+        {
+          "id": "HS_BMS_08",
+          "name": "마케팅ROI분석",
+          "en": "Marketing ROI Analysis",
+          "targetGroup": "전문가",
+          "org": "국방부",
+          "competency": "바이오헬스",
+          "hours": "40"
+        },
+        {
+          "id": "HS_BMS_03",
+          "name": "통합마케팅커뮤니케이션",
+          "en": "Integrated Marketing Communications",
+          "targetGroup": "전문가",
+          "org": "국방부",
+          "competency": "바이오헬스",
+          "hours": "24"
+        },
+        {
+          "id": "HS_BMS_02",
+          "name": "브랜드자산관리",
+          "en": "Brand Asset Management",
+          "targetGroup": "전문가",
+          "org": "국방부",
+          "competency": "바이오헬스",
+          "hours": "24"
+        },
+        {
+          "id": "HS_BMS_10",
+          "name": "이커머스구축전략",
+          "en": "E-Commerce Strategy",
+          "targetGroup": "전문가",
+          "org": "국방부",
+          "competency": "바이오헬스",
+          "hours": "40"
+        },
+        {
+          "id": "HS_ITM_08",
+          "name": "3D설계CAD",
+          "en": "3D Design with CAD",
+          "targetGroup": "재직자",
+          "org": "산업통상자원부",
+          "competency": "반도체 설계·공정",
+          "hours": "40"
+        },
+        {
           "id": "HS_BAS_06",
           "name": "리테일마케팅",
           "en": "Retail Marketing",
@@ -1733,6 +1724,15 @@
           "org": "과학기술정보통신부",
           "competency": "데이터 분석",
           "hours": "32"
+        },
+        {
+          "id": "HS_BAS_02",
+          "name": "고객관계관리",
+          "en": "Customer Relationship Management",
+          "targetGroup": "전문가",
+          "org": "과학기술정보통신부",
+          "competency": "데이터 분석",
+          "hours": "24"
         }
       ],
       "budgets": [
@@ -1763,16 +1763,16 @@
           "role": "전략기술 인재·산업 전문인력 양성"
         },
         {
-          "id": "ORG_MINISTRY_01",
-          "name": "과학기술정보통신부",
-          "abbr": "MSIT",
-          "role": "디지털 전환·AI·ICT 인재 양성 정책 총괄"
-        },
-        {
           "id": "ORG_MINISTRY_08",
           "name": "국방부",
           "abbr": "MoD",
           "role": "군 인력 교육훈련·방산 전문인력 개발"
+        },
+        {
+          "id": "ORG_MINISTRY_01",
+          "name": "과학기술정보통신부",
+          "abbr": "MSIT",
+          "role": "디지털 전환·AI·ICT 인재 양성 정책 총괄"
         },
         {
           "id": "ORG_MINISTRY_13",
@@ -1793,16 +1793,16 @@
           "category": "반도체 설계 역량"
         },
         {
-          "id": "COMP_DataAnalysis",
-          "name": "데이터 분석",
-          "en": "Data Analysis",
-          "category": "데이터 활용 역량"
-        },
-        {
           "id": "COMP_BioHealth",
           "name": "바이오헬스",
           "en": "BioHealth",
           "category": "바이오헬스 역량"
+        },
+        {
+          "id": "COMP_DataAnalysis",
+          "name": "데이터 분석",
+          "en": "Data Analysis",
+          "category": "데이터 활용 역량"
         }
       ],
       "performanceGoals": [
@@ -1839,78 +1839,6 @@
       ],
       "programs": [
         {
-          "id": "LT_BCF_10",
-          "name": "컴퓨터구조론",
-          "en": "Computer Architecture",
-          "targetGroup": "은퇴자",
-          "org": "고용노동부",
-          "competency": "디지털 마케팅",
-          "hours": "80"
-        },
-        {
-          "id": "LT_DAI_09",
-          "name": "알고리즘의이해",
-          "en": "Algorithm Literacy",
-          "targetGroup": "경력단절여성",
-          "org": "인사혁신처",
-          "competency": "프롬프트 엔지니어링",
-          "hours": "80"
-        },
-        {
-          "id": "HS_ISW_06",
-          "name": "디자인패턴실무",
-          "en": "Design Patterns in Practice",
-          "targetGroup": "재직자",
-          "org": "과학기술정보통신부",
-          "competency": "클라우드 보안",
-          "hours": "32"
-        },
-        {
-          "id": "LT_DDF_09",
-          "name": "정량적성과지표설계",
-          "en": "KPI Design & Measurement",
-          "targetGroup": "경력단절여성",
-          "org": "고용노동부",
-          "competency": "데이터 분석",
-          "hours": "80"
-        },
-        {
-          "id": "HS_ISW_02",
-          "name": "자바프레임워크응용",
-          "en": "Java Framework Application",
-          "targetGroup": "재직자",
-          "org": "과학기술정보통신부",
-          "competency": "클라우드 보안",
-          "hours": "24"
-        },
-        {
-          "id": "LT_DAI_04",
-          "name": "인공지능이해와활용",
-          "en": "AI Applications in Practice",
-          "targetGroup": "경력단절여성",
-          "org": "인사혁신처",
-          "competency": "프롬프트 엔지니어링",
-          "hours": "60"
-        },
-        {
-          "id": "LT_BCF_03",
-          "name": "운영체제이론",
-          "en": "Operating Systems",
-          "targetGroup": "은퇴자",
-          "org": "고용노동부",
-          "competency": "디지털 마케팅",
-          "hours": "40"
-        },
-        {
-          "id": "LT_DAI_10",
-          "name": "AI서비스기획기초",
-          "en": "AI Service Planning",
-          "targetGroup": "경력단절여성",
-          "org": "인사혁신처",
-          "competency": "프롬프트 엔지니어링",
-          "hours": "80"
-        },
-        {
           "id": "LT_DAI_01",
           "name": "생성형AI프롬프트공학",
           "en": "Generative AI Prompt Engineering",
@@ -1920,58 +1848,13 @@
           "hours": "40"
         },
         {
-          "id": "LT_DAI_02",
-          "name": "AI윤리가이드라인",
-          "en": "AI Ethics Guidelines",
-          "targetGroup": "경력단절여성",
-          "org": "인사혁신처",
-          "competency": "프롬프트 엔지니어링",
-          "hours": "40"
-        },
-        {
-          "id": "HS_ISW_01",
-          "name": "파이썬백엔드개발",
-          "en": "Python Backend Development",
-          "targetGroup": "재직자",
-          "org": "과학기술정보통신부",
-          "competency": "클라우드 보안",
-          "hours": "24"
-        },
-        {
-          "id": "HS_ISW_08",
-          "name": "마이크로서비스설계",
-          "en": "Microservices Architecture",
-          "targetGroup": "재직자",
-          "org": "과학기술정보통신부",
-          "competency": "클라우드 보안",
-          "hours": "40"
-        },
-        {
-          "id": "LT_BCF_08",
-          "name": "소프트웨어공학",
-          "en": "Software Engineering",
+          "id": "LT_BCF_05",
+          "name": "정보통신공학개론",
+          "en": "Introduction to ICT Engineering",
           "targetGroup": "은퇴자",
           "org": "고용노동부",
           "competency": "디지털 마케팅",
-          "hours": "80"
-        },
-        {
-          "id": "LT_DDF_04",
-          "name": "데이터수집과정제",
-          "en": "Data Collection & Preprocessing",
-          "targetGroup": "경력단절여성",
-          "org": "고용노동부",
-          "competency": "데이터 분석",
           "hours": "60"
-        },
-        {
-          "id": "LT_DDF_01",
-          "name": "비즈니스지표해석",
-          "en": "Business Metrics Interpretation",
-          "targetGroup": "경력단절여성",
-          "org": "고용노동부",
-          "competency": "데이터 분석",
-          "hours": "40"
         },
         {
           "id": "LT_DAI_05",
@@ -1992,6 +1875,87 @@
           "hours": "60"
         },
         {
+          "id": "LT_DAI_08",
+          "name": "디지털콘텐츠제작",
+          "en": "Digital Content Creation",
+          "targetGroup": "경력단절여성",
+          "org": "인사혁신처",
+          "competency": "프롬프트 엔지니어링",
+          "hours": "80"
+        },
+        {
+          "id": "LT_DDF_09",
+          "name": "정량적성과지표설계",
+          "en": "KPI Design & Measurement",
+          "targetGroup": "경력단절여성",
+          "org": "고용노동부",
+          "competency": "데이터 분석",
+          "hours": "80"
+        },
+        {
+          "id": "LT_BCF_07",
+          "name": "데이터베이스개론",
+          "en": "Database Fundamentals",
+          "targetGroup": "은퇴자",
+          "org": "고용노동부",
+          "competency": "디지털 마케팅",
+          "hours": "60"
+        },
+        {
+          "id": "LT_BCF_06",
+          "name": "시스템프로그래밍",
+          "en": "Systems Programming",
+          "targetGroup": "은퇴자",
+          "org": "고용노동부",
+          "competency": "디지털 마케팅",
+          "hours": "60"
+        },
+        {
+          "id": "LT_DDF_02",
+          "name": "데이터시각화리터러시",
+          "en": "Data Visualization Literacy",
+          "targetGroup": "경력단절여성",
+          "org": "고용노동부",
+          "competency": "데이터 분석",
+          "hours": "40"
+        },
+        {
+          "id": "LT_DDF_06",
+          "name": "그래프분석론",
+          "en": "Graph & Network Analysis",
+          "targetGroup": "경력단절여성",
+          "org": "고용노동부",
+          "competency": "데이터 분석",
+          "hours": "60"
+        },
+        {
+          "id": "LT_DDF_07",
+          "name": "탐색적데이터분석",
+          "en": "Exploratory Data Analysis",
+          "targetGroup": "경력단절여성",
+          "org": "고용노동부",
+          "competency": "데이터 분석",
+          "hours": "60"
+        },
+        {
+          "id": "LT_DDF_08",
+          "name": "데이터기반스토리텔링",
+          "en": "Data Storytelling",
+          "targetGroup": "경력단절여성",
+          "org": "고용노동부",
+          "competency": "데이터 분석",
+          "hours": "80"
+        },
+        {
+          "id": "LT_DDF_03",
+          "name": "통계기반의사결정",
+          "en": "Statistical Decision Making",
+          "targetGroup": "경력단절여성",
+          "org": "고용노동부",
+          "competency": "데이터 분석",
+          "hours": "40"
+        },
+        {
           "id": "HS_ISW_03",
           "name": "리액트웹아키텍처",
           "en": "React Web Architecture",
@@ -2001,22 +1965,58 @@
           "hours": "24"
         },
         {
-          "id": "LT_BCF_05",
-          "name": "정보통신공학개론",
-          "en": "Introduction to ICT Engineering",
+          "id": "LT_DDF_10",
+          "name": "공공데이터해석",
+          "en": "Public Data Analysis",
+          "targetGroup": "경력단절여성",
+          "org": "고용노동부",
+          "competency": "데이터 분석",
+          "hours": "80"
+        },
+        {
+          "id": "LT_BCF_02",
+          "name": "자료구조론",
+          "en": "Data Structures",
           "targetGroup": "은퇴자",
           "org": "고용노동부",
           "competency": "디지털 마케팅",
+          "hours": "40"
+        },
+        {
+          "id": "LT_DDF_05",
+          "name": "대시보드활용실무",
+          "en": "Dashboard Practice",
+          "targetGroup": "경력단절여성",
+          "org": "고용노동부",
+          "competency": "데이터 분석",
           "hours": "60"
         },
         {
-          "id": "HS_ISW_07",
-          "name": "테스트자동화공학",
-          "en": "Test Automation Engineering",
+          "id": "HS_ISW_06",
+          "name": "디자인패턴실무",
+          "en": "Design Patterns in Practice",
           "targetGroup": "재직자",
           "org": "과학기술정보통신부",
           "competency": "클라우드 보안",
           "hours": "32"
+        },
+        {
+          "id": "LT_BCF_01",
+          "name": "이산수학기초",
+          "en": "Discrete Mathematics",
+          "targetGroup": "은퇴자",
+          "org": "고용노동부",
+          "competency": "디지털 마케팅",
+          "hours": "40"
+        },
+        {
+          "id": "LT_BCF_03",
+          "name": "운영체제이론",
+          "en": "Operating Systems",
+          "targetGroup": "은퇴자",
+          "org": "고용노동부",
+          "competency": "디지털 마케팅",
+          "hours": "40"
         }
       ],
       "budgets": [
@@ -2033,16 +2033,16 @@
       "totalBudgetStr": "200억원",
       "implementingOrgs": [
         {
-          "id": "ORG_MINISTRY_04",
-          "name": "고용노동부",
-          "abbr": "MoEL",
-          "role": "직업훈련·고용서비스·국민역량 평생학습"
-        },
-        {
           "id": "ORG_MINISTRY_09",
           "name": "인사혁신처",
           "abbr": "MPM",
           "role": "국가공무원 역량개발·성과관리 총괄"
+        },
+        {
+          "id": "ORG_MINISTRY_04",
+          "name": "고용노동부",
+          "abbr": "MoEL",
+          "role": "직업훈련·고용서비스·국민역량 평생학습"
         },
         {
           "id": "ORG_MINISTRY_01",
@@ -2058,17 +2058,11 @@
         }
       ],
       "targetGroups": [
-        "은퇴자",
         "경력단절여성",
+        "은퇴자",
         "재직자"
       ],
       "competencies": [
-        {
-          "id": "COMP_DigitalMkt",
-          "name": "디지털 마케팅",
-          "en": "Digital Marketing",
-          "category": "마케팅 전략 역량"
-        },
         {
           "id": "COMP_AI_01",
           "name": "프롬프트 엔지니어링",
@@ -2076,16 +2070,22 @@
           "category": "AI·인프라 역량"
         },
         {
-          "id": "COMP_CloudSec",
-          "name": "클라우드 보안",
-          "en": "Cloud Security",
-          "category": "기술보안 역량"
+          "id": "COMP_DigitalMkt",
+          "name": "디지털 마케팅",
+          "en": "Digital Marketing",
+          "category": "마케팅 전략 역량"
         },
         {
           "id": "COMP_DataAnalysis",
           "name": "데이터 분석",
           "en": "Data Analysis",
           "category": "데이터 활용 역량"
+        },
+        {
+          "id": "COMP_CloudSec",
+          "name": "클라우드 보안",
+          "en": "Cloud Security",
+          "category": "기술보안 역량"
         }
       ],
       "performanceGoals": [
@@ -2109,29 +2109,14 @@
       "type": "NationalStrategy",
       "policies": [
         {
-          "id": "POLICY_32",
-          "name": "고령자·중장년 재취업 역량강화 정책",
-          "en": "Senior and Middle-Aged Re-employment Competency Enhancement Policy"
-        },
-        {
           "id": "POLICY_01",
           "name": "은퇴과학자 활용 지원사업",
           "en": "Retired Scientist Utilization Support Program"
         },
         {
-          "id": "POLICY_24",
-          "name": "청년 취업역량 강화 지원사업",
-          "en": "Youth Employment Capability Enhancement Program"
-        },
-        {
           "id": "POLICY_04",
           "name": "시니어 창업 지원금",
           "en": "Senior Startup Support Grant"
-        },
-        {
-          "id": "POLICY_31",
-          "name": "장애인 직업재활 및 고용 지원 정책",
-          "en": "Disabled Person Vocational Rehabilitation and Employment Support Policy"
         },
         {
           "id": "POLICY_33",
@@ -2142,6 +2127,21 @@
           "id": "POLICY_34",
           "name": "사회서비스 종사자 처우개선 및 역량강화 정책",
           "en": "Social Service Worker Treatment Improvement and Capacity Enhancement Policy"
+        },
+        {
+          "id": "POLICY_31",
+          "name": "장애인 직업재활 및 고용 지원 정책",
+          "en": "Disabled Person Vocational Rehabilitation and Employment Support Policy"
+        },
+        {
+          "id": "POLICY_24",
+          "name": "청년 취업역량 강화 지원사업",
+          "en": "Youth Employment Capability Enhancement Program"
+        },
+        {
+          "id": "POLICY_32",
+          "name": "고령자·중장년 재취업 역량강화 정책",
+          "en": "Senior and Middle-Aged Re-employment Competency Enhancement Policy"
         }
       ],
       "programs": [],
@@ -2211,12 +2211,6 @@
       "competencies": [],
       "performanceGoals": [
         {
-          "code": "OUT_174",
-          "name": "중장년 재취업 성과",
-          "type": "고용성과",
-          "value": "35000"
-        },
-        {
           "code": "OUT_01",
           "name": "기업 매출 증대 / 기업 매출 증대 성과",
           "type": "경영성과",
@@ -2235,22 +2229,22 @@
           "value": "4000000"
         },
         {
-          "code": "OUT_27",
-          "name": "취업성공패키지 수료 후 6개월 내 취업",
-          "type": "고용성과",
-          "value": "1"
-        },
-        {
-          "code": "OUT_166",
-          "name": "청년 취업역량 향상",
-          "type": "고용성과",
-          "value": "45000"
-        },
-        {
           "code": "OUT_06",
           "name": "스타트업 신규 고용 창출",
           "type": "고용성과",
           "value": "50000000"
+        },
+        {
+          "code": "OUT_175",
+          "name": "다문화가정 직업훈련 성과",
+          "type": "교육성과",
+          "value": "12000"
+        },
+        {
+          "code": "OUT_176",
+          "name": "사회서비스 종사자 역량 향상",
+          "type": "역량성과",
+          "value": "45000"
         },
         {
           "code": "OUT_173",
@@ -2272,16 +2266,6 @@
       "type": "NationalStrategy",
       "policies": [
         {
-          "id": "POLICY_37",
-          "name": "스마트빌리지 및 농촌 디지털 전환 지원 정책",
-          "en": "Smart Village and Rural Digital Transformation Support Policy"
-        },
-        {
-          "id": "POLICY_36",
-          "name": "지역산업 맞춤형 인력양성 사업",
-          "en": "Region-Customized Industrial Workforce Development Project"
-        },
-        {
           "id": "POLICY_28",
           "name": "지역 주도형 청년 일자리 사업",
           "en": "Region-Led Youth Employment Program"
@@ -2290,6 +2274,16 @@
           "id": "POLICY_35",
           "name": "지방대학 혁신역량 강화 방안",
           "en": "Regional University Innovation Capacity Enhancement Plan"
+        },
+        {
+          "id": "POLICY_36",
+          "name": "지역산업 맞춤형 인력양성 사업",
+          "en": "Region-Customized Industrial Workforce Development Project"
+        },
+        {
+          "id": "POLICY_37",
+          "name": "스마트빌리지 및 농촌 디지털 전환 지원 정책",
+          "en": "Smart Village and Rural Digital Transformation Support Policy"
         },
         {
           "id": "POLICY_05",
@@ -2350,18 +2344,6 @@
       "competencies": [],
       "performanceGoals": [
         {
-          "code": "OUT_179",
-          "name": "농촌 디지털 전환 역량",
-          "type": "역량성과",
-          "value": "15000"
-        },
-        {
-          "code": "OUT_178",
-          "name": "지역 산업 맞춤 인력 배출",
-          "type": "고용성과",
-          "value": "22000"
-        },
-        {
           "code": "OUT_25",
           "name": "방위산업 품질인증(KFX) 획득",
           "type": "인증성과",
@@ -2378,6 +2360,18 @@
           "name": "지방대학 혁신 성과",
           "type": "교육성과",
           "value": "180"
+        },
+        {
+          "code": "OUT_178",
+          "name": "지역 산업 맞춤 인력 배출",
+          "type": "고용성과",
+          "value": "22000"
+        },
+        {
+          "code": "OUT_179",
+          "name": "농촌 디지털 전환 역량",
+          "type": "역량성과",
+          "value": "15000"
         },
         {
           "code": "OUT_09",
@@ -2399,14 +2393,14 @@
       "type": "NationalStrategy",
       "policies": [
         {
-          "id": "POLICY_41",
-          "name": "육아휴직 후 경력복귀 지원 정책",
-          "en": "Post-Parental Leave Career Return Support Policy"
-        },
-        {
           "id": "POLICY_43",
           "name": "일·가정양립 지원 기업 인사 관리자 역량강화 정책",
           "en": "Work-Family Balance Supporting Company HR Manager Capacity Policy"
+        },
+        {
+          "id": "POLICY_41",
+          "name": "육아휴직 후 경력복귀 지원 정책",
+          "en": "Post-Parental Leave Career Return Support Policy"
         },
         {
           "id": "POLICY_42",
@@ -2467,16 +2461,16 @@
       "competencies": [],
       "performanceGoals": [
         {
-          "code": "OUT_183",
-          "name": "경력복귀 지원 성과",
-          "type": "고용성과",
-          "value": "18000"
-        },
-        {
           "code": "OUT_185",
           "name": "일가정양립 HR 역량 강화",
           "type": "역량성과",
           "value": "5500"
+        },
+        {
+          "code": "OUT_183",
+          "name": "경력복귀 지원 성과",
+          "type": "고용성과",
+          "value": "18000"
         },
         {
           "code": "OUT_184",
@@ -2503,14 +2497,14 @@
           "en": "Small Business Digital Transformation Capacity Enhancement Support Policy"
         },
         {
-          "id": "POLICY_48",
-          "name": "노동권 보호 및 노사관계 전문인력 역량강화 정책",
-          "en": "Labor Rights Protection and Industrial Relations Professional Capacity Policy"
-        },
-        {
           "id": "POLICY_47",
           "name": "금융 소비자 보호 전문인력 양성 정책",
           "en": "Financial Consumer Protection Professional Workforce Development Policy"
+        },
+        {
+          "id": "POLICY_48",
+          "name": "노동권 보호 및 노사관계 전문인력 역량강화 정책",
+          "en": "Labor Rights Protection and Industrial Relations Professional Capacity Policy"
         }
       ],
       "programs": [],
@@ -2572,16 +2566,16 @@
           "value": "85000"
         },
         {
-          "code": "OUT_190",
-          "name": "노동권 전문인력 역량 향상",
-          "type": "역량성과",
-          "value": "3200"
-        },
-        {
           "code": "OUT_189",
           "name": "금융소비자 보호 전문인력",
           "type": "교육성과",
           "value": "2800"
+        },
+        {
+          "code": "OUT_190",
+          "name": "노동권 전문인력 역량 향상",
+          "type": "역량성과",
+          "value": "3200"
         }
       ],
       "policyCount": 3,
@@ -7741,7 +7735,7 @@
       "id": "HS_BAM_01",
       "name": "전략기획실무",
       "en": "Strategic Planning Fundamentals",
-      "type": "EducationProgram",
+      "type": "WorkshopSeminar",
       "targetGroupId": "TGROUP_Expert",
       "targetGroup": "전문가",
       "targetGroupEn": "Expert / Professional",
@@ -7768,7 +7762,7 @@
       "id": "HS_BAM_02",
       "name": "경영분석론",
       "en": "Business Analytics",
-      "type": "EducationProgram",
+      "type": "WorkshopSeminar",
       "targetGroupId": "TGROUP_Expert",
       "targetGroup": "전문가",
       "targetGroupEn": "Expert / Professional",
@@ -7795,7 +7789,7 @@
       "id": "HS_BAM_03",
       "name": "인사조직관리",
       "en": "HR & Organization Management",
-      "type": "EducationProgram",
+      "type": "WorkshopSeminar",
       "targetGroupId": "TGROUP_Expert",
       "targetGroup": "전문가",
       "targetGroupEn": "Expert / Professional",
@@ -7821,7 +7815,7 @@
       "id": "HS_BAM_04",
       "name": "공급망관리",
       "en": "Supply Chain Management",
-      "type": "EducationProgram",
+      "type": "K_DigitalTraining",
       "targetGroupId": "TGROUP_Expert",
       "targetGroup": "전문가",
       "targetGroupEn": "Expert / Professional",
@@ -7847,7 +7841,7 @@
       "id": "HS_BAM_05",
       "name": "리스크관리",
       "en": "Risk Management",
-      "type": "EducationProgram",
+      "type": "WorkshopSeminar",
       "targetGroupId": "TGROUP_Expert",
       "targetGroup": "전문가",
       "targetGroupEn": "Expert / Professional",
@@ -7873,7 +7867,7 @@
       "id": "HS_BAM_06",
       "name": "ESG경영전략",
       "en": "ESG Management Strategy",
-      "type": "EducationProgram",
+      "type": "WorkshopSeminar",
       "targetGroupId": "TGROUP_Expert",
       "targetGroup": "전문가",
       "targetGroupEn": "Expert / Professional",
@@ -7900,7 +7894,7 @@
       "id": "HS_BAM_07",
       "name": "재무제표분석",
       "en": "Financial Statement Analysis",
-      "type": "EducationProgram",
+      "type": "WorkshopSeminar",
       "targetGroupId": "TGROUP_Expert",
       "targetGroup": "전문가",
       "targetGroupEn": "Expert / Professional",
@@ -7927,7 +7921,7 @@
       "id": "HS_BAM_08",
       "name": "프로젝트파이낸싱",
       "en": "Project Financing",
-      "type": "EducationProgram",
+      "type": "WorkshopSeminar",
       "targetGroupId": "TGROUP_Expert",
       "targetGroup": "전문가",
       "targetGroupEn": "Expert / Professional",
@@ -7954,7 +7948,7 @@
       "id": "HS_BAM_09",
       "name": "기업지배구조론",
       "en": "Corporate Governance",
-      "type": "EducationProgram",
+      "type": "WorkshopSeminar",
       "targetGroupId": "TGROUP_Expert",
       "targetGroup": "전문가",
       "targetGroupEn": "Expert / Professional",
@@ -7981,7 +7975,7 @@
       "id": "HS_BAM_10",
       "name": "창업시뮬레이션",
       "en": "Startup Business Simulation",
-      "type": "EducationProgram",
+      "type": "WorkshopSeminar",
       "targetGroupId": "TGROUP_Expert",
       "targetGroup": "전문가",
       "targetGroupEn": "Expert / Professional",
@@ -8008,7 +8002,7 @@
       "id": "HS_BAS_01",
       "name": "B2B영업전략",
       "en": "B2B Sales Strategy",
-      "type": "EducationProgram",
+      "type": "WorkshopSeminar",
       "targetGroupId": "TGROUP_Expert",
       "targetGroup": "전문가",
       "targetGroupEn": "Expert / Professional",
@@ -8034,7 +8028,7 @@
       "id": "HS_BAS_02",
       "name": "고객관계관리",
       "en": "Customer Relationship Management",
-      "type": "EducationProgram",
+      "type": "WorkshopSeminar",
       "targetGroupId": "TGROUP_Expert",
       "targetGroup": "전문가",
       "targetGroupEn": "Expert / Professional",
@@ -8059,7 +8053,7 @@
       "id": "HS_BAS_03",
       "name": "채널관리론",
       "en": "Channel Management",
-      "type": "EducationProgram",
+      "type": "WorkshopSeminar",
       "targetGroupId": "TGROUP_Expert",
       "targetGroup": "전문가",
       "targetGroupEn": "Expert / Professional",
@@ -8085,7 +8079,7 @@
       "id": "HS_BAS_04",
       "name": "글로벌영업실무",
       "en": "Global Sales Practice",
-      "type": "EducationProgram",
+      "type": "WorkshopSeminar",
       "targetGroupId": "TGROUP_Expert",
       "targetGroup": "전문가",
       "targetGroupEn": "Expert / Professional",
@@ -8112,7 +8106,7 @@
       "id": "HS_BAS_05",
       "name": "세일즈협상론",
       "en": "Sales Negotiation Skills",
-      "type": "EducationProgram",
+      "type": "WorkshopSeminar",
       "targetGroupId": "TGROUP_Expert",
       "targetGroup": "전문가",
       "targetGroupEn": "Expert / Professional",
@@ -8139,7 +8133,7 @@
       "id": "HS_BAS_06",
       "name": "리테일마케팅",
       "en": "Retail Marketing",
-      "type": "EducationProgram",
+      "type": "WorkshopSeminar",
       "targetGroupId": "TGROUP_Expert",
       "targetGroup": "전문가",
       "targetGroupEn": "Expert / Professional",
@@ -8164,7 +8158,7 @@
       "id": "HS_BAS_07",
       "name": "서비스마케팅",
       "en": "Service Marketing",
-      "type": "EducationProgram",
+      "type": "WorkshopSeminar",
       "targetGroupId": "TGROUP_Expert",
       "targetGroup": "전문가",
       "targetGroupEn": "Expert / Professional",
@@ -8190,7 +8184,7 @@
       "id": "HS_BAS_08",
       "name": "유통물류관리",
       "en": "Distribution & Logistics Management",
-      "type": "EducationProgram",
+      "type": "WorkshopSeminar",
       "targetGroupId": "TGROUP_Expert",
       "targetGroup": "전문가",
       "targetGroupEn": "Expert / Professional",
@@ -8217,7 +8211,7 @@
       "id": "HS_BAS_09",
       "name": "판매촉진전략",
       "en": "Sales Promotion Strategy",
-      "type": "EducationProgram",
+      "type": "WorkshopSeminar",
       "targetGroupId": "TGROUP_Expert",
       "targetGroup": "전문가",
       "targetGroupEn": "Expert / Professional",
@@ -8243,7 +8237,7 @@
       "id": "HS_BAS_10",
       "name": "시장조사실무",
       "en": "Market Research Practice",
-      "type": "EducationProgram",
+      "type": "WorkshopSeminar",
       "targetGroupId": "TGROUP_Expert",
       "targetGroup": "전문가",
       "targetGroupEn": "Expert / Professional",
@@ -8270,7 +8264,7 @@
       "id": "HS_BMS_01",
       "name": "디지털마케팅분석",
       "en": "Digital Marketing Analytics",
-      "type": "EducationProgram",
+      "type": "WorkshopSeminar",
       "targetGroupId": "TGROUP_Expert",
       "targetGroup": "전문가",
       "targetGroupEn": "Expert / Professional",
@@ -8298,7 +8292,7 @@
       "id": "HS_BMS_02",
       "name": "브랜드자산관리",
       "en": "Brand Asset Management",
-      "type": "EducationProgram",
+      "type": "WorkshopSeminar",
       "targetGroupId": "TGROUP_Expert",
       "targetGroup": "전문가",
       "targetGroupEn": "Expert / Professional",
@@ -8326,7 +8320,7 @@
       "id": "HS_BMS_03",
       "name": "통합마케팅커뮤니케이션",
       "en": "Integrated Marketing Communications",
-      "type": "EducationProgram",
+      "type": "WorkshopSeminar",
       "targetGroupId": "TGROUP_Expert",
       "targetGroup": "전문가",
       "targetGroupEn": "Expert / Professional",
@@ -8354,7 +8348,7 @@
       "id": "HS_BMS_04",
       "name": "소비자행동론",
       "en": "Consumer Behavior",
-      "type": "EducationProgram",
+      "type": "WorkshopSeminar",
       "targetGroupId": "TGROUP_Expert",
       "targetGroup": "전문가",
       "targetGroupEn": "Expert / Professional",
@@ -8382,7 +8376,7 @@
       "id": "HS_BMS_05",
       "name": "콘텐츠마케팅전략",
       "en": "Content Marketing Strategy",
-      "type": "EducationProgram",
+      "type": "WorkshopSeminar",
       "targetGroupId": "TGROUP_Expert",
       "targetGroup": "전문가",
       "targetGroupEn": "Expert / Professional",
@@ -8410,7 +8404,7 @@
       "id": "HS_BMS_06",
       "name": "퍼포먼스마케팅",
       "en": "Performance Marketing",
-      "type": "EducationProgram",
+      "type": "WorkshopSeminar",
       "targetGroupId": "TGROUP_Expert",
       "targetGroup": "전문가",
       "targetGroupEn": "Expert / Professional",
@@ -8438,7 +8432,7 @@
       "id": "HS_BMS_07",
       "name": "소셜미디어전략",
       "en": "Social Media Strategy",
-      "type": "EducationProgram",
+      "type": "WorkshopSeminar",
       "targetGroupId": "TGROUP_Expert",
       "targetGroup": "전문가",
       "targetGroupEn": "Expert / Professional",
@@ -8466,7 +8460,7 @@
       "id": "HS_BMS_08",
       "name": "마케팅ROI분석",
       "en": "Marketing ROI Analysis",
-      "type": "EducationProgram",
+      "type": "WorkshopSeminar",
       "targetGroupId": "TGROUP_Expert",
       "targetGroup": "전문가",
       "targetGroupEn": "Expert / Professional",
@@ -8494,7 +8488,7 @@
       "id": "HS_BMS_09",
       "name": "검색엔진최적화",
       "en": "Search Engine Optimization",
-      "type": "EducationProgram",
+      "type": "WorkshopSeminar",
       "targetGroupId": "TGROUP_Expert",
       "targetGroup": "전문가",
       "targetGroupEn": "Expert / Professional",
@@ -8522,7 +8516,7 @@
       "id": "HS_BMS_10",
       "name": "이커머스구축전략",
       "en": "E-Commerce Strategy",
-      "type": "EducationProgram",
+      "type": "WorkshopSeminar",
       "targetGroupId": "TGROUP_Expert",
       "targetGroup": "전문가",
       "targetGroupEn": "Expert / Professional",
@@ -8550,7 +8544,7 @@
       "id": "HS_IAI_01",
       "name": "GPU컴퓨팅기초",
       "en": "GPU Computing Fundamentals",
-      "type": "EducationProgram",
+      "type": "K_DigitalTraining",
       "targetGroupId": "TGROUP_Employee",
       "targetGroup": "재직자",
       "targetGroupEn": "Employed Worker",
@@ -8577,7 +8571,7 @@
       "id": "HS_IAI_02",
       "name": "딥러닝프레임워크",
       "en": "Deep Learning Frameworks",
-      "type": "EducationProgram",
+      "type": "K_DigitalTraining",
       "targetGroupId": "TGROUP_Employee",
       "targetGroup": "재직자",
       "targetGroupEn": "Employed Worker",
@@ -8604,7 +8598,7 @@
       "id": "HS_IAI_03",
       "name": "클라우드아키텍처",
       "en": "Cloud Architecture",
-      "type": "EducationProgram",
+      "type": "K_DigitalTraining",
       "targetGroupId": "TGROUP_Employee",
       "targetGroup": "재직자",
       "targetGroupEn": "Employed Worker",
@@ -8632,7 +8626,7 @@
       "id": "HS_IAI_04",
       "name": "서버가상화실무",
       "en": "Server Virtualization",
-      "type": "EducationProgram",
+      "type": "K_DigitalTraining",
       "targetGroupId": "TGROUP_Employee",
       "targetGroup": "재직자",
       "targetGroupEn": "Employed Worker",
@@ -8660,7 +8654,7 @@
       "id": "HS_IAI_05",
       "name": "빅데이터플랫폼구축",
       "en": "Big Data Platform Development",
-      "type": "EducationProgram",
+      "type": "K_DigitalTraining",
       "targetGroupId": "TGROUP_Employee",
       "targetGroup": "재직자",
       "targetGroupEn": "Employed Worker",
@@ -8687,7 +8681,7 @@
       "id": "HS_IAI_06",
       "name": "MLOps엔지니어링",
       "en": "MLOps Engineering",
-      "type": "EducationProgram",
+      "type": "K_DigitalTraining",
       "targetGroupId": "TGROUP_Employee",
       "targetGroup": "재직자",
       "targetGroupEn": "Employed Worker",
@@ -8715,7 +8709,7 @@
       "id": "HS_IAI_07",
       "name": "네트워크인프라설계",
       "en": "Network Infrastructure Design",
-      "type": "EducationProgram",
+      "type": "K_DigitalTraining",
       "targetGroupId": "TGROUP_Employee",
       "targetGroup": "재직자",
       "targetGroupEn": "Employed Worker",
@@ -8743,7 +8737,7 @@
       "id": "HS_IAI_08",
       "name": "분산시스템기초",
       "en": "Distributed Systems",
-      "type": "EducationProgram",
+      "type": "K_DigitalTraining",
       "targetGroupId": "TGROUP_Employee",
       "targetGroup": "재직자",
       "targetGroupEn": "Employed Worker",
@@ -8771,7 +8765,7 @@
       "id": "HS_IAI_09",
       "name": "컨테이너오케스트레이션",
       "en": "Container Orchestration",
-      "type": "EducationProgram",
+      "type": "K_DigitalTraining",
       "targetGroupId": "TGROUP_Employee",
       "targetGroup": "재직자",
       "targetGroupEn": "Employed Worker",
@@ -8799,7 +8793,7 @@
       "id": "HS_IAI_10",
       "name": "고성능컴퓨팅",
       "en": "High Performance Computing",
-      "type": "EducationProgram",
+      "type": "K_DigitalTraining",
       "targetGroupId": "TGROUP_Employee",
       "targetGroup": "재직자",
       "targetGroupEn": "Employed Worker",
@@ -8826,7 +8820,7 @@
       "id": "HS_ISP_01",
       "name": "공공행정DX실무",
       "en": "Public Administration Digital Transformation",
-      "type": "EducationProgram",
+      "type": "K_DigitalTraining",
       "targetGroupId": "TGROUP_Employee",
       "targetGroup": "재직자",
       "targetGroupEn": "Employed Worker",
@@ -8853,7 +8847,7 @@
       "id": "HS_ISP_02",
       "name": "스마트시티거버넌스",
       "en": "Smart City Governance",
-      "type": "EducationProgram",
+      "type": "K_DigitalTraining",
       "targetGroupId": "TGROUP_Employee",
       "targetGroup": "재직자",
       "targetGroupEn": "Employed Worker",
@@ -8880,7 +8874,7 @@
       "id": "HS_ISP_03",
       "name": "지능형교통체계",
       "en": "Intelligent Transportation Systems",
-      "type": "EducationProgram",
+      "type": "K_DigitalTraining",
       "targetGroupId": "TGROUP_Employee",
       "targetGroup": "재직자",
       "targetGroupEn": "Employed Worker",
@@ -8907,7 +8901,7 @@
       "id": "HS_ISP_04",
       "name": "재난안전관리시스템",
       "en": "Disaster Safety Management Systems",
-      "type": "EducationProgram",
+      "type": "K_DigitalTraining",
       "targetGroupId": "TGROUP_Employee",
       "targetGroup": "재직자",
       "targetGroupEn": "Employed Worker",
@@ -8935,7 +8929,7 @@
       "id": "HS_ISP_05",
       "name": "에너지관리시스템",
       "en": "Energy Management Systems",
-      "type": "EducationProgram",
+      "type": "K_DigitalTraining",
       "targetGroupId": "TGROUP_Employee",
       "targetGroup": "재직자",
       "targetGroupEn": "Employed Worker",
@@ -8962,7 +8956,7 @@
       "id": "HS_ISP_06",
       "name": "환경기술공학",
       "en": "Environmental Technology Engineering",
-      "type": "EducationProgram",
+      "type": "K_DigitalTraining",
       "targetGroupId": "TGROUP_Employee",
       "targetGroup": "재직자",
       "targetGroupEn": "Employed Worker",
@@ -8989,7 +8983,7 @@
       "id": "HS_ISP_07",
       "name": "수도행정디지털화",
       "en": "Digital Water Administration",
-      "type": "EducationProgram",
+      "type": "K_DigitalTraining",
       "targetGroupId": "TGROUP_Employee",
       "targetGroup": "재직자",
       "targetGroupEn": "Employed Worker",
@@ -9016,7 +9010,7 @@
       "id": "HS_ISP_08",
       "name": "공공데이터개방실무",
       "en": "Open Government Data Practice",
-      "type": "EducationProgram",
+      "type": "K_DigitalTraining",
       "targetGroupId": "TGROUP_Employee",
       "targetGroup": "재직자",
       "targetGroupEn": "Employed Worker",
@@ -9044,7 +9038,7 @@
       "id": "HS_ISP_09",
       "name": "지능형방범시스템",
       "en": "AI-Based Crime Prevention Systems",
-      "type": "EducationProgram",
+      "type": "K_DigitalTraining",
       "targetGroupId": "TGROUP_Employee",
       "targetGroup": "재직자",
       "targetGroupEn": "Employed Worker",
@@ -9071,7 +9065,7 @@
       "id": "HS_ISP_10",
       "name": "전력망관리기술",
       "en": "Smart Grid Management",
-      "type": "EducationProgram",
+      "type": "K_DigitalTraining",
       "targetGroupId": "TGROUP_Employee",
       "targetGroup": "재직자",
       "targetGroupEn": "Employed Worker",
@@ -9098,7 +9092,7 @@
       "id": "HS_ISW_01",
       "name": "파이썬백엔드개발",
       "en": "Python Backend Development",
-      "type": "EducationProgram",
+      "type": "K_DigitalTraining",
       "targetGroupId": "TGROUP_Employee",
       "targetGroup": "재직자",
       "targetGroupEn": "Employed Worker",
@@ -9125,7 +9119,7 @@
       "id": "HS_ISW_02",
       "name": "자바프레임워크응용",
       "en": "Java Framework Application",
-      "type": "EducationProgram",
+      "type": "K_DigitalTraining",
       "targetGroupId": "TGROUP_Employee",
       "targetGroup": "재직자",
       "targetGroupEn": "Employed Worker",
@@ -9152,7 +9146,7 @@
       "id": "HS_ISW_03",
       "name": "리액트웹아키텍처",
       "en": "React Web Architecture",
-      "type": "EducationProgram",
+      "type": "K_DigitalTraining",
       "targetGroupId": "TGROUP_Employee",
       "targetGroup": "재직자",
       "targetGroupEn": "Employed Worker",
@@ -9179,7 +9173,7 @@
       "id": "HS_ISW_04",
       "name": "모바일앱프로그래밍",
       "en": "Mobile App Programming",
-      "type": "EducationProgram",
+      "type": "WorkshopSeminar",
       "targetGroupId": "TGROUP_Employee",
       "targetGroup": "재직자",
       "targetGroupEn": "Employed Worker",
@@ -9206,7 +9200,7 @@
       "id": "HS_ISW_05",
       "name": "알고리즘최적화",
       "en": "Algorithm Optimization",
-      "type": "EducationProgram",
+      "type": "K_DigitalTraining",
       "targetGroupId": "TGROUP_Employee",
       "targetGroup": "재직자",
       "targetGroupEn": "Employed Worker",
@@ -9234,7 +9228,7 @@
       "id": "HS_ISW_06",
       "name": "디자인패턴실무",
       "en": "Design Patterns in Practice",
-      "type": "EducationProgram",
+      "type": "K_DigitalTraining",
       "targetGroupId": "TGROUP_Employee",
       "targetGroup": "재직자",
       "targetGroupEn": "Employed Worker",
@@ -9262,7 +9256,7 @@
       "id": "HS_ISW_07",
       "name": "테스트자동화공학",
       "en": "Test Automation Engineering",
-      "type": "EducationProgram",
+      "type": "K_DigitalTraining",
       "targetGroupId": "TGROUP_Employee",
       "targetGroup": "재직자",
       "targetGroupEn": "Employed Worker",
@@ -9290,7 +9284,7 @@
       "id": "HS_ISW_08",
       "name": "마이크로서비스설계",
       "en": "Microservices Architecture",
-      "type": "EducationProgram",
+      "type": "K_DigitalTraining",
       "targetGroupId": "TGROUP_Employee",
       "targetGroup": "재직자",
       "targetGroupEn": "Employed Worker",
@@ -9318,7 +9312,7 @@
       "id": "HS_ISW_09",
       "name": "데이터베이스정규화",
       "en": "Database Normalization",
-      "type": "EducationProgram",
+      "type": "K_DigitalTraining",
       "targetGroupId": "TGROUP_Employee",
       "targetGroup": "재직자",
       "targetGroupEn": "Employed Worker",
@@ -9346,7 +9340,7 @@
       "id": "HS_ISW_10",
       "name": "API설계기법",
       "en": "API Design Techniques",
-      "type": "EducationProgram",
+      "type": "K_DigitalTraining",
       "targetGroupId": "TGROUP_Employee",
       "targetGroup": "재직자",
       "targetGroupEn": "Employed Worker",
@@ -9373,7 +9367,7 @@
       "id": "HS_ITM_01",
       "name": "스마트팩토리제어",
       "en": "Smart Factory Control Systems",
-      "type": "EducationProgram",
+      "type": "K_DigitalTraining",
       "targetGroupId": "TGROUP_Employee",
       "targetGroup": "재직자",
       "targetGroupEn": "Employed Worker",
@@ -9404,7 +9398,7 @@
       "id": "HS_ITM_02",
       "name": "공정자동화설계",
       "en": "Process Automation Design",
-      "type": "EducationProgram",
+      "type": "WorkshopSeminar",
       "targetGroupId": "TGROUP_Employee",
       "targetGroup": "재직자",
       "targetGroupEn": "Employed Worker",
@@ -9436,7 +9430,7 @@
       "id": "HS_ITM_03",
       "name": "생산품질관리",
       "en": "Production Quality Management",
-      "type": "EducationProgram",
+      "type": "WorkshopSeminar",
       "targetGroupId": "TGROUP_Employee",
       "targetGroup": "재직자",
       "targetGroupEn": "Employed Worker",
@@ -9469,7 +9463,7 @@
       "id": "HS_ITM_04",
       "name": "PLC프로그래밍",
       "en": "PLC Programming",
-      "type": "EducationProgram",
+      "type": "WorkshopSeminar",
       "targetGroupId": "TGROUP_Employee",
       "targetGroup": "재직자",
       "targetGroupEn": "Employed Worker",
@@ -9501,7 +9495,7 @@
       "id": "HS_ITM_05",
       "name": "제조실행시스템",
       "en": "Manufacturing Execution Systems",
-      "type": "EducationProgram",
+      "type": "WorkshopSeminar",
       "targetGroupId": "TGROUP_Employee",
       "targetGroup": "재직자",
       "targetGroupEn": "Employed Worker",
@@ -9532,7 +9526,7 @@
       "id": "HS_ITM_06",
       "name": "산업용로봇운용",
       "en": "Industrial Robot Operation",
-      "type": "EducationProgram",
+      "type": "WorkshopSeminar",
       "targetGroupId": "TGROUP_Employee",
       "targetGroup": "재직자",
       "targetGroupEn": "Employed Worker",
@@ -9564,7 +9558,7 @@
       "id": "HS_ITM_07",
       "name": "설비보전실무",
       "en": "Equipment Maintenance Practice",
-      "type": "EducationProgram",
+      "type": "WorkshopSeminar",
       "targetGroupId": "TGROUP_Employee",
       "targetGroup": "재직자",
       "targetGroupEn": "Employed Worker",
@@ -9596,7 +9590,7 @@
       "id": "HS_ITM_08",
       "name": "3D설계CAD",
       "en": "3D Design with CAD",
-      "type": "EducationProgram",
+      "type": "WorkshopSeminar",
       "targetGroupId": "TGROUP_Employee",
       "targetGroup": "재직자",
       "targetGroupEn": "Employed Worker",
@@ -9628,7 +9622,7 @@
       "id": "HS_ITM_09",
       "name": "정밀공정공학",
       "en": "Precision Process Engineering",
-      "type": "EducationProgram",
+      "type": "WorkshopSeminar",
       "targetGroupId": "TGROUP_Employee",
       "targetGroup": "재직자",
       "targetGroupEn": "Employed Worker",
@@ -9660,7 +9654,7 @@
       "id": "HS_ITM_10",
       "name": "스마트물류자동화",
       "en": "Smart Logistics Automation",
-      "type": "EducationProgram",
+      "type": "WorkshopSeminar",
       "targetGroupId": "TGROUP_Employee",
       "targetGroup": "재직자",
       "targetGroupEn": "Employed Worker",
@@ -9692,7 +9686,7 @@
       "id": "LT_BCF_01",
       "name": "이산수학기초",
       "en": "Discrete Mathematics",
-      "type": "EducationProgram",
+      "type": "K_DigitalTraining",
       "targetGroupId": "TGROUP_Retiree",
       "targetGroup": "은퇴자",
       "targetGroupEn": "Retiree",
@@ -9719,7 +9713,7 @@
       "id": "LT_BCF_02",
       "name": "자료구조론",
       "en": "Data Structures",
-      "type": "EducationProgram",
+      "type": "K_DigitalTraining",
       "targetGroupId": "TGROUP_Retiree",
       "targetGroup": "은퇴자",
       "targetGroupEn": "Retiree",
@@ -9746,7 +9740,7 @@
       "id": "LT_BCF_03",
       "name": "운영체제이론",
       "en": "Operating Systems",
-      "type": "EducationProgram",
+      "type": "K_DigitalTraining",
       "targetGroupId": "TGROUP_Retiree",
       "targetGroup": "은퇴자",
       "targetGroupEn": "Retiree",
@@ -9773,7 +9767,7 @@
       "id": "LT_BCF_04",
       "name": "컴퓨터네트워크",
       "en": "Computer Networking",
-      "type": "EducationProgram",
+      "type": "WorkshopSeminar",
       "targetGroupId": "TGROUP_Retiree",
       "targetGroup": "은퇴자",
       "targetGroupEn": "Retiree",
@@ -9801,7 +9795,7 @@
       "id": "LT_BCF_05",
       "name": "정보통신공학개론",
       "en": "Introduction to ICT Engineering",
-      "type": "EducationProgram",
+      "type": "K_DigitalTraining",
       "targetGroupId": "TGROUP_Retiree",
       "targetGroup": "은퇴자",
       "targetGroupEn": "Retiree",
@@ -9829,7 +9823,7 @@
       "id": "LT_BCF_06",
       "name": "시스템프로그래밍",
       "en": "Systems Programming",
-      "type": "EducationProgram",
+      "type": "K_DigitalTraining",
       "targetGroupId": "TGROUP_Retiree",
       "targetGroup": "은퇴자",
       "targetGroupEn": "Retiree",
@@ -9856,7 +9850,7 @@
       "id": "LT_BCF_07",
       "name": "데이터베이스개론",
       "en": "Database Fundamentals",
-      "type": "EducationProgram",
+      "type": "K_DigitalTraining",
       "targetGroupId": "TGROUP_Retiree",
       "targetGroup": "은퇴자",
       "targetGroupEn": "Retiree",
@@ -9884,7 +9878,7 @@
       "id": "LT_BCF_08",
       "name": "소프트웨어공학",
       "en": "Software Engineering",
-      "type": "EducationProgram",
+      "type": "K_DigitalTraining",
       "targetGroupId": "TGROUP_Retiree",
       "targetGroup": "은퇴자",
       "targetGroupEn": "Retiree",
@@ -9912,7 +9906,7 @@
       "id": "LT_BCF_09",
       "name": "오토마타이론",
       "en": "Automata Theory",
-      "type": "EducationProgram",
+      "type": "OnlineModule",
       "targetGroupId": "TGROUP_Retiree",
       "targetGroup": "은퇴자",
       "targetGroupEn": "Retiree",
@@ -9939,7 +9933,7 @@
       "id": "LT_BCF_10",
       "name": "컴퓨터구조론",
       "en": "Computer Architecture",
-      "type": "EducationProgram",
+      "type": "K_DigitalTraining",
       "targetGroupId": "TGROUP_Retiree",
       "targetGroup": "은퇴자",
       "targetGroupEn": "Retiree",
@@ -9967,7 +9961,7 @@
       "id": "LT_BLM_01",
       "name": "기술영어작문",
       "en": "Technical English Writing",
-      "type": "EducationProgram",
+      "type": "OnlineModule",
       "targetGroupId": "TGROUP_GeneralPublic",
       "targetGroup": "일반인",
       "targetGroupEn": "General Public",
@@ -9994,7 +9988,7 @@
       "id": "LT_BLM_02",
       "name": "공학수학기초",
       "en": "Engineering Mathematics",
-      "type": "EducationProgram",
+      "type": "OnlineModule",
       "targetGroupId": "TGROUP_GeneralPublic",
       "targetGroup": "일반인",
       "targetGroupEn": "General Public",
@@ -10019,7 +10013,7 @@
       "id": "LT_BLM_03",
       "name": "확률과통계",
       "en": "Probability & Statistics",
-      "type": "EducationProgram",
+      "type": "OnlineModule",
       "targetGroupId": "TGROUP_GeneralPublic",
       "targetGroup": "일반인",
       "targetGroupEn": "General Public",
@@ -10045,7 +10039,7 @@
       "id": "LT_BLM_04",
       "name": "비즈니스보고서작성",
       "en": "Business Report Writing",
-      "type": "EducationProgram",
+      "type": "OnlineModule",
       "targetGroupId": "TGROUP_GeneralPublic",
       "targetGroup": "일반인",
       "targetGroupEn": "General Public",
@@ -10072,7 +10066,7 @@
       "id": "LT_BLM_05",
       "name": "논리적사고와글쓰기",
       "en": "Logical Thinking & Writing",
-      "type": "EducationProgram",
+      "type": "OnlineModule",
       "targetGroupId": "TGROUP_GeneralPublic",
       "targetGroup": "일반인",
       "targetGroupEn": "General Public",
@@ -10098,7 +10092,7 @@
       "id": "LT_BLM_06",
       "name": "선형대수학기초",
       "en": "Linear Algebra",
-      "type": "EducationProgram",
+      "type": "OnlineModule",
       "targetGroupId": "TGROUP_GeneralPublic",
       "targetGroup": "일반인",
       "targetGroupEn": "General Public",
@@ -10123,7 +10117,7 @@
       "id": "LT_BLM_07",
       "name": "수치해석론",
       "en": "Numerical Analysis",
-      "type": "EducationProgram",
+      "type": "OnlineModule",
       "targetGroupId": "TGROUP_GeneralPublic",
       "targetGroup": "일반인",
       "targetGroupEn": "General Public",
@@ -10149,7 +10143,7 @@
       "id": "LT_BLM_08",
       "name": "프레젠테이션스킬",
       "en": "Presentation Skills",
-      "type": "EducationProgram",
+      "type": "OnlineModule",
       "targetGroupId": "TGROUP_GeneralPublic",
       "targetGroup": "일반인",
       "targetGroupEn": "General Public",
@@ -10176,7 +10170,7 @@
       "id": "LT_BLM_09",
       "name": "비평적텍스트읽기",
       "en": "Critical Reading",
-      "type": "EducationProgram",
+      "type": "OnlineModule",
       "targetGroupId": "TGROUP_GeneralPublic",
       "targetGroup": "일반인",
       "targetGroupEn": "General Public",
@@ -10201,7 +10195,7 @@
       "id": "LT_BLM_10",
       "name": "커뮤니케이션수학",
       "en": "Mathematical Communication",
-      "type": "EducationProgram",
+      "type": "OnlineModule",
       "targetGroupId": "TGROUP_GeneralPublic",
       "targetGroup": "일반인",
       "targetGroupEn": "General Public",
@@ -10228,7 +10222,7 @@
       "id": "LT_CSV_01",
       "name": "기업의사회적책임",
       "en": "Corporate Social Responsibility",
-      "type": "EducationProgram",
+      "type": "OnlineModule",
       "targetGroupId": "TGROUP_Vulnerable",
       "targetGroup": "취약계층",
       "targetGroupEn": "Vulnerable Group",
@@ -10256,7 +10250,7 @@
       "id": "LT_CSV_02",
       "name": "기술윤리론",
       "en": "Technology Ethics",
-      "type": "EducationProgram",
+      "type": "OnlineModule",
       "targetGroupId": "TGROUP_Vulnerable",
       "targetGroup": "취약계층",
       "targetGroupEn": "Vulnerable Group",
@@ -10284,7 +10278,7 @@
       "id": "LT_CSV_03",
       "name": "커뮤니티비즈니스",
       "en": "Community Business",
-      "type": "EducationProgram",
+      "type": "OnlineModule",
       "targetGroupId": "TGROUP_Vulnerable",
       "targetGroup": "취약계층",
       "targetGroupEn": "Vulnerable Group",
@@ -10312,7 +10306,7 @@
       "id": "LT_CSV_04",
       "name": "탄소중립과사회",
       "en": "Carbon Neutrality & Society",
-      "type": "EducationProgram",
+      "type": "OnlineModule",
       "targetGroupId": "TGROUP_Vulnerable",
       "targetGroup": "취약계층",
       "targetGroupEn": "Vulnerable Group",
@@ -10340,7 +10334,7 @@
       "id": "LT_CSV_05",
       "name": "지속가능발전론",
       "en": "Sustainable Development",
-      "type": "EducationProgram",
+      "type": "K_DigitalTraining",
       "targetGroupId": "TGROUP_Vulnerable",
       "targetGroup": "취약계층",
       "targetGroupEn": "Vulnerable Group",
@@ -10369,7 +10363,7 @@
       "id": "LT_CSV_06",
       "name": "인권과기술",
       "en": "Human Rights & Technology",
-      "type": "EducationProgram",
+      "type": "OnlineModule",
       "targetGroupId": "TGROUP_Vulnerable",
       "targetGroup": "취약계층",
       "targetGroupEn": "Vulnerable Group",
@@ -10397,7 +10391,7 @@
       "id": "LT_CSV_07",
       "name": "사회혁신방법론",
       "en": "Social Innovation Methods",
-      "type": "EducationProgram",
+      "type": "OnlineModule",
       "targetGroupId": "TGROUP_Vulnerable",
       "targetGroup": "취약계층",
       "targetGroupEn": "Vulnerable Group",
@@ -10426,7 +10420,7 @@
       "id": "LT_CSV_08",
       "name": "공공가치와철학",
       "en": "Public Value & Philosophy",
-      "type": "EducationProgram",
+      "type": "OnlineModule",
       "targetGroupId": "TGROUP_Vulnerable",
       "targetGroup": "취약계층",
       "targetGroupEn": "Vulnerable Group",
@@ -10455,7 +10449,7 @@
       "id": "LT_CSV_09",
       "name": "민주주의와거버넌스",
       "en": "Democracy & Governance",
-      "type": "EducationProgram",
+      "type": "OnlineModule",
       "targetGroupId": "TGROUP_Vulnerable",
       "targetGroup": "취약계층",
       "targetGroupEn": "Vulnerable Group",
@@ -10484,7 +10478,7 @@
       "id": "LT_CSV_10",
       "name": "환경윤리실무",
       "en": "Environmental Ethics",
-      "type": "EducationProgram",
+      "type": "OnlineModule",
       "targetGroupId": "TGROUP_Vulnerable",
       "targetGroup": "취약계층",
       "targetGroupEn": "Vulnerable Group",
@@ -10512,7 +10506,7 @@
       "id": "LT_DAI_01",
       "name": "생성형AI프롬프트공학",
       "en": "Generative AI Prompt Engineering",
-      "type": "EducationProgram",
+      "type": "WorkshopSeminar",
       "targetGroupId": "TGROUP_CareerInterrupted",
       "targetGroup": "경력단절여성",
       "targetGroupEn": "Career-Interrupted Woman",
@@ -10538,7 +10532,7 @@
       "id": "LT_DAI_02",
       "name": "AI윤리가이드라인",
       "en": "AI Ethics Guidelines",
-      "type": "EducationProgram",
+      "type": "K_DigitalTraining",
       "targetGroupId": "TGROUP_CareerInterrupted",
       "targetGroup": "경력단절여성",
       "targetGroupEn": "Career-Interrupted Woman",
@@ -10565,7 +10559,7 @@
       "id": "LT_DAI_03",
       "name": "데이터활용기초",
       "en": "Data Utilization Fundamentals",
-      "type": "EducationProgram",
+      "type": "K_DigitalTraining",
       "targetGroupId": "TGROUP_CareerInterrupted",
       "targetGroup": "경력단절여성",
       "targetGroupEn": "Career-Interrupted Woman",
@@ -10592,7 +10586,7 @@
       "id": "LT_DAI_04",
       "name": "인공지능이해와활용",
       "en": "AI Applications in Practice",
-      "type": "EducationProgram",
+      "type": "K_DigitalTraining",
       "targetGroupId": "TGROUP_CareerInterrupted",
       "targetGroup": "경력단절여성",
       "targetGroupEn": "Career-Interrupted Woman",
@@ -10617,7 +10611,7 @@
       "id": "LT_DAI_05",
       "name": "디지털디바이스운용",
       "en": "Digital Device Proficiency",
-      "type": "EducationProgram",
+      "type": "K_DigitalTraining",
       "targetGroupId": "TGROUP_CareerInterrupted",
       "targetGroup": "경력단절여성",
       "targetGroupEn": "Career-Interrupted Woman",
@@ -10642,7 +10636,7 @@
       "id": "LT_DAI_06",
       "name": "온라인협업도구실무",
       "en": "Online Collaboration Tools",
-      "type": "EducationProgram",
+      "type": "K_DigitalTraining",
       "targetGroupId": "TGROUP_CareerInterrupted",
       "targetGroup": "경력단절여성",
       "targetGroupEn": "Career-Interrupted Woman",
@@ -10669,7 +10663,7 @@
       "id": "LT_DAI_07",
       "name": "노코드툴활용",
       "en": "No-Code Tool Applications",
-      "type": "EducationProgram",
+      "type": "K_DigitalTraining",
       "targetGroupId": "TGROUP_CareerInterrupted",
       "targetGroup": "경력단절여성",
       "targetGroupEn": "Career-Interrupted Woman",
@@ -10695,7 +10689,7 @@
       "id": "LT_DAI_08",
       "name": "디지털콘텐츠제작",
       "en": "Digital Content Creation",
-      "type": "EducationProgram",
+      "type": "K_DigitalTraining",
       "targetGroupId": "TGROUP_CareerInterrupted",
       "targetGroup": "경력단절여성",
       "targetGroupEn": "Career-Interrupted Woman",
@@ -10722,7 +10716,7 @@
       "id": "LT_DAI_09",
       "name": "알고리즘의이해",
       "en": "Algorithm Literacy",
-      "type": "EducationProgram",
+      "type": "K_DigitalTraining",
       "targetGroupId": "TGROUP_CareerInterrupted",
       "targetGroup": "경력단절여성",
       "targetGroupEn": "Career-Interrupted Woman",
@@ -10749,7 +10743,7 @@
       "id": "LT_DAI_10",
       "name": "AI서비스기획기초",
       "en": "AI Service Planning",
-      "type": "EducationProgram",
+      "type": "K_DigitalTraining",
       "targetGroupId": "TGROUP_CareerInterrupted",
       "targetGroup": "경력단절여성",
       "targetGroupEn": "Career-Interrupted Woman",
@@ -10776,7 +10770,7 @@
       "id": "LT_DDF_01",
       "name": "비즈니스지표해석",
       "en": "Business Metrics Interpretation",
-      "type": "EducationProgram",
+      "type": "K_DigitalTraining",
       "targetGroupId": "TGROUP_CareerInterrupted",
       "targetGroup": "경력단절여성",
       "targetGroupEn": "Career-Interrupted Woman",
@@ -10803,7 +10797,7 @@
       "id": "LT_DDF_02",
       "name": "데이터시각화리터러시",
       "en": "Data Visualization Literacy",
-      "type": "EducationProgram",
+      "type": "K_DigitalTraining",
       "targetGroupId": "TGROUP_CareerInterrupted",
       "targetGroup": "경력단절여성",
       "targetGroupEn": "Career-Interrupted Woman",
@@ -10830,7 +10824,7 @@
       "id": "LT_DDF_03",
       "name": "통계기반의사결정",
       "en": "Statistical Decision Making",
-      "type": "EducationProgram",
+      "type": "K_DigitalTraining",
       "targetGroupId": "TGROUP_CareerInterrupted",
       "targetGroup": "경력단절여성",
       "targetGroupEn": "Career-Interrupted Woman",
@@ -10857,7 +10851,7 @@
       "id": "LT_DDF_04",
       "name": "데이터수집과정제",
       "en": "Data Collection & Preprocessing",
-      "type": "EducationProgram",
+      "type": "K_DigitalTraining",
       "targetGroupId": "TGROUP_CareerInterrupted",
       "targetGroup": "경력단절여성",
       "targetGroupEn": "Career-Interrupted Woman",
@@ -10883,7 +10877,7 @@
       "id": "LT_DDF_05",
       "name": "대시보드활용실무",
       "en": "Dashboard Practice",
-      "type": "EducationProgram",
+      "type": "K_DigitalTraining",
       "targetGroupId": "TGROUP_CareerInterrupted",
       "targetGroup": "경력단절여성",
       "targetGroupEn": "Career-Interrupted Woman",
@@ -10910,7 +10904,7 @@
       "id": "LT_DDF_06",
       "name": "그래프분석론",
       "en": "Graph & Network Analysis",
-      "type": "EducationProgram",
+      "type": "K_DigitalTraining",
       "targetGroupId": "TGROUP_CareerInterrupted",
       "targetGroup": "경력단절여성",
       "targetGroupEn": "Career-Interrupted Woman",
@@ -10937,7 +10931,7 @@
       "id": "LT_DDF_07",
       "name": "탐색적데이터분석",
       "en": "Exploratory Data Analysis",
-      "type": "EducationProgram",
+      "type": "K_DigitalTraining",
       "targetGroupId": "TGROUP_CareerInterrupted",
       "targetGroup": "경력단절여성",
       "targetGroupEn": "Career-Interrupted Woman",
@@ -10963,7 +10957,7 @@
       "id": "LT_DDF_08",
       "name": "데이터기반스토리텔링",
       "en": "Data Storytelling",
-      "type": "EducationProgram",
+      "type": "K_DigitalTraining",
       "targetGroupId": "TGROUP_CareerInterrupted",
       "targetGroup": "경력단절여성",
       "targetGroupEn": "Career-Interrupted Woman",
@@ -10991,7 +10985,7 @@
       "id": "LT_DDF_09",
       "name": "정량적성과지표설계",
       "en": "KPI Design & Measurement",
-      "type": "EducationProgram",
+      "type": "K_DigitalTraining",
       "targetGroupId": "TGROUP_CareerInterrupted",
       "targetGroup": "경력단절여성",
       "targetGroupEn": "Career-Interrupted Woman",
@@ -11019,7 +11013,7 @@
       "id": "LT_DDF_10",
       "name": "공공데이터해석",
       "en": "Public Data Analysis",
-      "type": "EducationProgram",
+      "type": "K_DigitalTraining",
       "targetGroupId": "TGROUP_CareerInterrupted",
       "targetGroup": "경력단절여성",
       "targetGroupEn": "Career-Interrupted Woman",
@@ -11045,7 +11039,7 @@
       "id": "LT_DTS_01",
       "name": "개인정보보호수칙",
       "en": "Personal Data Protection",
-      "type": "EducationProgram",
+      "type": "K_DigitalTraining",
       "targetGroupId": "TGROUP_GeneralPublic",
       "targetGroup": "일반인",
       "targetGroupEn": "General Public",
@@ -11071,7 +11065,7 @@
       "id": "LT_DTS_02",
       "name": "디지털저작권관리",
       "en": "Digital Rights Management",
-      "type": "EducationProgram",
+      "type": "K_DigitalTraining",
       "targetGroupId": "TGROUP_GeneralPublic",
       "targetGroup": "일반인",
       "targetGroupEn": "General Public",
@@ -11097,7 +11091,7 @@
       "id": "LT_DTS_03",
       "name": "사이버보안인식",
       "en": "Cyber Security Awareness",
-      "type": "EducationProgram",
+      "type": "K_DigitalTraining",
       "targetGroupId": "TGROUP_GeneralPublic",
       "targetGroup": "일반인",
       "targetGroupEn": "General Public",
@@ -11123,7 +11117,7 @@
       "id": "LT_DTS_04",
       "name": "피싱및해킹방지",
       "en": "Anti-Phishing & Hacking Prevention",
-      "type": "EducationProgram",
+      "type": "K_DigitalTraining",
       "targetGroupId": "TGROUP_GeneralPublic",
       "targetGroup": "일반인",
       "targetGroupEn": "General Public",
@@ -11149,7 +11143,7 @@
       "id": "LT_DTS_05",
       "name": "클라우드보안기초",
       "en": "Cloud Security Fundamentals",
-      "type": "EducationProgram",
+      "type": "K_DigitalTraining",
       "targetGroupId": "TGROUP_GeneralPublic",
       "targetGroup": "일반인",
       "targetGroupEn": "General Public",
@@ -11176,7 +11170,7 @@
       "id": "LT_DTS_06",
       "name": "암호화기술이해",
       "en": "Encryption Technologies",
-      "type": "EducationProgram",
+      "type": "K_DigitalTraining",
       "targetGroupId": "TGROUP_GeneralPublic",
       "targetGroup": "일반인",
       "targetGroupEn": "General Public",
@@ -11203,7 +11197,7 @@
       "id": "LT_DTS_07",
       "name": "보안거버넌스실무",
       "en": "Security Governance",
-      "type": "EducationProgram",
+      "type": "K_DigitalTraining",
       "targetGroupId": "TGROUP_GeneralPublic",
       "targetGroup": "일반인",
       "targetGroupEn": "General Public",
@@ -11230,7 +11224,7 @@
       "id": "LT_DTS_08",
       "name": "IT컴플라이언스",
       "en": "IT Compliance",
-      "type": "EducationProgram",
+      "type": "K_DigitalTraining",
       "targetGroupId": "TGROUP_GeneralPublic",
       "targetGroup": "일반인",
       "targetGroupEn": "General Public",
@@ -11256,7 +11250,7 @@
       "id": "LT_DTS_09",
       "name": "네트워크보안기초",
       "en": "Network Security Fundamentals",
-      "type": "EducationProgram",
+      "type": "K_DigitalTraining",
       "targetGroupId": "TGROUP_GeneralPublic",
       "targetGroup": "일반인",
       "targetGroupEn": "General Public",
@@ -11283,7 +11277,7 @@
       "id": "LT_DTS_10",
       "name": "패스워드및계정관리",
       "en": "Password & Account Security",
-      "type": "EducationProgram",
+      "type": "K_DigitalTraining",
       "targetGroupId": "TGROUP_GeneralPublic",
       "targetGroup": "일반인",
       "targetGroupEn": "General Public",
@@ -11309,7 +11303,7 @@
       "id": "SS_IPC_01",
       "name": "팀빌딩워크숍",
       "en": "Team Building Workshop",
-      "type": "EducationProgram",
+      "type": "WorkshopSeminar",
       "targetGroupId": "TGROUP_CareerInterrupted",
       "targetGroup": "경력단절여성",
       "targetGroupEn": "Career-Interrupted Woman",
@@ -11338,7 +11332,7 @@
       "id": "SS_IPC_02",
       "name": "갈등관리와조정",
       "en": "Conflict Management & Mediation",
-      "type": "EducationProgram",
+      "type": "WorkshopSeminar",
       "targetGroupId": "TGROUP_CareerInterrupted",
       "targetGroup": "경력단절여성",
       "targetGroupEn": "Career-Interrupted Woman",
@@ -11367,7 +11361,7 @@
       "id": "SS_IPC_03",
       "name": "퍼실리테이션실무",
       "en": "Facilitation Skills",
-      "type": "EducationProgram",
+      "type": "WorkshopSeminar",
       "targetGroupId": "TGROUP_CareerInterrupted",
       "targetGroup": "경력단절여성",
       "targetGroupEn": "Career-Interrupted Woman",
@@ -11396,7 +11390,7 @@
       "id": "SS_IPC_04",
       "name": "협업도구마스터",
       "en": "Collaboration Tools Mastery",
-      "type": "EducationProgram",
+      "type": "WorkshopSeminar",
       "targetGroupId": "TGROUP_CareerInterrupted",
       "targetGroup": "경력단절여성",
       "targetGroupEn": "Career-Interrupted Woman",
@@ -11425,7 +11419,7 @@
       "id": "SS_IPC_05",
       "name": "대인관계심리학",
       "en": "Interpersonal Psychology",
-      "type": "EducationProgram",
+      "type": "WorkshopSeminar",
       "targetGroupId": "TGROUP_CareerInterrupted",
       "targetGroup": "경력단절여성",
       "targetGroupEn": "Career-Interrupted Woman",
@@ -11454,7 +11448,7 @@
       "id": "SS_IPC_06",
       "name": "비즈니스네트워킹",
       "en": "Business Networking",
-      "type": "EducationProgram",
+      "type": "WorkshopSeminar",
       "targetGroupId": "TGROUP_CareerInterrupted",
       "targetGroup": "경력단절여성",
       "targetGroupEn": "Career-Interrupted Woman",
@@ -11484,7 +11478,7 @@
       "id": "SS_IPC_07",
       "name": "다문화이해와협업",
       "en": "Cross-Cultural Collaboration",
-      "type": "EducationProgram",
+      "type": "WorkshopSeminar",
       "targetGroupId": "TGROUP_CareerInterrupted",
       "targetGroup": "경력단절여성",
       "targetGroupEn": "Career-Interrupted Woman",
@@ -11514,7 +11508,7 @@
       "id": "SS_IPC_08",
       "name": "비폭력대화법",
       "en": "Nonviolent Communication",
-      "type": "EducationProgram",
+      "type": "WorkshopSeminar",
       "targetGroupId": "TGROUP_CareerInterrupted",
       "targetGroup": "경력단절여성",
       "targetGroupEn": "Career-Interrupted Woman",
@@ -11543,7 +11537,7 @@
       "id": "SS_IPC_09",
       "name": "그룹의사결정론",
       "en": "Group Decision Making",
-      "type": "EducationProgram",
+      "type": "WorkshopSeminar",
       "targetGroupId": "TGROUP_CareerInterrupted",
       "targetGroup": "경력단절여성",
       "targetGroupEn": "Career-Interrupted Woman",
@@ -11573,7 +11567,7 @@
       "id": "SS_IPC_10",
       "name": "워크숍디자인",
       "en": "Workshop Design",
-      "type": "EducationProgram",
+      "type": "WorkshopSeminar",
       "targetGroupId": "TGROUP_CareerInterrupted",
       "targetGroup": "경력단절여성",
       "targetGroupEn": "Career-Interrupted Woman",
@@ -11603,7 +11597,7 @@
       "id": "SS_IPL_01",
       "name": "서번트리더십",
       "en": "Servant Leadership",
-      "type": "EducationProgram",
+      "type": "K_DigitalTraining",
       "targetGroupId": "TGROUP_Vulnerable",
       "targetGroup": "취약계층",
       "targetGroupEn": "Vulnerable Group",
@@ -11634,7 +11628,7 @@
       "id": "SS_IPL_02",
       "name": "애자일코칭실무",
       "en": "Agile Coaching",
-      "type": "EducationProgram",
+      "type": "WorkshopSeminar",
       "targetGroupId": "TGROUP_Vulnerable",
       "targetGroup": "취약계층",
       "targetGroupEn": "Vulnerable Group",
@@ -11665,7 +11659,7 @@
       "id": "SS_IPL_03",
       "name": "목표관리OKR리더십",
       "en": "OKR-Based Leadership",
-      "type": "EducationProgram",
+      "type": "WorkshopSeminar",
       "targetGroupId": "TGROUP_Vulnerable",
       "targetGroup": "취약계층",
       "targetGroupEn": "Vulnerable Group",
@@ -11697,7 +11691,7 @@
       "id": "SS_IPL_04",
       "name": "변화관리전략",
       "en": "Change Management",
-      "type": "EducationProgram",
+      "type": "WorkshopSeminar",
       "targetGroupId": "TGROUP_Vulnerable",
       "targetGroup": "취약계층",
       "targetGroupEn": "Vulnerable Group",
@@ -11729,7 +11723,7 @@
       "id": "SS_IPL_05",
       "name": "리더의피드백기술",
       "en": "Effective Feedback for Leaders",
-      "type": "EducationProgram",
+      "type": "WorkshopSeminar",
       "targetGroupId": "TGROUP_Vulnerable",
       "targetGroup": "취약계층",
       "targetGroupEn": "Vulnerable Group",
@@ -11761,7 +11755,7 @@
       "id": "SS_IPL_06",
       "name": "조직문화혁신론",
       "en": "Organizational Culture Innovation",
-      "type": "EducationProgram",
+      "type": "WorkshopSeminar",
       "targetGroupId": "TGROUP_Vulnerable",
       "targetGroup": "취약계층",
       "targetGroupEn": "Vulnerable Group",
@@ -11793,7 +11787,7 @@
       "id": "SS_IPL_07",
       "name": "전략적임파워먼트",
       "en": "Strategic Empowerment",
-      "type": "EducationProgram",
+      "type": "WorkshopSeminar",
       "targetGroupId": "TGROUP_Vulnerable",
       "targetGroup": "취약계층",
       "targetGroupEn": "Vulnerable Group",
@@ -11825,7 +11819,7 @@
       "id": "SS_IPL_08",
       "name": "코칭및멘토링",
       "en": "Coaching & Mentoring",
-      "type": "EducationProgram",
+      "type": "WorkshopSeminar",
       "targetGroupId": "TGROUP_Vulnerable",
       "targetGroup": "취약계층",
       "targetGroupEn": "Vulnerable Group",
@@ -11857,7 +11851,7 @@
       "id": "SS_IPL_09",
       "name": "위기관리리더십",
       "en": "Crisis Leadership",
-      "type": "EducationProgram",
+      "type": "WorkshopSeminar",
       "targetGroupId": "TGROUP_Vulnerable",
       "targetGroup": "취약계층",
       "targetGroupEn": "Vulnerable Group",
@@ -11888,7 +11882,7 @@
       "id": "SS_IPL_10",
       "name": "감성리더십실무",
       "en": "Emotional Intelligence Leadership",
-      "type": "EducationProgram",
+      "type": "WorkshopSeminar",
       "targetGroupId": "TGROUP_Vulnerable",
       "targetGroup": "취약계층",
       "targetGroupEn": "Vulnerable Group",
@@ -11919,7 +11913,7 @@
       "id": "SS_PSC_01",
       "name": "디자인싱킹워크숍",
       "en": "Design Thinking Workshop",
-      "type": "EducationProgram",
+      "type": "WorkshopSeminar",
       "targetGroupId": "TGROUP_Youth",
       "targetGroup": "청소년",
       "targetGroupEn": "Youth / Student",
@@ -11945,7 +11939,7 @@
       "id": "SS_PSC_02",
       "name": "아이디어발상기법",
       "en": "Idea Generation Techniques",
-      "type": "EducationProgram",
+      "type": "WorkshopSeminar",
       "targetGroupId": "TGROUP_Youth",
       "targetGroup": "청소년",
       "targetGroupEn": "Youth / Student",
@@ -11971,7 +11965,7 @@
       "id": "SS_PSC_03",
       "name": "트리즈TRIZ이론",
       "en": "TRIZ Innovation Theory",
-      "type": "EducationProgram",
+      "type": "WorkshopSeminar",
       "targetGroupId": "TGROUP_Youth",
       "targetGroup": "청소년",
       "targetGroupEn": "Youth / Student",
@@ -11997,7 +11991,7 @@
       "id": "SS_PSC_04",
       "name": "창의적문제해결실무",
       "en": "Creative Problem Solving",
-      "type": "EducationProgram",
+      "type": "WorkshopSeminar",
       "targetGroupId": "TGROUP_Youth",
       "targetGroup": "청소년",
       "targetGroupEn": "Youth / Student",
@@ -12024,7 +12018,7 @@
       "id": "SS_PSC_05",
       "name": "브레인스토밍기법",
       "en": "Brainstorming Techniques",
-      "type": "EducationProgram",
+      "type": "WorkshopSeminar",
       "targetGroupId": "TGROUP_Youth",
       "targetGroup": "청소년",
       "targetGroupEn": "Youth / Student",
@@ -12050,7 +12044,7 @@
       "id": "SS_PSC_06",
       "name": "혁신비즈니스모델",
       "en": "Innovation Business Model",
-      "type": "EducationProgram",
+      "type": "WorkshopSeminar",
       "targetGroupId": "TGROUP_Youth",
       "targetGroup": "청소년",
       "targetGroupEn": "Youth / Student",
@@ -12076,7 +12070,7 @@
       "id": "SS_PSC_07",
       "name": "서비스경험설계",
       "en": "Service Experience Design",
-      "type": "EducationProgram",
+      "type": "WorkshopSeminar",
       "targetGroupId": "TGROUP_Youth",
       "targetGroup": "청소년",
       "targetGroupEn": "Youth / Student",
@@ -12102,7 +12096,7 @@
       "id": "SS_PSC_08",
       "name": "마인드맵과시각화",
       "en": "Mind Mapping & Visualization",
-      "type": "EducationProgram",
+      "type": "WorkshopSeminar",
       "targetGroupId": "TGROUP_Youth",
       "targetGroup": "청소년",
       "targetGroupEn": "Youth / Student",
@@ -12128,7 +12122,7 @@
       "id": "SS_PSC_09",
       "name": "직관적사고훈련",
       "en": "Intuitive Thinking Training",
-      "type": "EducationProgram",
+      "type": "WorkshopSeminar",
       "targetGroupId": "TGROUP_Youth",
       "targetGroup": "청소년",
       "targetGroupEn": "Youth / Student",
@@ -12154,7 +12148,7 @@
       "id": "SS_PSC_10",
       "name": "창의적조직문화",
       "en": "Creative Organizational Culture",
-      "type": "EducationProgram",
+      "type": "WorkshopSeminar",
       "targetGroupId": "TGROUP_Youth",
       "targetGroup": "청소년",
       "targetGroupEn": "Youth / Student",
@@ -12180,7 +12174,7 @@
       "id": "SS_PST_01",
       "name": "비판적사고론",
       "en": "Critical Thinking",
-      "type": "EducationProgram",
+      "type": "WorkshopSeminar",
       "targetGroupId": "TGROUP_Youth",
       "targetGroup": "청소년",
       "targetGroupEn": "Youth / Student",
@@ -12208,7 +12202,7 @@
       "id": "SS_PST_02",
       "name": "논리적문제해결",
       "en": "Logical Problem Solving",
-      "type": "EducationProgram",
+      "type": "WorkshopSeminar",
       "targetGroupId": "TGROUP_Youth",
       "targetGroup": "청소년",
       "targetGroupEn": "Youth / Student",
@@ -12236,7 +12230,7 @@
       "id": "SS_PST_03",
       "name": "시스템다이내믹스",
       "en": "System Dynamics",
-      "type": "EducationProgram",
+      "type": "WorkshopSeminar",
       "targetGroupId": "TGROUP_Youth",
       "targetGroup": "청소년",
       "targetGroupEn": "Youth / Student",
@@ -12264,7 +12258,7 @@
       "id": "SS_PST_04",
       "name": "전략적사고훈련",
       "en": "Strategic Thinking",
-      "type": "EducationProgram",
+      "type": "WorkshopSeminar",
       "targetGroupId": "TGROUP_Youth",
       "targetGroup": "청소년",
       "targetGroupEn": "Youth / Student",
@@ -12292,7 +12286,7 @@
       "id": "SS_PST_05",
       "name": "가설수립과검증",
       "en": "Hypothesis Testing",
-      "type": "EducationProgram",
+      "type": "WorkshopSeminar",
       "targetGroupId": "TGROUP_Youth",
       "targetGroup": "청소년",
       "targetGroupEn": "Youth / Student",
@@ -12320,7 +12314,7 @@
       "id": "SS_PST_06",
       "name": "분석적사고기법",
       "en": "Analytical Thinking",
-      "type": "EducationProgram",
+      "type": "WorkshopSeminar",
       "targetGroupId": "TGROUP_Youth",
       "targetGroup": "청소년",
       "targetGroupEn": "Youth / Student",
@@ -12348,7 +12342,7 @@
       "id": "SS_PST_07",
       "name": "복잡계이론의이해",
       "en": "Complex Systems Theory",
-      "type": "EducationProgram",
+      "type": "WorkshopSeminar",
       "targetGroupId": "TGROUP_Youth",
       "targetGroup": "청소년",
       "targetGroupEn": "Youth / Student",
@@ -12376,7 +12370,7 @@
       "id": "SS_PST_08",
       "name": "구조적사고워크숍",
       "en": "Structured Thinking Workshop",
-      "type": "EducationProgram",
+      "type": "WorkshopSeminar",
       "targetGroupId": "TGROUP_Youth",
       "targetGroup": "청소년",
       "targetGroupEn": "Youth / Student",
@@ -12404,7 +12398,7 @@
       "id": "SS_PST_09",
       "name": "연역적추론실무",
       "en": "Deductive Reasoning",
-      "type": "EducationProgram",
+      "type": "WorkshopSeminar",
       "targetGroupId": "TGROUP_Youth",
       "targetGroup": "청소년",
       "targetGroupEn": "Youth / Student",
@@ -12432,7 +12426,7 @@
       "id": "SS_PST_10",
       "name": "데이터기반논리",
       "en": "Data-Driven Logic",
-      "type": "EducationProgram",
+      "type": "WorkshopSeminar",
       "targetGroupId": "TGROUP_Youth",
       "targetGroup": "청소년",
       "targetGroupEn": "Youth / Student",
@@ -12460,7 +12454,7 @@
       "id": "SS_SMA_01",
       "name": "학습민첩성",
       "en": "Learning Agility",
-      "type": "EducationProgram",
+      "type": "JobRetraining",
       "targetGroupId": "TGROUP_Multicultural",
       "targetGroup": "다문화가정",
       "targetGroupEn": "Multicultural Family",
@@ -12495,7 +12489,7 @@
       "id": "SS_SMA_02",
       "name": "변화적응력워크숍",
       "en": "Change Adaptability",
-      "type": "EducationProgram",
+      "type": "JobRetraining",
       "targetGroupId": "TGROUP_Multicultural",
       "targetGroup": "다문화가정",
       "targetGroupEn": "Multicultural Family",
@@ -12530,7 +12524,7 @@
       "id": "SS_SMA_03",
       "name": "디지털전환적응훈련",
       "en": "Digital Transformation Readiness",
-      "type": "EducationProgram",
+      "type": "K_DigitalTraining",
       "targetGroupId": "TGROUP_Multicultural",
       "targetGroup": "다문화가정",
       "targetGroupEn": "Multicultural Family",
@@ -12565,7 +12559,7 @@
       "id": "SS_SMA_04",
       "name": "자기주도학습기법",
       "en": "Self-Directed Learning",
-      "type": "EducationProgram",
+      "type": "JobRetraining",
       "targetGroupId": "TGROUP_Multicultural",
       "targetGroup": "다문화가정",
       "targetGroupEn": "Multicultural Family",
@@ -12601,7 +12595,7 @@
       "id": "SS_SMA_05",
       "name": "회복탄력성강화",
       "en": "Resilience Building",
-      "type": "EducationProgram",
+      "type": "JobRetraining",
       "targetGroupId": "TGROUP_Multicultural",
       "targetGroup": "다문화가정",
       "targetGroupEn": "Multicultural Family",
@@ -12637,7 +12631,7 @@
       "id": "SS_SMA_06",
       "name": "불확실성대응전략",
       "en": "Managing Uncertainty",
-      "type": "EducationProgram",
+      "type": "JobRetraining",
       "targetGroupId": "TGROUP_Multicultural",
       "targetGroup": "다문화가정",
       "targetGroupEn": "Multicultural Family",
@@ -12672,7 +12666,7 @@
       "id": "SS_SMA_07",
       "name": "성장마인드셋",
       "en": "Growth Mindset",
-      "type": "EducationProgram",
+      "type": "JobRetraining",
       "targetGroupId": "TGROUP_Multicultural",
       "targetGroup": "다문화가정",
       "targetGroupEn": "Multicultural Family",
@@ -12707,7 +12701,7 @@
       "id": "SS_SMA_08",
       "name": "새로운기술습득전략",
       "en": "Learning New Technologies",
-      "type": "EducationProgram",
+      "type": "WorkshopSeminar",
       "targetGroupId": "TGROUP_Multicultural",
       "targetGroup": "다문화가정",
       "targetGroupEn": "Multicultural Family",
@@ -12742,7 +12736,7 @@
       "id": "SS_SMA_09",
       "name": "커리어로드맵설계",
       "en": "Career Roadmap Design",
-      "type": "EducationProgram",
+      "type": "JobRetraining",
       "targetGroupId": "TGROUP_Multicultural",
       "targetGroup": "다문화가정",
       "targetGroupEn": "Multicultural Family",
@@ -12777,7 +12771,7 @@
       "id": "SS_SMA_10",
       "name": "스트레스관리역량",
       "en": "Stress Management",
-      "type": "EducationProgram",
+      "type": "JobRetraining",
       "targetGroupId": "TGROUP_Multicultural",
       "targetGroup": "다문화가정",
       "targetGroupEn": "Multicultural Family",
@@ -12813,7 +12807,7 @@
       "id": "SS_SMR_01",
       "name": "시간관리와생산성",
       "en": "Time Management & Productivity",
-      "type": "EducationProgram",
+      "type": "WorkshopSeminar",
       "targetGroupId": "TGROUP_Multicultural",
       "targetGroup": "다문화가정",
       "targetGroupEn": "Multicultural Family",
@@ -12842,7 +12836,7 @@
       "id": "SS_SMR_02",
       "name": "목표달성실행력",
       "en": "Goal Achievement Execution",
-      "type": "EducationProgram",
+      "type": "JobRetraining",
       "targetGroupId": "TGROUP_Multicultural",
       "targetGroup": "다문화가정",
       "targetGroupEn": "Multicultural Family",
@@ -12871,7 +12865,7 @@
       "id": "SS_SMR_03",
       "name": "윤리적책임감실무",
       "en": "Ethical Responsibility",
-      "type": "EducationProgram",
+      "type": "JobRetraining",
       "targetGroupId": "TGROUP_Multicultural",
       "targetGroup": "다문화가정",
       "targetGroupEn": "Multicultural Family",
@@ -12901,7 +12895,7 @@
       "id": "SS_SMR_04",
       "name": "프로페셔널리즘",
       "en": "Professionalism",
-      "type": "EducationProgram",
+      "type": "JobRetraining",
       "targetGroupId": "TGROUP_Multicultural",
       "targetGroup": "다문화가정",
       "targetGroupEn": "Multicultural Family",
@@ -12931,7 +12925,7 @@
       "id": "SS_SMR_05",
       "name": "업무완결성증진",
       "en": "Work Quality Enhancement",
-      "type": "EducationProgram",
+      "type": "JobRetraining",
       "targetGroupId": "TGROUP_Multicultural",
       "targetGroup": "다문화가정",
       "targetGroupEn": "Multicultural Family",
@@ -12960,7 +12954,7 @@
       "id": "SS_SMR_06",
       "name": "감정지능관리",
       "en": "Emotional Intelligence",
-      "type": "EducationProgram",
+      "type": "JobRetraining",
       "targetGroupId": "TGROUP_Multicultural",
       "targetGroup": "다문화가정",
       "targetGroupEn": "Multicultural Family",
@@ -12989,7 +12983,7 @@
       "id": "SS_SMR_07",
       "name": "약속과신뢰구축",
       "en": "Trust Building",
-      "type": "EducationProgram",
+      "type": "JobRetraining",
       "targetGroupId": "TGROUP_Multicultural",
       "targetGroup": "다문화가정",
       "targetGroupEn": "Multicultural Family",
@@ -13019,7 +13013,7 @@
       "id": "SS_SMR_08",
       "name": "업무우선순위설정",
       "en": "Work Prioritization",
-      "type": "EducationProgram",
+      "type": "JobRetraining",
       "targetGroupId": "TGROUP_Multicultural",
       "targetGroup": "다문화가정",
       "targetGroupEn": "Multicultural Family",
@@ -13048,7 +13042,7 @@
       "id": "SS_SMR_09",
       "name": "성과책임제이해",
       "en": "Performance Accountability",
-      "type": "EducationProgram",
+      "type": "JobRetraining",
       "targetGroupId": "TGROUP_Multicultural",
       "targetGroup": "다문화가정",
       "targetGroupEn": "Multicultural Family",
@@ -13077,7 +13071,7 @@
       "id": "SS_SMR_10",
       "name": "자기성찰과성장",
       "en": "Self-Reflection & Growth",
-      "type": "EducationProgram",
+      "type": "JobRetraining",
       "targetGroupId": "TGROUP_Multicultural",
       "targetGroup": "다문화가정",
       "targetGroupEn": "Multicultural Family",

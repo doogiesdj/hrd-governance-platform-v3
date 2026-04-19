@@ -91,10 +91,10 @@ const OntoGraf = (() => {
       'BUDGET_01', 'BUDGET_02', 'BUDGET_03',
       'BUDGET_STRAT_01', 'BUDGET_STRAT_02', 'BUDGET_STRAT_03',
     ],
-    EducationProgram: [
-      'HS_BAM_01', 'HS_IAI_01', 'HS_ISW_01', 'LT_DAI_01',
-      'SS_IPL_01', 'SS_PST_01',
-    ],
+    K_DigitalTraining: ['HS_IAI_01', 'HS_ISW_01', 'LT_DAI_01'],
+    WorkshopSeminar:   ['HS_BAM_01', 'SS_IPL_01', 'SS_PST_01'],
+    OnlineModule:      ['LT_BLM_01', 'LT_CSV_01'],
+    JobRetraining:     ['SS_SMA_01', 'SS_SMR_01'],
     HumanResource: [
       'PERSON_01', 'PERSON_02', 'PERSON_03', 'PERSON_11', 'PERSON_12', 'PERSON_13',
     ],
