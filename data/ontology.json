@@ -29,116 +29,17 @@
       "type": "NationalStrategy",
       "policies": [
         {
-          "id": "POLICY_45",
-          "name": "평생학습계좌제 확대 및 디지털 역량 지원 정책",
-          "en": "Lifelong Learning Account System Expansion and Digital Competency Support Policy"
-        },
-        {
           "id": "POLICY_44",
           "name": "자동화·AI 대체 직종 전환 훈련 정책",
           "en": "Automation and AI Job Replacement Transition Training Policy"
+        },
+        {
+          "id": "POLICY_45",
+          "name": "평생학습계좌제 확대 및 디지털 역량 지원 정책",
+          "en": "Lifelong Learning Account System Expansion and Digital Competency Support Policy"
         }
       ],
       "programs": [
-        {
-          "id": "HS_ISP_09",
-          "name": "지능형방범시스템",
-          "en": "AI-Based Crime Prevention Systems",
-          "targetGroup": "재직자",
-          "org": "과학기술정보통신부",
-          "competency": "파이썬 프로그래밍",
-          "hours": "40"
-        },
-        {
-          "id": "SS_SMR_01",
-          "name": "시간관리와생산성",
-          "en": "Time Management & Productivity",
-          "targetGroup": "다문화가정",
-          "org": "인사혁신처",
-          "competency": "UX/UI 디자인",
-          "hours": "8"
-        },
-        {
-          "id": "HS_ISP_04",
-          "name": "재난안전관리시스템",
-          "en": "Disaster Safety Management Systems",
-          "targetGroup": "재직자",
-          "org": "과학기술정보통신부",
-          "competency": "파이썬 프로그래밍",
-          "hours": "32"
-        },
-        {
-          "id": "SS_SMR_02",
-          "name": "목표달성실행력",
-          "en": "Goal Achievement Execution",
-          "targetGroup": "다문화가정",
-          "org": "인사혁신처",
-          "competency": "UX/UI 디자인",
-          "hours": "8"
-        },
-        {
-          "id": "SS_SMA_04",
-          "name": "자기주도학습기법",
-          "en": "Self-Directed Learning",
-          "targetGroup": "다문화가정",
-          "org": "인사혁신처",
-          "competency": "디지털 마케팅",
-          "hours": "16"
-        },
-        {
-          "id": "LT_BLM_06",
-          "name": "선형대수학기초",
-          "en": "Linear Algebra",
-          "targetGroup": "일반인",
-          "org": "고용노동부",
-          "competency": "녹색기술·탄소중립",
-          "hours": "60"
-        },
-        {
-          "id": "SS_SMA_08",
-          "name": "새로운기술습득전략",
-          "en": "Learning New Technologies",
-          "targetGroup": "다문화가정",
-          "org": "인사혁신처",
-          "competency": "디지털 마케팅",
-          "hours": "24"
-        },
-        {
-          "id": "HS_ISP_06",
-          "name": "환경기술공학",
-          "en": "Environmental Technology Engineering",
-          "targetGroup": "재직자",
-          "org": "과학기술정보통신부",
-          "competency": "파이썬 프로그래밍",
-          "hours": "32"
-        },
-        {
-          "id": "SS_SMR_05",
-          "name": "업무완결성증진",
-          "en": "Work Quality Enhancement",
-          "targetGroup": "다문화가정",
-          "org": "인사혁신처",
-          "competency": "UX/UI 디자인",
-          "hours": "16"
-        },
-        {
-          "id": "SS_SMR_07",
-          "name": "약속과신뢰구축",
-          "en": "Trust Building",
-          "targetGroup": "다문화가정",
-          "org": "인사혁신처",
-          "competency": "UX/UI 디자인",
-          "hours": "16"
-        },
-        {
-          "id": "LT_BLM_08",
-          "name": "프레젠테이션스킬",
-          "en": "Presentation Skills",
-          "targetGroup": "일반인",
-          "org": "고용노동부",
-          "competency": "녹색기술·탄소중립",
-          "hours": "80"
-        },
         {
           "id": "LT_BLM_03",
           "name": "확률과통계",
@@ -149,21 +50,21 @@
           "hours": "40"
         },
         {
-          "id": "HS_ISP_03",
-          "name": "지능형교통체계",
-          "en": "Intelligent Transportation Systems",
+          "id": "HS_ISP_09",
+          "name": "지능형방범시스템",
+          "en": "AI-Based Crime Prevention Systems",
           "targetGroup": "재직자",
           "org": "과학기술정보통신부",
           "competency": "파이썬 프로그래밍",
-          "hours": "24"
+          "hours": "40"
         },
         {
-          "id": "HS_ISP_02",
-          "name": "스마트시티거버넌스",
-          "en": "Smart City Governance",
-          "targetGroup": "재직자",
-          "org": "과학기술정보통신부",
-          "competency": "파이썬 프로그래밍",
+          "id": "SS_SMR_10",
+          "name": "자기성찰과성장",
+          "en": "Self-Reflection & Growth",
+          "targetGroup": "다문화가정",
+          "org": "인사혁신처",
+          "competency": "UX/UI 디자인",
           "hours": "24"
         },
         {
@@ -176,9 +77,45 @@
           "hours": "40"
         },
         {
-          "id": "HS_ISP_01",
-          "name": "공공행정DX실무",
-          "en": "Public Administration Digital Transformation",
+          "id": "LT_BLM_01",
+          "name": "기술영어작문",
+          "en": "Technical English Writing",
+          "targetGroup": "일반인",
+          "org": "고용노동부",
+          "competency": "녹색기술·탄소중립",
+          "hours": "40"
+        },
+        {
+          "id": "HS_ISP_04",
+          "name": "재난안전관리시스템",
+          "en": "Disaster Safety Management Systems",
+          "targetGroup": "재직자",
+          "org": "과학기술정보통신부",
+          "competency": "파이썬 프로그래밍",
+          "hours": "32"
+        },
+        {
+          "id": "HS_ISP_07",
+          "name": "수도행정디지털화",
+          "en": "Digital Water Administration",
+          "targetGroup": "재직자",
+          "org": "과학기술정보통신부",
+          "competency": "파이썬 프로그래밍",
+          "hours": "32"
+        },
+        {
+          "id": "SS_SMA_06",
+          "name": "불확실성대응전략",
+          "en": "Managing Uncertainty",
+          "targetGroup": "다문화가정",
+          "org": "인사혁신처",
+          "competency": "디지털 마케팅",
+          "hours": "16"
+        },
+        {
+          "id": "HS_ISP_03",
+          "name": "지능형교통체계",
+          "en": "Intelligent Transportation Systems",
           "targetGroup": "재직자",
           "org": "과학기술정보통신부",
           "competency": "파이썬 프로그래밍",
@@ -194,13 +131,13 @@
           "hours": "40"
         },
         {
-          "id": "SS_SMA_03",
-          "name": "디지털전환적응훈련",
-          "en": "Digital Transformation Readiness",
-          "targetGroup": "다문화가정",
-          "org": "인사혁신처",
-          "competency": "디지털 마케팅",
-          "hours": "8"
+          "id": "HS_ISP_05",
+          "name": "에너지관리시스템",
+          "en": "Energy Management Systems",
+          "targetGroup": "재직자",
+          "org": "과학기술정보통신부",
+          "competency": "파이썬 프로그래밍",
+          "hours": "32"
         },
         {
           "id": "SS_SMR_09",
@@ -212,13 +149,76 @@
           "hours": "24"
         },
         {
-          "id": "HS_ISP_07",
-          "name": "수도행정디지털화",
-          "en": "Digital Water Administration",
+          "id": "LT_BLM_05",
+          "name": "논리적사고와글쓰기",
+          "en": "Logical Thinking & Writing",
+          "targetGroup": "일반인",
+          "org": "고용노동부",
+          "competency": "녹색기술·탄소중립",
+          "hours": "60"
+        },
+        {
+          "id": "SS_SMR_03",
+          "name": "윤리적책임감실무",
+          "en": "Ethical Responsibility",
+          "targetGroup": "다문화가정",
+          "org": "인사혁신처",
+          "competency": "UX/UI 디자인",
+          "hours": "8"
+        },
+        {
+          "id": "HS_ISP_06",
+          "name": "환경기술공학",
+          "en": "Environmental Technology Engineering",
           "targetGroup": "재직자",
           "org": "과학기술정보통신부",
           "competency": "파이썬 프로그래밍",
           "hours": "32"
+        },
+        {
+          "id": "HS_ISP_01",
+          "name": "공공행정DX실무",
+          "en": "Public Administration Digital Transformation",
+          "targetGroup": "재직자",
+          "org": "과학기술정보통신부",
+          "competency": "파이썬 프로그래밍",
+          "hours": "24"
+        },
+        {
+          "id": "SS_SMA_04",
+          "name": "자기주도학습기법",
+          "en": "Self-Directed Learning",
+          "targetGroup": "다문화가정",
+          "org": "인사혁신처",
+          "competency": "디지털 마케팅",
+          "hours": "16"
+        },
+        {
+          "id": "SS_SMA_08",
+          "name": "새로운기술습득전략",
+          "en": "Learning New Technologies",
+          "targetGroup": "다문화가정",
+          "org": "인사혁신처",
+          "competency": "디지털 마케팅",
+          "hours": "24"
+        },
+        {
+          "id": "HS_ISP_02",
+          "name": "스마트시티거버넌스",
+          "en": "Smart City Governance",
+          "targetGroup": "재직자",
+          "org": "과학기술정보통신부",
+          "competency": "파이썬 프로그래밍",
+          "hours": "24"
+        },
+        {
+          "id": "SS_SMR_02",
+          "name": "목표달성실행력",
+          "en": "Goal Achievement Execution",
+          "targetGroup": "다문화가정",
+          "org": "인사혁신처",
+          "competency": "UX/UI 디자인",
+          "hours": "8"
         }
       ],
       "budgets": [
@@ -243,6 +243,12 @@
       "totalBudgetStr": "1350억원",
       "implementingOrgs": [
         {
+          "id": "ORG_MINISTRY_04",
+          "name": "고용노동부",
+          "abbr": "MoEL",
+          "role": "직업훈련·고용서비스·국민역량 평생학습"
+        },
+        {
           "id": "ORG_MINISTRY_01",
           "name": "과학기술정보통신부",
           "abbr": "MSIT",
@@ -255,12 +261,6 @@
           "role": "국가공무원 역량개발·성과관리 총괄"
         },
         {
-          "id": "ORG_MINISTRY_04",
-          "name": "고용노동부",
-          "abbr": "MoEL",
-          "role": "직업훈련·고용서비스·국민역량 평생학습"
-        },
-        {
           "id": "ORG_MINISTRY_05",
           "name": "기획재정부",
           "abbr": "MOF",
@@ -268,11 +268,17 @@
         }
       ],
       "targetGroups": [
+        "일반인",
         "재직자",
-        "다문화가정",
-        "일반인"
+        "다문화가정"
       ],
       "competencies": [
+        {
+          "id": "COMP_Green",
+          "name": "녹색기술·탄소중립",
+          "en": "Green Technology & Carbon Neutrality",
+          "category": "녹색기술·탄소중립 역량"
+        },
         {
           "id": "COMP_SW_01",
           "name": "파이썬 프로그래밍",
@@ -290,26 +296,20 @@
           "name": "디지털 마케팅",
           "en": "Digital Marketing",
           "category": "마케팅 전략 역량"
-        },
-        {
-          "id": "COMP_Green",
-          "name": "녹색기술·탄소중립",
-          "en": "Green Technology & Carbon Neutrality",
-          "category": "녹색기술·탄소중립 역량"
         }
       ],
       "performanceGoals": [
-        {
-          "code": "OUT_187",
-          "name": "디지털 역량 지원 성과",
-          "type": "역량성과",
-          "value": "350000"
-        },
         {
           "code": "OUT_186",
           "name": "전직 전환 훈련 성과",
           "type": "고용성과",
           "value": "28000"
+        },
+        {
+          "code": "OUT_187",
+          "name": "디지털 역량 지원 성과",
+          "type": "역량성과",
+          "value": "350000"
         }
       ],
       "policyCount": 2,
@@ -325,61 +325,6 @@
       "type": "NationalStrategy",
       "policies": [
         {
-          "id": "POLICY_21",
-          "name": "직업훈련 혁신 방안",
-          "en": "Vocational Training Innovation Plan"
-        },
-        {
-          "id": "POLICY_19",
-          "name": "K-디지털 크레딧",
-          "en": "K-Digital Credit Program"
-        },
-        {
-          "id": "POLICY_29",
-          "name": "공공부문 AI·디지털 인재 육성",
-          "en": "Public Sector AI and Digital Talent Development"
-        },
-        {
-          "id": "POLICY_49",
-          "name": "AI 융합 의료·제약 전문인력 양성 정책",
-          "en": "AI Convergence Medical and Pharmaceutical Professional Workforce Policy"
-        },
-        {
-          "id": "POLICY_07",
-          "name": "중장년 디지털 문해력 교육",
-          "en": "Middle-Aged Digital Literacy Education Program"
-        },
-        {
-          "id": "POLICY_30",
-          "name": "소프트웨어 중심사회 인재양성 전략",
-          "en": "Software-Centric Society Talent Development Strategy"
-        },
-        {
-          "id": "POLICY_11",
-          "name": "디지털 인재양성 종합방안",
-          "en": "Digital Talent Development Master Plan"
-        },
-        {
-          "id": "POLICY_02",
-          "name": "디지털 전환 교육 프로그램 / 디지털 전환 교육 프로그램",
-          "en": "Digital Transformation Education Program"
-        },
-        {
-          "id": "POLICY_22",
-          "name": "평생학습 활성화 방안",
-          "en": "Lifelong Learning Promotion Plan"
-        },
-        {
-          "id": "POLICY_13",
-          "name": "AI 일상화 및 산업 고도화 계획",
-          "en": "AI Mainstreaming and Industry Advancement Plan"
-        },
-        {
-          "id": "POLICY_10",
-          "name": "K-컬처 콘텐츠 기획 인재 양성",
-          "en": "K-Culture Content Planning Talent Development"
-        },
-        {
           "id": "POLICY_14",
           "name": "제5차 국가인적자원개발기본계획",
           "en": "5th National Human Resources Development Master Plan (2021-2025)"
@@ -390,17 +335,180 @@
           "en": "E-Learning Industry Development and Talent Development"
         },
         {
+          "id": "POLICY_49",
+          "name": "AI 융합 의료·제약 전문인력 양성 정책",
+          "en": "AI Convergence Medical and Pharmaceutical Professional Workforce Policy"
+        },
+        {
+          "id": "POLICY_22",
+          "name": "평생학습 활성화 방안",
+          "en": "Lifelong Learning Promotion Plan"
+        },
+        {
           "id": "POLICY_55",
           "name": "과학기술 외교 및 ODA 인재양성 정책",
           "en": "Science and Technology Diplomacy and ODA Talent Development Policy"
         },
         {
+          "id": "POLICY_13",
+          "name": "AI 일상화 및 산업 고도화 계획",
+          "en": "AI Mainstreaming and Industry Advancement Plan"
+        },
+        {
+          "id": "POLICY_07",
+          "name": "중장년 디지털 문해력 교육",
+          "en": "Middle-Aged Digital Literacy Education Program"
+        },
+        {
+          "id": "POLICY_19",
+          "name": "K-디지털 크레딧",
+          "en": "K-Digital Credit Program"
+        },
+        {
+          "id": "POLICY_21",
+          "name": "직업훈련 혁신 방안",
+          "en": "Vocational Training Innovation Plan"
+        },
+        {
+          "id": "POLICY_29",
+          "name": "공공부문 AI·디지털 인재 육성",
+          "en": "Public Sector AI and Digital Talent Development"
+        },
+        {
+          "id": "POLICY_11",
+          "name": "디지털 인재양성 종합방안",
+          "en": "Digital Talent Development Master Plan"
+        },
+        {
+          "id": "POLICY_30",
+          "name": "소프트웨어 중심사회 인재양성 전략",
+          "en": "Software-Centric Society Talent Development Strategy"
+        },
+        {
           "id": "POLICY_18",
           "name": "K-디지털 트레이닝",
           "en": "K-Digital Training Program"
+        },
+        {
+          "id": "POLICY_10",
+          "name": "K-컬처 콘텐츠 기획 인재 양성",
+          "en": "K-Culture Content Planning Talent Development"
+        },
+        {
+          "id": "POLICY_02",
+          "name": "디지털 전환 교육 프로그램 / 디지털 전환 교육 프로그램",
+          "en": "Digital Transformation Education Program"
         }
       ],
       "programs": [
+        {
+          "id": "SS_PST_08",
+          "name": "구조적사고워크숍",
+          "en": "Structured Thinking Workshop",
+          "targetGroup": "청소년",
+          "org": "교육부",
+          "competency": "프롬프트 엔지니어링",
+          "hours": "24"
+        },
+        {
+          "id": "HS_IAI_05",
+          "name": "빅데이터플랫폼구축",
+          "en": "Big Data Platform Development",
+          "targetGroup": "재직자",
+          "org": "과학기술정보통신부",
+          "competency": "프롬프트 엔지니어링",
+          "hours": "32"
+        },
+        {
+          "id": "SS_PST_03",
+          "name": "시스템다이내믹스",
+          "en": "System Dynamics",
+          "targetGroup": "청소년",
+          "org": "교육부",
+          "competency": "프롬프트 엔지니어링",
+          "hours": "8"
+        },
+        {
+          "id": "HS_IAI_06",
+          "name": "MLOps엔지니어링",
+          "en": "MLOps Engineering",
+          "targetGroup": "재직자",
+          "org": "과학기술정보통신부",
+          "competency": "프롬프트 엔지니어링",
+          "hours": "32"
+        },
+        {
+          "id": "SS_PSC_10",
+          "name": "창의적조직문화",
+          "en": "Creative Organizational Culture",
+          "targetGroup": "청소년",
+          "org": "교육부",
+          "competency": "파이썬 프로그래밍",
+          "hours": "24"
+        },
+        {
+          "id": "SS_PST_05",
+          "name": "가설수립과검증",
+          "en": "Hypothesis Testing",
+          "targetGroup": "청소년",
+          "org": "교육부",
+          "competency": "프롬프트 엔지니어링",
+          "hours": "16"
+        },
+        {
+          "id": "SS_PSC_06",
+          "name": "혁신비즈니스모델",
+          "en": "Innovation Business Model",
+          "targetGroup": "청소년",
+          "org": "교육부",
+          "competency": "파이썬 프로그래밍",
+          "hours": "16"
+        },
+        {
+          "id": "SS_PSC_07",
+          "name": "서비스경험설계",
+          "en": "Service Experience Design",
+          "targetGroup": "청소년",
+          "org": "교육부",
+          "competency": "파이썬 프로그래밍",
+          "hours": "16"
+        },
+        {
+          "id": "HS_IAI_09",
+          "name": "컨테이너오케스트레이션",
+          "en": "Container Orchestration",
+          "targetGroup": "재직자",
+          "org": "과학기술정보통신부",
+          "competency": "프롬프트 엔지니어링",
+          "hours": "40"
+        },
+        {
+          "id": "SS_PST_01",
+          "name": "비판적사고론",
+          "en": "Critical Thinking",
+          "targetGroup": "청소년",
+          "org": "교육부",
+          "competency": "프롬프트 엔지니어링",
+          "hours": "8"
+        },
+        {
+          "id": "HS_IAI_03",
+          "name": "클라우드아키텍처",
+          "en": "Cloud Architecture",
+          "targetGroup": "재직자",
+          "org": "과학기술정보통신부",
+          "competency": "프롬프트 엔지니어링",
+          "hours": "24"
+        },
+        {
+          "id": "HS_IAI_08",
+          "name": "분산시스템기초",
+          "en": "Distributed Systems",
+          "targetGroup": "재직자",
+          "org": "과학기술정보통신부",
+          "competency": "프롬프트 엔지니어링",
+          "hours": "40"
+        },
         {
           "id": "HS_IAI_02",
           "name": "딥러닝프레임워크",
@@ -408,6 +516,24 @@
           "targetGroup": "재직자",
           "org": "과학기술정보통신부",
           "competency": "프롬프트 엔지니어링",
+          "hours": "24"
+        },
+        {
+          "id": "SS_PSC_02",
+          "name": "아이디어발상기법",
+          "en": "Idea Generation Techniques",
+          "targetGroup": "청소년",
+          "org": "교육부",
+          "competency": "파이썬 프로그래밍",
+          "hours": "8"
+        },
+        {
+          "id": "SS_PSC_09",
+          "name": "직관적사고훈련",
+          "en": "Intuitive Thinking Training",
+          "targetGroup": "청소년",
+          "org": "교육부",
+          "competency": "파이썬 프로그래밍",
           "hours": "24"
         },
         {
@@ -420,67 +546,13 @@
           "hours": "16"
         },
         {
-          "id": "SS_PST_10",
-          "name": "데이터기반논리",
-          "en": "Data-Driven Logic",
-          "targetGroup": "청소년",
-          "org": "교육부",
-          "competency": "프롬프트 엔지니어링",
-          "hours": "24"
-        },
-        {
-          "id": "SS_PSC_06",
-          "name": "혁신비즈니스모델",
-          "en": "Innovation Business Model",
-          "targetGroup": "청소년",
-          "org": "교육부",
-          "competency": "파이썬 프로그래밍",
-          "hours": "16"
-        },
-        {
-          "id": "HS_IAI_07",
-          "name": "네트워크인프라설계",
-          "en": "Network Infrastructure Design",
+          "id": "HS_IAI_04",
+          "name": "서버가상화실무",
+          "en": "Server Virtualization",
           "targetGroup": "재직자",
           "org": "과학기술정보통신부",
           "competency": "프롬프트 엔지니어링",
           "hours": "32"
-        },
-        {
-          "id": "SS_PSC_09",
-          "name": "직관적사고훈련",
-          "en": "Intuitive Thinking Training",
-          "targetGroup": "청소년",
-          "org": "교육부",
-          "competency": "파이썬 프로그래밍",
-          "hours": "24"
-        },
-        {
-          "id": "SS_PST_07",
-          "name": "복잡계이론의이해",
-          "en": "Complex Systems Theory",
-          "targetGroup": "청소년",
-          "org": "교육부",
-          "competency": "프롬프트 엔지니어링",
-          "hours": "16"
-        },
-        {
-          "id": "SS_PSC_04",
-          "name": "창의적문제해결실무",
-          "en": "Creative Problem Solving",
-          "targetGroup": "청소년",
-          "org": "교육부",
-          "competency": "파이썬 프로그래밍",
-          "hours": "16"
-        },
-        {
-          "id": "HS_IAI_08",
-          "name": "분산시스템기초",
-          "en": "Distributed Systems",
-          "targetGroup": "재직자",
-          "org": "과학기술정보통신부",
-          "competency": "프롬프트 엔지니어링",
-          "hours": "40"
         },
         {
           "id": "HS_IAI_10",
@@ -492,85 +564,13 @@
           "hours": "40"
         },
         {
-          "id": "SS_PSC_02",
-          "name": "아이디어발상기법",
-          "en": "Idea Generation Techniques",
-          "targetGroup": "청소년",
-          "org": "교육부",
-          "competency": "파이썬 프로그래밍",
-          "hours": "8"
-        },
-        {
-          "id": "HS_IAI_09",
-          "name": "컨테이너오케스트레이션",
-          "en": "Container Orchestration",
-          "targetGroup": "재직자",
-          "org": "과학기술정보통신부",
-          "competency": "프롬프트 엔지니어링",
-          "hours": "40"
-        },
-        {
-          "id": "HS_IAI_05",
-          "name": "빅데이터플랫폼구축",
-          "en": "Big Data Platform Development",
-          "targetGroup": "재직자",
-          "org": "과학기술정보통신부",
-          "competency": "프롬프트 엔지니어링",
-          "hours": "32"
-        },
-        {
-          "id": "SS_PST_08",
-          "name": "구조적사고워크숍",
-          "en": "Structured Thinking Workshop",
+          "id": "SS_PST_07",
+          "name": "복잡계이론의이해",
+          "en": "Complex Systems Theory",
           "targetGroup": "청소년",
           "org": "교육부",
           "competency": "프롬프트 엔지니어링",
-          "hours": "24"
-        },
-        {
-          "id": "SS_PSC_07",
-          "name": "서비스경험설계",
-          "en": "Service Experience Design",
-          "targetGroup": "청소년",
-          "org": "교육부",
-          "competency": "파이썬 프로그래밍",
           "hours": "16"
-        },
-        {
-          "id": "HS_IAI_04",
-          "name": "서버가상화실무",
-          "en": "Server Virtualization",
-          "targetGroup": "재직자",
-          "org": "과학기술정보통신부",
-          "competency": "프롬프트 엔지니어링",
-          "hours": "32"
-        },
-        {
-          "id": "SS_PSC_08",
-          "name": "마인드맵과시각화",
-          "en": "Mind Mapping & Visualization",
-          "targetGroup": "청소년",
-          "org": "교육부",
-          "competency": "파이썬 프로그래밍",
-          "hours": "24"
-        },
-        {
-          "id": "SS_PST_09",
-          "name": "연역적추론실무",
-          "en": "Deductive Reasoning",
-          "targetGroup": "청소년",
-          "org": "교육부",
-          "competency": "프롬프트 엔지니어링",
-          "hours": "24"
-        },
-        {
-          "id": "SS_PST_03",
-          "name": "시스템다이내믹스",
-          "en": "System Dynamics",
-          "targetGroup": "청소년",
-          "org": "교육부",
-          "competency": "프롬프트 엔지니어링",
-          "hours": "8"
         },
         {
           "id": "SS_PST_06",
@@ -628,16 +628,16 @@
       "totalBudgetStr": "1450억원",
       "implementingOrgs": [
         {
-          "id": "ORG_MINISTRY_01",
-          "name": "과학기술정보통신부",
-          "abbr": "MSIT",
-          "role": "디지털 전환·AI·ICT 인재 양성 정책 총괄"
-        },
-        {
           "id": "ORG_MINISTRY_02",
           "name": "교육부",
           "abbr": "MOE",
           "role": "학교·대학 교육정책, 교원 연수, 이러닝 인프라"
+        },
+        {
+          "id": "ORG_MINISTRY_01",
+          "name": "과학기술정보통신부",
+          "abbr": "MSIT",
+          "role": "디지털 전환·AI·ICT 인재 양성 정책 총괄"
         },
         {
           "id": "ORG_MINISTRY_09",
@@ -653,8 +653,8 @@
         }
       ],
       "targetGroups": [
-        "재직자",
-        "청소년"
+        "청소년",
+        "재직자"
       ],
       "competencies": [
         {
@@ -672,46 +672,28 @@
       ],
       "performanceGoals": [
         {
-          "code": "OUT_19",
-          "name": "디지털 마케팅 캠페인 ROI 200% 달성",
-          "type": "경영성과",
-          "value": "200"
-        },
-        {
-          "code": "OUT_30",
-          "name": "직업훈련 혁신과정 이수 후 생산직 승급",
-          "type": "경력성과",
+          "code": "OUT_16",
+          "name": "클라우드 보안 아키텍처 설계 완료",
+          "type": "기술성과",
           "value": "1"
         },
         {
-          "code": "OUT_163",
-          "name": "직업훈련 혁신 성과",
-          "type": "고용성과",
-          "value": "95000"
-        },
-        {
-          "code": "OUT_28",
-          "name": "K-디지털 크레딧 과정 수료 및 직무 전환",
-          "type": "교육성과",
-          "value": "1"
-        },
-        {
-          "code": "OUT_161",
-          "name": "K-디지털 크레딧 활용",
-          "type": "교육성과",
-          "value": "120000"
-        },
-        {
-          "code": "OUT_29",
-          "name": "이러닝 콘텐츠 10개 이수 및 자기개발 달성",
-          "type": "교육성과",
-          "value": "10"
-        },
-        {
-          "code": "OUT_171",
-          "name": "공공 AI 역량 강화",
+          "code": "OUT_156",
+          "name": "HRD 역량 고도화",
           "type": "역량성과",
-          "value": "12000"
+          "value": "1"
+        },
+        {
+          "code": "OUT_23",
+          "name": "스마트 제조 도입으로 생산성 20% 향상",
+          "type": "생산성과",
+          "value": "20"
+        },
+        {
+          "code": "OUT_169",
+          "name": "이러닝 전문인력 양성",
+          "type": "교육성과",
+          "value": "6000"
         },
         {
           "code": "OUT_191",
@@ -720,10 +702,22 @@
           "value": "4500"
         },
         {
-          "code": "OUT_199",
-          "name": "디지털 문해력 향상 성과",
+          "code": "OUT_17",
+          "name": "해외 기술연수 수료 및 글로벌 네트워크 구축",
           "type": "역량성과",
-          "value": "320000"
+          "value": "15000000"
+        },
+        {
+          "code": "OUT_164",
+          "name": "평생학습 참여 확대",
+          "type": "역량성과",
+          "value": "15000000"
+        },
+        {
+          "code": "OUT_197",
+          "name": "과기 ODA 인재 양성",
+          "type": "교육성과",
+          "value": "1200"
         }
       ],
       "policyCount": 15,
@@ -769,6 +763,15 @@
           "hours": "60"
         },
         {
+          "id": "LT_CSV_10",
+          "name": "환경윤리실무",
+          "en": "Environmental Ethics",
+          "targetGroup": "취약계층",
+          "org": "인사혁신처",
+          "competency": "행정법무",
+          "hours": "80"
+        },
+        {
           "id": "LT_CSV_03",
           "name": "커뮤니티비즈니스",
           "en": "Community Business",
@@ -787,27 +790,18 @@
           "hours": "40"
         },
         {
-          "id": "LT_CSV_06",
-          "name": "인권과기술",
-          "en": "Human Rights & Technology",
+          "id": "LT_CSV_05",
+          "name": "지속가능발전론",
+          "en": "Sustainable Development",
           "targetGroup": "취약계층",
           "org": "인사혁신처",
           "competency": "행정법무",
           "hours": "60"
         },
         {
-          "id": "LT_CSV_10",
-          "name": "환경윤리실무",
-          "en": "Environmental Ethics",
-          "targetGroup": "취약계층",
-          "org": "인사혁신처",
-          "competency": "행정법무",
-          "hours": "80"
-        },
-        {
-          "id": "LT_CSV_05",
-          "name": "지속가능발전론",
-          "en": "Sustainable Development",
+          "id": "LT_CSV_06",
+          "name": "인권과기술",
+          "en": "Human Rights & Technology",
           "targetGroup": "취약계층",
           "org": "인사혁신처",
           "competency": "행정법무",
@@ -913,11 +907,6 @@
       "type": "NationalStrategy",
       "policies": [
         {
-          "id": "POLICY_40",
-          "name": "원자력 인재양성 및 전문성 강화 계획",
-          "en": "Nuclear Energy Talent Development and Expertise Enhancement Plan"
-        },
-        {
           "id": "POLICY_38",
           "name": "탄소중립 녹색기술 전문인력 양성 방안",
           "en": "Carbon Neutral Green Technology Professional Workforce Development Plan"
@@ -926,17 +915,22 @@
           "id": "POLICY_39",
           "name": "수소경제 인력양성 종합계획",
           "en": "Hydrogen Economy Workforce Development Master Plan"
+        },
+        {
+          "id": "POLICY_40",
+          "name": "원자력 인재양성 및 전문성 강화 계획",
+          "en": "Nuclear Energy Talent Development and Expertise Enhancement Plan"
         }
       ],
       "programs": [
         {
-          "id": "SS_IPC_09",
-          "name": "그룹의사결정론",
-          "en": "Group Decision Making",
+          "id": "SS_IPC_06",
+          "name": "비즈니스네트워킹",
+          "en": "Business Networking",
           "targetGroup": "경력단절여성",
           "org": "인사혁신처",
           "competency": "디지털 마케팅",
-          "hours": "24"
+          "hours": "16"
         },
         {
           "id": "SS_IPC_08",
@@ -948,22 +942,13 @@
           "hours": "24"
         },
         {
-          "id": "SS_IPC_06",
-          "name": "비즈니스네트워킹",
-          "en": "Business Networking",
+          "id": "SS_IPC_07",
+          "name": "다문화이해와협업",
+          "en": "Cross-Cultural Collaboration",
           "targetGroup": "경력단절여성",
           "org": "인사혁신처",
           "competency": "디지털 마케팅",
           "hours": "16"
-        },
-        {
-          "id": "SS_IPC_03",
-          "name": "퍼실리테이션실무",
-          "en": "Facilitation Skills",
-          "targetGroup": "경력단절여성",
-          "org": "인사혁신처",
-          "competency": "디지털 마케팅",
-          "hours": "8"
         },
         {
           "id": "SS_IPC_05",
@@ -975,13 +960,22 @@
           "hours": "16"
         },
         {
-          "id": "SS_IPC_07",
-          "name": "다문화이해와협업",
-          "en": "Cross-Cultural Collaboration",
+          "id": "SS_IPC_09",
+          "name": "그룹의사결정론",
+          "en": "Group Decision Making",
           "targetGroup": "경력단절여성",
           "org": "인사혁신처",
           "competency": "디지털 마케팅",
-          "hours": "16"
+          "hours": "24"
+        },
+        {
+          "id": "SS_IPC_03",
+          "name": "퍼실리테이션실무",
+          "en": "Facilitation Skills",
+          "targetGroup": "경력단절여성",
+          "org": "인사혁신처",
+          "competency": "디지털 마케팅",
+          "hours": "8"
         },
         {
           "id": "SS_IPC_04",
@@ -993,15 +987,6 @@
           "hours": "16"
         },
         {
-          "id": "SS_IPC_02",
-          "name": "갈등관리와조정",
-          "en": "Conflict Management & Mediation",
-          "targetGroup": "경력단절여성",
-          "org": "인사혁신처",
-          "competency": "디지털 마케팅",
-          "hours": "8"
-        },
-        {
           "id": "SS_IPC_10",
           "name": "워크숍디자인",
           "en": "Workshop Design",
@@ -1009,6 +994,15 @@
           "org": "인사혁신처",
           "competency": "디지털 마케팅",
           "hours": "24"
+        },
+        {
+          "id": "SS_IPC_02",
+          "name": "갈등관리와조정",
+          "en": "Conflict Management & Mediation",
+          "targetGroup": "경력단절여성",
+          "org": "인사혁신처",
+          "competency": "디지털 마케팅",
+          "hours": "8"
         }
       ],
       "budgets": [
@@ -1078,12 +1072,6 @@
       ],
       "performanceGoals": [
         {
-          "code": "OUT_182",
-          "name": "원자력 전문인력 양성",
-          "type": "교육성과",
-          "value": "2000"
-        },
-        {
           "code": "OUT_180",
           "name": "탄소중립 전문인력 배출",
           "type": "교육성과",
@@ -1094,6 +1082,12 @@
           "name": "수소경제 인력 양성",
           "type": "교육성과",
           "value": "3500"
+        },
+        {
+          "code": "OUT_182",
+          "name": "원자력 전문인력 양성",
+          "type": "교육성과",
+          "value": "2000"
         }
       ],
       "policyCount": 3,
@@ -1109,24 +1103,9 @@
       "type": "NationalStrategy",
       "policies": [
         {
-          "id": "POLICY_17",
-          "name": "우주항공 전문인력 양성 계획",
-          "en": "Space and Aerospace Talent Development Plan"
-        },
-        {
-          "id": "POLICY_23",
-          "name": "국가기술자격제도 혁신방안",
-          "en": "National Skills Certification System Innovation Plan"
-        },
-        {
           "id": "POLICY_51",
           "name": "국방·안보 사이버 인재양성 정책",
           "en": "Defense and Security Cyber Talent Development Policy"
-        },
-        {
-          "id": "POLICY_53",
-          "name": "농식품 스마트팜 전문인력 양성 정책",
-          "en": "Agri-Food Smart Farm Professional Workforce Development Policy"
         },
         {
           "id": "POLICY_03",
@@ -1134,9 +1113,24 @@
           "en": "Global Technology Export Voucher Program"
         },
         {
+          "id": "POLICY_17",
+          "name": "우주항공 전문인력 양성 계획",
+          "en": "Space and Aerospace Talent Development Plan"
+        },
+        {
+          "id": "POLICY_12",
+          "name": "반도체 인재양성 전략",
+          "en": "Semiconductor Workforce Development Strategy"
+        },
+        {
           "id": "POLICY_52",
           "name": "해양 스마트·디지털 기술인력 양성 정책",
           "en": "Maritime Smart and Digital Technology Workforce Development Policy"
+        },
+        {
+          "id": "POLICY_23",
+          "name": "국가기술자격제도 혁신방안",
+          "en": "National Skills Certification System Innovation Plan"
         },
         {
           "id": "POLICY_26",
@@ -1144,9 +1138,9 @@
           "en": "Defense Industry Workforce Development Plan"
         },
         {
-          "id": "POLICY_09",
-          "name": "지식재산(IP) 보호 강화 사업",
-          "en": "Intellectual Property Protection Enhancement Program"
+          "id": "POLICY_53",
+          "name": "농식품 스마트팜 전문인력 양성 정책",
+          "en": "Agri-Food Smart Farm Professional Workforce Development Policy"
         },
         {
           "id": "POLICY_15",
@@ -1159,9 +1153,9 @@
           "en": "Smart Manufacturing Talent Development Plan"
         },
         {
-          "id": "POLICY_50",
-          "name": "사이버보안 핵심인재 집중 육성 정책",
-          "en": "Cybersecurity Core Talent Intensive Development Policy"
+          "id": "POLICY_09",
+          "name": "지식재산(IP) 보호 강화 사업",
+          "en": "Intellectual Property Protection Enhancement Program"
         },
         {
           "id": "POLICY_08",
@@ -1169,12 +1163,84 @@
           "en": "Semiconductor Design Veteran Knowledge Transfer Program"
         },
         {
-          "id": "POLICY_12",
-          "name": "반도체 인재양성 전략",
-          "en": "Semiconductor Workforce Development Strategy"
+          "id": "POLICY_50",
+          "name": "사이버보안 핵심인재 집중 육성 정책",
+          "en": "Cybersecurity Core Talent Intensive Development Policy"
         }
       ],
       "programs": [
+        {
+          "id": "HS_BAM_07",
+          "name": "재무제표분석",
+          "en": "Financial Statement Analysis",
+          "targetGroup": "전문가",
+          "org": "고용노동부",
+          "competency": "행정법무",
+          "hours": "32"
+        },
+        {
+          "id": "HS_BAM_06",
+          "name": "ESG경영전략",
+          "en": "ESG Management Strategy",
+          "targetGroup": "전문가",
+          "org": "고용노동부",
+          "competency": "행정법무",
+          "hours": "32"
+        },
+        {
+          "id": "SS_IPL_08",
+          "name": "코칭및멘토링",
+          "en": "Coaching & Mentoring",
+          "targetGroup": "취약계층",
+          "org": "국방부",
+          "competency": "데이터 분석",
+          "hours": "24"
+        },
+        {
+          "id": "HS_BAM_01",
+          "name": "전략기획실무",
+          "en": "Strategic Planning Fundamentals",
+          "targetGroup": "전문가",
+          "org": "고용노동부",
+          "competency": "행정법무",
+          "hours": "24"
+        },
+        {
+          "id": "SS_IPL_05",
+          "name": "리더의피드백기술",
+          "en": "Effective Feedback for Leaders",
+          "targetGroup": "취약계층",
+          "org": "국방부",
+          "competency": "데이터 분석",
+          "hours": "16"
+        },
+        {
+          "id": "SS_IPL_02",
+          "name": "애자일코칭실무",
+          "en": "Agile Coaching",
+          "targetGroup": "취약계층",
+          "org": "국방부",
+          "competency": "데이터 분석",
+          "hours": "8"
+        },
+        {
+          "id": "SS_IPL_06",
+          "name": "조직문화혁신론",
+          "en": "Organizational Culture Innovation",
+          "targetGroup": "취약계층",
+          "org": "국방부",
+          "competency": "데이터 분석",
+          "hours": "16"
+        },
+        {
+          "id": "HS_BAM_02",
+          "name": "경영분석론",
+          "en": "Business Analytics",
+          "targetGroup": "전문가",
+          "org": "고용노동부",
+          "competency": "행정법무",
+          "hours": "24"
+        },
         {
           "id": "LT_DTS_07",
           "name": "보안거버넌스실무",
@@ -1185,13 +1251,40 @@
           "hours": "60"
         },
         {
-          "id": "HS_BAM_09",
-          "name": "기업지배구조론",
-          "en": "Corporate Governance",
+          "id": "HS_BAM_05",
+          "name": "리스크관리",
+          "en": "Risk Management",
           "targetGroup": "전문가",
           "org": "고용노동부",
           "competency": "행정법무",
+          "hours": "32"
+        },
+        {
+          "id": "LT_DTS_03",
+          "name": "사이버보안인식",
+          "en": "Cyber Security Awareness",
+          "targetGroup": "일반인",
+          "org": "문화체육관광부",
+          "competency": "파이썬 프로그래밍",
           "hours": "40"
+        },
+        {
+          "id": "LT_DTS_08",
+          "name": "IT컴플라이언스",
+          "en": "IT Compliance",
+          "targetGroup": "일반인",
+          "org": "문화체육관광부",
+          "competency": "파이썬 프로그래밍",
+          "hours": "80"
+        },
+        {
+          "id": "LT_DTS_09",
+          "name": "네트워크보안기초",
+          "en": "Network Security Fundamentals",
+          "targetGroup": "일반인",
+          "org": "문화체육관광부",
+          "competency": "파이썬 프로그래밍",
+          "hours": "80"
         },
         {
           "id": "SS_IPL_09",
@@ -1212,22 +1305,13 @@
           "hours": "24"
         },
         {
-          "id": "SS_IPL_04",
-          "name": "변화관리전략",
-          "en": "Change Management",
-          "targetGroup": "취약계층",
-          "org": "국방부",
-          "competency": "데이터 분석",
-          "hours": "16"
-        },
-        {
-          "id": "LT_DTS_08",
-          "name": "IT컴플라이언스",
-          "en": "IT Compliance",
-          "targetGroup": "일반인",
-          "org": "문화체육관광부",
-          "competency": "파이썬 프로그래밍",
-          "hours": "80"
+          "id": "HS_BAM_04",
+          "name": "공급망관리",
+          "en": "Supply Chain Management",
+          "targetGroup": "전문가",
+          "org": "고용노동부",
+          "competency": "행정법무",
+          "hours": "32"
         },
         {
           "id": "HS_BAM_08",
@@ -1239,114 +1323,6 @@
           "hours": "40"
         },
         {
-          "id": "SS_IPL_07",
-          "name": "전략적임파워먼트",
-          "en": "Strategic Empowerment",
-          "targetGroup": "취약계층",
-          "org": "국방부",
-          "competency": "데이터 분석",
-          "hours": "16"
-        },
-        {
-          "id": "HS_BAM_04",
-          "name": "공급망관리",
-          "en": "Supply Chain Management",
-          "targetGroup": "전문가",
-          "org": "고용노동부",
-          "competency": "행정법무",
-          "hours": "32"
-        },
-        {
-          "id": "LT_DTS_04",
-          "name": "피싱및해킹방지",
-          "en": "Anti-Phishing & Hacking Prevention",
-          "targetGroup": "일반인",
-          "org": "문화체육관광부",
-          "competency": "파이썬 프로그래밍",
-          "hours": "60"
-        },
-        {
-          "id": "LT_DTS_03",
-          "name": "사이버보안인식",
-          "en": "Cyber Security Awareness",
-          "targetGroup": "일반인",
-          "org": "문화체육관광부",
-          "competency": "파이썬 프로그래밍",
-          "hours": "40"
-        },
-        {
-          "id": "SS_IPL_08",
-          "name": "코칭및멘토링",
-          "en": "Coaching & Mentoring",
-          "targetGroup": "취약계층",
-          "org": "국방부",
-          "competency": "데이터 분석",
-          "hours": "24"
-        },
-        {
-          "id": "LT_DTS_02",
-          "name": "디지털저작권관리",
-          "en": "Digital Rights Management",
-          "targetGroup": "일반인",
-          "org": "문화체육관광부",
-          "competency": "파이썬 프로그래밍",
-          "hours": "40"
-        },
-        {
-          "id": "SS_IPL_02",
-          "name": "애자일코칭실무",
-          "en": "Agile Coaching",
-          "targetGroup": "취약계층",
-          "org": "국방부",
-          "competency": "데이터 분석",
-          "hours": "8"
-        },
-        {
-          "id": "HS_BAM_07",
-          "name": "재무제표분석",
-          "en": "Financial Statement Analysis",
-          "targetGroup": "전문가",
-          "org": "고용노동부",
-          "competency": "행정법무",
-          "hours": "32"
-        },
-        {
-          "id": "SS_IPL_06",
-          "name": "조직문화혁신론",
-          "en": "Organizational Culture Innovation",
-          "targetGroup": "취약계층",
-          "org": "국방부",
-          "competency": "데이터 분석",
-          "hours": "16"
-        },
-        {
-          "id": "LT_DTS_10",
-          "name": "패스워드및계정관리",
-          "en": "Password & Account Security",
-          "targetGroup": "일반인",
-          "org": "문화체육관광부",
-          "competency": "파이썬 프로그래밍",
-          "hours": "80"
-        },
-        {
-          "id": "SS_IPL_01",
-          "name": "서번트리더십",
-          "en": "Servant Leadership",
-          "targetGroup": "취약계층",
-          "org": "국방부",
-          "competency": "데이터 분석",
-          "hours": "8"
-        },
-        {
-          "id": "HS_BAM_06",
-          "name": "ESG경영전략",
-          "en": "ESG Management Strategy",
-          "targetGroup": "전문가",
-          "org": "고용노동부",
-          "competency": "행정법무",
-          "hours": "32"
-        },
-        {
           "id": "SS_IPL_10",
           "name": "감성리더십실무",
           "en": "Emotional Intelligence Leadership",
@@ -1354,6 +1330,24 @@
           "org": "국방부",
           "competency": "데이터 분석",
           "hours": "24"
+        },
+        {
+          "id": "HS_BAM_09",
+          "name": "기업지배구조론",
+          "en": "Corporate Governance",
+          "targetGroup": "전문가",
+          "org": "고용노동부",
+          "competency": "행정법무",
+          "hours": "40"
+        },
+        {
+          "id": "SS_IPL_04",
+          "name": "변화관리전략",
+          "en": "Change Management",
+          "targetGroup": "취약계층",
+          "org": "국방부",
+          "competency": "데이터 분석",
+          "hours": "16"
         }
       ],
       "budgets": [
@@ -1418,12 +1412,6 @@
       "totalBudgetStr": "2010억원",
       "implementingOrgs": [
         {
-          "id": "ORG_MINISTRY_06",
-          "name": "문화체육관광부",
-          "abbr": "MCST",
-          "role": "문화·창의·콘텐츠 분야 인재 양성"
-        },
-        {
           "id": "ORG_MINISTRY_04",
           "name": "고용노동부",
           "abbr": "MoEL",
@@ -1434,6 +1422,12 @@
           "name": "국방부",
           "abbr": "MoD",
           "role": "군 인력 교육훈련·방산 전문인력 개발"
+        },
+        {
+          "id": "ORG_MINISTRY_06",
+          "name": "문화체육관광부",
+          "abbr": "MCST",
+          "role": "문화·창의·콘텐츠 분야 인재 양성"
         },
         {
           "id": "ORG_MINISTRY_03",
@@ -1467,17 +1461,11 @@
         }
       ],
       "targetGroups": [
-        "일반인",
         "전문가",
-        "취약계층"
+        "취약계층",
+        "일반인"
       ],
       "competencies": [
-        {
-          "id": "COMP_SW_01",
-          "name": "파이썬 프로그래밍",
-          "en": "Python Programming",
-          "category": "소프트웨어 개발 역량"
-        },
         {
           "id": "COMP_AdminLaw",
           "name": "행정법무",
@@ -1489,9 +1477,33 @@
           "name": "데이터 분석",
           "en": "Data Analysis",
           "category": "데이터 활용 역량"
+        },
+        {
+          "id": "COMP_SW_01",
+          "name": "파이썬 프로그래밍",
+          "en": "Python Programming",
+          "category": "소프트웨어 개발 역량"
         }
       ],
       "performanceGoals": [
+        {
+          "code": "OUT_193",
+          "name": "국방 사이버 인재 양성",
+          "type": "교육성과",
+          "value": "1800"
+        },
+        {
+          "code": "OUT_05",
+          "name": "해외 수출 계약 달성",
+          "type": "수출성과",
+          "value": "25000000"
+        },
+        {
+          "code": "OUT_07",
+          "name": "신규 특허 등록 완료",
+          "type": "지식재산성과",
+          "value": "8000000"
+        },
         {
           "code": "OUT_24",
           "name": "우주항공 관련 특허 2건 출원",
@@ -1505,40 +1517,16 @@
           "value": "1500"
         },
         {
-          "code": "OUT_15",
-          "name": "국가자격증 취득 및 연봉 인상",
-          "type": "자격취득성과",
-          "value": "2"
-        },
-        {
-          "code": "OUT_165",
-          "name": "국가기술자격 취득",
-          "type": "자격취득성과",
-          "value": "280000"
-        },
-        {
-          "code": "OUT_193",
-          "name": "국방 사이버 인재 양성",
+          "code": "OUT_154",
+          "name": "반도체 전문인력 배출",
           "type": "교육성과",
-          "value": "1800"
+          "value": "12000"
         },
         {
-          "code": "OUT_195",
-          "name": "스마트팜 전문인력 양성",
+          "code": "OUT_194",
+          "name": "해양 스마트 기술인력 배출",
           "type": "교육성과",
-          "value": "5000"
-        },
-        {
-          "code": "OUT_05",
-          "name": "해외 수출 계약 달성",
-          "type": "수출성과",
-          "value": "25000000"
-        },
-        {
-          "code": "OUT_07",
-          "name": "신규 특허 등록 완료",
-          "type": "지식재산성과",
-          "value": "8000000"
+          "value": "3500"
         }
       ],
       "policyCount": 13,
@@ -1561,105 +1549,6 @@
       ],
       "programs": [
         {
-          "id": "HS_BMS_03",
-          "name": "통합마케팅커뮤니케이션",
-          "en": "Integrated Marketing Communications",
-          "targetGroup": "전문가",
-          "org": "국방부",
-          "competency": "바이오헬스",
-          "hours": "24"
-        },
-        {
-          "id": "HS_BAS_04",
-          "name": "글로벌영업실무",
-          "en": "Global Sales Practice",
-          "targetGroup": "전문가",
-          "org": "과학기술정보통신부",
-          "competency": "데이터 분석",
-          "hours": "32"
-        },
-        {
-          "id": "HS_ITM_01",
-          "name": "스마트팩토리제어",
-          "en": "Smart Factory Control Systems",
-          "targetGroup": "재직자",
-          "org": "산업통상자원부",
-          "competency": "반도체 설계·공정",
-          "hours": "24"
-        },
-        {
-          "id": "HS_BMS_05",
-          "name": "콘텐츠마케팅전략",
-          "en": "Content Marketing Strategy",
-          "targetGroup": "전문가",
-          "org": "국방부",
-          "competency": "바이오헬스",
-          "hours": "32"
-        },
-        {
-          "id": "HS_BAS_05",
-          "name": "세일즈협상론",
-          "en": "Sales Negotiation Skills",
-          "targetGroup": "전문가",
-          "org": "과학기술정보통신부",
-          "competency": "데이터 분석",
-          "hours": "32"
-        },
-        {
-          "id": "HS_BMS_10",
-          "name": "이커머스구축전략",
-          "en": "E-Commerce Strategy",
-          "targetGroup": "전문가",
-          "org": "국방부",
-          "competency": "바이오헬스",
-          "hours": "40"
-        },
-        {
-          "id": "HS_ITM_05",
-          "name": "제조실행시스템",
-          "en": "Manufacturing Execution Systems",
-          "targetGroup": "재직자",
-          "org": "산업통상자원부",
-          "competency": "반도체 설계·공정",
-          "hours": "32"
-        },
-        {
-          "id": "HS_BAS_06",
-          "name": "리테일마케팅",
-          "en": "Retail Marketing",
-          "targetGroup": "전문가",
-          "org": "과학기술정보통신부",
-          "competency": "데이터 분석",
-          "hours": "32"
-        },
-        {
-          "id": "HS_BAS_03",
-          "name": "채널관리론",
-          "en": "Channel Management",
-          "targetGroup": "전문가",
-          "org": "과학기술정보통신부",
-          "competency": "데이터 분석",
-          "hours": "24"
-        },
-        {
-          "id": "HS_ITM_02",
-          "name": "공정자동화설계",
-          "en": "Process Automation Design",
-          "targetGroup": "재직자",
-          "org": "산업통상자원부",
-          "competency": "반도체 설계·공정",
-          "hours": "24"
-        },
-        {
-          "id": "HS_BMS_02",
-          "name": "브랜드자산관리",
-          "en": "Brand Asset Management",
-          "targetGroup": "전문가",
-          "org": "국방부",
-          "competency": "바이오헬스",
-          "hours": "24"
-        },
-        {
           "id": "HS_BMS_08",
           "name": "마케팅ROI분석",
           "en": "Marketing ROI Analysis",
@@ -1667,6 +1556,24 @@
           "org": "국방부",
           "competency": "바이오헬스",
           "hours": "40"
+        },
+        {
+          "id": "HS_BAS_08",
+          "name": "유통물류관리",
+          "en": "Distribution & Logistics Management",
+          "targetGroup": "전문가",
+          "org": "과학기술정보통신부",
+          "competency": "데이터 분석",
+          "hours": "40"
+        },
+        {
+          "id": "HS_BMS_07",
+          "name": "소셜미디어전략",
+          "en": "Social Media Strategy",
+          "targetGroup": "전문가",
+          "org": "국방부",
+          "competency": "바이오헬스",
+          "hours": "32"
         },
         {
           "id": "HS_ITM_09",
@@ -1678,12 +1585,30 @@
           "hours": "40"
         },
         {
-          "id": "HS_BMS_01",
-          "name": "디지털마케팅분석",
-          "en": "Digital Marketing Analytics",
+          "id": "HS_BMS_04",
+          "name": "소비자행동론",
+          "en": "Consumer Behavior",
           "targetGroup": "전문가",
           "org": "국방부",
           "competency": "바이오헬스",
+          "hours": "32"
+        },
+        {
+          "id": "HS_ITM_10",
+          "name": "스마트물류자동화",
+          "en": "Smart Logistics Automation",
+          "targetGroup": "재직자",
+          "org": "산업통상자원부",
+          "competency": "반도체 설계·공정",
+          "hours": "40"
+        },
+        {
+          "id": "HS_BAS_03",
+          "name": "채널관리론",
+          "en": "Channel Management",
+          "targetGroup": "전문가",
+          "org": "과학기술정보통신부",
+          "competency": "데이터 분석",
           "hours": "24"
         },
         {
@@ -1696,6 +1621,69 @@
           "hours": "40"
         },
         {
+          "id": "HS_ITM_08",
+          "name": "3D설계CAD",
+          "en": "3D Design with CAD",
+          "targetGroup": "재직자",
+          "org": "산업통상자원부",
+          "competency": "반도체 설계·공정",
+          "hours": "40"
+        },
+        {
+          "id": "HS_BMS_02",
+          "name": "브랜드자산관리",
+          "en": "Brand Asset Management",
+          "targetGroup": "전문가",
+          "org": "국방부",
+          "competency": "바이오헬스",
+          "hours": "24"
+        },
+        {
+          "id": "HS_BMS_10",
+          "name": "이커머스구축전략",
+          "en": "E-Commerce Strategy",
+          "targetGroup": "전문가",
+          "org": "국방부",
+          "competency": "바이오헬스",
+          "hours": "40"
+        },
+        {
+          "id": "HS_BMS_09",
+          "name": "검색엔진최적화",
+          "en": "Search Engine Optimization",
+          "targetGroup": "전문가",
+          "org": "국방부",
+          "competency": "바이오헬스",
+          "hours": "40"
+        },
+        {
+          "id": "HS_BAS_05",
+          "name": "세일즈협상론",
+          "en": "Sales Negotiation Skills",
+          "targetGroup": "전문가",
+          "org": "과학기술정보통신부",
+          "competency": "데이터 분석",
+          "hours": "32"
+        },
+        {
+          "id": "HS_ITM_02",
+          "name": "공정자동화설계",
+          "en": "Process Automation Design",
+          "targetGroup": "재직자",
+          "org": "산업통상자원부",
+          "competency": "반도체 설계·공정",
+          "hours": "24"
+        },
+        {
+          "id": "HS_ITM_01",
+          "name": "스마트팩토리제어",
+          "en": "Smart Factory Control Systems",
+          "targetGroup": "재직자",
+          "org": "산업통상자원부",
+          "competency": "반도체 설계·공정",
+          "hours": "24"
+        },
+        {
           "id": "HS_BAS_09",
           "name": "판매촉진전략",
           "en": "Sales Promotion Strategy",
@@ -1703,6 +1691,15 @@
           "org": "과학기술정보통신부",
           "competency": "데이터 분석",
           "hours": "40"
+        },
+        {
+          "id": "HS_BAS_04",
+          "name": "글로벌영업실무",
+          "en": "Global Sales Practice",
+          "targetGroup": "전문가",
+          "org": "과학기술정보통신부",
+          "competency": "데이터 분석",
+          "hours": "32"
         },
         {
           "id": "HS_ITM_04",
@@ -1714,15 +1711,6 @@
           "hours": "32"
         },
         {
-          "id": "HS_BAS_02",
-          "name": "고객관계관리",
-          "en": "Customer Relationship Management",
-          "targetGroup": "전문가",
-          "org": "과학기술정보통신부",
-          "competency": "데이터 분석",
-          "hours": "24"
-        },
-        {
           "id": "HS_ITM_03",
           "name": "생산품질관리",
           "en": "Production Quality Management",
@@ -1732,13 +1720,13 @@
           "hours": "24"
         },
         {
-          "id": "HS_BMS_09",
-          "name": "검색엔진최적화",
-          "en": "Search Engine Optimization",
-          "targetGroup": "전문가",
-          "org": "국방부",
-          "competency": "바이오헬스",
-          "hours": "40"
+          "id": "HS_ITM_06",
+          "name": "산업용로봇운용",
+          "en": "Industrial Robot Operation",
+          "targetGroup": "재직자",
+          "org": "산업통상자원부",
+          "competency": "반도체 설계·공정",
+          "hours": "32"
         }
       ],
       "budgets": [
@@ -1845,166 +1833,22 @@
       ],
       "programs": [
         {
-          "id": "HS_ISW_05",
-          "name": "알고리즘최적화",
-          "en": "Algorithm Optimization",
-          "targetGroup": "재직자",
-          "org": "과학기술정보통신부",
-          "competency": "클라우드 보안",
-          "hours": "32"
-        },
-        {
-          "id": "LT_DAI_05",
-          "name": "디지털디바이스운용",
-          "en": "Digital Device Proficiency",
+          "id": "LT_DAI_03",
+          "name": "데이터활용기초",
+          "en": "Data Utilization Fundamentals",
           "targetGroup": "경력단절여성",
           "org": "인사혁신처",
           "competency": "프롬프트 엔지니어링",
-          "hours": "60"
-        },
-        {
-          "id": "LT_DDF_03",
-          "name": "통계기반의사결정",
-          "en": "Statistical Decision Making",
-          "targetGroup": "경력단절여성",
-          "org": "고용노동부",
-          "competency": "데이터 분석",
           "hours": "40"
         },
         {
-          "id": "LT_DAI_04",
-          "name": "인공지능이해와활용",
-          "en": "AI Applications in Practice",
+          "id": "LT_DAI_02",
+          "name": "AI윤리가이드라인",
+          "en": "AI Ethics Guidelines",
           "targetGroup": "경력단절여성",
           "org": "인사혁신처",
           "competency": "프롬프트 엔지니어링",
-          "hours": "60"
-        },
-        {
-          "id": "LT_BCF_08",
-          "name": "소프트웨어공학",
-          "en": "Software Engineering",
-          "targetGroup": "은퇴자",
-          "org": "고용노동부",
-          "competency": "디지털 마케팅",
-          "hours": "80"
-        },
-        {
-          "id": "LT_DAI_06",
-          "name": "온라인협업도구실무",
-          "en": "Online Collaboration Tools",
-          "targetGroup": "경력단절여성",
-          "org": "인사혁신처",
-          "competency": "프롬프트 엔지니어링",
-          "hours": "60"
-        },
-        {
-          "id": "LT_DDF_06",
-          "name": "그래프분석론",
-          "en": "Graph & Network Analysis",
-          "targetGroup": "경력단절여성",
-          "org": "고용노동부",
-          "competency": "데이터 분석",
-          "hours": "60"
-        },
-        {
-          "id": "LT_BCF_03",
-          "name": "운영체제이론",
-          "en": "Operating Systems",
-          "targetGroup": "은퇴자",
-          "org": "고용노동부",
-          "competency": "디지털 마케팅",
           "hours": "40"
-        },
-        {
-          "id": "LT_DDF_09",
-          "name": "정량적성과지표설계",
-          "en": "KPI Design & Measurement",
-          "targetGroup": "경력단절여성",
-          "org": "고용노동부",
-          "competency": "데이터 분석",
-          "hours": "80"
-        },
-        {
-          "id": "HS_ISW_09",
-          "name": "데이터베이스정규화",
-          "en": "Database Normalization",
-          "targetGroup": "재직자",
-          "org": "과학기술정보통신부",
-          "competency": "클라우드 보안",
-          "hours": "40"
-        },
-        {
-          "id": "LT_DAI_10",
-          "name": "AI서비스기획기초",
-          "en": "AI Service Planning",
-          "targetGroup": "경력단절여성",
-          "org": "인사혁신처",
-          "competency": "프롬프트 엔지니어링",
-          "hours": "80"
-        },
-        {
-          "id": "HS_ISW_03",
-          "name": "리액트웹아키텍처",
-          "en": "React Web Architecture",
-          "targetGroup": "재직자",
-          "org": "과학기술정보통신부",
-          "competency": "클라우드 보안",
-          "hours": "24"
-        },
-        {
-          "id": "LT_DDF_04",
-          "name": "데이터수집과정제",
-          "en": "Data Collection & Preprocessing",
-          "targetGroup": "경력단절여성",
-          "org": "고용노동부",
-          "competency": "데이터 분석",
-          "hours": "60"
-        },
-        {
-          "id": "LT_DDF_02",
-          "name": "데이터시각화리터러시",
-          "en": "Data Visualization Literacy",
-          "targetGroup": "경력단절여성",
-          "org": "고용노동부",
-          "competency": "데이터 분석",
-          "hours": "40"
-        },
-        {
-          "id": "HS_ISW_02",
-          "name": "자바프레임워크응용",
-          "en": "Java Framework Application",
-          "targetGroup": "재직자",
-          "org": "과학기술정보통신부",
-          "competency": "클라우드 보안",
-          "hours": "24"
-        },
-        {
-          "id": "HS_ISW_01",
-          "name": "파이썬백엔드개발",
-          "en": "Python Backend Development",
-          "targetGroup": "재직자",
-          "org": "과학기술정보통신부",
-          "competency": "클라우드 보안",
-          "hours": "24"
-        },
-        {
-          "id": "HS_ISW_08",
-          "name": "마이크로서비스설계",
-          "en": "Microservices Architecture",
-          "targetGroup": "재직자",
-          "org": "과학기술정보통신부",
-          "competency": "클라우드 보안",
-          "hours": "40"
-        },
-        {
-          "id": "LT_DDF_08",
-          "name": "데이터기반스토리텔링",
-          "en": "Data Storytelling",
-          "targetGroup": "경력단절여성",
-          "org": "고용노동부",
-          "competency": "데이터 분석",
-          "hours": "80"
         },
         {
           "id": "LT_DDF_10",
@@ -2023,6 +1867,150 @@
           "org": "고용노동부",
           "competency": "디지털 마케팅",
           "hours": "40"
+        },
+        {
+          "id": "LT_BCF_05",
+          "name": "정보통신공학개론",
+          "en": "Introduction to ICT Engineering",
+          "targetGroup": "은퇴자",
+          "org": "고용노동부",
+          "competency": "디지털 마케팅",
+          "hours": "60"
+        },
+        {
+          "id": "LT_BCF_06",
+          "name": "시스템프로그래밍",
+          "en": "Systems Programming",
+          "targetGroup": "은퇴자",
+          "org": "고용노동부",
+          "competency": "디지털 마케팅",
+          "hours": "60"
+        },
+        {
+          "id": "HS_ISW_06",
+          "name": "디자인패턴실무",
+          "en": "Design Patterns in Practice",
+          "targetGroup": "재직자",
+          "org": "과학기술정보통신부",
+          "competency": "클라우드 보안",
+          "hours": "32"
+        },
+        {
+          "id": "HS_ISW_01",
+          "name": "파이썬백엔드개발",
+          "en": "Python Backend Development",
+          "targetGroup": "재직자",
+          "org": "과학기술정보통신부",
+          "competency": "클라우드 보안",
+          "hours": "24"
+        },
+        {
+          "id": "LT_DDF_09",
+          "name": "정량적성과지표설계",
+          "en": "KPI Design & Measurement",
+          "targetGroup": "경력단절여성",
+          "org": "고용노동부",
+          "competency": "데이터 분석",
+          "hours": "80"
+        },
+        {
+          "id": "LT_DAI_07",
+          "name": "노코드툴활용",
+          "en": "No-Code Tool Applications",
+          "targetGroup": "경력단절여성",
+          "org": "인사혁신처",
+          "competency": "프롬프트 엔지니어링",
+          "hours": "60"
+        },
+        {
+          "id": "LT_BCF_07",
+          "name": "데이터베이스개론",
+          "en": "Database Fundamentals",
+          "targetGroup": "은퇴자",
+          "org": "고용노동부",
+          "competency": "디지털 마케팅",
+          "hours": "60"
+        },
+        {
+          "id": "LT_DDF_05",
+          "name": "대시보드활용실무",
+          "en": "Dashboard Practice",
+          "targetGroup": "경력단절여성",
+          "org": "고용노동부",
+          "competency": "데이터 분석",
+          "hours": "60"
+        },
+        {
+          "id": "HS_ISW_10",
+          "name": "API설계기법",
+          "en": "API Design Techniques",
+          "targetGroup": "재직자",
+          "org": "과학기술정보통신부",
+          "competency": "클라우드 보안",
+          "hours": "40"
+        },
+        {
+          "id": "LT_DDF_08",
+          "name": "데이터기반스토리텔링",
+          "en": "Data Storytelling",
+          "targetGroup": "경력단절여성",
+          "org": "고용노동부",
+          "competency": "데이터 분석",
+          "hours": "80"
+        },
+        {
+          "id": "LT_DDF_03",
+          "name": "통계기반의사결정",
+          "en": "Statistical Decision Making",
+          "targetGroup": "경력단절여성",
+          "org": "고용노동부",
+          "competency": "데이터 분석",
+          "hours": "40"
+        },
+        {
+          "id": "HS_ISW_05",
+          "name": "알고리즘최적화",
+          "en": "Algorithm Optimization",
+          "targetGroup": "재직자",
+          "org": "과학기술정보통신부",
+          "competency": "클라우드 보안",
+          "hours": "32"
+        },
+        {
+          "id": "HS_ISW_03",
+          "name": "리액트웹아키텍처",
+          "en": "React Web Architecture",
+          "targetGroup": "재직자",
+          "org": "과학기술정보통신부",
+          "competency": "클라우드 보안",
+          "hours": "24"
+        },
+        {
+          "id": "HS_ISW_09",
+          "name": "데이터베이스정규화",
+          "en": "Database Normalization",
+          "targetGroup": "재직자",
+          "org": "과학기술정보통신부",
+          "competency": "클라우드 보안",
+          "hours": "40"
+        },
+        {
+          "id": "LT_DDF_06",
+          "name": "그래프분석론",
+          "en": "Graph & Network Analysis",
+          "targetGroup": "경력단절여성",
+          "org": "고용노동부",
+          "competency": "데이터 분석",
+          "hours": "60"
+        },
+        {
+          "id": "LT_BCF_08",
+          "name": "소프트웨어공학",
+          "en": "Software Engineering",
+          "targetGroup": "은퇴자",
+          "org": "고용노동부",
+          "competency": "디지털 마케팅",
+          "hours": "80"
         }
       ],
       "budgets": [
@@ -2039,12 +2027,6 @@
       "totalBudgetStr": "200억원",
       "implementingOrgs": [
         {
-          "id": "ORG_MINISTRY_01",
-          "name": "과학기술정보통신부",
-          "abbr": "MSIT",
-          "role": "디지털 전환·AI·ICT 인재 양성 정책 총괄"
-        },
-        {
           "id": "ORG_MINISTRY_09",
           "name": "인사혁신처",
           "abbr": "MPM",
@@ -2057,6 +2039,12 @@
           "role": "직업훈련·고용서비스·국민역량 평생학습"
         },
         {
+          "id": "ORG_MINISTRY_01",
+          "name": "과학기술정보통신부",
+          "abbr": "MSIT",
+          "role": "디지털 전환·AI·ICT 인재 양성 정책 총괄"
+        },
+        {
           "id": "ORG_MINISTRY_11",
           "name": "행정안전부",
           "abbr": "MOIS",
@@ -2064,17 +2052,11 @@
         }
       ],
       "targetGroups": [
-        "재직자",
         "경력단절여성",
-        "은퇴자"
+        "은퇴자",
+        "재직자"
       ],
       "competencies": [
-        {
-          "id": "COMP_CloudSec",
-          "name": "클라우드 보안",
-          "en": "Cloud Security",
-          "category": "기술보안 역량"
-        },
         {
           "id": "COMP_AI_01",
           "name": "프롬프트 엔지니어링",
@@ -2092,6 +2074,12 @@
           "name": "디지털 마케팅",
           "en": "Digital Marketing",
           "category": "마케팅 전략 역량"
+        },
+        {
+          "id": "COMP_CloudSec",
+          "name": "클라우드 보안",
+          "en": "Cloud Security",
+          "category": "기술보안 역량"
         }
       ],
       "performanceGoals": [
@@ -2115,9 +2103,14 @@
       "type": "NationalStrategy",
       "policies": [
         {
-          "id": "POLICY_01",
-          "name": "은퇴과학자 활용 지원사업",
-          "en": "Retired Scientist Utilization Support Program"
+          "id": "POLICY_34",
+          "name": "사회서비스 종사자 처우개선 및 역량강화 정책",
+          "en": "Social Service Worker Treatment Improvement and Capacity Enhancement Policy"
+        },
+        {
+          "id": "POLICY_33",
+          "name": "다문화가정 직업훈련 및 사회통합 정책",
+          "en": "Multicultural Family Vocational Training and Social Integration Policy"
         },
         {
           "id": "POLICY_31",
@@ -2125,14 +2118,9 @@
           "en": "Disabled Person Vocational Rehabilitation and Employment Support Policy"
         },
         {
-          "id": "POLICY_34",
-          "name": "사회서비스 종사자 처우개선 및 역량강화 정책",
-          "en": "Social Service Worker Treatment Improvement and Capacity Enhancement Policy"
-        },
-        {
-          "id": "POLICY_04",
-          "name": "시니어 창업 지원금",
-          "en": "Senior Startup Support Grant"
+          "id": "POLICY_01",
+          "name": "은퇴과학자 활용 지원사업",
+          "en": "Retired Scientist Utilization Support Program"
         },
         {
           "id": "POLICY_32",
@@ -2140,9 +2128,9 @@
           "en": "Senior and Middle-Aged Re-employment Competency Enhancement Policy"
         },
         {
-          "id": "POLICY_33",
-          "name": "다문화가정 직업훈련 및 사회통합 정책",
-          "en": "Multicultural Family Vocational Training and Social Integration Policy"
+          "id": "POLICY_04",
+          "name": "시니어 창업 지원금",
+          "en": "Senior Startup Support Grant"
         },
         {
           "id": "POLICY_24",
@@ -2217,6 +2205,24 @@
       "competencies": [],
       "performanceGoals": [
         {
+          "code": "OUT_176",
+          "name": "사회서비스 종사자 역량 향상",
+          "type": "역량성과",
+          "value": "45000"
+        },
+        {
+          "code": "OUT_175",
+          "name": "다문화가정 직업훈련 성과",
+          "type": "교육성과",
+          "value": "12000"
+        },
+        {
+          "code": "OUT_173",
+          "name": "장애인 고용 역량 강화",
+          "type": "고용성과",
+          "value": "8500"
+        },
+        {
           "code": "OUT_01",
           "name": "기업 매출 증대 / 기업 매출 증대 성과",
           "type": "경영성과",
@@ -2233,24 +2239,6 @@
           "name": "제조 공정 효율화 개선",
           "type": "생산성과",
           "value": "4000000"
-        },
-        {
-          "code": "OUT_173",
-          "name": "장애인 고용 역량 강화",
-          "type": "고용성과",
-          "value": "8500"
-        },
-        {
-          "code": "OUT_176",
-          "name": "사회서비스 종사자 역량 향상",
-          "type": "역량성과",
-          "value": "45000"
-        },
-        {
-          "code": "OUT_06",
-          "name": "스타트업 신규 고용 창출",
-          "type": "고용성과",
-          "value": "50000000"
         },
         {
           "code": "OUT_174",
@@ -2272,19 +2260,9 @@
       "type": "NationalStrategy",
       "policies": [
         {
-          "id": "POLICY_36",
-          "name": "지역산업 맞춤형 인력양성 사업",
-          "en": "Region-Customized Industrial Workforce Development Project"
-        },
-        {
-          "id": "POLICY_28",
-          "name": "지역 주도형 청년 일자리 사업",
-          "en": "Region-Led Youth Employment Program"
-        },
-        {
-          "id": "POLICY_05",
-          "name": "지역사회 기술봉사 마일리지",
-          "en": "Community Technology Volunteering Mileage Program"
+          "id": "POLICY_37",
+          "name": "스마트빌리지 및 농촌 디지털 전환 지원 정책",
+          "en": "Smart Village and Rural Digital Transformation Support Policy"
         },
         {
           "id": "POLICY_35",
@@ -2292,9 +2270,19 @@
           "en": "Regional University Innovation Capacity Enhancement Plan"
         },
         {
-          "id": "POLICY_37",
-          "name": "스마트빌리지 및 농촌 디지털 전환 지원 정책",
-          "en": "Smart Village and Rural Digital Transformation Support Policy"
+          "id": "POLICY_36",
+          "name": "지역산업 맞춤형 인력양성 사업",
+          "en": "Region-Customized Industrial Workforce Development Project"
+        },
+        {
+          "id": "POLICY_05",
+          "name": "지역사회 기술봉사 마일리지",
+          "en": "Community Technology Volunteering Mileage Program"
+        },
+        {
+          "id": "POLICY_28",
+          "name": "지역 주도형 청년 일자리 사업",
+          "en": "Region-Led Youth Employment Program"
         }
       ],
       "programs": [],
@@ -2350,10 +2338,28 @@
       "competencies": [],
       "performanceGoals": [
         {
+          "code": "OUT_179",
+          "name": "농촌 디지털 전환 역량",
+          "type": "역량성과",
+          "value": "15000"
+        },
+        {
+          "code": "OUT_177",
+          "name": "지방대학 혁신 성과",
+          "type": "교육성과",
+          "value": "180"
+        },
+        {
           "code": "OUT_178",
           "name": "지역 산업 맞춤 인력 배출",
           "type": "고용성과",
           "value": "22000"
+        },
+        {
+          "code": "OUT_09",
+          "name": "지역 기술 만족도 상승",
+          "type": "사회성과",
+          "value": "3000000"
         },
         {
           "code": "OUT_25",
@@ -2366,24 +2372,6 @@
           "name": "지역 청년 일자리 창출",
           "type": "고용성과",
           "value": "25000"
-        },
-        {
-          "code": "OUT_09",
-          "name": "지역 기술 만족도 상승",
-          "type": "사회성과",
-          "value": "3000000"
-        },
-        {
-          "code": "OUT_177",
-          "name": "지방대학 혁신 성과",
-          "type": "교육성과",
-          "value": "180"
-        },
-        {
-          "code": "OUT_179",
-          "name": "농촌 디지털 전환 역량",
-          "type": "역량성과",
-          "value": "15000"
         }
       ],
       "policyCount": 5,
@@ -2399,11 +2387,6 @@
       "type": "NationalStrategy",
       "policies": [
         {
-          "id": "POLICY_42",
-          "name": "보육교사 전문성 제고 및 처우개선 방안",
-          "en": "Childcare Teacher Professionalism Enhancement and Treatment Improvement Plan"
-        },
-        {
           "id": "POLICY_43",
           "name": "일·가정양립 지원 기업 인사 관리자 역량강화 정책",
           "en": "Work-Family Balance Supporting Company HR Manager Capacity Policy"
@@ -2412,6 +2395,11 @@
           "id": "POLICY_41",
           "name": "육아휴직 후 경력복귀 지원 정책",
           "en": "Post-Parental Leave Career Return Support Policy"
+        },
+        {
+          "id": "POLICY_42",
+          "name": "보육교사 전문성 제고 및 처우개선 방안",
+          "en": "Childcare Teacher Professionalism Enhancement and Treatment Improvement Plan"
         }
       ],
       "programs": [],
@@ -2467,12 +2455,6 @@
       "competencies": [],
       "performanceGoals": [
         {
-          "code": "OUT_184",
-          "name": "보육교사 전문성 향상",
-          "type": "역량성과",
-          "value": "42000"
-        },
-        {
           "code": "OUT_185",
           "name": "일가정양립 HR 역량 강화",
           "type": "역량성과",
@@ -2483,6 +2465,12 @@
           "name": "경력복귀 지원 성과",
           "type": "고용성과",
           "value": "18000"
+        },
+        {
+          "code": "OUT_184",
+          "name": "보육교사 전문성 향상",
+          "type": "역량성과",
+          "value": "42000"
         }
       ],
       "policyCount": 3,
@@ -2498,9 +2486,9 @@
       "type": "NationalStrategy",
       "policies": [
         {
-          "id": "POLICY_48",
-          "name": "노동권 보호 및 노사관계 전문인력 역량강화 정책",
-          "en": "Labor Rights Protection and Industrial Relations Professional Capacity Policy"
+          "id": "POLICY_47",
+          "name": "금융 소비자 보호 전문인력 양성 정책",
+          "en": "Financial Consumer Protection Professional Workforce Development Policy"
         },
         {
           "id": "POLICY_46",
@@ -2508,9 +2496,9 @@
           "en": "Small Business Digital Transformation Capacity Enhancement Support Policy"
         },
         {
-          "id": "POLICY_47",
-          "name": "금융 소비자 보호 전문인력 양성 정책",
-          "en": "Financial Consumer Protection Professional Workforce Development Policy"
+          "id": "POLICY_48",
+          "name": "노동권 보호 및 노사관계 전문인력 역량강화 정책",
+          "en": "Labor Rights Protection and Industrial Relations Professional Capacity Policy"
         }
       ],
       "programs": [],
@@ -2566,10 +2554,10 @@
       "competencies": [],
       "performanceGoals": [
         {
-          "code": "OUT_190",
-          "name": "노동권 전문인력 역량 향상",
-          "type": "역량성과",
-          "value": "3200"
+          "code": "OUT_189",
+          "name": "금융소비자 보호 전문인력",
+          "type": "교육성과",
+          "value": "2800"
         },
         {
           "code": "OUT_188",
@@ -2578,10 +2566,10 @@
           "value": "85000"
         },
         {
-          "code": "OUT_189",
-          "name": "금융소비자 보호 전문인력",
-          "type": "교육성과",
-          "value": "2800"
+          "code": "OUT_190",
+          "name": "노동권 전문인력 역량 향상",
+          "type": "역량성과",
+          "value": "3200"
         }
       ],
       "policyCount": 3,
@@ -7754,6 +7742,13 @@
       "competencyCategory": "행정법무 역량",
       "targetCompetencyId": "COMP_AdminLaw",
       "fieldCatCode": "COMPCAT_Management",
+      "relatedCompetencyIds": [
+        "COMP_15",
+        "COMP_35",
+        "COMP_60",
+        "COMP_64",
+        "COMP_69"
+      ],
       "budgetCode": "BUDGET_STRAT_03",
       "hours": "24"
     },
@@ -7774,6 +7769,13 @@
       "competencyCategory": "행정법무 역량",
       "targetCompetencyId": "COMP_AdminLaw",
       "fieldCatCode": "COMPCAT_Management",
+      "relatedCompetencyIds": [
+        "COMP_27",
+        "COMP_35",
+        "COMP_39",
+        "COMP_60",
+        "COMP_64"
+      ],
       "budgetCode": "BUDGET_STRAT_03",
       "hours": "24"
     },
@@ -7794,6 +7796,12 @@
       "competencyCategory": "행정법무 역량",
       "targetCompetencyId": "COMP_AdminLaw",
       "fieldCatCode": "COMPCAT_Management",
+      "relatedCompetencyIds": [
+        "COMP_35",
+        "COMP_60",
+        "COMP_64",
+        "COMP_65"
+      ],
       "budgetCode": "BUDGET_STRAT_03",
       "hours": "24"
     },
@@ -7814,6 +7822,12 @@
       "competencyCategory": "행정법무 역량",
       "targetCompetencyId": "COMP_AdminLaw",
       "fieldCatCode": "COMPCAT_Management",
+      "relatedCompetencyIds": [
+        "COMP_35",
+        "COMP_60",
+        "COMP_64",
+        "COMP_68"
+      ],
       "budgetCode": "BUDGET_STRAT_03",
       "hours": "32"
     },
@@ -7834,6 +7848,12 @@
       "competencyCategory": "행정법무 역량",
       "targetCompetencyId": "COMP_AdminLaw",
       "fieldCatCode": "COMPCAT_Management",
+      "relatedCompetencyIds": [
+        "COMP_26",
+        "COMP_35",
+        "COMP_60",
+        "COMP_64"
+      ],
       "budgetCode": "BUDGET_STRAT_03",
       "hours": "32"
     },
@@ -7854,6 +7874,13 @@
       "competencyCategory": "행정법무 역량",
       "targetCompetencyId": "COMP_AdminLaw",
       "fieldCatCode": "COMPCAT_Management",
+      "relatedCompetencyIds": [
+        "COMP_35",
+        "COMP_43",
+        "COMP_54",
+        "COMP_60",
+        "COMP_64"
+      ],
       "budgetCode": "BUDGET_STRAT_03",
       "hours": "32"
     },
@@ -7874,6 +7901,13 @@
       "competencyCategory": "행정법무 역량",
       "targetCompetencyId": "COMP_AdminLaw",
       "fieldCatCode": "COMPCAT_Management",
+      "relatedCompetencyIds": [
+        "COMP_35",
+        "COMP_36",
+        "COMP_37",
+        "COMP_60",
+        "COMP_64"
+      ],
       "budgetCode": "BUDGET_STRAT_03",
       "hours": "32"
     },
@@ -7894,6 +7928,13 @@
       "competencyCategory": "행정법무 역량",
       "targetCompetencyId": "COMP_AdminLaw",
       "fieldCatCode": "COMPCAT_Management",
+      "relatedCompetencyIds": [
+        "COMP_35",
+        "COMP_36",
+        "COMP_37",
+        "COMP_60",
+        "COMP_64"
+      ],
       "budgetCode": "BUDGET_STRAT_03",
       "hours": "40"
     },
@@ -7914,6 +7955,13 @@
       "competencyCategory": "행정법무 역량",
       "targetCompetencyId": "COMP_AdminLaw",
       "fieldCatCode": "COMPCAT_Management",
+      "relatedCompetencyIds": [
+        "COMP_35",
+        "COMP_44",
+        "COMP_54",
+        "COMP_60",
+        "COMP_64"
+      ],
       "budgetCode": "BUDGET_STRAT_03",
       "hours": "40"
     },
@@ -7934,6 +7982,13 @@
       "competencyCategory": "행정법무 역량",
       "targetCompetencyId": "COMP_AdminLaw",
       "fieldCatCode": "COMPCAT_Management",
+      "relatedCompetencyIds": [
+        "COMP_15",
+        "COMP_35",
+        "COMP_45",
+        "COMP_60",
+        "COMP_64"
+      ],
       "budgetCode": "BUDGET_STRAT_03",
       "hours": "40"
     },
@@ -7954,6 +8009,12 @@
       "competencyCategory": "데이터 활용 역량",
       "targetCompetencyId": "COMP_DataAnalysis",
       "fieldCatCode": "COMPCAT_Marketing_Sales",
+      "relatedCompetencyIds": [
+        "COMP_49",
+        "COMP_69",
+        "COMP_70",
+        "COMP_79"
+      ],
       "budgetCode": "",
       "hours": "24"
     },
@@ -7974,6 +8035,11 @@
       "competencyCategory": "데이터 활용 역량",
       "targetCompetencyId": "COMP_DataAnalysis",
       "fieldCatCode": "COMPCAT_Marketing_Sales",
+      "relatedCompetencyIds": [
+        "COMP_49",
+        "COMP_70",
+        "COMP_79"
+      ],
       "budgetCode": "BUDGET_STRAT_04",
       "hours": "24"
     },
@@ -7994,6 +8060,12 @@
       "competencyCategory": "데이터 활용 역량",
       "targetCompetencyId": "COMP_DataAnalysis",
       "fieldCatCode": "COMPCAT_Marketing_Sales",
+      "relatedCompetencyIds": [
+        "COMP_35",
+        "COMP_49",
+        "COMP_70",
+        "COMP_79"
+      ],
       "budgetCode": "BUDGET_STRAT_04",
       "hours": "24"
     },
@@ -8014,6 +8086,13 @@
       "competencyCategory": "데이터 활용 역량",
       "targetCompetencyId": "COMP_DataAnalysis",
       "fieldCatCode": "COMPCAT_Marketing_Sales",
+      "relatedCompetencyIds": [
+        "COMP_49",
+        "COMP_70",
+        "COMP_72",
+        "COMP_73",
+        "COMP_79"
+      ],
       "budgetCode": "BUDGET_STRAT_04",
       "hours": "32"
     },
@@ -8034,6 +8113,13 @@
       "competencyCategory": "데이터 활용 역량",
       "targetCompetencyId": "COMP_DataAnalysis",
       "fieldCatCode": "COMPCAT_Marketing_Sales",
+      "relatedCompetencyIds": [
+        "COMP_18",
+        "COMP_49",
+        "COMP_57",
+        "COMP_70",
+        "COMP_79"
+      ],
       "budgetCode": "BUDGET_STRAT_04",
       "hours": "32"
     },
@@ -8054,6 +8140,11 @@
       "competencyCategory": "데이터 활용 역량",
       "targetCompetencyId": "COMP_DataAnalysis",
       "fieldCatCode": "COMPCAT_Marketing_Sales",
+      "relatedCompetencyIds": [
+        "COMP_49",
+        "COMP_70",
+        "COMP_79"
+      ],
       "budgetCode": "BUDGET_STRAT_04",
       "hours": "32"
     },
@@ -8074,6 +8165,12 @@
       "competencyCategory": "데이터 활용 역량",
       "targetCompetencyId": "COMP_DataAnalysis",
       "fieldCatCode": "COMPCAT_Marketing_Sales",
+      "relatedCompetencyIds": [
+        "COMP_22",
+        "COMP_49",
+        "COMP_70",
+        "COMP_79"
+      ],
       "budgetCode": "",
       "hours": "32"
     },
@@ -8094,6 +8191,13 @@
       "competencyCategory": "데이터 활용 역량",
       "targetCompetencyId": "COMP_DataAnalysis",
       "fieldCatCode": "COMPCAT_Marketing_Sales",
+      "relatedCompetencyIds": [
+        "COMP_35",
+        "COMP_49",
+        "COMP_68",
+        "COMP_70",
+        "COMP_79"
+      ],
       "budgetCode": "BUDGET_STRAT_04",
       "hours": "40"
     },
@@ -8114,6 +8218,12 @@
       "competencyCategory": "데이터 활용 역량",
       "targetCompetencyId": "COMP_DataAnalysis",
       "fieldCatCode": "COMPCAT_Marketing_Sales",
+      "relatedCompetencyIds": [
+        "COMP_49",
+        "COMP_50",
+        "COMP_70",
+        "COMP_79"
+      ],
       "budgetCode": "BUDGET_STRAT_04",
       "hours": "40"
     },
@@ -8134,6 +8244,13 @@
       "competencyCategory": "데이터 활용 역량",
       "targetCompetencyId": "COMP_DataAnalysis",
       "fieldCatCode": "COMPCAT_Marketing_Sales",
+      "relatedCompetencyIds": [
+        "COMP_27",
+        "COMP_33",
+        "COMP_49",
+        "COMP_70",
+        "COMP_79"
+      ],
       "budgetCode": "BUDGET_STRAT_04",
       "hours": "40"
     },
@@ -8154,6 +8271,13 @@
       "competencyCategory": "바이오헬스 역량",
       "targetCompetencyId": "COMP_BioHealth",
       "fieldCatCode": "COMPCAT_Marketing_Strategy",
+      "relatedCompetencyIds": [
+        "COMP_27",
+        "COMP_39",
+        "COMP_69",
+        "COMP_70",
+        "COMP_71"
+      ],
       "budgetCode": "BUDGET_STRAT_04",
       "hours": "24"
     },
@@ -8174,6 +8298,13 @@
       "competencyCategory": "바이오헬스 역량",
       "targetCompetencyId": "COMP_BioHealth",
       "fieldCatCode": "COMPCAT_Marketing_Strategy",
+      "relatedCompetencyIds": [
+        "COMP_50",
+        "COMP_62",
+        "COMP_69",
+        "COMP_70",
+        "COMP_71"
+      ],
       "budgetCode": "BUDGET_STRAT_04",
       "hours": "24"
     },
@@ -8194,6 +8325,13 @@
       "competencyCategory": "바이오헬스 역량",
       "targetCompetencyId": "COMP_BioHealth",
       "fieldCatCode": "COMPCAT_Marketing_Strategy",
+      "relatedCompetencyIds": [
+        "COMP_22",
+        "COMP_56",
+        "COMP_69",
+        "COMP_70",
+        "COMP_71"
+      ],
       "budgetCode": "BUDGET_STRAT_04",
       "hours": "24"
     },
@@ -8214,6 +8352,13 @@
       "competencyCategory": "바이오헬스 역량",
       "targetCompetencyId": "COMP_BioHealth",
       "fieldCatCode": "COMPCAT_Marketing_Strategy",
+      "relatedCompetencyIds": [
+        "COMP_27",
+        "COMP_29",
+        "COMP_69",
+        "COMP_70",
+        "COMP_71"
+      ],
       "budgetCode": "BUDGET_STRAT_04",
       "hours": "32"
     },
@@ -8234,6 +8379,13 @@
       "competencyCategory": "바이오헬스 역량",
       "targetCompetencyId": "COMP_BioHealth",
       "fieldCatCode": "COMPCAT_Marketing_Strategy",
+      "relatedCompetencyIds": [
+        "COMP_25",
+        "COMP_50",
+        "COMP_69",
+        "COMP_70",
+        "COMP_71"
+      ],
       "budgetCode": "BUDGET_STRAT_04",
       "hours": "32"
     },
@@ -8254,6 +8406,13 @@
       "competencyCategory": "바이오헬스 역량",
       "targetCompetencyId": "COMP_BioHealth",
       "fieldCatCode": "COMPCAT_Marketing_Strategy",
+      "relatedCompetencyIds": [
+        "COMP_39",
+        "COMP_53",
+        "COMP_69",
+        "COMP_70",
+        "COMP_71"
+      ],
       "budgetCode": "",
       "hours": "32"
     },
@@ -8274,6 +8433,13 @@
       "competencyCategory": "바이오헬스 역량",
       "targetCompetencyId": "COMP_BioHealth",
       "fieldCatCode": "COMPCAT_Marketing_Strategy",
+      "relatedCompetencyIds": [
+        "COMP_50",
+        "COMP_69",
+        "COMP_70",
+        "COMP_71",
+        "COMP_80"
+      ],
       "budgetCode": "BUDGET_STRAT_04",
       "hours": "32"
     },
@@ -8294,6 +8460,13 @@
       "competencyCategory": "바이오헬스 역량",
       "targetCompetencyId": "COMP_BioHealth",
       "fieldCatCode": "COMPCAT_Marketing_Strategy",
+      "relatedCompetencyIds": [
+        "COMP_36",
+        "COMP_39",
+        "COMP_69",
+        "COMP_70",
+        "COMP_71"
+      ],
       "budgetCode": "BUDGET_STRAT_04",
       "hours": "40"
     },
@@ -8314,6 +8487,13 @@
       "competencyCategory": "바이오헬스 역량",
       "targetCompetencyId": "COMP_BioHealth",
       "fieldCatCode": "COMPCAT_Marketing_Strategy",
+      "relatedCompetencyIds": [
+        "COMP_33",
+        "COMP_38",
+        "COMP_69",
+        "COMP_70",
+        "COMP_71"
+      ],
       "budgetCode": "BUDGET_STRAT_04",
       "hours": "40"
     },
@@ -8334,6 +8514,13 @@
       "competencyCategory": "바이오헬스 역량",
       "targetCompetencyId": "COMP_BioHealth",
       "fieldCatCode": "COMPCAT_Marketing_Strategy",
+      "relatedCompetencyIds": [
+        "COMP_38",
+        "COMP_50",
+        "COMP_69",
+        "COMP_70",
+        "COMP_71"
+      ],
       "budgetCode": "BUDGET_STRAT_04",
       "hours": "40"
     },
@@ -8354,6 +8541,11 @@
       "competencyCategory": "AI·인프라 역량",
       "targetCompetencyId": "COMP_AI_01",
       "fieldCatCode": "COMPCAT_AI_and_Infrastructure",
+      "relatedCompetencyIds": [
+        "COMP_38",
+        "COMP_39",
+        "COMP_40"
+      ],
       "budgetCode": "BUDGET_STRAT_01",
       "hours": "24"
     },
@@ -8374,6 +8566,11 @@
       "competencyCategory": "AI·인프라 역량",
       "targetCompetencyId": "COMP_AI_01",
       "fieldCatCode": "COMPCAT_AI_and_Infrastructure",
+      "relatedCompetencyIds": [
+        "COMP_38",
+        "COMP_39",
+        "COMP_40"
+      ],
       "budgetCode": "BUDGET_STRAT_01",
       "hours": "24"
     },
@@ -8394,6 +8591,12 @@
       "competencyCategory": "AI·인프라 역량",
       "targetCompetencyId": "COMP_AI_01",
       "fieldCatCode": "COMPCAT_AI_and_Infrastructure",
+      "relatedCompetencyIds": [
+        "COMP_35",
+        "COMP_38",
+        "COMP_39",
+        "COMP_40"
+      ],
       "budgetCode": "BUDGET_STRAT_01",
       "hours": "24"
     },
@@ -8414,6 +8617,12 @@
       "competencyCategory": "AI·인프라 역량",
       "targetCompetencyId": "COMP_AI_01",
       "fieldCatCode": "COMPCAT_AI_and_Infrastructure",
+      "relatedCompetencyIds": [
+        "COMP_35",
+        "COMP_38",
+        "COMP_39",
+        "COMP_40"
+      ],
       "budgetCode": "BUDGET_STRAT_01",
       "hours": "32"
     },
@@ -8434,6 +8643,11 @@
       "competencyCategory": "AI·인프라 역량",
       "targetCompetencyId": "COMP_AI_01",
       "fieldCatCode": "COMPCAT_AI_and_Infrastructure",
+      "relatedCompetencyIds": [
+        "COMP_38",
+        "COMP_39",
+        "COMP_40"
+      ],
       "budgetCode": "BUDGET_STRAT_01",
       "hours": "32"
     },
@@ -8454,6 +8668,12 @@
       "competencyCategory": "AI·인프라 역량",
       "targetCompetencyId": "COMP_AI_01",
       "fieldCatCode": "COMPCAT_AI_and_Infrastructure",
+      "relatedCompetencyIds": [
+        "COMP_35",
+        "COMP_38",
+        "COMP_39",
+        "COMP_40"
+      ],
       "budgetCode": "BUDGET_STRAT_01",
       "hours": "32"
     },
@@ -8474,6 +8694,12 @@
       "competencyCategory": "AI·인프라 역량",
       "targetCompetencyId": "COMP_AI_01",
       "fieldCatCode": "COMPCAT_AI_and_Infrastructure",
+      "relatedCompetencyIds": [
+        "COMP_35",
+        "COMP_38",
+        "COMP_39",
+        "COMP_40"
+      ],
       "budgetCode": "BUDGET_STRAT_01",
       "hours": "32"
     },
@@ -8494,6 +8720,12 @@
       "competencyCategory": "AI·인프라 역량",
       "targetCompetencyId": "COMP_AI_01",
       "fieldCatCode": "COMPCAT_AI_and_Infrastructure",
+      "relatedCompetencyIds": [
+        "COMP_38",
+        "COMP_39",
+        "COMP_40",
+        "COMP_67"
+      ],
       "budgetCode": "BUDGET_STRAT_01",
       "hours": "40"
     },
@@ -8514,6 +8746,12 @@
       "competencyCategory": "AI·인프라 역량",
       "targetCompetencyId": "COMP_AI_01",
       "fieldCatCode": "COMPCAT_AI_and_Infrastructure",
+      "relatedCompetencyIds": [
+        "COMP_35",
+        "COMP_38",
+        "COMP_39",
+        "COMP_40"
+      ],
       "budgetCode": "BUDGET_STRAT_01",
       "hours": "40"
     },
@@ -8534,6 +8772,11 @@
       "competencyCategory": "AI·인프라 역량",
       "targetCompetencyId": "COMP_AI_01",
       "fieldCatCode": "COMPCAT_AI_and_Infrastructure",
+      "relatedCompetencyIds": [
+        "COMP_38",
+        "COMP_39",
+        "COMP_40"
+      ],
       "budgetCode": "BUDGET_STRAT_01",
       "hours": "40"
     },
@@ -8554,6 +8797,12 @@
       "competencyCategory": "소프트웨어 개발 역량",
       "targetCompetencyId": "COMP_SW_01",
       "fieldCatCode": "COMPCAT_Service_Public",
+      "relatedCompetencyIds": [
+        "COMP_16",
+        "COMP_38",
+        "COMP_49",
+        "COMP_52"
+      ],
       "budgetCode": "BUDGET_STRAT_07",
       "hours": "24"
     },
@@ -8574,6 +8823,12 @@
       "competencyCategory": "소프트웨어 개발 역량",
       "targetCompetencyId": "COMP_SW_01",
       "fieldCatCode": "COMPCAT_Service_Public",
+      "relatedCompetencyIds": [
+        "COMP_38",
+        "COMP_49",
+        "COMP_52",
+        "COMP_67"
+      ],
       "budgetCode": "BUDGET_STRAT_07",
       "hours": "24"
     },
@@ -8594,6 +8849,12 @@
       "competencyCategory": "소프트웨어 개발 역량",
       "targetCompetencyId": "COMP_SW_01",
       "fieldCatCode": "COMPCAT_Service_Public",
+      "relatedCompetencyIds": [
+        "COMP_35",
+        "COMP_38",
+        "COMP_49",
+        "COMP_52"
+      ],
       "budgetCode": "BUDGET_STRAT_07",
       "hours": "24"
     },
@@ -8614,6 +8875,13 @@
       "competencyCategory": "소프트웨어 개발 역량",
       "targetCompetencyId": "COMP_SW_01",
       "fieldCatCode": "COMPCAT_Service_Public",
+      "relatedCompetencyIds": [
+        "COMP_26",
+        "COMP_35",
+        "COMP_38",
+        "COMP_49",
+        "COMP_52"
+      ],
       "budgetCode": "BUDGET_STRAT_07",
       "hours": "32"
     },
@@ -8634,6 +8902,12 @@
       "competencyCategory": "소프트웨어 개발 역량",
       "targetCompetencyId": "COMP_SW_01",
       "fieldCatCode": "COMPCAT_Service_Public",
+      "relatedCompetencyIds": [
+        "COMP_38",
+        "COMP_49",
+        "COMP_52",
+        "COMP_90"
+      ],
       "budgetCode": "BUDGET_STRAT_07",
       "hours": "32"
     },
@@ -8654,6 +8928,12 @@
       "competencyCategory": "소프트웨어 개발 역량",
       "targetCompetencyId": "COMP_SW_01",
       "fieldCatCode": "COMPCAT_Service_Public",
+      "relatedCompetencyIds": [
+        "COMP_38",
+        "COMP_43",
+        "COMP_49",
+        "COMP_52"
+      ],
       "budgetCode": "BUDGET_STRAT_07",
       "hours": "32"
     },
@@ -8674,6 +8954,12 @@
       "competencyCategory": "소프트웨어 개발 역량",
       "targetCompetencyId": "COMP_SW_01",
       "fieldCatCode": "COMPCAT_Service_Public",
+      "relatedCompetencyIds": [
+        "COMP_35",
+        "COMP_38",
+        "COMP_49",
+        "COMP_52"
+      ],
       "budgetCode": "BUDGET_STRAT_07",
       "hours": "32"
     },
@@ -8694,6 +8980,13 @@
       "competencyCategory": "소프트웨어 개발 역량",
       "targetCompetencyId": "COMP_SW_01",
       "fieldCatCode": "COMPCAT_Service_Public",
+      "relatedCompetencyIds": [
+        "COMP_33",
+        "COMP_38",
+        "COMP_44",
+        "COMP_49",
+        "COMP_52"
+      ],
       "budgetCode": "BUDGET_STRAT_07",
       "hours": "40"
     },
@@ -8714,6 +9007,12 @@
       "competencyCategory": "소프트웨어 개발 역량",
       "targetCompetencyId": "COMP_SW_01",
       "fieldCatCode": "COMPCAT_Service_Public",
+      "relatedCompetencyIds": [
+        "COMP_38",
+        "COMP_39",
+        "COMP_49",
+        "COMP_52"
+      ],
       "budgetCode": "BUDGET_STRAT_07",
       "hours": "40"
     },
@@ -8734,6 +9033,12 @@
       "competencyCategory": "소프트웨어 개발 역량",
       "targetCompetencyId": "COMP_SW_01",
       "fieldCatCode": "COMPCAT_Service_Public",
+      "relatedCompetencyIds": [
+        "COMP_35",
+        "COMP_38",
+        "COMP_49",
+        "COMP_52"
+      ],
       "budgetCode": "BUDGET_STRAT_07",
       "hours": "40"
     },
@@ -8754,6 +9059,11 @@
       "competencyCategory": "기술보안 역량",
       "targetCompetencyId": "COMP_CloudSec",
       "fieldCatCode": "COMPCAT_Software",
+      "relatedCompetencyIds": [
+        "COMP_35",
+        "COMP_38",
+        "COMP_40"
+      ],
       "budgetCode": "BUDGET_STRAT_02",
       "hours": "24"
     },
@@ -8774,6 +9084,11 @@
       "competencyCategory": "기술보안 역량",
       "targetCompetencyId": "COMP_CloudSec",
       "fieldCatCode": "COMPCAT_Software",
+      "relatedCompetencyIds": [
+        "COMP_35",
+        "COMP_38",
+        "COMP_40"
+      ],
       "budgetCode": "BUDGET_STRAT_02",
       "hours": "24"
     },
@@ -8794,6 +9109,11 @@
       "competencyCategory": "기술보안 역량",
       "targetCompetencyId": "COMP_CloudSec",
       "fieldCatCode": "COMPCAT_Software",
+      "relatedCompetencyIds": [
+        "COMP_35",
+        "COMP_38",
+        "COMP_40"
+      ],
       "budgetCode": "BUDGET_STRAT_02",
       "hours": "24"
     },
@@ -8814,6 +9134,11 @@
       "competencyCategory": "기술보안 역량",
       "targetCompetencyId": "COMP_CloudSec",
       "fieldCatCode": "COMPCAT_Software",
+      "relatedCompetencyIds": [
+        "COMP_35",
+        "COMP_38",
+        "COMP_40"
+      ],
       "budgetCode": "",
       "hours": "32"
     },
@@ -8834,6 +9159,12 @@
       "competencyCategory": "기술보안 역량",
       "targetCompetencyId": "COMP_CloudSec",
       "fieldCatCode": "COMPCAT_Software",
+      "relatedCompetencyIds": [
+        "COMP_27",
+        "COMP_35",
+        "COMP_38",
+        "COMP_40"
+      ],
       "budgetCode": "BUDGET_STRAT_02",
       "hours": "32"
     },
@@ -8854,6 +9185,12 @@
       "competencyCategory": "기술보안 역량",
       "targetCompetencyId": "COMP_CloudSec",
       "fieldCatCode": "COMPCAT_Software",
+      "relatedCompetencyIds": [
+        "COMP_35",
+        "COMP_38",
+        "COMP_40",
+        "COMP_91"
+      ],
       "budgetCode": "BUDGET_STRAT_02",
       "hours": "32"
     },
@@ -8874,6 +9211,12 @@
       "competencyCategory": "기술보안 역량",
       "targetCompetencyId": "COMP_CloudSec",
       "fieldCatCode": "COMPCAT_Software",
+      "relatedCompetencyIds": [
+        "COMP_35",
+        "COMP_38",
+        "COMP_40",
+        "COMP_89"
+      ],
       "budgetCode": "BUDGET_STRAT_02",
       "hours": "32"
     },
@@ -8894,6 +9237,12 @@
       "competencyCategory": "기술보안 역량",
       "targetCompetencyId": "COMP_CloudSec",
       "fieldCatCode": "COMPCAT_Software",
+      "relatedCompetencyIds": [
+        "COMP_35",
+        "COMP_38",
+        "COMP_40",
+        "COMP_67"
+      ],
       "budgetCode": "BUDGET_STRAT_02",
       "hours": "40"
     },
@@ -8914,6 +9263,12 @@
       "competencyCategory": "기술보안 역량",
       "targetCompetencyId": "COMP_CloudSec",
       "fieldCatCode": "COMPCAT_Software",
+      "relatedCompetencyIds": [
+        "COMP_33",
+        "COMP_35",
+        "COMP_38",
+        "COMP_40"
+      ],
       "budgetCode": "BUDGET_STRAT_02",
       "hours": "40"
     },
@@ -8934,6 +9289,11 @@
       "competencyCategory": "기술보안 역량",
       "targetCompetencyId": "COMP_CloudSec",
       "fieldCatCode": "COMPCAT_Software",
+      "relatedCompetencyIds": [
+        "COMP_35",
+        "COMP_38",
+        "COMP_40"
+      ],
       "budgetCode": "BUDGET_STRAT_02",
       "hours": "40"
     },
@@ -8954,6 +9314,11 @@
       "competencyCategory": "반도체 설계 역량",
       "targetCompetencyId": "COMP_Semiconductor",
       "fieldCatCode": "COMPCAT_Manufacturing",
+      "relatedCompetencyIds": [
+        "COMP_35",
+        "COMP_38",
+        "COMP_90"
+      ],
       "budgetCode": "BUDGET_STRAT_04",
       "hours": "24"
     },
@@ -8974,6 +9339,12 @@
       "competencyCategory": "반도체 설계 역량",
       "targetCompetencyId": "COMP_Semiconductor",
       "fieldCatCode": "COMPCAT_Manufacturing",
+      "relatedCompetencyIds": [
+        "COMP_35",
+        "COMP_38",
+        "COMP_40",
+        "COMP_90"
+      ],
       "budgetCode": "BUDGET_STRAT_04",
       "hours": "24"
     },
@@ -8994,6 +9365,13 @@
       "competencyCategory": "반도체 설계 역량",
       "targetCompetencyId": "COMP_Semiconductor",
       "fieldCatCode": "COMPCAT_Manufacturing",
+      "relatedCompetencyIds": [
+        "COMP_35",
+        "COMP_38",
+        "COMP_60",
+        "COMP_89",
+        "COMP_90"
+      ],
       "budgetCode": "BUDGET_STRAT_04",
       "hours": "24"
     },
@@ -9014,6 +9392,12 @@
       "competencyCategory": "반도체 설계 역량",
       "targetCompetencyId": "COMP_Semiconductor",
       "fieldCatCode": "COMPCAT_Manufacturing",
+      "relatedCompetencyIds": [
+        "COMP_35",
+        "COMP_38",
+        "COMP_40",
+        "COMP_90"
+      ],
       "budgetCode": "BUDGET_STRAT_04",
       "hours": "32"
     },
@@ -9034,6 +9418,11 @@
       "competencyCategory": "반도체 설계 역량",
       "targetCompetencyId": "COMP_Semiconductor",
       "fieldCatCode": "COMPCAT_Manufacturing",
+      "relatedCompetencyIds": [
+        "COMP_35",
+        "COMP_38",
+        "COMP_90"
+      ],
       "budgetCode": "BUDGET_STRAT_04",
       "hours": "32"
     },
@@ -9054,6 +9443,12 @@
       "competencyCategory": "반도체 설계 역량",
       "targetCompetencyId": "COMP_Semiconductor",
       "fieldCatCode": "COMPCAT_Manufacturing",
+      "relatedCompetencyIds": [
+        "COMP_35",
+        "COMP_38",
+        "COMP_40",
+        "COMP_90"
+      ],
       "budgetCode": "BUDGET_STRAT_04",
       "hours": "32"
     },
@@ -9074,6 +9469,12 @@
       "competencyCategory": "반도체 설계 역량",
       "targetCompetencyId": "COMP_Semiconductor",
       "fieldCatCode": "COMPCAT_Manufacturing",
+      "relatedCompetencyIds": [
+        "COMP_35",
+        "COMP_38",
+        "COMP_89",
+        "COMP_90"
+      ],
       "budgetCode": "BUDGET_STRAT_04",
       "hours": "32"
     },
@@ -9094,6 +9495,12 @@
       "competencyCategory": "반도체 설계 역량",
       "targetCompetencyId": "COMP_Semiconductor",
       "fieldCatCode": "COMPCAT_Manufacturing",
+      "relatedCompetencyIds": [
+        "COMP_25",
+        "COMP_35",
+        "COMP_38",
+        "COMP_90"
+      ],
       "budgetCode": "BUDGET_STRAT_04",
       "hours": "40"
     },
@@ -9114,6 +9521,12 @@
       "competencyCategory": "반도체 설계 역량",
       "targetCompetencyId": "COMP_Semiconductor",
       "fieldCatCode": "COMPCAT_Manufacturing",
+      "relatedCompetencyIds": [
+        "COMP_35",
+        "COMP_38",
+        "COMP_89",
+        "COMP_90"
+      ],
       "budgetCode": "BUDGET_STRAT_04",
       "hours": "40"
     },
@@ -9134,6 +9547,12 @@
       "competencyCategory": "반도체 설계 역량",
       "targetCompetencyId": "COMP_Semiconductor",
       "fieldCatCode": "COMPCAT_Manufacturing",
+      "relatedCompetencyIds": [
+        "COMP_35",
+        "COMP_38",
+        "COMP_68",
+        "COMP_90"
+      ],
       "budgetCode": "BUDGET_STRAT_04",
       "hours": "40"
     },
@@ -9154,6 +9573,12 @@
       "competencyCategory": "마케팅 전략 역량",
       "targetCompetencyId": "COMP_DigitalMkt",
       "fieldCatCode": "COMPCAT_CS_Foundation",
+      "relatedCompetencyIds": [
+        "COMP_27",
+        "COMP_28",
+        "COMP_38",
+        "COMP_40"
+      ],
       "budgetCode": "BUDGET_STRAT_02",
       "hours": "40"
     },
@@ -9174,6 +9599,12 @@
       "competencyCategory": "마케팅 전략 역량",
       "targetCompetencyId": "COMP_DigitalMkt",
       "fieldCatCode": "COMPCAT_CS_Foundation",
+      "relatedCompetencyIds": [
+        "COMP_27",
+        "COMP_28",
+        "COMP_38",
+        "COMP_40"
+      ],
       "budgetCode": "BUDGET_STRAT_02",
       "hours": "40"
     },
@@ -9194,6 +9625,12 @@
       "competencyCategory": "마케팅 전략 역량",
       "targetCompetencyId": "COMP_DigitalMkt",
       "fieldCatCode": "COMPCAT_CS_Foundation",
+      "relatedCompetencyIds": [
+        "COMP_27",
+        "COMP_28",
+        "COMP_38",
+        "COMP_40"
+      ],
       "budgetCode": "BUDGET_STRAT_02",
       "hours": "40"
     },
@@ -9214,6 +9651,13 @@
       "competencyCategory": "마케팅 전략 역량",
       "targetCompetencyId": "COMP_DigitalMkt",
       "fieldCatCode": "COMPCAT_CS_Foundation",
+      "relatedCompetencyIds": [
+        "COMP_27",
+        "COMP_28",
+        "COMP_35",
+        "COMP_38",
+        "COMP_40"
+      ],
       "budgetCode": "",
       "hours": "60"
     },
@@ -9234,6 +9678,13 @@
       "competencyCategory": "마케팅 전략 역량",
       "targetCompetencyId": "COMP_DigitalMkt",
       "fieldCatCode": "COMPCAT_CS_Foundation",
+      "relatedCompetencyIds": [
+        "COMP_27",
+        "COMP_28",
+        "COMP_34",
+        "COMP_38",
+        "COMP_40"
+      ],
       "budgetCode": "BUDGET_STRAT_02",
       "hours": "60"
     },
@@ -9254,6 +9705,12 @@
       "competencyCategory": "마케팅 전략 역량",
       "targetCompetencyId": "COMP_DigitalMkt",
       "fieldCatCode": "COMPCAT_CS_Foundation",
+      "relatedCompetencyIds": [
+        "COMP_27",
+        "COMP_28",
+        "COMP_38",
+        "COMP_40"
+      ],
       "budgetCode": "BUDGET_STRAT_02",
       "hours": "60"
     },
@@ -9274,6 +9731,13 @@
       "competencyCategory": "마케팅 전략 역량",
       "targetCompetencyId": "COMP_DigitalMkt",
       "fieldCatCode": "COMPCAT_CS_Foundation",
+      "relatedCompetencyIds": [
+        "COMP_27",
+        "COMP_28",
+        "COMP_33",
+        "COMP_38",
+        "COMP_40"
+      ],
       "budgetCode": "BUDGET_STRAT_02",
       "hours": "60"
     },
@@ -9294,6 +9758,13 @@
       "competencyCategory": "마케팅 전략 역량",
       "targetCompetencyId": "COMP_DigitalMkt",
       "fieldCatCode": "COMPCAT_CS_Foundation",
+      "relatedCompetencyIds": [
+        "COMP_27",
+        "COMP_28",
+        "COMP_35",
+        "COMP_38",
+        "COMP_40"
+      ],
       "budgetCode": "BUDGET_STRAT_02",
       "hours": "80"
     },
@@ -9314,6 +9785,12 @@
       "competencyCategory": "마케팅 전략 역량",
       "targetCompetencyId": "COMP_DigitalMkt",
       "fieldCatCode": "COMPCAT_CS_Foundation",
+      "relatedCompetencyIds": [
+        "COMP_27",
+        "COMP_28",
+        "COMP_38",
+        "COMP_40"
+      ],
       "budgetCode": "",
       "hours": "80"
     },
@@ -9334,6 +9811,13 @@
       "competencyCategory": "마케팅 전략 역량",
       "targetCompetencyId": "COMP_DigitalMkt",
       "fieldCatCode": "COMPCAT_CS_Foundation",
+      "relatedCompetencyIds": [
+        "COMP_27",
+        "COMP_28",
+        "COMP_38",
+        "COMP_40",
+        "COMP_67"
+      ],
       "budgetCode": "BUDGET_STRAT_02",
       "hours": "80"
     },
@@ -9354,6 +9838,13 @@
       "competencyCategory": "녹색기술·탄소중립 역량",
       "targetCompetencyId": "COMP_Green",
       "fieldCatCode": "COMPCAT_Basic_Academic",
+      "relatedCompetencyIds": [
+        "COMP_27",
+        "COMP_28",
+        "COMP_29",
+        "COMP_55",
+        "COMP_74"
+      ],
       "budgetCode": "BUDGET_STRAT_07",
       "hours": "40"
     },
@@ -9374,6 +9865,11 @@
       "competencyCategory": "녹색기술·탄소중립 역량",
       "targetCompetencyId": "COMP_Green",
       "fieldCatCode": "COMPCAT_Basic_Academic",
+      "relatedCompetencyIds": [
+        "COMP_27",
+        "COMP_28",
+        "COMP_29"
+      ],
       "budgetCode": "BUDGET_STRAT_07",
       "hours": "40"
     },
@@ -9394,6 +9890,12 @@
       "competencyCategory": "녹색기술·탄소중립 역량",
       "targetCompetencyId": "COMP_Green",
       "fieldCatCode": "COMPCAT_Basic_Academic",
+      "relatedCompetencyIds": [
+        "COMP_27",
+        "COMP_28",
+        "COMP_29",
+        "COMP_66"
+      ],
       "budgetCode": "BUDGET_STRAT_07",
       "hours": "40"
     },
@@ -9414,6 +9916,13 @@
       "competencyCategory": "녹색기술·탄소중립 역량",
       "targetCompetencyId": "COMP_Green",
       "fieldCatCode": "COMPCAT_Basic_Academic",
+      "relatedCompetencyIds": [
+        "COMP_27",
+        "COMP_28",
+        "COMP_29",
+        "COMP_55",
+        "COMP_58"
+      ],
       "budgetCode": "BUDGET_STRAT_07",
       "hours": "60"
     },
@@ -9434,6 +9943,12 @@
       "competencyCategory": "녹색기술·탄소중립 역량",
       "targetCompetencyId": "COMP_Green",
       "fieldCatCode": "COMPCAT_Basic_Academic",
+      "relatedCompetencyIds": [
+        "COMP_27",
+        "COMP_28",
+        "COMP_29",
+        "COMP_55"
+      ],
       "budgetCode": "BUDGET_STRAT_07",
       "hours": "60"
     },
@@ -9454,6 +9969,11 @@
       "competencyCategory": "녹색기술·탄소중립 역량",
       "targetCompetencyId": "COMP_Green",
       "fieldCatCode": "COMPCAT_Basic_Academic",
+      "relatedCompetencyIds": [
+        "COMP_27",
+        "COMP_28",
+        "COMP_29"
+      ],
       "budgetCode": "BUDGET_STRAT_07",
       "hours": "60"
     },
@@ -9474,6 +9994,12 @@
       "competencyCategory": "녹색기술·탄소중립 역량",
       "targetCompetencyId": "COMP_Green",
       "fieldCatCode": "COMPCAT_Basic_Academic",
+      "relatedCompetencyIds": [
+        "COMP_27",
+        "COMP_28",
+        "COMP_29",
+        "COMP_40"
+      ],
       "budgetCode": "BUDGET_STRAT_07",
       "hours": "60"
     },
@@ -9494,6 +10020,13 @@
       "competencyCategory": "녹색기술·탄소중립 역량",
       "targetCompetencyId": "COMP_Green",
       "fieldCatCode": "COMPCAT_Basic_Academic",
+      "relatedCompetencyIds": [
+        "COMP_22",
+        "COMP_27",
+        "COMP_28",
+        "COMP_29",
+        "COMP_56"
+      ],
       "budgetCode": "BUDGET_STRAT_07",
       "hours": "80"
     },
@@ -9514,6 +10047,11 @@
       "competencyCategory": "녹색기술·탄소중립 역량",
       "targetCompetencyId": "COMP_Green",
       "fieldCatCode": "COMPCAT_Basic_Academic",
+      "relatedCompetencyIds": [
+        "COMP_27",
+        "COMP_28",
+        "COMP_29"
+      ],
       "budgetCode": "BUDGET_STRAT_07",
       "hours": "80"
     },
@@ -9534,6 +10072,13 @@
       "competencyCategory": "녹색기술·탄소중립 역량",
       "targetCompetencyId": "COMP_Green",
       "fieldCatCode": "COMPCAT_Basic_Academic",
+      "relatedCompetencyIds": [
+        "COMP_22",
+        "COMP_27",
+        "COMP_28",
+        "COMP_29",
+        "COMP_55"
+      ],
       "budgetCode": "",
       "hours": "80"
     },
@@ -9554,6 +10099,11 @@
       "competencyCategory": "행정법무 역량",
       "targetCompetencyId": "COMP_AdminLaw",
       "fieldCatCode": "COMPCAT_Social_Value",
+      "relatedCompetencyIds": [
+        "COMP_43",
+        "COMP_52",
+        "COMP_54"
+      ],
       "budgetCode": "",
       "hours": "40"
     },
@@ -9574,6 +10124,11 @@
       "competencyCategory": "행정법무 역량",
       "targetCompetencyId": "COMP_AdminLaw",
       "fieldCatCode": "COMPCAT_Social_Value",
+      "relatedCompetencyIds": [
+        "COMP_43",
+        "COMP_52",
+        "COMP_54"
+      ],
       "budgetCode": "BUDGET_STRAT_05",
       "hours": "40"
     },
@@ -9594,6 +10149,12 @@
       "competencyCategory": "행정법무 역량",
       "targetCompetencyId": "COMP_AdminLaw",
       "fieldCatCode": "COMPCAT_Social_Value",
+      "relatedCompetencyIds": [
+        "COMP_43",
+        "COMP_51",
+        "COMP_52",
+        "COMP_54"
+      ],
       "budgetCode": "BUDGET_STRAT_05",
       "hours": "40"
     },
@@ -9614,6 +10175,11 @@
       "competencyCategory": "행정법무 역량",
       "targetCompetencyId": "COMP_AdminLaw",
       "fieldCatCode": "COMPCAT_Social_Value",
+      "relatedCompetencyIds": [
+        "COMP_43",
+        "COMP_52",
+        "COMP_54"
+      ],
       "budgetCode": "BUDGET_STRAT_05",
       "hours": "60"
     },
@@ -9634,6 +10200,12 @@
       "competencyCategory": "행정법무 역량",
       "targetCompetencyId": "COMP_AdminLaw",
       "fieldCatCode": "COMPCAT_Social_Value",
+      "relatedCompetencyIds": [
+        "COMP_43",
+        "COMP_52",
+        "COMP_54",
+        "COMP_91"
+      ],
       "budgetCode": "BUDGET_STRAT_05",
       "hours": "60"
     },
@@ -9654,6 +10226,11 @@
       "competencyCategory": "행정법무 역량",
       "targetCompetencyId": "COMP_AdminLaw",
       "fieldCatCode": "COMPCAT_Social_Value",
+      "relatedCompetencyIds": [
+        "COMP_43",
+        "COMP_52",
+        "COMP_54"
+      ],
       "budgetCode": "BUDGET_STRAT_05",
       "hours": "60"
     },
@@ -9674,6 +10251,13 @@
       "competencyCategory": "행정법무 역량",
       "targetCompetencyId": "COMP_AdminLaw",
       "fieldCatCode": "COMPCAT_Social_Value",
+      "relatedCompetencyIds": [
+        "COMP_26",
+        "COMP_43",
+        "COMP_50",
+        "COMP_52",
+        "COMP_54"
+      ],
       "budgetCode": "BUDGET_STRAT_05",
       "hours": "60"
     },
@@ -9694,6 +10278,12 @@
       "competencyCategory": "행정법무 역량",
       "targetCompetencyId": "COMP_AdminLaw",
       "fieldCatCode": "COMPCAT_Social_Value",
+      "relatedCompetencyIds": [
+        "COMP_43",
+        "COMP_44",
+        "COMP_52",
+        "COMP_54"
+      ],
       "budgetCode": "",
       "hours": "80"
     },
@@ -9714,6 +10304,12 @@
       "competencyCategory": "행정법무 역량",
       "targetCompetencyId": "COMP_AdminLaw",
       "fieldCatCode": "COMPCAT_Social_Value",
+      "relatedCompetencyIds": [
+        "COMP_43",
+        "COMP_44",
+        "COMP_52",
+        "COMP_54"
+      ],
       "budgetCode": "BUDGET_STRAT_05",
       "hours": "80"
     },
@@ -9734,6 +10330,11 @@
       "competencyCategory": "행정법무 역량",
       "targetCompetencyId": "COMP_AdminLaw",
       "fieldCatCode": "COMPCAT_Social_Value",
+      "relatedCompetencyIds": [
+        "COMP_43",
+        "COMP_52",
+        "COMP_54"
+      ],
       "budgetCode": "BUDGET_STRAT_05",
       "hours": "80"
     },
@@ -9754,6 +10355,12 @@
       "competencyCategory": "AI·인프라 역량",
       "targetCompetencyId": "COMP_AI_01",
       "fieldCatCode": "COMPCAT_Digital_Literacy",
+      "relatedCompetencyIds": [
+        "COMP_30",
+        "COMP_34",
+        "COMP_38",
+        "COMP_50"
+      ],
       "budgetCode": "BUDGET_STRAT_02",
       "hours": "40"
     },
@@ -9774,6 +10381,13 @@
       "competencyCategory": "AI·인프라 역량",
       "targetCompetencyId": "COMP_AI_01",
       "fieldCatCode": "COMPCAT_Digital_Literacy",
+      "relatedCompetencyIds": [
+        "COMP_30",
+        "COMP_34",
+        "COMP_38",
+        "COMP_43",
+        "COMP_54"
+      ],
       "budgetCode": "BUDGET_STRAT_02",
       "hours": "40"
     },
@@ -9794,6 +10408,13 @@
       "competencyCategory": "AI·인프라 역량",
       "targetCompetencyId": "COMP_AI_01",
       "fieldCatCode": "COMPCAT_Digital_Literacy",
+      "relatedCompetencyIds": [
+        "COMP_30",
+        "COMP_33",
+        "COMP_34",
+        "COMP_38",
+        "COMP_39"
+      ],
       "budgetCode": "BUDGET_STRAT_02",
       "hours": "40"
     },
@@ -9814,6 +10435,11 @@
       "competencyCategory": "AI·인프라 역량",
       "targetCompetencyId": "COMP_AI_01",
       "fieldCatCode": "COMPCAT_Digital_Literacy",
+      "relatedCompetencyIds": [
+        "COMP_30",
+        "COMP_34",
+        "COMP_38"
+      ],
       "budgetCode": "BUDGET_STRAT_02",
       "hours": "60"
     },
@@ -9834,6 +10460,11 @@
       "competencyCategory": "AI·인프라 역량",
       "targetCompetencyId": "COMP_AI_01",
       "fieldCatCode": "COMPCAT_Digital_Literacy",
+      "relatedCompetencyIds": [
+        "COMP_30",
+        "COMP_34",
+        "COMP_38"
+      ],
       "budgetCode": "BUDGET_STRAT_02",
       "hours": "60"
     },
@@ -9854,6 +10485,13 @@
       "competencyCategory": "AI·인프라 역량",
       "targetCompetencyId": "COMP_AI_01",
       "fieldCatCode": "COMPCAT_Digital_Literacy",
+      "relatedCompetencyIds": [
+        "COMP_22",
+        "COMP_30",
+        "COMP_34",
+        "COMP_38",
+        "COMP_51"
+      ],
       "budgetCode": "BUDGET_STRAT_02",
       "hours": "60"
     },
@@ -9874,6 +10512,12 @@
       "competencyCategory": "AI·인프라 역량",
       "targetCompetencyId": "COMP_AI_01",
       "fieldCatCode": "COMPCAT_Digital_Literacy",
+      "relatedCompetencyIds": [
+        "COMP_30",
+        "COMP_34",
+        "COMP_38",
+        "COMP_50"
+      ],
       "budgetCode": "BUDGET_STRAT_02",
       "hours": "60"
     },
@@ -9894,6 +10538,13 @@
       "competencyCategory": "AI·인프라 역량",
       "targetCompetencyId": "COMP_AI_01",
       "fieldCatCode": "COMPCAT_Digital_Literacy",
+      "relatedCompetencyIds": [
+        "COMP_25",
+        "COMP_30",
+        "COMP_34",
+        "COMP_38",
+        "COMP_50"
+      ],
       "budgetCode": "BUDGET_STRAT_02",
       "hours": "80"
     },
@@ -9914,6 +10565,13 @@
       "competencyCategory": "AI·인프라 역량",
       "targetCompetencyId": "COMP_AI_01",
       "fieldCatCode": "COMPCAT_Digital_Literacy",
+      "relatedCompetencyIds": [
+        "COMP_28",
+        "COMP_30",
+        "COMP_34",
+        "COMP_38",
+        "COMP_40"
+      ],
       "budgetCode": "BUDGET_STRAT_02",
       "hours": "80"
     },
@@ -9934,6 +10592,13 @@
       "competencyCategory": "AI·인프라 역량",
       "targetCompetencyId": "COMP_AI_01",
       "fieldCatCode": "COMPCAT_Digital_Literacy",
+      "relatedCompetencyIds": [
+        "COMP_15",
+        "COMP_30",
+        "COMP_34",
+        "COMP_38",
+        "COMP_50"
+      ],
       "budgetCode": "BUDGET_STRAT_02",
       "hours": "80"
     },
@@ -9954,6 +10619,12 @@
       "competencyCategory": "데이터 활용 역량",
       "targetCompetencyId": "COMP_DataAnalysis",
       "fieldCatCode": "COMPCAT_Data_Fluency",
+      "relatedCompetencyIds": [
+        "COMP_27",
+        "COMP_29",
+        "COMP_33",
+        "COMP_39"
+      ],
       "budgetCode": "BUDGET_STRAT_02",
       "hours": "40"
     },
@@ -9974,6 +10645,12 @@
       "competencyCategory": "데이터 활용 역량",
       "targetCompetencyId": "COMP_DataAnalysis",
       "fieldCatCode": "COMPCAT_Data_Fluency",
+      "relatedCompetencyIds": [
+        "COMP_27",
+        "COMP_33",
+        "COMP_39",
+        "COMP_56"
+      ],
       "budgetCode": "BUDGET_STRAT_02",
       "hours": "40"
     },
@@ -9994,6 +10671,12 @@
       "competencyCategory": "데이터 활용 역량",
       "targetCompetencyId": "COMP_DataAnalysis",
       "fieldCatCode": "COMPCAT_Data_Fluency",
+      "relatedCompetencyIds": [
+        "COMP_17",
+        "COMP_27",
+        "COMP_33",
+        "COMP_39"
+      ],
       "budgetCode": "BUDGET_STRAT_02",
       "hours": "40"
     },
@@ -10014,6 +10697,11 @@
       "competencyCategory": "데이터 활용 역량",
       "targetCompetencyId": "COMP_DataAnalysis",
       "fieldCatCode": "COMPCAT_Data_Fluency",
+      "relatedCompetencyIds": [
+        "COMP_27",
+        "COMP_33",
+        "COMP_39"
+      ],
       "budgetCode": "BUDGET_STRAT_02",
       "hours": "60"
     },
@@ -10034,6 +10722,12 @@
       "competencyCategory": "데이터 활용 역량",
       "targetCompetencyId": "COMP_DataAnalysis",
       "fieldCatCode": "COMPCAT_Data_Fluency",
+      "relatedCompetencyIds": [
+        "COMP_27",
+        "COMP_33",
+        "COMP_38",
+        "COMP_39"
+      ],
       "budgetCode": "BUDGET_STRAT_02",
       "hours": "60"
     },
@@ -10054,6 +10748,12 @@
       "competencyCategory": "데이터 활용 역량",
       "targetCompetencyId": "COMP_DataAnalysis",
       "fieldCatCode": "COMPCAT_Data_Fluency",
+      "relatedCompetencyIds": [
+        "COMP_27",
+        "COMP_33",
+        "COMP_39",
+        "COMP_67"
+      ],
       "budgetCode": "BUDGET_STRAT_02",
       "hours": "60"
     },
@@ -10074,6 +10774,11 @@
       "competencyCategory": "데이터 활용 역량",
       "targetCompetencyId": "COMP_DataAnalysis",
       "fieldCatCode": "COMPCAT_Data_Fluency",
+      "relatedCompetencyIds": [
+        "COMP_27",
+        "COMP_33",
+        "COMP_39"
+      ],
       "budgetCode": "BUDGET_STRAT_02",
       "hours": "60"
     },
@@ -10094,6 +10799,13 @@
       "competencyCategory": "데이터 활용 역량",
       "targetCompetencyId": "COMP_DataAnalysis",
       "fieldCatCode": "COMPCAT_Data_Fluency",
+      "relatedCompetencyIds": [
+        "COMP_22",
+        "COMP_27",
+        "COMP_33",
+        "COMP_39",
+        "COMP_56"
+      ],
       "budgetCode": "BUDGET_STRAT_02",
       "hours": "80"
     },
@@ -10114,6 +10826,13 @@
       "competencyCategory": "데이터 활용 역량",
       "targetCompetencyId": "COMP_DataAnalysis",
       "fieldCatCode": "COMPCAT_Data_Fluency",
+      "relatedCompetencyIds": [
+        "COMP_27",
+        "COMP_33",
+        "COMP_39",
+        "COMP_53",
+        "COMP_60"
+      ],
       "budgetCode": "BUDGET_STRAT_02",
       "hours": "80"
     },
@@ -10134,6 +10853,11 @@
       "competencyCategory": "데이터 활용 역량",
       "targetCompetencyId": "COMP_DataAnalysis",
       "fieldCatCode": "COMPCAT_Data_Fluency",
+      "relatedCompetencyIds": [
+        "COMP_27",
+        "COMP_33",
+        "COMP_39"
+      ],
       "budgetCode": "BUDGET_STRAT_02",
       "hours": "80"
     },
@@ -10154,6 +10878,11 @@
       "competencyCategory": "소프트웨어 개발 역량",
       "targetCompetencyId": "COMP_SW_01",
       "fieldCatCode": "COMPCAT_Tech_Security",
+      "relatedCompetencyIds": [
+        "COMP_38",
+        "COMP_43",
+        "COMP_44"
+      ],
       "budgetCode": "",
       "hours": "40"
     },
@@ -10174,6 +10903,11 @@
       "competencyCategory": "소프트웨어 개발 역량",
       "targetCompetencyId": "COMP_SW_01",
       "fieldCatCode": "COMPCAT_Tech_Security",
+      "relatedCompetencyIds": [
+        "COMP_38",
+        "COMP_43",
+        "COMP_44"
+      ],
       "budgetCode": "BUDGET_STRAT_03",
       "hours": "40"
     },
@@ -10194,6 +10928,11 @@
       "competencyCategory": "소프트웨어 개발 역량",
       "targetCompetencyId": "COMP_SW_01",
       "fieldCatCode": "COMPCAT_Tech_Security",
+      "relatedCompetencyIds": [
+        "COMP_38",
+        "COMP_43",
+        "COMP_44"
+      ],
       "budgetCode": "BUDGET_STRAT_03",
       "hours": "40"
     },
@@ -10214,6 +10953,11 @@
       "competencyCategory": "소프트웨어 개발 역량",
       "targetCompetencyId": "COMP_SW_01",
       "fieldCatCode": "COMPCAT_Tech_Security",
+      "relatedCompetencyIds": [
+        "COMP_38",
+        "COMP_43",
+        "COMP_44"
+      ],
       "budgetCode": "BUDGET_STRAT_03",
       "hours": "60"
     },
@@ -10234,6 +10978,12 @@
       "competencyCategory": "소프트웨어 개발 역량",
       "targetCompetencyId": "COMP_SW_01",
       "fieldCatCode": "COMPCAT_Tech_Security",
+      "relatedCompetencyIds": [
+        "COMP_35",
+        "COMP_38",
+        "COMP_43",
+        "COMP_44"
+      ],
       "budgetCode": "BUDGET_STRAT_03",
       "hours": "60"
     },
@@ -10254,6 +11004,12 @@
       "competencyCategory": "소프트웨어 개발 역량",
       "targetCompetencyId": "COMP_SW_01",
       "fieldCatCode": "COMPCAT_Tech_Security",
+      "relatedCompetencyIds": [
+        "COMP_38",
+        "COMP_40",
+        "COMP_43",
+        "COMP_44"
+      ],
       "budgetCode": "BUDGET_STRAT_03",
       "hours": "60"
     },
@@ -10274,6 +11030,12 @@
       "competencyCategory": "소프트웨어 개발 역량",
       "targetCompetencyId": "COMP_SW_01",
       "fieldCatCode": "COMPCAT_Tech_Security",
+      "relatedCompetencyIds": [
+        "COMP_35",
+        "COMP_38",
+        "COMP_43",
+        "COMP_44"
+      ],
       "budgetCode": "BUDGET_STRAT_03",
       "hours": "60"
     },
@@ -10294,6 +11056,11 @@
       "competencyCategory": "소프트웨어 개발 역량",
       "targetCompetencyId": "COMP_SW_01",
       "fieldCatCode": "COMPCAT_Tech_Security",
+      "relatedCompetencyIds": [
+        "COMP_38",
+        "COMP_43",
+        "COMP_44"
+      ],
       "budgetCode": "BUDGET_STRAT_03",
       "hours": "80"
     },
@@ -10314,6 +11081,12 @@
       "competencyCategory": "소프트웨어 개발 역량",
       "targetCompetencyId": "COMP_SW_01",
       "fieldCatCode": "COMPCAT_Tech_Security",
+      "relatedCompetencyIds": [
+        "COMP_35",
+        "COMP_38",
+        "COMP_43",
+        "COMP_44"
+      ],
       "budgetCode": "BUDGET_STRAT_03",
       "hours": "80"
     },
@@ -10334,6 +11107,11 @@
       "competencyCategory": "소프트웨어 개발 역량",
       "targetCompetencyId": "COMP_SW_01",
       "fieldCatCode": "COMPCAT_Tech_Security",
+      "relatedCompetencyIds": [
+        "COMP_38",
+        "COMP_43",
+        "COMP_44"
+      ],
       "budgetCode": "BUDGET_STRAT_03",
       "hours": "80"
     },
@@ -10354,6 +11132,7 @@
       "competencyCategory": "마케팅 전략 역량",
       "targetCompetencyId": "COMP_DigitalMkt",
       "fieldCatCode": "COMPCAT_Collaboration",
+      "relatedCompetencyIds": [],
       "budgetCode": "",
       "hours": "8"
     },
@@ -10374,6 +11153,7 @@
       "competencyCategory": "마케팅 전략 역량",
       "targetCompetencyId": "COMP_DigitalMkt",
       "fieldCatCode": "COMPCAT_Collaboration",
+      "relatedCompetencyIds": [],
       "budgetCode": "BUDGET_STRAT_06",
       "hours": "8"
     },
@@ -10394,6 +11174,7 @@
       "competencyCategory": "마케팅 전략 역량",
       "targetCompetencyId": "COMP_DigitalMkt",
       "fieldCatCode": "COMPCAT_Collaboration",
+      "relatedCompetencyIds": [],
       "budgetCode": "BUDGET_STRAT_06",
       "hours": "8"
     },
@@ -10414,6 +11195,7 @@
       "competencyCategory": "마케팅 전략 역량",
       "targetCompetencyId": "COMP_DigitalMkt",
       "fieldCatCode": "COMPCAT_Collaboration",
+      "relatedCompetencyIds": [],
       "budgetCode": "BUDGET_STRAT_06",
       "hours": "16"
     },
@@ -10434,6 +11216,7 @@
       "competencyCategory": "마케팅 전략 역량",
       "targetCompetencyId": "COMP_DigitalMkt",
       "fieldCatCode": "COMPCAT_Collaboration",
+      "relatedCompetencyIds": [],
       "budgetCode": "BUDGET_STRAT_06",
       "hours": "16"
     },
@@ -10454,6 +11237,7 @@
       "competencyCategory": "마케팅 전략 역량",
       "targetCompetencyId": "COMP_DigitalMkt",
       "fieldCatCode": "COMPCAT_Collaboration",
+      "relatedCompetencyIds": [],
       "budgetCode": "BUDGET_STRAT_06",
       "hours": "16"
     },
@@ -10474,6 +11258,7 @@
       "competencyCategory": "마케팅 전략 역량",
       "targetCompetencyId": "COMP_DigitalMkt",
       "fieldCatCode": "COMPCAT_Collaboration",
+      "relatedCompetencyIds": [],
       "budgetCode": "BUDGET_STRAT_06",
       "hours": "16"
     },
@@ -10494,6 +11279,7 @@
       "competencyCategory": "마케팅 전략 역량",
       "targetCompetencyId": "COMP_DigitalMkt",
       "fieldCatCode": "COMPCAT_Collaboration",
+      "relatedCompetencyIds": [],
       "budgetCode": "BUDGET_STRAT_06",
       "hours": "24"
     },
@@ -10514,6 +11300,7 @@
       "competencyCategory": "마케팅 전략 역량",
       "targetCompetencyId": "COMP_DigitalMkt",
       "fieldCatCode": "COMPCAT_Collaboration",
+      "relatedCompetencyIds": [],
       "budgetCode": "BUDGET_STRAT_06",
       "hours": "24"
     },
@@ -10534,6 +11321,7 @@
       "competencyCategory": "마케팅 전략 역량",
       "targetCompetencyId": "COMP_DigitalMkt",
       "fieldCatCode": "COMPCAT_Collaboration",
+      "relatedCompetencyIds": [],
       "budgetCode": "BUDGET_STRAT_06",
       "hours": "24"
     },
@@ -10554,6 +11342,7 @@
       "competencyCategory": "데이터 활용 역량",
       "targetCompetencyId": "COMP_DataAnalysis",
       "fieldCatCode": "COMPCAT_Leadership",
+      "relatedCompetencyIds": [],
       "budgetCode": "BUDGET_STRAT_03",
       "hours": "8"
     },
@@ -10574,6 +11363,7 @@
       "competencyCategory": "데이터 활용 역량",
       "targetCompetencyId": "COMP_DataAnalysis",
       "fieldCatCode": "COMPCAT_Leadership",
+      "relatedCompetencyIds": [],
       "budgetCode": "BUDGET_STRAT_03",
       "hours": "8"
     },
@@ -10594,6 +11384,7 @@
       "competencyCategory": "데이터 활용 역량",
       "targetCompetencyId": "COMP_DataAnalysis",
       "fieldCatCode": "COMPCAT_Leadership",
+      "relatedCompetencyIds": [],
       "budgetCode": "BUDGET_STRAT_03",
       "hours": "8"
     },
@@ -10614,6 +11405,7 @@
       "competencyCategory": "데이터 활용 역량",
       "targetCompetencyId": "COMP_DataAnalysis",
       "fieldCatCode": "COMPCAT_Leadership",
+      "relatedCompetencyIds": [],
       "budgetCode": "BUDGET_STRAT_03",
       "hours": "16"
     },
@@ -10634,6 +11426,7 @@
       "competencyCategory": "데이터 활용 역량",
       "targetCompetencyId": "COMP_DataAnalysis",
       "fieldCatCode": "COMPCAT_Leadership",
+      "relatedCompetencyIds": [],
       "budgetCode": "BUDGET_STRAT_03",
       "hours": "16"
     },
@@ -10654,6 +11447,7 @@
       "competencyCategory": "데이터 활용 역량",
       "targetCompetencyId": "COMP_DataAnalysis",
       "fieldCatCode": "COMPCAT_Leadership",
+      "relatedCompetencyIds": [],
       "budgetCode": "BUDGET_STRAT_03",
       "hours": "16"
     },
@@ -10674,6 +11468,7 @@
       "competencyCategory": "데이터 활용 역량",
       "targetCompetencyId": "COMP_DataAnalysis",
       "fieldCatCode": "COMPCAT_Leadership",
+      "relatedCompetencyIds": [],
       "budgetCode": "BUDGET_STRAT_03",
       "hours": "16"
     },
@@ -10694,6 +11489,7 @@
       "competencyCategory": "데이터 활용 역량",
       "targetCompetencyId": "COMP_DataAnalysis",
       "fieldCatCode": "COMPCAT_Leadership",
+      "relatedCompetencyIds": [],
       "budgetCode": "BUDGET_STRAT_03",
       "hours": "24"
     },
@@ -10714,6 +11510,7 @@
       "competencyCategory": "데이터 활용 역량",
       "targetCompetencyId": "COMP_DataAnalysis",
       "fieldCatCode": "COMPCAT_Leadership",
+      "relatedCompetencyIds": [],
       "budgetCode": "BUDGET_STRAT_03",
       "hours": "24"
     },
@@ -10734,6 +11531,7 @@
       "competencyCategory": "데이터 활용 역량",
       "targetCompetencyId": "COMP_DataAnalysis",
       "fieldCatCode": "COMPCAT_Leadership",
+      "relatedCompetencyIds": [],
       "budgetCode": "BUDGET_STRAT_03",
       "hours": "24"
     },
@@ -10754,6 +11552,7 @@
       "competencyCategory": "소프트웨어 개발 역량",
       "targetCompetencyId": "COMP_SW_01",
       "fieldCatCode": "COMPCAT_Creativity",
+      "relatedCompetencyIds": [],
       "budgetCode": "BUDGET_STRAT_01",
       "hours": "8"
     },
@@ -10774,6 +11573,7 @@
       "competencyCategory": "소프트웨어 개발 역량",
       "targetCompetencyId": "COMP_SW_01",
       "fieldCatCode": "COMPCAT_Creativity",
+      "relatedCompetencyIds": [],
       "budgetCode": "BUDGET_STRAT_01",
       "hours": "8"
     },
@@ -10794,6 +11594,7 @@
       "competencyCategory": "소프트웨어 개발 역량",
       "targetCompetencyId": "COMP_SW_01",
       "fieldCatCode": "COMPCAT_Creativity",
+      "relatedCompetencyIds": [],
       "budgetCode": "",
       "hours": "8"
     },
@@ -10814,6 +11615,7 @@
       "competencyCategory": "소프트웨어 개발 역량",
       "targetCompetencyId": "COMP_SW_01",
       "fieldCatCode": "COMPCAT_Creativity",
+      "relatedCompetencyIds": [],
       "budgetCode": "BUDGET_STRAT_01",
       "hours": "16"
     },
@@ -10834,6 +11636,7 @@
       "competencyCategory": "소프트웨어 개발 역량",
       "targetCompetencyId": "COMP_SW_01",
       "fieldCatCode": "COMPCAT_Creativity",
+      "relatedCompetencyIds": [],
       "budgetCode": "BUDGET_STRAT_01",
       "hours": "16"
     },
@@ -10854,6 +11657,7 @@
       "competencyCategory": "소프트웨어 개발 역량",
       "targetCompetencyId": "COMP_SW_01",
       "fieldCatCode": "COMPCAT_Creativity",
+      "relatedCompetencyIds": [],
       "budgetCode": "BUDGET_STRAT_01",
       "hours": "16"
     },
@@ -10874,6 +11678,7 @@
       "competencyCategory": "소프트웨어 개발 역량",
       "targetCompetencyId": "COMP_SW_01",
       "fieldCatCode": "COMPCAT_Creativity",
+      "relatedCompetencyIds": [],
       "budgetCode": "BUDGET_STRAT_01",
       "hours": "16"
     },
@@ -10894,6 +11699,7 @@
       "competencyCategory": "소프트웨어 개발 역량",
       "targetCompetencyId": "COMP_SW_01",
       "fieldCatCode": "COMPCAT_Creativity",
+      "relatedCompetencyIds": [],
       "budgetCode": "BUDGET_STRAT_01",
       "hours": "24"
     },
@@ -10914,6 +11720,7 @@
       "competencyCategory": "소프트웨어 개발 역량",
       "targetCompetencyId": "COMP_SW_01",
       "fieldCatCode": "COMPCAT_Creativity",
+      "relatedCompetencyIds": [],
       "budgetCode": "BUDGET_STRAT_01",
       "hours": "24"
     },
@@ -10934,6 +11741,7 @@
       "competencyCategory": "소프트웨어 개발 역량",
       "targetCompetencyId": "COMP_SW_01",
       "fieldCatCode": "COMPCAT_Creativity",
+      "relatedCompetencyIds": [],
       "budgetCode": "BUDGET_STRAT_01",
       "hours": "24"
     },
@@ -10954,6 +11762,7 @@
       "competencyCategory": "AI·인프라 역량",
       "targetCompetencyId": "COMP_AI_01",
       "fieldCatCode": "COMPCAT_Thinking_Skill",
+      "relatedCompetencyIds": [],
       "budgetCode": "BUDGET_STRAT_01",
       "hours": "8"
     },
@@ -10974,6 +11783,7 @@
       "competencyCategory": "AI·인프라 역량",
       "targetCompetencyId": "COMP_AI_01",
       "fieldCatCode": "COMPCAT_Thinking_Skill",
+      "relatedCompetencyIds": [],
       "budgetCode": "",
       "hours": "8"
     },
@@ -10994,6 +11804,7 @@
       "competencyCategory": "AI·인프라 역량",
       "targetCompetencyId": "COMP_AI_01",
       "fieldCatCode": "COMPCAT_Thinking_Skill",
+      "relatedCompetencyIds": [],
       "budgetCode": "BUDGET_STRAT_01",
       "hours": "8"
     },
@@ -11014,6 +11825,7 @@
       "competencyCategory": "AI·인프라 역량",
       "targetCompetencyId": "COMP_AI_01",
       "fieldCatCode": "COMPCAT_Thinking_Skill",
+      "relatedCompetencyIds": [],
       "budgetCode": "BUDGET_STRAT_01",
       "hours": "16"
     },
@@ -11034,6 +11846,7 @@
       "competencyCategory": "AI·인프라 역량",
       "targetCompetencyId": "COMP_AI_01",
       "fieldCatCode": "COMPCAT_Thinking_Skill",
+      "relatedCompetencyIds": [],
       "budgetCode": "BUDGET_STRAT_01",
       "hours": "16"
     },
@@ -11054,6 +11867,7 @@
       "competencyCategory": "AI·인프라 역량",
       "targetCompetencyId": "COMP_AI_01",
       "fieldCatCode": "COMPCAT_Thinking_Skill",
+      "relatedCompetencyIds": [],
       "budgetCode": "BUDGET_STRAT_01",
       "hours": "16"
     },
@@ -11074,6 +11888,7 @@
       "competencyCategory": "AI·인프라 역량",
       "targetCompetencyId": "COMP_AI_01",
       "fieldCatCode": "COMPCAT_Thinking_Skill",
+      "relatedCompetencyIds": [],
       "budgetCode": "BUDGET_STRAT_01",
       "hours": "16"
     },
@@ -11094,6 +11909,7 @@
       "competencyCategory": "AI·인프라 역량",
       "targetCompetencyId": "COMP_AI_01",
       "fieldCatCode": "COMPCAT_Thinking_Skill",
+      "relatedCompetencyIds": [],
       "budgetCode": "BUDGET_STRAT_01",
       "hours": "24"
     },
@@ -11114,6 +11930,7 @@
       "competencyCategory": "AI·인프라 역량",
       "targetCompetencyId": "COMP_AI_01",
       "fieldCatCode": "COMPCAT_Thinking_Skill",
+      "relatedCompetencyIds": [],
       "budgetCode": "BUDGET_STRAT_01",
       "hours": "24"
     },
@@ -11134,6 +11951,7 @@
       "competencyCategory": "AI·인프라 역량",
       "targetCompetencyId": "COMP_AI_01",
       "fieldCatCode": "COMPCAT_Thinking_Skill",
+      "relatedCompetencyIds": [],
       "budgetCode": "BUDGET_STRAT_01",
       "hours": "24"
     },
@@ -11154,6 +11972,7 @@
       "competencyCategory": "마케팅 전략 역량",
       "targetCompetencyId": "COMP_DigitalMkt",
       "fieldCatCode": "COMPCAT_Adaptability",
+      "relatedCompetencyIds": [],
       "budgetCode": "",
       "hours": "8"
     },
@@ -11174,6 +11993,7 @@
       "competencyCategory": "마케팅 전략 역량",
       "targetCompetencyId": "COMP_DigitalMkt",
       "fieldCatCode": "COMPCAT_Adaptability",
+      "relatedCompetencyIds": [],
       "budgetCode": "BUDGET_STRAT_07",
       "hours": "8"
     },
@@ -11194,6 +12014,7 @@
       "competencyCategory": "마케팅 전략 역량",
       "targetCompetencyId": "COMP_DigitalMkt",
       "fieldCatCode": "COMPCAT_Adaptability",
+      "relatedCompetencyIds": [],
       "budgetCode": "BUDGET_STRAT_07",
       "hours": "8"
     },
@@ -11214,6 +12035,7 @@
       "competencyCategory": "마케팅 전략 역량",
       "targetCompetencyId": "COMP_DigitalMkt",
       "fieldCatCode": "COMPCAT_Adaptability",
+      "relatedCompetencyIds": [],
       "budgetCode": "BUDGET_STRAT_07",
       "hours": "16"
     },
@@ -11234,6 +12056,7 @@
       "competencyCategory": "마케팅 전략 역량",
       "targetCompetencyId": "COMP_DigitalMkt",
       "fieldCatCode": "COMPCAT_Adaptability",
+      "relatedCompetencyIds": [],
       "budgetCode": "BUDGET_STRAT_07",
       "hours": "16"
     },
@@ -11254,6 +12077,7 @@
       "competencyCategory": "마케팅 전략 역량",
       "targetCompetencyId": "COMP_DigitalMkt",
       "fieldCatCode": "COMPCAT_Adaptability",
+      "relatedCompetencyIds": [],
       "budgetCode": "BUDGET_STRAT_07",
       "hours": "16"
     },
@@ -11274,6 +12098,7 @@
       "competencyCategory": "마케팅 전략 역량",
       "targetCompetencyId": "COMP_DigitalMkt",
       "fieldCatCode": "COMPCAT_Adaptability",
+      "relatedCompetencyIds": [],
       "budgetCode": "BUDGET_STRAT_07",
       "hours": "16"
     },
@@ -11294,6 +12119,7 @@
       "competencyCategory": "마케팅 전략 역량",
       "targetCompetencyId": "COMP_DigitalMkt",
       "fieldCatCode": "COMPCAT_Adaptability",
+      "relatedCompetencyIds": [],
       "budgetCode": "BUDGET_STRAT_07",
       "hours": "24"
     },
@@ -11314,6 +12140,7 @@
       "competencyCategory": "마케팅 전략 역량",
       "targetCompetencyId": "COMP_DigitalMkt",
       "fieldCatCode": "COMPCAT_Adaptability",
+      "relatedCompetencyIds": [],
       "budgetCode": "",
       "hours": "24"
     },
@@ -11334,6 +12161,7 @@
       "competencyCategory": "마케팅 전략 역량",
       "targetCompetencyId": "COMP_DigitalMkt",
       "fieldCatCode": "COMPCAT_Adaptability",
+      "relatedCompetencyIds": [],
       "budgetCode": "BUDGET_STRAT_07",
       "hours": "24"
     },
@@ -11354,6 +12182,7 @@
       "competencyCategory": "디자인 역량",
       "targetCompetencyId": "COMP_Design",
       "fieldCatCode": "COMPCAT_Reliability",
+      "relatedCompetencyIds": [],
       "budgetCode": "BUDGET_STRAT_07",
       "hours": "8"
     },
@@ -11374,6 +12203,7 @@
       "competencyCategory": "디자인 역량",
       "targetCompetencyId": "COMP_Design",
       "fieldCatCode": "COMPCAT_Reliability",
+      "relatedCompetencyIds": [],
       "budgetCode": "BUDGET_STRAT_07",
       "hours": "8"
     },
@@ -11394,6 +12224,7 @@
       "competencyCategory": "디자인 역량",
       "targetCompetencyId": "COMP_Design",
       "fieldCatCode": "COMPCAT_Reliability",
+      "relatedCompetencyIds": [],
       "budgetCode": "BUDGET_STRAT_07",
       "hours": "8"
     },
@@ -11414,6 +12245,7 @@
       "competencyCategory": "디자인 역량",
       "targetCompetencyId": "COMP_Design",
       "fieldCatCode": "COMPCAT_Reliability",
+      "relatedCompetencyIds": [],
       "budgetCode": "BUDGET_STRAT_07",
       "hours": "16"
     },
@@ -11434,6 +12266,7 @@
       "competencyCategory": "디자인 역량",
       "targetCompetencyId": "COMP_Design",
       "fieldCatCode": "COMPCAT_Reliability",
+      "relatedCompetencyIds": [],
       "budgetCode": "BUDGET_STRAT_07",
       "hours": "16"
     },
@@ -11454,6 +12287,7 @@
       "competencyCategory": "디자인 역량",
       "targetCompetencyId": "COMP_Design",
       "fieldCatCode": "COMPCAT_Reliability",
+      "relatedCompetencyIds": [],
       "budgetCode": "BUDGET_STRAT_07",
       "hours": "16"
     },
@@ -11474,6 +12308,7 @@
       "competencyCategory": "디자인 역량",
       "targetCompetencyId": "COMP_Design",
       "fieldCatCode": "COMPCAT_Reliability",
+      "relatedCompetencyIds": [],
       "budgetCode": "BUDGET_STRAT_07",
       "hours": "16"
     },
@@ -11494,6 +12329,7 @@
       "competencyCategory": "디자인 역량",
       "targetCompetencyId": "COMP_Design",
       "fieldCatCode": "COMPCAT_Reliability",
+      "relatedCompetencyIds": [],
       "budgetCode": "",
       "hours": "24"
     },
@@ -11514,6 +12350,7 @@
       "competencyCategory": "디자인 역량",
       "targetCompetencyId": "COMP_Design",
       "fieldCatCode": "COMPCAT_Reliability",
+      "relatedCompetencyIds": [],
       "budgetCode": "BUDGET_STRAT_07",
       "hours": "24"
     },
@@ -11534,6 +12371,7 @@
       "competencyCategory": "디자인 역량",
       "targetCompetencyId": "COMP_Design",
       "fieldCatCode": "COMPCAT_Reliability",
+      "relatedCompetencyIds": [],
       "budgetCode": "BUDGET_STRAT_07",
       "hours": "24"
     }

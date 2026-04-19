@@ -1828,6 +1828,7 @@ const App = {
     const descStr = l2Desc[comp.level2] || '';
 
     const relPrograms = HRDData.programs.filter(p =>
+      (Array.isArray(p.relatedCompetencyIds) && p.relatedCompetencyIds.includes(comp.id)) ||
       p.targetCompetencyId === comp.id ||
       p.competencyCategory === comp.category ||
       (comp.catCode && p.fieldCatCode === comp.catCode)
