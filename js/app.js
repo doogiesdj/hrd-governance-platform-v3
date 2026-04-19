@@ -371,8 +371,9 @@ const App = {
 
     body.querySelectorAll('[data-org-id]').forEach(el => {
       el.addEventListener('click', () => {
-        const org = d.organizations.find(o => o.id === el.dataset.orgId)
-          || (strategy.implementingOrgs || []).find(o => o.id === el.dataset.orgId);
+        const orgRef = (strategy.implementingOrgs || []).find(o => o.id === el.dataset.orgId);
+        const orgId = orgRef ? orgRef.id : el.dataset.orgId;
+        const org = d.organizations.find(o => o.id === orgId);
         if (org) this._pushOrgDetail(org);
       });
     });
@@ -433,9 +434,11 @@ const App = {
       ? `<span class="detail-tag org detail-clickable" ${managingOrgObj ? `data-org-id="${managingOrgObj.id}"` : `data-org-name="${policy.managingOrg}"`}>${policy.managingOrg}${policy.managingOrgAbbr ? ' (' + policy.managingOrgAbbr + ')' : ''}</span>`
       : '';
     const relOrgsHtml = policy.relatedOrgs && policy.relatedOrgs.length
-      ? policy.relatedOrgs.map(orgId => {
+      ? policy.relatedOrgs.map(orgRef => {
+          const orgId = typeof orgRef === 'string' ? orgRef : orgRef.id;
           const org = d.organizations.find(o => o.id === orgId);
-          return `<span class="detail-tag org detail-clickable" data-org-id="${orgId}">${org ? org.name : orgId}</span>`;
+          const label = org ? org.name : (typeof orgRef === 'string' ? orgRef : orgRef.name);
+          return `<span class="detail-tag org detail-clickable" data-org-id="${orgId}">${label}</span>`;
         }).join('')
       : '';
     const relBudgetsHtml = policy.relatedBudgets && policy.relatedBudgets.length
