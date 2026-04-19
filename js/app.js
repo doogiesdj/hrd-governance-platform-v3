@@ -1096,90 +1096,132 @@ const App = {
   },
 
   _showBudgetDetail(budget) {
-    const d = HRDData;
-    const stratId = budget.relatedStrategy;
-    const strategy = stratId ? d.strategies.find(s => s.id === stratId) : null;
+    const body = document.getElementById('detailBody');
+    this._pushDetailWith(body ? body.innerHTML : '', () => {
+      const d = HRDData;
+      const stratId = budget.relatedStrategy;
+      const strategy = stratId ? d.strategies.find(s => s.id === stratId) : null;
 
-    // Direct related policies from budget data, or fall back to strategy-level lookup
-    let relatedPolicies = [];
-    if (budget.relatedPolicies && budget.relatedPolicies.length) {
-      relatedPolicies = budget.relatedPolicies.map(pid => d.policies.find(p => p.id === pid)).filter(Boolean);
-    } else if (stratId) {
-      relatedPolicies = d.policies.filter(p => p.relatedStrategy === stratId);
-    }
-
-    const budgetTypeLabel = budget.budgetType === 'PolicyBudget' ? '정책예산' : budget.budgetType === 'OrgBudget' ? '기관예산' : 'Budget';
-    const typeColor = budget.budgetType === 'PolicyBudget' ? 'rgba(255,100,0,0.15);color:#ff6400;border-color:rgba(255,100,0,0.4)' : 'rgba(255,215,0,0.12);color:#ffd700;border-color:rgba(255,215,0,0.3)';
-
-    const stratBlock = strategy
-      ? `<div class="detail-section">
-          <div class="detail-section-title">연관 전략</div>
-          <div class="detail-tags"><span class="detail-tag org">${strategy.name}</span></div>
-        </div>`
-      : '';
-
-    const managingOrgName = (() => {
-      if (budget.managingOrg) return budget.managingOrg;
-      if (budget.managingOrgId) {
-        const org = d.organizations.find(o => o.id === budget.managingOrgId);
-        return org ? org.name : budget.managingOrgId;
+      let relatedPolicies = [];
+      if (budget.relatedPolicies && budget.relatedPolicies.length) {
+        relatedPolicies = budget.relatedPolicies.map(pid => d.policies.find(p => p.id === pid)).filter(Boolean);
+      } else if (stratId) {
+        relatedPolicies = d.policies.filter(p => p.relatedStrategy === stratId);
       }
-      return null;
-    })();
 
-    const polHtml = relatedPolicies.length
-      ? relatedPolicies.map(p => `<div class="detail-list-item"><span class="detail-dot"></span>${p.name}${p.budgetAmountStr ? ' <span style="color:#ffd700;font-size:11px">· ' + p.budgetAmountStr + '</span>' : ''}</div>`).join('')
-      : '<span class="detail-empty">연관 정책 데이터 없음</span>';
+      const budgetTypeLabel = budget.budgetType === 'PolicyBudget' ? '정책예산' : budget.budgetType === 'OrgBudget' ? '기관예산' : 'Budget';
+      const typeColor = budget.budgetType === 'PolicyBudget' ? 'rgba(255,100,0,0.15);color:#ff6400;border-color:rgba(255,100,0,0.4)' : 'rgba(255,215,0,0.12);color:#ffd700;border-color:rgba(255,215,0,0.3)';
 
-    const execBlock = budget.executedAmount > 0
-      ? `<div class="detail-grid-2">
+      const managingOrg = (() => {
+        if (budget.managingOrgId) return d.organizations.find(o => o.id === budget.managingOrgId) || null;
+        if (budget.managingOrg) return d.organizations.find(o => o.name === budget.managingOrg || o.abbr === budget.managingOrg) || null;
+        return null;
+      })();
+      const managingOrgName = managingOrg ? managingOrg.name : (budget.managingOrg || null);
+
+      const stratBlock = strategy
+        ? `<div class="detail-section">
+            <div class="detail-section-title">연관 전략 <span class="detail-hint">클릭하면 상세 정보</span></div>
+            <div class="detail-tags"><span class="detail-tag org detail-clickable" data-strategy-id="${strategy.id}">${strategy.name}</span></div>
+          </div>`
+        : '';
+
+      const polHtml = relatedPolicies.length
+        ? relatedPolicies.map(p => `<div class="detail-list-item detail-clickable" data-policy-id="${p.id}"><span class="detail-dot"></span>${p.name}${p.budgetAmountStr ? ' <span style="color:#ffd700;font-size:11px">· ' + p.budgetAmountStr + '</span>' : ''}</div>`).join('')
+        : '<span class="detail-empty">연관 정책 데이터 없음</span>';
+
+      const execBlock = budget.executedAmount > 0
+        ? `<div class="detail-grid-2">
+            <div class="detail-section">
+              <div class="detail-section-title">집행 금액</div>
+              <div class="detail-budget-value">${budget.executedAmountStr || d.formatWon(budget.executedAmount)}</div>
+            </div>
+            <div class="detail-section">
+              <div class="detail-section-title">집행률</div>
+              <div class="detail-budget-value">${budget.execRate != null ? budget.execRate + '%' : '-'}</div>
+            </div>
+          </div>` : '';
+
+      const detailBody = document.getElementById('detailBody');
+      if (!detailBody) return;
+      detailBody.innerHTML = `
+        <div class="detail-header">
+          <div class="detail-type-badge" style="background:${typeColor}">${budgetTypeLabel}</div>
+          <h2 class="detail-title">${budget.name}</h2>
+          ${budget.en ? `<div class="detail-en">${budget.en}</div>` : ''}
+        </div>
+
+        <div class="detail-grid-2">
           <div class="detail-section">
-            <div class="detail-section-title">집행 금액</div>
-            <div class="detail-budget-value">${budget.executedAmountStr || d.formatWon(budget.executedAmount)}</div>
+            <div class="detail-section-title">배정 예산</div>
+            <div class="detail-budget-value">${budget.amountStr || d.formatWon(budget.amount || 0)}</div>
           </div>
           <div class="detail-section">
-            <div class="detail-section-title">집행률</div>
-            <div class="detail-budget-value">${budget.execRate != null ? budget.execRate + '%' : '-'}</div>
+            <div class="detail-section-title">회계연도</div>
+            <div class="detail-budget-value">FY${budget.fiscalYear || '2026'}</div>
           </div>
-        </div>` : '';
+        </div>
 
-    const html = `
-      <div class="detail-header">
-        <div class="detail-type-badge" style="background:${typeColor}">${budgetTypeLabel}</div>
-        <h2 class="detail-title">${budget.name}</h2>
-        ${budget.en ? `<div class="detail-en">${budget.en}</div>` : ''}
-      </div>
+        ${execBlock}
 
-      <div class="detail-grid-2">
         <div class="detail-section">
-          <div class="detail-section-title">배정 예산</div>
-          <div class="detail-budget-value">${budget.amountStr || d.formatWon(budget.amount || 0)}</div>
+          <div class="detail-section-title">관리 기관 <span class="detail-hint">클릭하면 상세 정보</span></div>
+          <div class="detail-tags">
+            ${managingOrgName
+              ? `<span class="detail-tag org detail-clickable" ${managingOrg ? `data-org-id="${managingOrg.id}"` : `data-org-name="${managingOrgName}"`}>${managingOrgName}</span>`
+              : '<span class="detail-empty">미지정</span>'}
+          </div>
         </div>
+
+        ${stratBlock}
+
         <div class="detail-section">
-          <div class="detail-section-title">회계연도</div>
-          <div class="detail-budget-value">FY${budget.fiscalYear || '2026'}</div>
+          <div class="detail-section-title">연관 정책 <span class="detail-hint">클릭하면 상세 정보</span> (${relatedPolicies.length}건)</div>
+          <div class="detail-list">${polHtml}</div>
         </div>
-      </div>
+      `;
+      detailBody.scrollTop = 0;
+      const rebind = () => this._bindBudgetDetailClicks(budget, relatedPolicies, strategy);
+      this._currentRebind = rebind;
+      rebind();
+    });
+  },
 
-      ${execBlock}
+  _bindBudgetDetailClicks(budget, relatedPolicies, strategy) {
+    const body = document.getElementById('detailBody');
+    if (!body) return;
+    const d = HRDData;
 
-      <div class="detail-section">
-        <div class="detail-section-title">관리 기관</div>
-        <div class="detail-tags">
-          ${managingOrgName
-            ? `<span class="detail-tag org">${managingOrgName}</span>`
-            : '<span class="detail-empty">미지정</span>'}
-        </div>
-      </div>
+    body.querySelectorAll('[data-org-id]').forEach(el => {
+      el.addEventListener('click', () => {
+        const org = d.organizations.find(o => o.id === el.dataset.orgId);
+        if (org) this._pushOrgDetail(org);
+      });
+    });
 
-      ${stratBlock}
+    body.querySelectorAll('[data-org-name]').forEach(el => {
+      el.addEventListener('click', () => {
+        const org = d.organizations.find(o => o.name === el.dataset.orgName || o.abbr === el.dataset.orgName);
+        if (org) this._pushOrgDetail(org);
+      });
+    });
 
-      <div class="detail-section">
-        <div class="detail-section-title">연관 정책 (${relatedPolicies.length}건)</div>
-        <div class="detail-list">${polHtml}</div>
-      </div>
-    `;
-    this._openDetail(html);
+    body.querySelectorAll('[data-policy-id]').forEach(el => {
+      el.addEventListener('click', () => {
+        const pol = relatedPolicies.find(p => p.id === el.dataset.policyId)
+          || d.policies.find(p => p.id === el.dataset.policyId);
+        if (pol) this._showPolicyDetailPush(pol);
+      });
+    });
+
+    body.querySelectorAll('[data-strategy-id]').forEach(el => {
+      el.addEventListener('click', () => {
+        const strat = strategy && strategy.id === el.dataset.strategyId
+          ? strategy
+          : d.strategies.find(s => s.id === el.dataset.strategyId);
+        if (strat) this._pushStrategyDetail(strat);
+      });
+    });
   },
 
   // --- Program View ---
