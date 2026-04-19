@@ -1773,7 +1773,7 @@ const App = {
     const gapLabel = { competency: '역량분야', org: '기관', strategy: '전략', target: '대상그룹' };
     descEl.innerHTML = `
       <div style="font-size:11px;color:#00d4ff;font-weight:600;letter-spacing:.06em;margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid rgba(0,212,255,0.2)">
-        ${gapLabel[mode] || ''} 현황 · 목표 갭
+        ${gapLabel[mode] || ''} 현황 · 목표 갭 <span style="font-size:10px;color:#607080;font-weight:400">(클릭하면 상세)</span>
       </div>
       ${entries.map(([label, count], i) => {
         const current = currentData[i];
@@ -1782,7 +1782,7 @@ const App = {
         const desc    = descMap[label] || '';
         const pct     = Math.round((current / 100) * 100);
         return `
-          <div class="talent-desc-item" style="margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,0.05)">
+          <div class="talent-desc-item detail-clickable" data-label="${label.replace(/"/g,'&quot;')}" data-mode="${mode}" style="margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,0.05);cursor:pointer">
             <div style="display:flex;align-items:center;gap:6px;margin-bottom:3px">
               <span style="width:8px;height:8px;border-radius:50%;background:#00d4ff;display:inline-block;flex-shrink:0"></span>
               <span style="font-size:12px;font-weight:600;color:#e0e8f0">${label}</span>
@@ -1800,6 +1800,38 @@ const App = {
           </div>`;
       }).join('')}
     `;
+
+    descEl.querySelectorAll('.talent-desc-item[data-label]').forEach(el => {
+      el.addEventListener('click', () => {
+        const label = el.dataset.label;
+        const elMode = el.dataset.mode;
+        const progs = d.programs.filter(p => {
+          switch (elMode) {
+            case 'competency': return (p.competencyCategory || '미분류') === label;
+            case 'org':        return (p.org || '미분류') === label;
+            case 'strategy':   return ((d.strategies.find(s => s.id === p.alignedStrategy) || {}).name || (p.alignedStrategy ? p.alignedStrategy : '미분류')) === label;
+            case 'target':     return (p.targetGroup || '미분류') === label;
+            default: return false;
+          }
+        });
+        switch (elMode) {
+          case 'competency': {
+            const comp = d.competencies.find(c => c.category === label || c.name === label);
+            if (comp) this._showCompetencyDetail(comp);
+            break;
+          }
+          case 'org': this._showTalentOrgDetail(label, progs); break;
+          case 'strategy': {
+            const strat = d.strategies.find(s => s.name === label);
+            if (strat) this._showStrategyDetail(strat);
+            break;
+          }
+          case 'target': this._showTargetDetail(label, progs); break;
+        }
+      });
+    });
+
+    this._renderTalentStats();
   },
 
   _renderTalentStats() {
@@ -1807,59 +1839,66 @@ const App = {
     const statsEl = document.getElementById('talentStats');
     if (!statsEl) return;
 
-    // Group persons by orgId
-    const orgPersonMap = {};
-    d.persons.forEach(p => {
-      const key = p.orgId || '미분류';
-      if (!orgPersonMap[key]) orgPersonMap[key] = [];
-      orgPersonMap[key].push(p);
+    const mode = this._talentClassMode || 'competency';
+    const groupMap = {};
+    d.programs.forEach(p => {
+      let key;
+      switch (mode) {
+        case 'competency': key = p.competencyCategory || '미분류'; break;
+        case 'org':        key = p.org || '미분류'; break;
+        case 'strategy':   key = p.alignedStrategy
+          ? (d.strategies.find(s => s.id === p.alignedStrategy) || {}).name || p.alignedStrategy
+          : '미분류'; break;
+        case 'target':     key = p.targetGroup || '미분류'; break;
+        default:           key = '기타';
+      }
+      if (!groupMap[key]) groupMap[key] = [];
+      groupMap[key].push(p);
     });
 
-    // Fallback: group programs by org if no person data
-    const hasPeople = d.persons.length > 0;
-    if (!hasPeople) {
-      const orgMap = {};
-      d.programs.forEach(p => {
-        const key = p.org || '미분류';
-        if (!orgMap[key]) orgMap[key] = [];
-        orgMap[key].push(p);
-      });
-      const entries = Object.entries(orgMap).sort((a, b) => b[1].length - a[1].length);
-      statsEl.innerHTML = entries.map(([orgName, progs]) => {
-        const abbr = (d.organizations.find(o => o.name === orgName) || {}).abbr || orgName.slice(0, 4);
+    const entries = Object.entries(groupMap).sort((a, b) => b[1].length - a[1].length);
+
+    statsEl.innerHTML = entries.map(([label, progs]) => {
+      let displayLabel = label;
+      let subLabel = `${progs.length}개 프로그램`;
+      if (mode === 'org') {
+        const org = d.organizations.find(o => o.name === label);
+        displayLabel = (org && org.abbr) ? org.abbr : label.slice(0, 5);
         const cats = [...new Set(progs.map(p => p.competencyCategory).filter(Boolean))].length;
-        return `<div class="stat-card talent-stat-card" data-org="${orgName.replace(/"/g, '&quot;')}" style="cursor:pointer">
-          <div class="stat-card-label">${abbr}</div>
-          <div class="stat-card-value">${progs.length}</div>
-          <div class="stat-card-label" style="margin-top:4px;font-size:10px">${cats}개 역량분야</div>
-        </div>`;
-      }).join('');
-      statsEl.querySelectorAll('.talent-stat-card').forEach(card => {
-        card.addEventListener('click', () => {
-          const orgName = card.dataset.org;
-          this._showTalentOrgDetail(orgName, orgMap[orgName] || []);
-        });
-      });
-      return;
-    }
-
-    const entries = Object.entries(orgPersonMap).sort((a, b) => b[1].length - a[1].length);
-
-    statsEl.innerHTML = entries.map(([orgId, persons]) => {
-      const orgInfo = d.organizations.find(o => o.id === orgId) || {};
-      const abbr = orgInfo.abbr || orgInfo.name || orgId.slice(0, 6);
-      const roles = [...new Set(persons.map(p => p.role).filter(Boolean))].length;
-      return `<div class="stat-card talent-stat-card" data-orgid="${orgId.replace(/"/g, '&quot;')}" style="cursor:pointer">
-        <div class="stat-card-label">${abbr}</div>
-        <div class="stat-card-value">${persons.length.toLocaleString()}</div>
-        <div class="stat-card-label" style="margin-top:4px;font-size:10px">${roles}개 역할유형</div>
+        subLabel = `${cats}개 역량분야`;
+      } else if (mode === 'strategy') {
+        displayLabel = label.length > 7 ? label.slice(0, 7) + '…' : label;
+      } else if (mode === 'target') {
+        displayLabel = label.length > 5 ? label.slice(0, 5) + '…' : label;
+      } else {
+        displayLabel = label.length > 6 ? label.slice(0, 6) + '…' : label;
+      }
+      return `<div class="stat-card talent-stat-card" data-label="${label.replace(/"/g,'&quot;')}" data-mode="${mode}" style="cursor:pointer">
+        <div class="stat-card-label">${displayLabel}</div>
+        <div class="stat-card-value">${progs.length}</div>
+        <div class="stat-card-label" style="margin-top:4px;font-size:10px">${subLabel}</div>
       </div>`;
     }).join('');
 
     statsEl.querySelectorAll('.talent-stat-card').forEach(card => {
       card.addEventListener('click', () => {
-        const orgId = card.dataset.orgid;
-        this._showTalentPersonDetail(orgId, orgPersonMap[orgId] || []);
+        const label = card.dataset.label;
+        const progs = groupMap[label] || [];
+        switch (mode) {
+          case 'org': this._showTalentOrgDetail(label, progs); break;
+          case 'competency': {
+            const comp = d.competencies.find(c => c.category === label || c.name === label);
+            if (comp) this._showCompetencyDetail(comp);
+            else this._showTalentOrgDetail(label, progs);
+            break;
+          }
+          case 'strategy': {
+            const strat = d.strategies.find(s => s.name === label);
+            if (strat) this._showStrategyDetail(strat);
+            break;
+          }
+          case 'target': this._showTargetDetail(label, progs); break;
+        }
       });
     });
   },
@@ -1934,6 +1973,94 @@ const App = {
         el.addEventListener('click', () => {
           const org = HRDData.organizations.find(o => o.id === el.dataset.orgId);
           if (org) this._pushOrgDetail(org);
+        });
+      });
+    };
+    this._currentRebind = rebind;
+    rebind();
+  },
+
+  _showTargetDetail(targetLabel, programs) {
+    const d = HRDData;
+    const orgs = [...new Set(programs.map(p => p.org).filter(Boolean))];
+    const strategies = [...new Map(programs.map(p => {
+      if (!p.alignedStrategy) return null;
+      const s = d.strategies.find(st => st.id === p.alignedStrategy);
+      return s ? [s.id, s] : null;
+    }).filter(Boolean)).values()];
+    const totalHours = programs.reduce((s, p) => s + (parseInt(p.hours) || 0), 0);
+
+    const orgHtml = orgs.length
+      ? orgs.map(o => {
+          const org = d.organizations.find(x => x.name === o);
+          return org
+            ? `<span class="detail-tag org detail-clickable" data-org-id="${org.id}">${o}</span>`
+            : `<span class="detail-tag org">${o}</span>`;
+        }).join('')
+      : '<span class="detail-empty">없음</span>';
+
+    const stratHtml = strategies.length
+      ? strategies.map(s => `<span class="detail-tag org detail-clickable" data-strategy-id="${s.id}">${s.name}</span>`).join('')
+      : '<span class="detail-empty">없음</span>';
+
+    const progListHtml = programs.map(p => `
+      <div class="detail-list-item detail-clickable" data-program-id="${p.id}">
+        <span class="detail-dot"></span>
+        <span style="flex:1">${p.name}</span>
+        <span style="color:#a0aab8;font-size:11px">${p.org || ''} · ${p.hours || '?'}h</span>
+      </div>
+    `).join('');
+
+    const html = `
+      <div class="detail-header-block">
+        <div class="detail-strategy-label">TARGET GROUP</div>
+        <h2 class="detail-title">${targetLabel}</h2>
+      </div>
+
+      <div class="detail-grid-2">
+        <div class="detail-section">
+          <div class="detail-section-title">프로그램 수</div>
+          <div class="detail-budget-value">${programs.length}개</div>
+        </div>
+        <div class="detail-section">
+          <div class="detail-section-title">총 교육 시간</div>
+          <div class="detail-budget-value">${totalHours.toLocaleString()}h</div>
+        </div>
+      </div>
+
+      <div class="detail-section">
+        <div class="detail-section-title">운영 기관 <span class="detail-hint">클릭하면 상세 정보</span></div>
+        <div class="detail-tags">${orgHtml}</div>
+      </div>
+      <div class="detail-section">
+        <div class="detail-section-title">연관 전략 <span class="detail-hint">클릭하면 상세 정보</span></div>
+        <div class="detail-tags">${stratHtml}</div>
+      </div>
+      <div class="detail-section">
+        <div class="detail-section-title">프로그램 목록 <span class="detail-hint">클릭하면 상세 정보</span></div>
+        <div class="detail-list">${progListHtml}</div>
+      </div>
+    `;
+    this._openDetail(html);
+    const rebind = () => {
+      const body = document.getElementById('detailBody');
+      if (!body) return;
+      body.querySelectorAll('[data-org-id]').forEach(el => {
+        el.addEventListener('click', () => {
+          const org = d.organizations.find(o => o.id === el.dataset.orgId);
+          if (org) this._pushOrgDetail(org);
+        });
+      });
+      body.querySelectorAll('[data-strategy-id]').forEach(el => {
+        el.addEventListener('click', () => {
+          const strat = d.strategies.find(s => s.id === el.dataset.strategyId);
+          if (strat) this._pushStrategyDetail(strat);
+        });
+      });
+      body.querySelectorAll('[data-program-id]').forEach(el => {
+        el.addEventListener('click', () => {
+          const prog = d.programs.find(p => p.id === el.dataset.programId);
+          if (prog) this._pushProgramDetail(prog);
         });
       });
     };
