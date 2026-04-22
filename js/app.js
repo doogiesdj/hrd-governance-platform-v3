@@ -283,7 +283,10 @@ const App = {
       : '<span class="detail-empty">연관 정책 데이터 없음</span>';
 
     const orgsHtml = strategy.implementingOrgs && strategy.implementingOrgs.length
-      ? strategy.implementingOrgs.map(o => `<span class="detail-tag org detail-clickable" data-org-id="${o.id}">${o.abbr || o.name}</span>`).join('')
+      ? strategy.implementingOrgs.map(o => {
+          const label = o.abbr ? `${o.abbr} (${o.name})` : o.name;
+          return `<span class="detail-tag org detail-clickable" data-org-id="${o.id}">${label}</span>`;
+        }).join('')
       : '<span class="detail-empty">집행 기관 데이터 없음</span>';
 
     const tgHtml = strategy.targetGroups && strategy.targetGroups.length
@@ -549,7 +552,10 @@ const App = {
         ? strategy.policies.map(p => `<span class="detail-tag detail-clickable" data-policy-id="${p.id}">${p.name}</span>`).join('')
         : '<span class="detail-empty">연관 정책 데이터 없음</span>';
       const orgsHtml = strategy.implementingOrgs && strategy.implementingOrgs.length
-        ? strategy.implementingOrgs.map(o => `<span class="detail-tag org detail-clickable" data-org-id="${o.id}">${o.abbr || o.name}</span>`).join('')
+        ? strategy.implementingOrgs.map(o => {
+            const label = o.abbr ? `${o.abbr} (${o.name})` : o.name;
+            return `<span class="detail-tag org detail-clickable" data-org-id="${o.id}">${label}</span>`;
+          }).join('')
         : '<span class="detail-empty">집행 기관 데이터 없음</span>';
       const compHtml = strategy.competencies && strategy.competencies.length
         ? strategy.competencies.slice(0, 10).map(c => `<span class="detail-tag comp detail-clickable" data-comp-id="${c.id}">${c.name}</span>`).join('')
@@ -605,7 +611,19 @@ const App = {
     const body = document.getElementById('detailBody');
     this._pushDetailWith(body ? body.innerHTML : '', () => {
       const d = HRDData;
-      const policies = d.policies.filter(p => (p.relatedOrgs || []).some(o => o.id === org.id));
+      let policies = d.policies.filter(p =>
+        (p.relatedOrgs || []).some(o => o.id === org.id) ||
+        p.managingOrg === org.name ||
+        (org.abbr && p.managingOrgAbbr === org.abbr)
+      );
+      if (policies.length === 0) {
+        const orgStrategyIds = new Set(
+          d.strategies
+            .filter(s => (s.implementingOrgs || []).some(o => o.id === org.id))
+            .flatMap(s => (s.policies || []).map(p => p.id))
+        );
+        policies = d.policies.filter(p => orgStrategyIds.has(p.id));
+      }
       const polHtml = policies.length
         ? policies.map(p => `<div class="detail-list-item detail-clickable" data-policy-id="${p.id}"><span class="detail-dot"></span>${p.name}</div>`).join('')
         : '<span class="detail-empty">데이터 없음</span>';
