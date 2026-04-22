@@ -316,6 +316,7 @@ const App = {
       <div class="detail-section">
         <div class="detail-section-title">전략 소개</div>
         <p class="detail-description">${strategy.description || `${strategy.name}은 국가 인적자원 개발의 핵심 전략으로, 관련 정책 및 교육 프로그램을 통해 추진됩니다.`}</p>
+        ${strategy.implementingOrgBasis ? `<p class="detail-source"><span class="detail-source-label">📋 근거 문서</span> ${strategy.implementingOrgBasis}</p>` : ''}
       </div>
 
       <div class="detail-grid-2">
@@ -572,6 +573,7 @@ const App = {
         <div class="detail-section">
           <div class="detail-section-title">전략 소개</div>
           <p class="detail-description">${strategy.description || `${strategy.name}은 국가 인적자원 개발의 핵심 전략입니다.`}</p>
+          ${strategy.implementingOrgBasis ? `<p class="detail-source"><span class="detail-source-label">📋 근거 문서</span> ${strategy.implementingOrgBasis}</p>` : ''}
         </div>
         <div class="detail-grid-2">
           <div class="detail-section">
