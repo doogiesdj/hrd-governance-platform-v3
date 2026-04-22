@@ -468,7 +468,11 @@ const App = {
         <h2 class="detail-title">${policy.name}</h2>
         <div class="detail-en">${policy.en || ''}</div>
       </div>
-      ${policy.description ? `<div class="detail-section"><div class="detail-section-title">정책 소개</div><p class="detail-description">${policy.description}</p></div>` : ''}
+      <div class="detail-section">
+        <div class="detail-section-title">정책 소개</div>
+        <p class="detail-description">${policy.description || `${policy.name}은(는) ${policy.relatedStrategyName ? policy.relatedStrategyName + ' 전략과 연계된' : '국가'} 공공정책으로, 인적자원 개발 촉진을 위해 추진됩니다.`}</p>
+        ${policy.basis ? `<p class="detail-source"><span class="detail-source-label">📋 근거 문서</span> ${policy.basis}</p>` : ''}
+      </div>
       <div class="detail-section">
         <div class="detail-section-title">연관 전략 <span class="detail-hint">클릭하면 상세 정보</span></div>
         <div class="detail-tags">${strategyTag}</div>
@@ -1210,6 +1214,12 @@ const App = {
         ${budget.en ? `<div class="detail-en">${budget.en}</div>` : ''}
       </div>
 
+      <div class="detail-section">
+        <div class="detail-section-title">예산 소개</div>
+        <p class="detail-description">${budget.description || `본 예산은 FY${budget.fiscalYear || '2026'} 회계연도에 ${managingOrgName || '관련 기관'}이(가) 관리하는 ${budgetTypeLabel}으로, 인적자원 개발 정책 추진에 활용됩니다.`}</p>
+        ${budget.basis ? `<p class="detail-source"><span class="detail-source-label">📋 근거 문서</span> ${budget.basis}</p>` : ''}
+      </div>
+
       <div class="detail-grid-2">
         <div class="detail-section">
           <div class="detail-section-title">배정 예산</div>
@@ -1528,6 +1538,12 @@ const App = {
         <div class="detail-strategy-label">EDUCATION PROGRAM</div>
         <h2 class="detail-title">${program.name}</h2>
         <div class="detail-en">${program.en || ''}</div>
+      </div>
+
+      <div class="detail-section">
+        <div class="detail-section-title">프로그램 소개</div>
+        <p class="detail-description">${program.description || `본 프로그램은 ${orgDisplay || '관련 기관'}이 운영하는 ${program.competencyCategory || '역량'} 분야 교육 과정으로, ${targetGroupInfo || program.targetGroup || '대상 그룹'}을 위한 인적자원 개발 교육을 제공합니다.`}</p>
+        ${program.basis ? `<p class="detail-source"><span class="detail-source-label">📋 근거 문서</span> ${program.basis}</p>` : ''}
       </div>
 
       <div class="detail-section">
@@ -2039,6 +2055,11 @@ const App = {
         <h2 class="detail-title">${targetLabel}</h2>
       </div>
 
+      <div class="detail-section">
+        <div class="detail-section-title">인재/대상 소개</div>
+        <p class="detail-description">${`'${targetLabel}' 대상 그룹은 총 ${programs.length}개 교육 프로그램(${totalHours.toLocaleString()}시간)에 참여하며, 다양한 역량 개발 기회를 통해 국가 인적자원 육성에 기여합니다.`}</p>
+      </div>
+
       <div class="detail-grid-2">
         <div class="detail-section">
           <div class="detail-section-title">프로그램 수</div>
@@ -2126,6 +2147,11 @@ const App = {
         <h2 class="detail-title">${orgName}</h2>
         <div class="detail-en">${orgInfo.en || ''}</div>
         ${orgInfo.id ? `<div class="detail-tags" style="margin-top:8px"><span class="detail-tag org detail-clickable" data-org-id="${orgInfo.id}">기관 상세보기 →</span></div>` : ''}
+      </div>
+
+      <div class="detail-section">
+        <div class="detail-section-title">기관 소개</div>
+        <p class="detail-description">${`${orgName}은(는) 총 ${programs.length}개 교육 프로그램(${totalHours.toLocaleString()}시간)을 운영하며, 인적자원 개발 교육 프로그램을 통해 역량 강화를 지원하는 기관입니다.`}</p>
       </div>
 
       <div class="detail-grid-2">
@@ -2511,6 +2537,12 @@ const App = {
         <div class="detail-strategy-label" style="color:${clsColor}">${clsKo}</div>
         <h2 class="detail-title">${comp.name || comp.en}</h2>
         <div class="detail-en">${comp.en || ''}</div>
+      </div>
+
+      <div class="detail-section">
+        <div class="detail-section-title">역량 소개</div>
+        <p class="detail-description">${comp.description || descStr || `${comp.name || comp.en}은(는) ${clsKo} 영역의 핵심 역량으로, ${l2 || '해당 역량군'} 분야 인재 육성을 위한 교육 프로그램(${relPrograms.length}개)과 연계됩니다.`}</p>
+        ${comp.basis ? `<p class="detail-source"><span class="detail-source-label">📋 근거 문서</span> ${comp.basis}</p>` : ''}
       </div>
 
       <div class="detail-section">
