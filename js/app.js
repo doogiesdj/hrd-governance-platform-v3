@@ -611,22 +611,18 @@ const App = {
     const body = document.getElementById('detailBody');
     this._pushDetailWith(body ? body.innerHTML : '', () => {
       const d = HRDData;
-      let policies = d.policies.filter(p =>
+      const policies = d.policies.filter(p =>
         (p.relatedOrgs || []).some(o => o.id === org.id) ||
         p.managingOrg === org.name ||
         (org.abbr && p.managingOrgAbbr === org.abbr)
       );
-      if (policies.length === 0) {
-        const orgStrategyIds = new Set(
-          d.strategies
-            .filter(s => (s.implementingOrgs || []).some(o => o.id === org.id))
-            .flatMap(s => (s.policies || []).map(p => p.id))
-        );
-        policies = d.policies.filter(p => orgStrategyIds.has(p.id));
-      }
+      const isCoImplementor = policies.length === 0 &&
+        d.strategies.some(s => (s.implementingOrgs || []).some(o => o.id === org.id));
       const polHtml = policies.length
         ? policies.map(p => `<div class="detail-list-item detail-clickable" data-policy-id="${p.id}"><span class="detail-dot"></span>${p.name}</div>`).join('')
-        : '<span class="detail-empty">데이터 없음</span>';
+        : isCoImplementor
+          ? '<span class="detail-empty">직접 담당 정책 없음 — 전략 공동 집행기관으로 참여</span>'
+          : '<span class="detail-empty">관련 정책 데이터 없음</span>';
       const contactHtml = (org.dept || org.mainTel || org.directTel) ? `
         <div class="detail-section">
           <div class="detail-section-title">담당 정보</div>
@@ -651,7 +647,7 @@ const App = {
         ${contactHtml}
         ${org.description ? `<div class="detail-section"><div class="detail-section-title">설명</div><p class="detail-description">${org.description}</p></div>` : ''}
         <div class="detail-section">
-          <div class="detail-section-title">관련 정책 <span class="detail-hint">클릭하면 상세 정보</span> (${policies.length}건)</div>
+          <div class="detail-section-title">관련 정책${policies.length > 0 ? ` <span class="detail-hint">클릭하면 상세 정보</span> (${policies.length}건)` : ''}</div>
           <div class="detail-list">${polHtml}</div>
         </div>
       `;
