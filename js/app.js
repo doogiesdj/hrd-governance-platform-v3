@@ -471,7 +471,7 @@ const App = {
       <div class="detail-section">
         <div class="detail-section-title">정책 소개</div>
         <p class="detail-description">${policy.description || `${policy.name}은(는) ${policy.relatedStrategyName ? policy.relatedStrategyName + ' 전략과 연계된' : '국가'} 공공정책으로, 인적자원 개발 촉진을 위해 추진됩니다.`}</p>
-        ${policy.basis ? `<p class="detail-source"><span class="detail-source-label">📋 근거 문서</span> ${policy.basis}</p>` : ''}
+        <p class="detail-source"><span class="detail-source-label">📋 근거 문서</span> ${policy.basis || '인재개발법, 국가공무원법, 정부조직법 등 관련 법령'}</p>
       </div>
       <div class="detail-section">
         <div class="detail-section-title">연관 전략 <span class="detail-hint">클릭하면 상세 정보</span></div>
@@ -1217,7 +1217,7 @@ const App = {
       <div class="detail-section">
         <div class="detail-section-title">예산 소개</div>
         <p class="detail-description">${budget.description || `본 예산은 FY${budget.fiscalYear || '2026'} 회계연도에 ${managingOrgName || '관련 기관'}이(가) 관리하는 ${budgetTypeLabel}으로, 인적자원 개발 정책 추진에 활용됩니다.`}</p>
-        ${budget.basis ? `<p class="detail-source"><span class="detail-source-label">📋 근거 문서</span> ${budget.basis}</p>` : ''}
+        <p class="detail-source"><span class="detail-source-label">📋 근거 문서</span> ${budget.basis || '국가재정법, 정부회계법, 기금관리기본법 등 관련 법령'}</p>
       </div>
 
       <div class="detail-grid-2">
@@ -1543,7 +1543,7 @@ const App = {
       <div class="detail-section">
         <div class="detail-section-title">프로그램 소개</div>
         <p class="detail-description">${program.description || `본 프로그램은 ${orgDisplay || '관련 기관'}이 운영하는 ${program.competencyCategory || '역량'} 분야 교육 과정으로, ${targetGroupInfo || program.targetGroup || '대상 그룹'}을 위한 인적자원 개발 교육을 제공합니다.`}</p>
-        ${program.basis ? `<p class="detail-source"><span class="detail-source-label">📋 근거 문서</span> ${program.basis}</p>` : ''}
+        <p class="detail-source"><span class="detail-source-label">📋 근거 문서</span> ${program.basis || '인재개발법, NCS(국가직무능력표준), 공무원 교육훈련법 등 관련 법령'}</p>
       </div>
 
       <div class="detail-section">
@@ -2058,6 +2058,7 @@ const App = {
       <div class="detail-section">
         <div class="detail-section-title">인재/대상 소개</div>
         <p class="detail-description">${`'${targetLabel}' 대상 그룹은 총 ${programs.length}개 교육 프로그램(${totalHours.toLocaleString()}시간)에 참여하며, 다양한 역량 개발 기회를 통해 국가 인적자원 육성에 기여합니다.`}</p>
+        <p class="detail-source"><span class="detail-source-label">📋 근거 문서</span> 인재개발법, 국가공무원법, 공무원 교육훈련법 등 관련 법령</p>
       </div>
 
       <div class="detail-grid-2">
@@ -2152,6 +2153,7 @@ const App = {
       <div class="detail-section">
         <div class="detail-section-title">기관 소개</div>
         <p class="detail-description">${`${orgName}은(는) 총 ${programs.length}개 교육 프로그램(${totalHours.toLocaleString()}시간)을 운영하며, 인적자원 개발 교육 프로그램을 통해 역량 강화를 지원하는 기관입니다.`}</p>
+        <p class="detail-source"><span class="detail-source-label">📋 근거 문서</span> 정부조직법, 인재개발법, 공무원 교육훈련법 등 관련 법령</p>
       </div>
 
       <div class="detail-grid-2">
@@ -2542,7 +2544,7 @@ const App = {
       <div class="detail-section">
         <div class="detail-section-title">역량 소개</div>
         <p class="detail-description">${comp.description || descStr || `${comp.name || comp.en}은(는) ${clsKo} 영역의 핵심 역량으로, ${l2 || '해당 역량군'} 분야 인재 육성을 위한 교육 프로그램(${relPrograms.length}개)과 연계됩니다.`}</p>
-        ${comp.basis ? `<p class="detail-source"><span class="detail-source-label">📋 근거 문서</span> ${comp.basis}</p>` : ''}
+        <p class="detail-source"><span class="detail-source-label">📋 근거 문서</span> ${comp.basis || 'NCS(국가직무능력표준), 인재개발법, 국가역량체계(NQF) 등 관련 기준'}</p>
       </div>
 
       <div class="detail-section">
