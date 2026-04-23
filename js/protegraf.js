@@ -142,6 +142,11 @@ const ProteGraf = (() => {
     '#FFAB91',  // 6+
   ];
 
+  function _textColor(hex) {
+    const r = parseInt(hex.slice(1,3),16), g = parseInt(hex.slice(3,5),16), b = parseInt(hex.slice(5,7),16);
+    return (0.299*r + 0.587*g + 0.114*b) / 255 > 0.5 ? '#1a1a1a' : '#ffffff';
+  }
+
   const _propColors = new Map();
   let _colorIdx = 0;
 
@@ -425,6 +430,7 @@ const ProteGraf = (() => {
         .attr('x', 4).attr('y', 0)
         .attr('text-anchor', 'middle').attr('dominant-baseline', 'middle')
         .attr('class', 'pg-node-lbl')
+        .style('fill', _textColor(depthFill))
         .text(d.id.length > 16 ? d.id.slice(0, 15) + '…' : d.id);
 
       // + / − expand button

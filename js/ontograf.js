@@ -235,6 +235,11 @@ const OntoGraf = (() => {
     ['NationalStrategy', 'targetCompetency', 'Competency', '목표역량'],
   ];
 
+  function _textColor(hex) {
+    const r = parseInt(hex.slice(1,3),16), g = parseInt(hex.slice(3,5),16), b = parseInt(hex.slice(5,7),16);
+    return (0.299*r + 0.587*g + 0.114*b) / 255 > 0.5 ? '#1a1a1a' : '#ffffff';
+  }
+
   // ── Depth-based node fill (depth 0=root, aligned with ProteGraf DEPTH_FILL[1+]) ──
   const DEPTH_FILL = [
     '#BDBDBD',  // 0  (unused — owl:Thing placeholder)
@@ -648,6 +653,7 @@ const OntoGraf = (() => {
           .attr('width', NODE_W).attr('height', NODE_H).attr('rx', 4)
           .style('fill', depthFill);
         sel.append('text').attr('text-anchor', 'middle').attr('dy', '0.35em')
+          .style('fill', _textColor(depthFill))
           .text(d.label.length > 16 ? d.label.slice(0, 15) + '…' : d.label);
       }
     });
