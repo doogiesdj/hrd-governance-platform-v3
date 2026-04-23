@@ -208,53 +208,54 @@ const ProteGraf = (() => {
       links.push({ source: src, target: tgt, prop, kor, color: _edgeColor(prop), _idx: links.length });
     }
 
-    // ── Default overview (no selection) ──
-    if (!_centerCls) {
-      ROOT_CLASSES.forEach(rc => addNode(rc, false));
-      // Add owl:Thing as root
-      addNode('owl:Thing', false);
+    // After collecting all nodes, add EVERY edge between any two visible nodes
+    // This matches Protege OntoGraf behavior
+    function addAllEdges() {
       OBJECT_PROPS.forEach(([s, p, t, k]) => {
         if (nodeSet.has(s) && nodeSet.has(t)) addLink(s, t, p, k);
       });
+      Object.entries(HIERARCHY).forEach(([child, parent]) => {
+        if (nodeSet.has(child) && nodeSet.has(parent)) addLink(child, parent, 'subClassOf', 'subClassOf');
+      });
+    }
+
+    // ── Default overview (no selection) ──
+    if (!_centerCls) {
+      ROOT_CLASSES.forEach(rc => addNode(rc, false));
+      addNode('owl:Thing', false);
+      addAllEdges();
       return { nodes, links };
     }
 
-    // ── Focus mode ──
+    // ── Focus mode: first collect nodes, then add all edges between them ──
     addNode(_centerCls, true);
 
-    // 1. Object properties of center
-    _propsOf(_centerCls).forEach(([s, p, t, k]) => {
-      const nbr = s === _centerCls ? t : s;
-      addNode(nbr, false);
-      addLink(s, t, p, k);
+    // 1. Object property neighbors (both directions)
+    _propsOf(_centerCls).forEach(([s, , t]) => {
+      addNode(s === _centerCls ? t : s, false);
     });
 
     // 2. Hierarchy: parent + children
     const parent = HIERARCHY[_centerCls];
-    if (parent) { addNode(parent, false); addLink(_centerCls, parent, 'subClassOf', 'subClassOf'); }
-    _childrenOf(_centerCls).forEach(ch => { addNode(ch, false); addLink(ch, _centerCls, 'subClassOf', 'subClassOf'); });
+    if (parent) addNode(parent, false);
+    _childrenOf(_centerCls).forEach(ch => addNode(ch, false));
 
-    // 3. Expanded secondary nodes
+    // 3. Expanded secondary nodes' neighborhoods
     _expanded.forEach(expCls => {
       if (!nodeSet.has(expCls)) return;
-      _propsOf(expCls).forEach(([s, p, t, k]) => {
-        const nbr = s === expCls ? t : s;
-        if (!nodeSet.has(nbr)) addNode(nbr, false);
-        addLink(s, t, p, k);
-      });
+      _propsOf(expCls).forEach(([s, , t]) => addNode(s === expCls ? t : s, false));
       const ep = HIERARCHY[expCls];
-      if (ep) { if (!nodeSet.has(ep)) addNode(ep, false); addLink(expCls, ep, 'subClassOf', 'subClassOf'); }
-      _childrenOf(expCls).forEach(ch => {
-        if (!nodeSet.has(ch)) addNode(ch, false);
-        addLink(ch, expCls, 'subClassOf', 'subClassOf');
-      });
+      if (ep) addNode(ep, false);
+      _childrenOf(expCls).forEach(ch => addNode(ch, false));
     });
 
-    // 4. owl:Thing connector
+    // 4. owl:Thing
     if (ROOT_CLASSES.includes(_centerCls) || [...nodeSet].some(n => ROOT_CLASSES.includes(n))) {
       addNode('owl:Thing', false);
-      if (ROOT_CLASSES.includes(_centerCls)) addLink(_centerCls, 'owl:Thing', 'subClassOf', 'subClassOf');
     }
+
+    // 5. Add ALL edges between every visible node pair
+    addAllEdges();
 
     return { nodes, links };
   }
