@@ -235,6 +235,17 @@ const OntoGraf = (() => {
     ['NationalStrategy', 'targetCompetency', 'Competency', '목표역량'],
   ];
 
+  // ── Depth-based node fill (depth 0=root, aligned with ProteGraf DEPTH_FILL[1+]) ──
+  const DEPTH_FILL = [
+    '#BDBDBD',  // 0  (unused — owl:Thing placeholder)
+    '#CE93D8',  // 1  root classes
+    '#90CAF9',  // 2
+    '#80CBC4',  // 3
+    '#A5D6A7',  // 4
+    '#FFD54F',  // 5
+    '#FFAB91',  // 6+
+  ];
+
   // ── Selection state ───────────────────────────────────────────────────────
   const _selClasses = new Set();
   const _selInstances = new Map();
@@ -632,8 +643,10 @@ const OntoGraf = (() => {
         sel.append('text').attr('text-anchor', 'middle').attr('dy', '0.35em')
           .text(d.label.length > 13 ? d.label.slice(0, 12) + '…' : d.label);
       } else {
+        const depthFill = DEPTH_FILL[Math.min(_depthOf(d.id) + 1, DEPTH_FILL.length - 1)];
         sel.append('rect').attr('x', -NODE_W / 2).attr('y', -NODE_H / 2)
-          .attr('width', NODE_W).attr('height', NODE_H).attr('rx', 4);
+          .attr('width', NODE_W).attr('height', NODE_H).attr('rx', 4)
+          .style('fill', depthFill);
         sel.append('text').attr('text-anchor', 'middle').attr('dy', '0.35em')
           .text(d.label.length > 16 ? d.label.slice(0, 15) + '…' : d.label);
       }
