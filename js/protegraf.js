@@ -205,7 +205,7 @@ const ProteGraf = (() => {
 
     function addLink(src, tgt, prop, kor) {
       if (links.some(l => l.source === src && l.target === tgt && l.prop === prop)) return;
-      links.push({ source: src, target: tgt, prop, kor, color: _edgeColor(prop) });
+      links.push({ source: src, target: tgt, prop, kor, color: _edgeColor(prop), _idx: links.length });
     }
 
     // ── Default overview (no selection) ──
@@ -305,10 +305,10 @@ const ProteGraf = (() => {
       const mid = `pga-${i}`;
       colorToMarkerId.set(col, mid);
       defs.append('marker').attr('id', mid)
-        .attr('viewBox', '0 -5 10 10').attr('refX', 10).attr('refY', 0)
-        .attr('markerWidth', 7).attr('markerHeight', 7).attr('orient', 'auto')
-        .append('path').attr('d', 'M0,-5L10,0L0,5')
-        .attr('fill', 'none').attr('stroke', col).attr('stroke-width', 1.8);
+        .attr('viewBox', '-1 -6 12 12').attr('refX', 10).attr('refY', 0)
+        .attr('markerWidth', 9).attr('markerHeight', 9).attr('orient', 'auto')
+        .append('path').attr('d', 'M0,-5L10,0L0,5Z')
+        .attr('fill', 'none').attr('stroke', col).attr('stroke-width', 1.6);
     });
 
     const g = svg.append('g');
@@ -325,13 +325,20 @@ const ProteGraf = (() => {
       }
     });
 
-    // ── Links ──
+    // ── Assign curvature per link (vary direction by index so parallel edges don't overlap) ──
+    const CURVE_BASE = 70;
+    links.forEach((l, i) => {
+      l._curve = ((i % 2 === 0) ? 1 : -1) * (CURVE_BASE + (i % 5) * 18);
+    });
+
+    // ── Links (curved path, hollow arrowhead) ──
     const linkG = g.append('g');
-    const linkSel = linkG.selectAll('line.pg-link').data(links).join('line')
+    const linkSel = linkG.selectAll('path.pg-link').data(links).join('path')
       .attr('class', 'pg-link')
       .attr('stroke', d => d.color)
       .attr('stroke-width', 1.8)
       .attr('stroke-dasharray', '9,5')
+      .attr('fill', 'none')
       .attr('marker-end', d => `url(#${colorToMarkerId.get(d.color)})`);
 
     const labelSel = linkG.selectAll('text.pg-link-lbl').data(links).join('text')
@@ -414,14 +421,36 @@ const ProteGraf = (() => {
       .force('collide', d3.forceCollide(88))
       .on('tick', () => {
         nodeSel.attr('transform', d => `translate(${d.x},${d.y})`);
-        linkSel
-          .attr('x1', d => _edgeEndX(d.source, d.target, true))
-          .attr('y1', d => _edgeEndY(d.source, d.target, true))
-          .attr('x2', d => _edgeEndX(d.source, d.target, false))
-          .attr('y2', d => _edgeEndY(d.source, d.target, false));
+        linkSel.attr('d', d => {
+          const sx = _edgeEndX(d.source, d.target, true);
+          const sy = _edgeEndY(d.source, d.target, true);
+          const tx = _edgeEndX(d.source, d.target, false);
+          const ty = _edgeEndY(d.source, d.target, false);
+          const dx = tx - sx, dy = ty - sy;
+          const len = Math.sqrt(dx * dx + dy * dy) || 1;
+          const c = d._curve || 60;
+          // control point: perpendicular offset from midpoint
+          const cpx = (sx + tx) / 2 - (dy / len) * c;
+          const cpy = (sy + ty) / 2 + (dx / len) * c;
+          return `M${sx},${sy} Q${cpx},${cpy} ${tx},${ty}`;
+        });
         labelSel
-          .attr('x', d => (((d.source.x || 0) + (d.target.x || 0)) / 2))
-          .attr('y', d => (((d.source.y || 0) + (d.target.y || 0)) / 2) - 9);
+          .attr('x', d => {
+            const sx = _edgeEndX(d.source, d.target, true);
+            const tx = _edgeEndX(d.source, d.target, false);
+            const dy2 = (d.target.y || 0) - (d.source.y || 0);
+            const len = Math.sqrt(Math.pow((d.target.x||0)-(d.source.x||0),2)+Math.pow(dy2,2))||1;
+            const c = d._curve || 60;
+            return (sx + tx) / 2 - (dy2 / len) * c * 0.5;
+          })
+          .attr('y', d => {
+            const sy = _edgeEndY(d.source, d.target, true);
+            const ty = _edgeEndY(d.source, d.target, false);
+            const dx2 = (d.target.x || 0) - (d.source.x || 0);
+            const len = Math.sqrt(Math.pow(dx2,2)+Math.pow((d.target.y||0)-(d.source.y||0),2))||1;
+            const c = d._curve || 60;
+            return (sy + ty) / 2 + (dx2 / len) * c * 0.5 - 7;
+          });
       });
 
     _sim = sim;
