@@ -60,6 +60,7 @@ const App = {
       case 'ontology':   this._renderOntology();   break;
       case 'sparql':     this._renderSparql();     break;
       case 'ontograf':   this._renderOntograf();   break;
+      case 'protegraf':  this._renderProtegraf();  break;
       case 'coderef':    this._renderCoderef();    break;
     }
   },
@@ -75,6 +76,14 @@ const App = {
     if (!el || el.dataset.initialized) return;
     el.dataset.initialized = 'true';
     setTimeout(() => OntoGraf.init('ontografMain'), 50);
+  },
+
+  _renderProtegraf() {
+    if (typeof ProteGraf === 'undefined') return;
+    const el = document.getElementById('protegrafMain');
+    if (!el || el.dataset.initialized) return;
+    el.dataset.initialized = 'true';
+    setTimeout(() => ProteGraf.init('protegrafMain'), 50);
   },
 
   _coderefInited: false,
