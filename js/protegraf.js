@@ -142,6 +142,176 @@ const ProteGraf = (() => {
     '#FFAB91',  // 6+
   ];
 
+  // ── Brief Korean descriptions per class ─────────────────────────────────────
+  const CLASS_DESC = {
+    Benefit: '수혜 및 지원 혜택',
+    Budget: '예산 및 재원',
+    CareerHistory: '경력 이력 정보',
+    Certification: '자격 및 인증',
+    Competency: '역량 분류 체계',
+    CompetencyAssessment: '역량 평가',
+    CompetencyCategory: '역량 카테고리',
+    CompetencyGap: '역량 갭 분석',
+    EducationProgram: '교육 훈련 프로그램',
+    EmploymentStatus: '고용 상태',
+    Event: '이벤트 / 이력',
+    HumanResource: '인적 자원',
+    MatchScore: '매칭 점수',
+    NationalStrategy: '국가 HRD 전략',
+    Occupation: '직업 / 직종',
+    Organization: '기관 / 조직',
+    Outcome: '성과 / 결과',
+    Policy: '정책',
+    Recommendation: '추천 / 권고',
+    Region: '지역',
+    StrategicGoal: '전략 목표',
+    TalentSegment: '인재 유형',
+    TargetGroup: '정책 대상 집단',
+    Literacy: '기초 소양',
+    SoftSkill: '소프트 스킬',
+    HardSkill: '직무 전문 기술',
+    Basic_Academic: '기초 학문',
+    Digital_Literacy: '디지털 리터러시',
+    Civic_Literacy: '시민 소양',
+    Social_Value: '사회적 가치',
+    Ethics: '윤리 의식',
+    Global_Citizenship: '세계 시민 의식',
+    Environmental_Awareness: '환경 인식',
+    Language_and_Math: '언어 · 수리',
+    CS_Foundation: 'CS 기초',
+    Foreign_Language: '외국어',
+    Business_Writing: '비즈니스 작문',
+    Numeracy: '수리 능력',
+    Statistics: '통계',
+    Algorithm: '알고리즘',
+    Computer_Science: '컴퓨터 과학',
+    Data_Structure: '자료 구조',
+    OS: '운영체제',
+    Data_and_AI: '데이터 · AI',
+    Data_Fluency: '데이터 활용 능력',
+    Tech_Security: '기술 보안',
+    AI_Utilization: 'AI 활용',
+    Data_Analysis_Basic: '데이터 분석 기초',
+    Privacy_Protection: '개인정보 보호',
+    Network_Ethics: '네트워크 윤리',
+    Info_Security: '정보 보안',
+    Self_Management: '자기 관리',
+    Interpersonal: '대인 관계',
+    Problem_Solving: '문제 해결',
+    Adaptability: '적응력',
+    Reliability: '신뢰성',
+    Time_Management: '시간 관리',
+    Resilience: '회복 탄력성',
+    Continuous_Learning: '지속 학습',
+    Responsibility: '책임감',
+    Integrity: '성실성',
+    Professionalism: '전문성',
+    Collaboration: '협업',
+    Leadership: '리더십',
+    Networking: '네트워킹',
+    Conflict_Management: '갈등 관리',
+    Negotiation: '협상',
+    Motivation: '동기 부여',
+    Coaching: '코칭',
+    Team_Building: '팀 빌딩',
+    Vision_Setting: '비전 수립',
+    Creativity: '창의성',
+    Thinking_Skill: '사고 능력',
+    Design_Thinking: '디자인 씽킹',
+    Innovation: '혁신',
+    Creative_Planning: '창의적 기획',
+    Strategic_Thinking: '전략적 사고',
+    Logical_Reasoning: '논리적 추론',
+    Critical_Analysis: '비판적 분석',
+    Business_Admin: '경영 관리',
+    Industrial_Tech: '산업 기술',
+    ICT_Dev: 'ICT 개발',
+    Management: '관리 / 경영',
+    Marketing_Strategy: '마케팅 전략',
+    Marketing_Sales: '마케팅 · 영업',
+    Strategy: '전략',
+    Legal_Affairs: '법무',
+    HR_Management: '인사 관리',
+    Accounting: '회계',
+    Digital_Branding: '디지털 브랜딩',
+    Market_Research: '시장 조사',
+    Sales_Management: '영업 관리',
+    Service_Public: '서비스 · 공공',
+    Manufacturing: '제조 기술',
+    Public_Admin: '행정',
+    Social_Welfare: '사회 복지',
+    Education_Planning: '교육 기획',
+    Semiconductor_Design: '반도체 설계',
+    Welding: '용접',
+    Quality_Control: '품질 관리',
+    Software: '소프트웨어',
+    AI_and_Infrastructure: 'AI · 인프라',
+    Mobile_App: '모바일 앱',
+    Web_Dev: '웹 개발',
+    Java: 'Java 개발',
+    MLOps: 'MLOps',
+    Cloud_Arch: '클라우드 아키텍처',
+    LLM_Fine_Tuning: 'LLM 파인튜닝',
+    DevOps: 'DevOps',
+    LocalGovernment: '지방자치단체',
+    ResearchCenter: '연구기관',
+    PublicInstitution: '공공기관',
+    GovernmentAgency: '정부기관',
+    CertificationBody: '인증기관',
+    Enterprise: '기업',
+    CentralMinistry: '중앙부처',
+    TuitionSupport: '등록금 지원',
+    EmploymentSubsidy: '고용 보조금',
+    R_D_Project: 'R&D 사업',
+    PublicPolicy: '공공 정책',
+    VoucherProgram: '바우처 사업',
+    TrainingIncentive: '훈련 인센티브',
+    OrgBudget: '기관 예산',
+    PolicyBudget: '정책 예산',
+    StrategyBudget: '전략 예산',
+    K_DigitalTraining: 'K-디지털 훈련',
+    DegreeCourse: '학위 과정',
+    JobRetraining: '직업 재훈련',
+    OnlineModule: '온라인 모듈',
+    WorkshopSeminar: '워크숍 · 세미나',
+    Unemployed: '미취업자',
+    Student: '학생',
+    Incumbent: '재직자',
+    Person: '개인',
+    RetiredProfessional: '퇴직 전문가',
+    HighPerformer: '우수 인재',
+    GangLeng: '강릉',
+    Daejeon: '대전',
+    Inchun: '인천',
+    Busan: '부산',
+    Guangju: '광주',
+    Daegu: '대구',
+    Seoul: '서울',
+    Geoje: '거제',
+    Sejong: '세종',
+    Suwon: '수원',
+    Employment: '취업',
+    Entrepreneurship: '창업',
+    EconomicImpact: '경제적 영향',
+    SocialImpact: '사회적 영향',
+    SkillGrowth: '역량 성장',
+    RevenueGrowth: '매출 성장',
+    PolicyParticipation: '정책 참여',
+    OutcomeMeasurement: '성과 측정',
+    AssessmentEvent: '평가 이벤트',
+    ProgramCompletion: '프로그램 완료',
+    ProgramEnrollment: '프로그램 등록',
+    JuniorTalent: '주니어 인재',
+    Active: '재직 중',
+    Retired: '퇴직',
+    COMPCAT_Leadership: '리더십 역량',
+    COMPCAT_Management: '관리 역량',
+    COMPCAT_Thinking_Skill: '사고 역량',
+    COMPCAT_ICT: 'ICT 역량',
+    COMPCAT_Manufacturing: '제조 역량',
+    COMPCAT_Service: '서비스 역량',
+  };
+
   function _textColor(hex) {
     const r = parseInt(hex.slice(1,3),16), g = parseInt(hex.slice(3,5),16), b = parseInt(hex.slice(5,7),16);
     return (0.299*r + 0.587*g + 0.114*b) / 255 > 0.5 ? '#1a1a1a' : '#ffffff';
@@ -204,6 +374,7 @@ const ProteGraf = (() => {
       _centerCls = hits[0];
       _expanded.clear();
       _renderGraph();
+      _updateTreeSelection(hits[0]);
     }
   }
 
@@ -213,6 +384,55 @@ const ProteGraf = (() => {
     const badge = document.getElementById('pg-result-count');
     if (badge) badge.textContent = '';
     _renderGraph();
+    _updateTreeSelection(null);
+  }
+
+  // ── Left-panel class tree ───────────────────────────────────────────────────
+  function _buildTreeNode(cls, depth) {
+    const children = _childrenOf(cls);
+    const pad = 8 + depth * 14;
+    const desc = CLASS_DESC[cls] || '';
+    const toggle = children.length
+      ? `<span class="pg-tree-toggle" data-cls="${cls}">▶</span>`
+      : `<span class="pg-tree-spacer"></span>`;
+    let html = `<div class="pg-tree-node" style="padding-left:${pad}px">
+      ${toggle}
+      <div class="pg-tree-cls-wrap">
+        <span class="pg-tree-cls" data-cls="${cls}">${cls}</span>
+        ${desc ? `<span class="pg-tree-desc">${desc}</span>` : ''}
+      </div>
+    </div>`;
+    if (children.length) {
+      html += `<div class="pg-tree-children" id="pgc-${cls}" style="display:none;">`;
+      children.forEach(ch => { html += _buildTreeNode(ch, depth + 1); });
+      html += '</div>';
+    }
+    return html;
+  }
+
+  function _buildFullTree() {
+    return ROOT_CLASSES.map(rc => _buildTreeNode(rc, 0)).join('');
+  }
+
+  function _updateTreeSelection(cls) {
+    document.querySelectorAll('.pg-tree-cls').forEach(el => {
+      el.classList.toggle('pg-tree-cls-active', el.dataset.cls === cls);
+    });
+    if (!cls) return;
+    // Expand ancestors so selected node is visible
+    let cur = HIERARCHY[cls];
+    while (cur) {
+      const ch = document.getElementById('pgc-' + cur);
+      if (ch && ch.style.display === 'none') {
+        ch.style.display = 'block';
+        const tog = document.querySelector(`.pg-tree-toggle[data-cls="${cur}"]`);
+        if (tog) tog.textContent = '▼';
+      }
+      cur = HIERARCHY[cur];
+    }
+    // Scroll selected node into view
+    const el = document.querySelector(`.pg-tree-cls[data-cls="${cls}"]`);
+    if (el) el.scrollIntoView({ block: 'nearest' });
   }
 
   // ── Graph data builder ──────────────────────────────────────────────────────
@@ -500,7 +720,7 @@ const ProteGraf = (() => {
     wrap.innerHTML = `
       <div class="pg-layout">
         <div class="pg-toolbar">
-          <span class="pg-toolbar-logo">OntoGraf</span>
+          <span class="pg-toolbar-logo">ProteGraf</span>
           <span class="pg-toolbar-sep"></span>
           <span class="pg-toolbar-label">Search:</span>
           <input id="pg-search-input" type="text" class="pg-search-input" placeholder="class name…" autocomplete="off"/>
@@ -514,8 +734,40 @@ const ProteGraf = (() => {
           <span id="pg-result-count" class="pg-result-count"></span>
           <span class="pg-toolbar-hint">노드 클릭: 포커스 전환 &nbsp;|&nbsp; [+] 클릭: 이웃 확장 &nbsp;|&nbsp; 드래그: 이동 &nbsp;|&nbsp; 스크롤: 줌</span>
         </div>
-        <div id="pg-graph-wrap" class="pg-graph-wrap"></div>
+        <div class="pg-body">
+          <div class="pg-left-panel">
+            <div class="pg-left-header">클래스 계층</div>
+            <div class="pg-tree-scroll" id="pg-tree-scroll"></div>
+          </div>
+          <div id="pg-graph-wrap" class="pg-graph-wrap"></div>
+        </div>
       </div>`;
+
+    document.getElementById('pg-tree-scroll').innerHTML = _buildFullTree();
+
+    document.getElementById('pg-tree-scroll').addEventListener('click', evt => {
+      const tog = evt.target.closest('.pg-tree-toggle');
+      if (tog) {
+        const cls = tog.dataset.cls;
+        const ch = document.getElementById('pgc-' + cls);
+        if (ch) {
+          const open = ch.style.display !== 'none';
+          ch.style.display = open ? 'none' : 'block';
+          tog.textContent = open ? '▶' : '▼';
+        }
+        return;
+      }
+      const clsEl = evt.target.closest('.pg-tree-cls');
+      if (clsEl) {
+        const cls = clsEl.dataset.cls;
+        _centerCls = cls;
+        _expanded.clear();
+        _renderGraph();
+        _updateTreeSelection(cls);
+        const badge = document.getElementById('pg-result-count');
+        if (badge) badge.textContent = '';
+      }
+    });
 
     document.getElementById('pg-search-btn').addEventListener('click', () =>
       _doSearch(document.getElementById('pg-search-input').value,

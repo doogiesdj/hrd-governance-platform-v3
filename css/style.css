@@ -1951,6 +1951,101 @@ body {
   font-size: 12px;
 }
 
+.pg-body {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+.pg-left-panel {
+  width: 220px;
+  flex-shrink: 0;
+  background: #16213e;
+  border-right: 1px solid #0f3460;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.pg-left-header {
+  padding: 8px 10px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #e94560;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid #0f3460;
+  flex-shrink: 0;
+}
+
+.pg-tree-scroll {
+  flex: 1;
+  overflow-y: auto;
+  padding: 6px 0;
+}
+
+.pg-tree-scroll::-webkit-scrollbar { width: 5px; }
+.pg-tree-scroll::-webkit-scrollbar-track { background: #16213e; }
+.pg-tree-scroll::-webkit-scrollbar-thumb { background: #0f3460; border-radius: 3px; }
+
+.pg-tree-node {
+  display: flex;
+  align-items: flex-start;
+  gap: 4px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-right: 6px;
+  cursor: default;
+}
+
+.pg-tree-toggle {
+  font-size: 9px;
+  color: #6e7681;
+  cursor: pointer;
+  flex-shrink: 0;
+  width: 12px;
+  line-height: 18px;
+  user-select: none;
+}
+
+.pg-tree-toggle:hover { color: #e94560; }
+
+.pg-tree-spacer {
+  width: 12px;
+  flex-shrink: 0;
+}
+
+.pg-tree-cls-wrap {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.pg-tree-cls {
+  font-size: 11px;
+  color: #c0c0d0;
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.4;
+}
+
+.pg-tree-cls:hover { color: #e94560; }
+
+.pg-tree-cls-active {
+  color: #e94560 !important;
+  font-weight: 700;
+}
+
+.pg-tree-desc {
+  font-size: 10px;
+  color: #4a5568;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.3;
+}
+
 /* Toolbar */
 .pg-toolbar {
   display: flex;
