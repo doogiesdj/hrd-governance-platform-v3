@@ -326,10 +326,20 @@ const ProteGraf = (() => {
       }
     });
 
-    // ── Assign curvature per link (vary direction by index so parallel edges don't overlap) ──
-    const CURVE_BASE = 70;
-    links.forEach((l, i) => {
-      l._curve = ((i % 2 === 0) ? 1 : -1) * (CURVE_BASE + (i % 5) * 18);
+    // ── Assign curvature per link ──
+    // Group by undirected node-pair; single edge → straight (0), multiple → symmetric fan
+    const pairMap = new Map();
+    links.forEach(l => {
+      const key = [l.source, l.target].sort().join('|||');
+      if (!pairMap.has(key)) pairMap.set(key, []);
+      pairMap.get(key).push(l);
+    });
+    links.forEach(l => {
+      const key = [l.source, l.target].sort().join('|||');
+      const group = pairMap.get(key);
+      const n = group.length;
+      const idx = group.indexOf(l);
+      l._curve = n === 1 ? 0 : (idx - (n - 1) / 2) * 50;
     });
 
     // ── Links (curved path, hollow arrowhead) ──
@@ -427,30 +437,29 @@ const ProteGraf = (() => {
           const sy = _edgeEndY(d.source, d.target, true);
           const tx = _edgeEndX(d.source, d.target, false);
           const ty = _edgeEndY(d.source, d.target, false);
+          if (d._curve === 0) return `M${sx},${sy} L${tx},${ty}`;
           const dx = tx - sx, dy = ty - sy;
           const len = Math.sqrt(dx * dx + dy * dy) || 1;
-          const c = d._curve || 60;
-          // control point: perpendicular offset from midpoint
-          const cpx = (sx + tx) / 2 - (dy / len) * c;
-          const cpy = (sy + ty) / 2 + (dx / len) * c;
+          const cpx = (sx + tx) / 2 - (dy / len) * d._curve;
+          const cpy = (sy + ty) / 2 + (dx / len) * d._curve;
           return `M${sx},${sy} Q${cpx},${cpy} ${tx},${ty}`;
         });
         labelSel
           .attr('x', d => {
             const sx = _edgeEndX(d.source, d.target, true);
             const tx = _edgeEndX(d.source, d.target, false);
+            if (d._curve === 0) return (sx + tx) / 2;
             const dy2 = (d.target.y || 0) - (d.source.y || 0);
             const len = Math.sqrt(Math.pow((d.target.x||0)-(d.source.x||0),2)+Math.pow(dy2,2))||1;
-            const c = d._curve || 60;
-            return (sx + tx) / 2 - (dy2 / len) * c * 0.5;
+            return (sx + tx) / 2 - (dy2 / len) * d._curve * 0.5;
           })
           .attr('y', d => {
             const sy = _edgeEndY(d.source, d.target, true);
             const ty = _edgeEndY(d.source, d.target, false);
+            if (d._curve === 0) return (sy + ty) / 2 - 7;
             const dx2 = (d.target.x || 0) - (d.source.x || 0);
             const len = Math.sqrt(Math.pow(dx2,2)+Math.pow((d.target.y||0)-(d.source.y||0),2))||1;
-            const c = d._curve || 60;
-            return (sy + ty) / 2 + (dx2 / len) * c * 0.5 - 7;
+            return (sy + ty) / 2 + (dx2 / len) * d._curve * 0.5 - 7;
           });
       });
 
