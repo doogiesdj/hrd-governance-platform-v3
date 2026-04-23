@@ -131,6 +131,17 @@ const ProteGraf = (() => {
     '#F9E79F','#FF9A8B','#88D8B0','#FFCC5C','#96CCEA',
   ];
 
+  // ── Depth-based node fill colors (depth 0 = owl:Thing, 1 = root, 2...) ──
+  const DEPTH_FILL = [
+    '#BDBDBD',  // 0  owl:Thing
+    '#CE93D8',  // 1  root classes
+    '#90CAF9',  // 2
+    '#80CBC4',  // 3
+    '#A5D6A7',  // 4
+    '#FFD54F',  // 5
+    '#FFAB91',  // 6+
+  ];
+
   const _propColors = new Map();
   let _colorIdx = 0;
 
@@ -148,6 +159,13 @@ const ProteGraf = (() => {
   let _sim = null;
 
   // ── Helpers ─────────────────────────────────────────────────────────────────
+  function _depthOf(cls) {
+    if (cls === 'owl:Thing') return 0;
+    let d = 1, cur = cls;
+    while (HIERARCHY[cur]) { d++; cur = HIERARCHY[cur]; }
+    return d;
+  }
+
   function _childrenOf(cls) {
     return Object.entries(HIERARCHY).filter(([, p]) => p === cls).map(([c]) => c);
   }
@@ -200,7 +218,7 @@ const ProteGraf = (() => {
     function addNode(id, isFocus) {
       if (nodeSet.has(id)) return;
       nodeSet.add(id);
-      nodes.push({ id, isFocus: !!isFocus });
+      nodes.push({ id, isFocus: !!isFocus, depth: _depthOf(id) });
     }
 
     function addLink(src, tgt, prop, kor) {
@@ -389,11 +407,13 @@ const ProteGraf = (() => {
           .attr('class', 'pg-node-owl-lbl').text('owl:Thing');
         return;
       }
-      // Node box
+      // Node box (fill by hierarchy depth)
+      const depthFill = DEPTH_FILL[Math.min(d.depth, DEPTH_FILL.length - 1)];
       sel.append('rect')
         .attr('x', -NW / 2).attr('y', -NH / 2)
         .attr('width', NW).attr('height', NH)
-        .attr('rx', 4).attr('class', 'pg-node-rect');
+        .attr('rx', 4).attr('class', 'pg-node-rect')
+        .style('fill', depthFill);
 
       // Left yellow dot (Protege style)
       sel.append('circle')
