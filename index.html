@@ -73,25 +73,35 @@
                         <span class="nav-label">역량</span>
                         <span class="nav-text">Competency</span>
                     </button>
-                    <button class="nav-item" data-layer="ontology">
-                        <span class="nav-icon">🕸</span>
-                        <span class="nav-label">온톨로지</span>
-                        <span class="nav-text">Ontology</span>
-                    </button>
+                    <div class="nav-group">
+                        <button class="nav-item nav-group-toggle" data-group="graph">
+                            <span class="nav-icon">📊</span>
+                            <span class="nav-label">그래프</span>
+                            <span class="nav-text">Graph</span>
+                            <span class="nav-group-arrow">▶</span>
+                        </button>
+                        <div class="nav-sub-items" id="nav-group-graph">
+                            <button class="nav-item nav-sub-item" data-layer="ontology">
+                                <span class="nav-icon">🕸</span>
+                                <span class="nav-label">온톨로지</span>
+                                <span class="nav-text">Ontology</span>
+                            </button>
+                            <button class="nav-item nav-sub-item" data-layer="ontograf">
+                                <span class="nav-icon">🗺</span>
+                                <span class="nav-label">온토그래프</span>
+                                <span class="nav-text">OntoGraf</span>
+                            </button>
+                            <button class="nav-item nav-sub-item" data-layer="protegraf">
+                                <span class="nav-icon">🔬</span>
+                                <span class="nav-label">프로테그래프</span>
+                                <span class="nav-text">ProteGraf</span>
+                            </button>
+                        </div>
+                    </div>
                     <button class="nav-item" data-layer="sparql">
                         <span class="nav-icon">🔍</span>
                         <span class="nav-label">SPARQL</span>
                         <span class="nav-text">SPARQL</span>
-                    </button>
-                    <button class="nav-item" data-layer="ontograf">
-                        <span class="nav-icon">🗺</span>
-                        <span class="nav-label">온토그래프</span>
-                        <span class="nav-text">OntoGraf</span>
-                    </button>
-                    <button class="nav-item" data-layer="protegraf">
-                        <span class="nav-icon">🔬</span>
-                        <span class="nav-label">프로테그래프</span>
-                        <span class="nav-text">ProteGraf</span>
                     </button>
                     <button class="nav-item" data-layer="coderef">
                         <span class="nav-icon">📖</span>

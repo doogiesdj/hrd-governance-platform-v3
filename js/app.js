@@ -31,9 +31,20 @@ const App = {
   },
 
   _initNav() {
-    document.querySelectorAll('.nav-item').forEach(btn => {
+    document.querySelectorAll('.nav-group-toggle').forEach(toggle => {
+      toggle.addEventListener('click', () => {
+        const groupId = toggle.dataset.group;
+        const subItems = document.getElementById('nav-group-' + groupId);
+        const isOpen = toggle.classList.contains('open');
+        toggle.classList.toggle('open', !isOpen);
+        subItems.classList.toggle('open', !isOpen);
+      });
+    });
+
+    document.querySelectorAll('.nav-item:not(.nav-group-toggle)').forEach(btn => {
       btn.addEventListener('click', () => {
         const layer = btn.dataset.layer;
+        if (!layer) return;
         document.querySelectorAll('.nav-item').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
         this._switchView(layer);
