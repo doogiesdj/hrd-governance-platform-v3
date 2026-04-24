@@ -370,10 +370,14 @@ Object.assign(App, {
     if (!sankeyEl) {
       sankeyEl = document.createElement('div');
       sankeyEl.id = 'sankey-container';
+      sankeyEl.innerHTML = '<div class="sankey-split"><div class="sankey-chart-panel" id="sankey-chart-panel"></div><div class="sankey-info-panel" id="sankey-info-panel"></div></div>';
       catContent.appendChild(sankeyEl);
     }
     sankeyEl.style.display = 'block';
-    this._renderSankey(sankeyEl);
+    const chartPanel = document.getElementById('sankey-chart-panel');
+    chartPanel.getBoundingClientRect();
+    this._renderSankey(chartPanel);
+    this._renderSankeyInfo(document.getElementById('sankey-info-panel'));
   },
 
   _hideSankeyMode() {
@@ -448,9 +452,9 @@ Object.assign(App, {
       return;
     }
     el.innerHTML = '';
-    const W = el.clientWidth || 820;
+    const W = el.clientWidth || 560;
     const H = Math.max(480, nodes.length * 18);
-    const margin = { top: 10, right: 175, bottom: 20, left: 175 };
+    const margin = { top: 10, right: 100, bottom: 20, left: 100 };
 
     const svg = d3.select(el)
       .append('svg')
@@ -510,5 +514,64 @@ Object.assign(App, {
       .attr('fill', '#c0ccd8')
       .attr('font-size', 11)
       .text(n => n.name.length > 15 ? n.name.slice(0, 14) + '…' : n.name);
+  },
+
+  _buildSankeyInsight() {
+    const { nodes, links } = this._buildSankeyData();
+    if (!links.length) return null;
+    const stratCount = new Set(links.map(l => l.source)).size;
+    const l2Count    = new Set(links.map(l => l.target)).size;
+    const totalConns = links.reduce((s, l) => s + l.value, 0);
+    const maxLink    = links.reduce((best, l) => l.value > best.value ? l : best, { value: 0, source: 0, target: 0 });
+    return {
+      stratCount,
+      l2Count,
+      totalConns,
+      topSource: nodes[maxLink.source]?.name || '',
+      topTarget: nodes[maxLink.target]?.name || '',
+      topValue:  maxLink.value,
+    };
+  },
+
+  _renderSankeyInfo(el) {
+    if (!el) return;
+    const ins = this._buildSankeyInsight();
+    if (!ins) { el.innerHTML = '<p style="color:#6a7f90;padding:20px;font-size:12px">데이터 없음</p>'; return; }
+    el.innerHTML = `
+      <div class="split-info-panel">
+        <h3 class="split-info-title">전략–역량 Sankey 차트</h3>
+        <p class="split-info-desc">
+          HRD <strong>추진전략</strong>(좌측 노드)과 <strong>역량군 L2</strong>(우측 노드)의 연결 흐름을 시각화합니다.
+          흐름의 두께는 해당 전략에서 특정 역량군을 다루는 프로그램 수에 비례합니다.
+        </p>
+        <div class="split-info-stats">
+          <div class="split-stat-item">
+            <span class="split-stat-value">${ins.stratCount}</span>
+            <span class="split-stat-label">연결 전략 수</span>
+          </div>
+          <div class="split-stat-item">
+            <span class="split-stat-value">${ins.l2Count}</span>
+            <span class="split-stat-label">역량군 수</span>
+          </div>
+          <div class="split-stat-item">
+            <span class="split-stat-value">${ins.totalConns}</span>
+            <span class="split-stat-label">총 연결 건수</span>
+          </div>
+        </div>
+        <div class="split-info-highlight">
+          <div class="split-highlight-label">가장 강한 연결</div>
+          <div class="split-highlight-content">${ins.topSource} → ${ins.topTarget}<br><span style="color:#00d4ff;font-weight:700">${ins.topValue}개</span> 프로그램 공유</div>
+        </div>
+        <div class="split-info-howto">
+          <div class="split-howto-title">읽는 방법</div>
+          <ul class="split-howto-list">
+            <li>왼쪽 막대 — 추진전략 노드</li>
+            <li>오른쪽 막대 — 역량군 L2 노드</li>
+            <li>흐름 두께 ∝ 연결 프로그램 수</li>
+            <li>색상은 역량군 종류를 구분</li>
+          </ul>
+        </div>
+      </div>
+    `;
   },
 });

@@ -463,6 +463,21 @@ Object.assign(App, {
       return `rgba(0,212,255,${(0.1 + t * 0.75).toFixed(2)})`;
     };
 
+    let coveredCells = 0;
+    const l2Totals = {};
+    topOrgs.forEach(org => L2_KEYS.forEach(l2 => {
+      const v = (matrix[org] || {})[l2] || 0;
+      if (v) { coveredCells++; l2Totals[l2] = (l2Totals[l2] || 0) + v; }
+    }));
+    const totalCells = topOrgs.length * L2_KEYS.length;
+    const gapCount   = totalCells - coveredCells;
+    const topL2Entry = Object.entries(l2Totals).sort((a, b) => b[1] - a[1])[0];
+    const topL2Name  = topL2Entry ? (L2_SHORT[topL2Entry[0]] || topL2Entry[0]) : '없음';
+    const topL2Val   = topL2Entry ? topL2Entry[1] : 0;
+    const topOrgName = topOrgs[0] || '없음';
+    const topOrgVal  = topOrgs[0] ? orgTotals[topOrgs[0]] : 0;
+    const coverPct   = totalCells ? Math.round(coveredCells / totalCells * 100) : 0;
+
     const headerCells = ['<div class="hm-header"></div>']
       .concat(L2_KEYS.map(k => `<div class="hm-header">${L2_SHORT[k]}</div>`));
 
@@ -478,15 +493,59 @@ Object.assign(App, {
     });
 
     container.innerHTML = `
-      <div class="hm-grid">
-        ${headerCells.join('')}
-        ${rows.join('')}
-      </div>
-      <div class="hm-legend">
-        <span class="hm-legend-label">낮음</span>
-        <div class="hm-legend-bar"></div>
-        <span class="hm-legend-label">높음</span>
-        <span class="hm-legend-label" style="margin-left:8px;color:#8a9aaa">최대 ${globalMax}개 프로그램</span>
+      <div class="hm-split">
+        <div class="hm-chart-panel">
+          <div class="hm-grid">
+            ${headerCells.join('')}
+            ${rows.join('')}
+          </div>
+          <div class="hm-legend">
+            <span class="hm-legend-label">낮음</span>
+            <div class="hm-legend-bar"></div>
+            <span class="hm-legend-label">높음</span>
+            <span class="hm-legend-label" style="margin-left:8px;color:#8a9aaa">최대 ${globalMax}개 프로그램</span>
+          </div>
+        </div>
+        <div class="hm-info-panel">
+          <div class="split-info-panel">
+            <h3 class="split-info-title">기관 × 역량군 히트맵</h3>
+            <p class="split-info-desc">
+              프로그램 수 상위 12개 <strong>기관</strong>(세로)과 9개 <strong>역량군 L2</strong>(가로)의 교차 빈도를 색상 강도로 표현합니다.
+              셀을 클릭하면 해당 기관·역량군의 프로그램 목록을 확인할 수 있습니다.
+            </p>
+            <div class="split-info-stats">
+              <div class="split-stat-item">
+                <span class="split-stat-value">${coverPct}%</span>
+                <span class="split-stat-label">커버리지</span>
+              </div>
+              <div class="split-stat-item">
+                <span class="split-stat-value">${gapCount}</span>
+                <span class="split-stat-label">공백 셀</span>
+              </div>
+              <div class="split-stat-item">
+                <span class="split-stat-value">${coveredCells}</span>
+                <span class="split-stat-label">연결된 셀</span>
+              </div>
+            </div>
+            <div class="split-info-highlight">
+              <div class="split-highlight-label">최다 프로그램 기관</div>
+              <div class="split-highlight-content">${topOrgName}<br><span style="color:#00d4ff;font-weight:700">${topOrgVal}개</span> 프로그램</div>
+            </div>
+            <div class="split-info-highlight" style="margin-top:8px">
+              <div class="split-highlight-label">가장 많이 다뤄진 역량군</div>
+              <div class="split-highlight-content">${topL2Name}<br><span style="color:#00d4ff;font-weight:700">${topL2Val}개</span> 프로그램 연결</div>
+            </div>
+            <div class="split-info-howto">
+              <div class="split-howto-title">읽는 방법</div>
+              <ul class="split-howto-list">
+                <li>진한 파란색 = 프로그램 밀집</li>
+                <li>연한 색 = 연결이 적음</li>
+                <li>'-' = 해당 역량군 미연결</li>
+                <li>셀 클릭 → 프로그램 목록</li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
     `;
 

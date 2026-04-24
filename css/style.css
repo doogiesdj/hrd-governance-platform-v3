@@ -3177,6 +3177,30 @@ mark.coderef-hl { background: #e3b34133; color: #e3b341; border-radius: 2px; pad
 #sankey-container { display: none; padding: 8px 0 16px; width: 100%; }
 #sankey-container svg { overflow: visible; }
 .sankey-empty { color: #6a7f90; font-size: 13px; padding: 40px 20px; text-align: center; }
+.sankey-split { align-items: flex-start; display: flex; gap: 16px; width: 100%; }
+.sankey-chart-panel { flex: 0 0 60%; min-width: 0; overflow-x: auto; }
+.sankey-info-panel { flex: 1; min-width: 180px; }
+.hm-split { align-items: flex-start; display: flex; gap: 16px; width: 100%; }
+.hm-chart-panel { flex: 0 0 60%; min-width: 0; overflow-x: auto; }
+.hm-info-panel { flex: 1; min-width: 180px; }
+.split-info-panel { background: rgba(0,0,0,0.25); border: 1px solid rgba(0,212,255,0.12); border-radius: 8px; padding: 16px; }
+.split-info-title { color: #00d4ff; font-size: 13px; font-weight: 600; margin: 0 0 10px; }
+.split-info-desc { color: #8a9aaa; font-size: 11px; line-height: 1.65; margin: 0 0 14px; }
+.split-info-desc strong { color: #c0ccd8; }
+.split-info-stats { display: grid; gap: 8px; grid-template-columns: repeat(3, 1fr); margin-bottom: 14px; }
+.split-stat-item { background: rgba(0,212,255,0.07); border-radius: 6px; padding: 8px 6px; text-align: center; }
+.split-stat-value { color: #00d4ff; display: block; font-size: 20px; font-weight: 700; line-height: 1.1; }
+.split-stat-label { color: #6a7f90; display: block; font-size: 9px; margin-top: 3px; }
+.split-info-highlight { background: rgba(0,212,255,0.05); border-left: 3px solid rgba(0,212,255,0.5); border-radius: 0 4px 4px 0; margin-bottom: 0; padding: 8px 10px; }
+.split-highlight-label { color: #6a7f90; font-size: 9px; letter-spacing: 0.06em; margin-bottom: 3px; text-transform: uppercase; }
+.split-highlight-content { color: #c0ccd8; font-size: 11px; line-height: 1.5; }
+.split-info-howto { margin-top: 12px; }
+.split-howto-title { color: #6a7f90; font-size: 9px; font-weight: 600; letter-spacing: 0.06em; margin-bottom: 6px; text-transform: uppercase; }
+.split-howto-list { color: #6a7f90; font-size: 10px; line-height: 1.75; margin: 0; padding-left: 14px; }
+@media (max-width: 800px) {
+  .sankey-split, .hm-split { flex-direction: column; }
+  .sankey-chart-panel, .hm-chart-panel { flex: none; width: 100%; }
+}
 
 /* ── Phase 1-3: Coverage Score & Top 10 Recommendations ─────────────── */
 .score-badge { background: rgba(0,212,255,0.12); border: 1px solid rgba(0,212,255,0.3); border-radius: 10px; color: #00d4ff; display: inline-block; font-size: 10px; font-weight: 700; margin-left: 8px; padding: 1px 7px; }
