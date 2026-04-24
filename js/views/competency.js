@@ -410,7 +410,13 @@ Object.assign(App, {
 
   _renderCompetencyHeatmap(container) {
     const d = HRDData;
-    const L2_KEYS = ['Business_Admin','ICT_Dev','Industrial_Tech','Basic_Academic','Civic_Literacy','Digital_Literacy','Interpersonal','Problem_Solving','Self_Management'];
+
+    const L1_GROUPS = [
+      { label: 'HardSkill', color: '#00d4ff', keys: ['Business_Admin','ICT_Dev','Industrial_Tech'] },
+      { label: 'Literacy',  color: '#ffd700', keys: ['Basic_Academic','Civic_Literacy','Digital_Literacy'] },
+      { label: 'SoftSkill', color: '#00ff41', keys: ['Interpersonal','Problem_Solving','Self_Management'] },
+    ];
+    const L2_KEYS = L1_GROUPS.flatMap(g => g.keys);
     const L2_SHORT = {
       'Business_Admin':   '비즈니스',
       'ICT_Dev':          'ICT개발',
@@ -446,10 +452,14 @@ Object.assign(App, {
       });
     });
 
-    const topOrgs = Object.entries(orgTotals)
-      .sort((a, b) => b[1] - a[1])
-      .slice(0, 30)
-      .map(e => e[0]);
+    // Build org list: all 35 from ontology, sorted by program count desc then name
+    const orgMeta = {};
+    d.organizations.forEach(o => { orgMeta[o.name] = o; });
+    const allOrgNames = d.organizations.map(o => o.name);
+    const topOrgs = [...allOrgNames].sort((a, b) => {
+      const diff = (orgTotals[b] || 0) - (orgTotals[a] || 0);
+      return diff !== 0 ? diff : a.localeCompare(b, 'ko');
+    });
 
     let globalMax = 0;
     topOrgs.forEach(org => L2_KEYS.forEach(l2 => {
@@ -475,15 +485,23 @@ Object.assign(App, {
     const topL2Name  = topL2Entry ? (L2_SHORT[topL2Entry[0]] || topL2Entry[0]) : '없음';
     const topL2Val   = topL2Entry ? topL2Entry[1] : 0;
     const topOrgName = topOrgs[0] || '없음';
-    const topOrgVal  = topOrgs[0] ? orgTotals[topOrgs[0]] : 0;
+    const topOrgVal  = topOrgs[0] ? (orgTotals[topOrgs[0]] || 0) : 0;
     const coverPct   = totalCells ? Math.round(coveredCells / totalCells * 100) : 0;
 
+    // L1 group header row (each group spans 3 columns)
+    const groupHeaderCells = ['<div class="hm-header"></div>']
+      .concat(L1_GROUPS.map(g =>
+        `<div class="hm-header hm-l1-header" style="grid-column:span 3;border-bottom:2px solid ${g.color};color:${g.color}">${g.label}</div>`
+      ));
+
+    // L2 header row
     const headerCells = ['<div class="hm-header"></div>']
       .concat(L2_KEYS.map(k => `<div class="hm-header">${L2_SHORT[k]}</div>`));
 
     const rows = topOrgs.map(org => {
-      const label  = org.length > 10 ? org.slice(0, 9) + '…' : org;
-      const orgCell = `<div class="hm-org-label" title="${org}">${label}</div>`;
+      const meta  = orgMeta[org];
+      const short = meta?.abbr || (org.length > 10 ? org.slice(0, 9) + '…' : org);
+      const orgCell = `<div class="hm-org-label" title="${org}">${short}</div>`;
       const cells   = L2_KEYS.map(l2 => {
         const val = (matrix[org] || {})[l2] || 0;
         if (!val) return `<div class="hm-val hm-zero">-</div>`;
@@ -497,6 +515,7 @@ Object.assign(App, {
         <div class="hm-chart-panel">
           <div class="hm-grid-scroll">
             <div class="hm-grid">
+              ${groupHeaderCells.join('')}
               ${headerCells.join('')}
               ${rows.join('')}
             </div>
@@ -512,7 +531,8 @@ Object.assign(App, {
           <div class="split-info-panel">
             <h3 class="split-info-title">기관 × 역량군 히트맵</h3>
             <p class="split-info-desc">
-              프로그램 수 상위 30개 <strong>기관</strong>(세로)과 9개 <strong>역량군 L2</strong>(가로)의 교차 빈도를 색상 강도로 표현합니다.
+              전체 <strong>${topOrgs.length}개 기관</strong>(세로)과 9개 <strong>역량군 L2</strong>(가로)의 교차 빈도를 색상 강도로 표현합니다.
+              역량군은 상단 L1(HardSkill / Literacy / SoftSkill)으로 구분됩니다.
               셀을 클릭하면 해당 기관·역량군의 프로그램 목록을 확인할 수 있습니다.
             </p>
             <div class="split-info-stats">
@@ -540,6 +560,7 @@ Object.assign(App, {
             <div class="split-info-howto">
               <div class="split-howto-title">읽는 방법</div>
               <ul class="split-howto-list">
+                <li>상단 색 라인 — L1 역량 대분류</li>
                 <li>진한 파란색 = 프로그램 밀집</li>
                 <li>연한 색 = 연결이 적음</li>
                 <li>'-' = 해당 역량군 미연결</li>

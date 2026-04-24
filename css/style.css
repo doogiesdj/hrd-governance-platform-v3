@@ -3162,11 +3162,12 @@ mark.coderef-hl { background: #e3b34133; color: #e3b341; border-radius: 2px; pad
 .comp-view-btn:hover { background: rgba(255,255,255,0.1); color: #e0e8f0; }
 .comp-view-btn.active { background: rgba(0,212,255,0.15); border-color: rgba(0,212,255,0.5); color: #00d4ff; }
 .comp-heatmap-wrap { overflow-x: auto; padding: 8px 0 16px; }
-.hm-grid-scroll { max-height: 440px; overflow-y: auto; }
+.hm-grid-scroll { max-height: 620px; overflow-y: auto; }
 .hm-grid { display: grid; grid-template-columns: 120px repeat(9, minmax(50px, 1fr)); gap: 2px; min-width: 580px; }
 .hm-row { display: contents; }
 .hm-header { background: rgba(255,255,255,0.04); border-radius: 3px; color: #6a7f90; font-size: 9px; font-weight: 600; padding: 5px 2px; text-align: center; line-height: 1.3; }
 .hm-grid-scroll .hm-header { background: #0a1628; position: sticky; top: 0; z-index: 1; }
+.hm-l1-header { font-size: 10px; font-weight: 700; letter-spacing: 0.05em; padding: 6px 4px; text-align: center; text-transform: uppercase; }
 .hm-org-label { align-items: center; background: rgba(255,255,255,0.03); border-radius: 3px; color: #c0ccd8; display: flex; font-size: 10px; overflow: hidden; padding: 4px 6px; text-overflow: ellipsis; white-space: nowrap; }
 .hm-val { align-items: center; border-radius: 3px; cursor: pointer; display: flex; font-size: 11px; font-weight: 600; justify-content: center; min-height: 28px; transition: opacity 0.15s; }
 .hm-val:hover { opacity: 0.75; outline: 1px solid rgba(255,255,255,0.35); }
