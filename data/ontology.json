@@ -280,10 +280,10 @@
           "category": "소프트웨어 개발 역량"
         },
         {
-          "id": "COMP_Design",
-          "name": "UX/UI 디자인",
-          "en": "UX/UI Design",
-          "category": "디자인 역량"
+          "id": "COMP_DigitalMkt",
+          "name": "디지털 마케팅",
+          "en": "Digital Marketing",
+          "category": "마케팅 전략 역량"
         },
         {
           "id": "COMP_Green",
@@ -292,10 +292,10 @@
           "category": "녹색기술·탄소중립 역량"
         },
         {
-          "id": "COMP_DigitalMkt",
-          "name": "디지털 마케팅",
-          "en": "Digital Marketing",
-          "category": "마케팅 전략 역량"
+          "id": "COMP_Design",
+          "name": "UX/UI 디자인",
+          "en": "UX/UI Design",
+          "category": "디자인 역량"
         }
       ],
       "performanceGoals": [
@@ -328,6 +328,11 @@
           "id": "POLICY_10",
           "name": "K-컬처 콘텐츠 기획 인재 양성",
           "en": "K-Culture Content Planning Talent Development"
+        },
+        {
+          "id": "POLICY_49",
+          "name": "AI 융합 의료·제약 전문인력 양성 정책",
+          "en": "AI Convergence Medical and Pharmaceutical Professional Workforce Policy"
         },
         {
           "id": "POLICY_19",
@@ -628,16 +633,16 @@
       "totalBudgetStr": "1450억원",
       "implementingOrgs": [
         {
-          "id": "ORG_MINISTRY_02",
-          "name": "교육부",
-          "abbr": "MOE",
-          "role": "학교·대학 교육정책, 교원 연수, 이러닝 인프라"
-        },
-        {
           "id": "ORG_MINISTRY_01",
           "name": "과학기술정보통신부",
           "abbr": "MSIT",
           "role": "디지털 전환·AI·ICT 인재 양성 정책 총괄"
+        },
+        {
+          "id": "ORG_MINISTRY_02",
+          "name": "교육부",
+          "abbr": "MOE",
+          "role": "학교·대학 교육정책, 교원 연수, 이러닝 인프라"
         },
         {
           "id": "ORG_MINISTRY_09",
@@ -653,21 +658,21 @@
         }
       ],
       "targetGroups": [
-        "청소년",
-        "재직자"
+        "재직자",
+        "청소년"
       ],
       "competencies": [
-        {
-          "id": "COMP_SW_01",
-          "name": "파이썬 프로그래밍",
-          "en": "Python Programming",
-          "category": "소프트웨어 개발 역량"
-        },
         {
           "id": "COMP_AI_01",
           "name": "프롬프트 엔지니어링",
           "en": "Prompt Engineering",
           "category": "AI·인프라 역량"
+        },
+        {
+          "id": "COMP_SW_01",
+          "name": "파이썬 프로그래밍",
+          "en": "Python Programming",
+          "category": "소프트웨어 개발 역량"
         }
       ],
       "performanceGoals": [
@@ -681,6 +686,18 @@
           "code": "OUT_28",
           "name": "K-디지털 크레딧 과정 수료 및 직무 전환",
           "type": "교육성과",
+          "value": "6000"
+        },
+        {
+          "code": "OUT_197",
+          "name": "과기 ODA 인재 양성",
+          "type": "교육성과",
+          "value": "1200"
+        },
+        {
+          "code": "OUT_16",
+          "name": "클라우드 보안 아키텍처 설계 완료",
+          "type": "기술성과",
           "value": "1"
         },
         {
@@ -901,9 +918,9 @@
       "type": "NationalStrategy",
       "policies": [
         {
-          "id": "POLICY_40",
-          "name": "원자력 인재양성 및 전문성 강화 계획",
-          "en": "Nuclear Energy Talent Development and Expertise Enhancement Plan"
+          "id": "POLICY_39",
+          "name": "수소경제 인력양성 종합계획",
+          "en": "Hydrogen Economy Workforce Development Master Plan"
         },
         {
           "id": "POLICY_38",
@@ -911,9 +928,9 @@
           "en": "Carbon Neutral Green Technology Professional Workforce Development Plan"
         },
         {
-          "id": "POLICY_39",
-          "name": "수소경제 인력양성 종합계획",
-          "en": "Hydrogen Economy Workforce Development Master Plan"
+          "id": "POLICY_40",
+          "name": "원자력 인재양성 및 전문성 강화 계획",
+          "en": "Nuclear Energy Talent Development and Expertise Enhancement Plan"
         }
       ],
       "programs": [
@@ -1066,10 +1083,10 @@
       ],
       "performanceGoals": [
         {
-          "code": "OUT_182",
-          "name": "원자력 전문인력 양성",
+          "code": "OUT_181",
+          "name": "수소경제 인력 양성",
           "type": "교육성과",
-          "value": "2000"
+          "value": "3500"
         },
         {
           "code": "OUT_180",
@@ -1078,10 +1095,10 @@
           "value": "8000"
         },
         {
-          "code": "OUT_181",
-          "name": "수소경제 인력 양성",
+          "code": "OUT_182",
+          "name": "원자력 전문인력 양성",
           "type": "교육성과",
-          "value": "3500"
+          "value": "2000"
         }
       ],
       "policyCount": 3,
@@ -1137,19 +1154,9 @@
           "en": "Cybersecurity Core Talent Intensive Development Policy"
         },
         {
-          "id": "POLICY_52",
-          "name": "해양 스마트·디지털 기술인력 양성 정책",
-          "en": "Maritime Smart and Digital Technology Workforce Development Policy"
-        },
-        {
-          "id": "POLICY_51",
-          "name": "국방·안보 사이버 인재양성 정책",
-          "en": "Defense and Security Cyber Talent Development Policy"
-        },
-        {
-          "id": "POLICY_03",
-          "name": "글로벌 기술수출 바우처",
-          "en": "Global Technology Export Voucher Program"
+          "id": "POLICY_09",
+          "name": "지식재산(IP) 보호 강화 사업",
+          "en": "Intellectual Property Protection Enhancement Program"
         },
         {
           "id": "POLICY_23",
@@ -1615,13 +1622,13 @@
           "hours": "24"
         },
         {
-          "id": "HS_ITM_10",
-          "name": "스마트물류자동화",
-          "en": "Smart Logistics Automation",
-          "targetGroup": "재직자",
-          "org": "산업통상자원부",
-          "competency": "반도체 설계·공정",
-          "hours": "40"
+          "id": "HS_BMS_03",
+          "name": "통합마케팅커뮤니케이션",
+          "en": "Integrated Marketing Communications",
+          "targetGroup": "전문가",
+          "org": "국방부",
+          "competency": "바이오헬스",
+          "hours": "24"
         },
         {
           "id": "HS_ITM_01",
@@ -1705,12 +1712,48 @@
           "hours": "32"
         },
         {
-          "id": "HS_BAS_04",
-          "name": "글로벌영업실무",
-          "en": "Global Sales Practice",
+          "id": "HS_ITM_09",
+          "name": "정밀공정공학",
+          "en": "Precision Process Engineering",
+          "targetGroup": "재직자",
+          "org": "산업통상자원부",
+          "competency": "반도체 설계·공정",
+          "hours": "40"
+        },
+        {
+          "id": "HS_ITM_10",
+          "name": "스마트물류자동화",
+          "en": "Smart Logistics Automation",
+          "targetGroup": "재직자",
+          "org": "산업통상자원부",
+          "competency": "반도체 설계·공정",
+          "hours": "40"
+        },
+        {
+          "id": "HS_BAS_03",
+          "name": "채널관리론",
+          "en": "Channel Management",
           "targetGroup": "전문가",
           "org": "과학기술정보통신부",
           "competency": "데이터 분석",
+          "hours": "24"
+        },
+        {
+          "id": "HS_ITM_03",
+          "name": "생산품질관리",
+          "en": "Production Quality Management",
+          "targetGroup": "재직자",
+          "org": "산업통상자원부",
+          "competency": "반도체 설계·공정",
+          "hours": "24"
+        },
+        {
+          "id": "HS_BMS_07",
+          "name": "소셜미디어전략",
+          "en": "Social Media Strategy",
+          "targetGroup": "전문가",
+          "org": "국방부",
+          "competency": "바이오헬스",
           "hours": "32"
         },
         {
@@ -1745,10 +1788,10 @@
       "totalBudgetStr": "730억원",
       "implementingOrgs": [
         {
-          "id": "ORG_MINISTRY_01",
-          "name": "과학기술정보통신부",
-          "abbr": "MSIT",
-          "role": "디지털 전환·AI·ICT 인재 양성 정책 총괄"
+          "id": "ORG_MINISTRY_08",
+          "name": "국방부",
+          "abbr": "MoD",
+          "role": "군 인력 교육훈련·방산 전문인력 개발"
         },
         {
           "id": "ORG_MINISTRY_03",
@@ -1757,10 +1800,10 @@
           "role": "전략기술 인재·산업 전문인력 양성"
         },
         {
-          "id": "ORG_MINISTRY_08",
-          "name": "국방부",
-          "abbr": "MoD",
-          "role": "군 인력 교육훈련·방산 전문인력 개발"
+          "id": "ORG_MINISTRY_01",
+          "name": "과학기술정보통신부",
+          "abbr": "MSIT",
+          "role": "디지털 전환·AI·ICT 인재 양성 정책 총괄"
         },
         {
           "id": "ORG_MINISTRY_13",
@@ -1775,10 +1818,10 @@
       ],
       "competencies": [
         {
-          "id": "COMP_DataAnalysis",
-          "name": "데이터 분석",
-          "en": "Data Analysis",
-          "category": "데이터 활용 역량"
+          "id": "COMP_BioHealth",
+          "name": "바이오헬스",
+          "en": "BioHealth",
+          "category": "바이오헬스 역량"
         },
         {
           "id": "COMP_Semiconductor",
@@ -1787,10 +1830,10 @@
           "category": "반도체 설계 역량"
         },
         {
-          "id": "COMP_BioHealth",
-          "name": "바이오헬스",
-          "en": "BioHealth",
-          "category": "바이오헬스 역량"
+          "id": "COMP_DataAnalysis",
+          "name": "데이터 분석",
+          "en": "Data Analysis",
+          "category": "데이터 활용 역량"
         }
       ],
       "performanceGoals": [
@@ -2270,9 +2313,14 @@
           "en": "Regional University Innovation Capacity Enhancement Plan"
         },
         {
-          "id": "POLICY_28",
-          "name": "지역 주도형 청년 일자리 사업",
-          "en": "Region-Led Youth Employment Program"
+          "id": "POLICY_37",
+          "name": "스마트빌리지 및 농촌 디지털 전환 지원 정책",
+          "en": "Smart Village and Rural Digital Transformation Support Policy"
+        },
+        {
+          "id": "POLICY_05",
+          "name": "지역사회 기술봉사 마일리지",
+          "en": "Community Technology Volunteering Mileage Program"
         },
         {
           "id": "POLICY_36",
@@ -2387,6 +2435,11 @@
       "type": "NationalStrategy",
       "policies": [
         {
+          "id": "POLICY_41",
+          "name": "육아휴직 후 경력복귀 지원 정책",
+          "en": "Post-Parental Leave Career Return Support Policy"
+        },
+        {
           "id": "POLICY_43",
           "name": "일·가정양립 지원 기업 인사 관리자 역량강화 정책",
           "en": "Work-Family Balance Supporting Company HR Manager Capacity Policy"
@@ -2395,11 +2448,6 @@
           "id": "POLICY_42",
           "name": "보육교사 전문성 제고 및 처우개선 방안",
           "en": "Childcare Teacher Professionalism Enhancement and Treatment Improvement Plan"
-        },
-        {
-          "id": "POLICY_41",
-          "name": "육아휴직 후 경력복귀 지원 정책",
-          "en": "Post-Parental Leave Career Return Support Policy"
         }
       ],
       "programs": [],
@@ -2455,6 +2503,12 @@
       "competencies": [],
       "performanceGoals": [
         {
+          "code": "OUT_183",
+          "name": "경력복귀 지원 성과",
+          "type": "고용성과",
+          "value": "18000"
+        },
+        {
           "code": "OUT_185",
           "name": "일가정양립 HR 역량 강화",
           "type": "역량성과",
@@ -2465,12 +2519,6 @@
           "name": "보육교사 전문성 향상",
           "type": "역량성과",
           "value": "42000"
-        },
-        {
-          "code": "OUT_183",
-          "name": "경력복귀 지원 성과",
-          "type": "고용성과",
-          "value": "18000"
         }
       ],
       "policyCount": 3,
@@ -13249,9 +13297,9 @@
       "hours": "24"
     },
     {
-      "id": "FE_ETH_01",
-      "name": "공정경제윤리교육",
-      "en": "Fair Economy Ethics Training",
+      "id": "FE_FTC_01",
+      "name": "공정거래기본종합과정",
+      "en": "Fair Trade Fundamentals Course",
       "type": "WorkshopSeminar",
       "targetGroupId": "",
       "targetGroup": "",
@@ -13260,16 +13308,16 @@
       "org": "기획재정부",
       "orgAbbr": "MOF",
       "alignedStrategy": "공정경제민주화",
-      "competency": "효율성추구",
-      "competencyEn": "Efficiency Pursuit",
+      "competency": "윤리경영",
+      "competencyEn": "Ethical Business Practice",
       "competencyCategory": "",
-      "targetCompetencyId": "COMP_90",
+      "targetCompetencyId": "COMP_54",
       "fieldCatCode": "COMPCAT_Values",
       "relatedCompetencyIds": [
-        "COMP_90",
         "COMP_54",
         "COMP_89",
-        "COMP_69"
+        "COMP_90",
+        "COMP_43"
       ],
       "budgetCode": "",
       "hours": "24"
