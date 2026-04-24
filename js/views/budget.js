@@ -30,6 +30,8 @@ Object.assign(App, {
   },
 
   _renderBudgetCatChart(catKey) {
+    if (catKey === 'sankey') { this._showSankeyMode(); return; }
+    this._hideSankeyMode();
     const ba = HRDData.budgetAnalysis;
     if (!ba || !ba[catKey]) {
       const el = document.getElementById('budgetCatList');
@@ -355,5 +357,158 @@ Object.assign(App, {
       this._currentRebind = rebind;
       rebind();
     });
+  },
+
+  _showSankeyMode() {
+    const catContent = document.getElementById('budgetCatContent');
+    if (!catContent) return;
+    const chartWrap = catContent.querySelector('.budget-cat-chart-wrap');
+    const listEl    = document.getElementById('budgetCatList');
+    if (chartWrap) chartWrap.style.display = 'none';
+    if (listEl)    listEl.style.display    = 'none';
+    let sankeyEl = document.getElementById('sankey-container');
+    if (!sankeyEl) {
+      sankeyEl = document.createElement('div');
+      sankeyEl.id = 'sankey-container';
+      catContent.appendChild(sankeyEl);
+    }
+    sankeyEl.style.display = 'block';
+    this._renderSankey(sankeyEl);
+  },
+
+  _hideSankeyMode() {
+    const catContent = document.getElementById('budgetCatContent');
+    if (!catContent) return;
+    const chartWrap = catContent.querySelector('.budget-cat-chart-wrap');
+    const listEl    = document.getElementById('budgetCatList');
+    const sankeyEl  = document.getElementById('sankey-container');
+    if (chartWrap) chartWrap.style.display = '';
+    if (listEl)    listEl.style.display    = '';
+    if (sankeyEl)  sankeyEl.style.display  = 'none';
+  },
+
+  _buildSankeyData() {
+    const d = HRDData;
+    const L2_KEYS = ['Business_Admin','ICT_Dev','Industrial_Tech','Basic_Academic','Civic_Literacy','Digital_Literacy','Interpersonal','Problem_Solving','Self_Management'];
+    const L2_SHORT = {
+      'Business_Admin':   '비즈니스',
+      'ICT_Dev':          'ICT개발',
+      'Industrial_Tech':  '산업기술',
+      'Basic_Academic':   '기초학업',
+      'Civic_Literacy':   '시민',
+      'Digital_Literacy': '디지털',
+      'Interpersonal':    '대인관계',
+      'Problem_Solving':  '문제해결',
+      'Self_Management':  '자기관리',
+    };
+    const compL2 = {};
+    d.competencies.forEach(c => { compL2[c.id] = c.level2; });
+
+    const stratNames = [...new Set(d.programs.map(p => p.alignedStrategy).filter(Boolean))];
+    const nodes = [
+      ...stratNames.map(name => ({ name })),
+      ...L2_KEYS.map(k => ({ name: L2_SHORT[k] })),
+    ];
+
+    const stratIdx = {};
+    stratNames.forEach((name, i) => { stratIdx[name] = i; });
+    const l2Idx = {};
+    L2_KEYS.forEach((k, i) => { l2Idx[k] = stratNames.length + i; });
+
+    const linkMap = {};
+    d.programs.forEach(p => {
+      const strat = p.alignedStrategy;
+      if (!strat || stratIdx[strat] === undefined) return;
+      const ids = Array.isArray(p.relatedCompetencyIds) ? p.relatedCompetencyIds
+                  : (p.targetCompetencyId ? [p.targetCompetencyId] : []);
+      const l2Set = new Set();
+      ids.forEach(id => { const l2 = compL2[id]; if (l2) l2Set.add(l2); });
+      l2Set.forEach(l2 => {
+        if (l2Idx[l2] === undefined) return;
+        const key = `${stratIdx[strat]}_${l2Idx[l2]}`;
+        linkMap[key] = (linkMap[key] || 0) + 1;
+      });
+    });
+
+    const links = Object.entries(linkMap).map(([key, val]) => {
+      const [source, target] = key.split('_').map(Number);
+      return { source, target, value: val };
+    });
+    return { nodes, links };
+  },
+
+  _renderSankey(el) {
+    if (typeof d3 === 'undefined' || typeof d3.sankey !== 'function') {
+      el.innerHTML = '<div class="sankey-empty">d3-sankey 라이브러리를 로딩 중입니다. 잠시 후 다시 시도해주세요.</div>';
+      return;
+    }
+    const { nodes, links } = this._buildSankeyData();
+    if (!nodes.length || !links.length) {
+      el.innerHTML = '<div class="sankey-empty">전략–역량 연결 데이터가 없습니다.</div>';
+      return;
+    }
+    el.innerHTML = '';
+    const W = el.clientWidth || 820;
+    const H = Math.max(480, nodes.length * 18);
+    const margin = { top: 10, right: 175, bottom: 20, left: 175 };
+
+    const svg = d3.select(el)
+      .append('svg')
+      .attr('width', W)
+      .attr('height', H);
+
+    const sankey = d3.sankey()
+      .nodeWidth(14)
+      .nodePadding(8)
+      .extent([[margin.left, margin.top], [W - margin.right, H - margin.bottom]]);
+
+    const graph = sankey({
+      nodes: nodes.map(n => Object.assign({}, n)),
+      links: links.map(l => Object.assign({}, l)),
+    });
+
+    const l2Names  = ['비즈니스','ICT개발','산업기술','기초학업','시민','디지털','대인관계','문제해결','자기관리'];
+    const l2Colors = ['#00d4ff','#0099cc','#006699','#ffd700','#ffaa00','#ff8800','#00ff41','#00cc33','#009922'];
+    const colorByName = {};
+    l2Names.forEach((n, i) => { colorByName[n] = l2Colors[i]; });
+    const nodeColor = n => colorByName[n.name] || '#00d4ff';
+
+    svg.append('g')
+      .attr('fill', 'none')
+      .selectAll('path')
+      .data(graph.links)
+      .join('path')
+      .attr('d', d3.sankeyLinkHorizontal())
+      .attr('stroke', l => nodeColor(l.target))
+      .attr('stroke-opacity', 0.28)
+      .attr('stroke-width', l => Math.max(1, l.width))
+      .append('title')
+      .text(l => `${l.source.name} → ${l.target.name}: ${l.value}개 프로그램`);
+
+    svg.append('g')
+      .selectAll('rect')
+      .data(graph.nodes)
+      .join('rect')
+      .attr('x', n => n.x0)
+      .attr('y', n => n.y0)
+      .attr('height', n => Math.max(1, n.y1 - n.y0))
+      .attr('width', n => n.x1 - n.x0)
+      .attr('fill', n => nodeColor(n))
+      .attr('opacity', 0.85)
+      .attr('rx', 2)
+      .append('title')
+      .text(n => `${n.name}: ${n.value}개 프로그램`);
+
+    svg.append('g')
+      .selectAll('text')
+      .data(graph.nodes)
+      .join('text')
+      .attr('x', n => n.x0 < W / 2 ? n.x1 + 6 : n.x0 - 6)
+      .attr('y', n => (n.y1 + n.y0) / 2)
+      .attr('dy', '0.35em')
+      .attr('text-anchor', n => n.x0 < W / 2 ? 'start' : 'end')
+      .attr('fill', '#c0ccd8')
+      .attr('font-size', 11)
+      .text(n => n.name.length > 15 ? n.name.slice(0, 14) + '…' : n.name);
   },
 });

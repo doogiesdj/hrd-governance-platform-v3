@@ -57,6 +57,25 @@ Object.assign(App, {
 
     const view = document.getElementById('view-competency');
 
+    if (view && !view.querySelector('.comp-view-toggle')) {
+      const kpiGrid = view.querySelector('.kpi-grid');
+      const toggle = document.createElement('div');
+      toggle.className = 'comp-view-toggle';
+      toggle.innerHTML = `
+        <button class="comp-view-btn active" data-view="chart">도넛 차트</button>
+        <button class="comp-view-btn" data-view="heatmap">기관×역량 히트맵</button>
+      `;
+      kpiGrid.insertAdjacentElement('afterend', toggle);
+      toggle.querySelectorAll('.comp-view-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          toggle.querySelectorAll('.comp-view-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          this._compViewMode = btn.dataset.view;
+          this._applyCompViewMode(view);
+        });
+      });
+    }
+
     if (view && !view.querySelector('.comp-class-bar')) {
       const chartContainer = view.querySelector('.chart-container');
       const bar = document.createElement('div');
@@ -92,7 +111,8 @@ Object.assign(App, {
     }
 
     if (!this._compClassMode) this._compClassMode = 'all';
-    this._updateCompetencyChart();
+    if (!this._compViewMode) this._compViewMode = 'chart';
+    this._applyCompViewMode(view);
 
     const listEl = document.getElementById('competencyList');
     if (listEl) {
@@ -358,6 +378,156 @@ Object.assign(App, {
     body.querySelectorAll('[data-program-id]').forEach(el => {
       el.addEventListener('click', () => {
         const program = d.programs.find(p => p.id === el.dataset.programId);
+        if (program) this._pushProgramDetail(program);
+      });
+    });
+  },
+
+  _applyCompViewMode(view) {
+    if (!view) return;
+    const classBar  = view.querySelector('.comp-class-bar');
+    const chartSplit = view.querySelector('.comp-chart-split');
+    let hmWrap = view.querySelector('.comp-heatmap-wrap');
+    if (this._compViewMode === 'heatmap') {
+      if (classBar)  classBar.style.display  = 'none';
+      if (chartSplit) chartSplit.style.display = 'none';
+      if (!hmWrap) {
+        hmWrap = document.createElement('div');
+        hmWrap.className = 'comp-heatmap-wrap';
+        const listContainer = view.querySelector('.list-container');
+        if (listContainer) listContainer.parentNode.insertBefore(hmWrap, listContainer);
+        else view.querySelector('.view-content').appendChild(hmWrap);
+      }
+      hmWrap.style.display = '';
+      this._renderCompetencyHeatmap(hmWrap);
+    } else {
+      if (classBar)  classBar.style.display  = '';
+      if (chartSplit) chartSplit.style.display = '';
+      if (hmWrap) hmWrap.style.display = 'none';
+      this._updateCompetencyChart();
+    }
+  },
+
+  _renderCompetencyHeatmap(container) {
+    const d = HRDData;
+    const L2_KEYS = ['Business_Admin','ICT_Dev','Industrial_Tech','Basic_Academic','Civic_Literacy','Digital_Literacy','Interpersonal','Problem_Solving','Self_Management'];
+    const L2_SHORT = {
+      'Business_Admin':   '비즈니스',
+      'ICT_Dev':          'ICT개발',
+      'Industrial_Tech':  '산업기술',
+      'Basic_Academic':   '기초학업',
+      'Civic_Literacy':   '시민',
+      'Digital_Literacy': '디지털',
+      'Interpersonal':    '대인관계',
+      'Problem_Solving':  '문제해결',
+      'Self_Management':  '자기관리',
+    };
+
+    const compL2 = {};
+    d.competencies.forEach(c => { compL2[c.id] = c.level2; });
+
+    const orgTotals = {};
+    const matrix    = {};
+    const cellProgs = {};
+
+    d.programs.forEach(p => {
+      const org = p.org || '미지정';
+      orgTotals[org] = (orgTotals[org] || 0) + 1;
+      const ids = Array.isArray(p.relatedCompetencyIds) ? p.relatedCompetencyIds
+                  : (p.targetCompetencyId ? [p.targetCompetencyId] : []);
+      const l2Set = new Set();
+      ids.forEach(id => { const l2 = compL2[id]; if (l2) l2Set.add(l2); });
+      if (!matrix[org])    matrix[org]    = {};
+      if (!cellProgs[org]) cellProgs[org] = {};
+      l2Set.forEach(l2 => {
+        matrix[org][l2] = (matrix[org][l2] || 0) + 1;
+        if (!cellProgs[org][l2]) cellProgs[org][l2] = [];
+        cellProgs[org][l2].push(p);
+      });
+    });
+
+    const topOrgs = Object.entries(orgTotals)
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 12)
+      .map(e => e[0]);
+
+    let globalMax = 0;
+    topOrgs.forEach(org => L2_KEYS.forEach(l2 => {
+      const v = (matrix[org] || {})[l2] || 0;
+      if (v > globalMax) globalMax = v;
+    }));
+
+    const colorCell = val => {
+      if (!val) return null;
+      const t = globalMax > 0 ? val / globalMax : 0;
+      return `rgba(0,212,255,${(0.1 + t * 0.75).toFixed(2)})`;
+    };
+
+    const headerCells = ['<div class="hm-header"></div>']
+      .concat(L2_KEYS.map(k => `<div class="hm-header">${L2_SHORT[k]}</div>`));
+
+    const rows = topOrgs.map(org => {
+      const label  = org.length > 10 ? org.slice(0, 9) + '…' : org;
+      const orgCell = `<div class="hm-org-label" title="${org}">${label}</div>`;
+      const cells   = L2_KEYS.map(l2 => {
+        const val = (matrix[org] || {})[l2] || 0;
+        if (!val) return `<div class="hm-val hm-zero">-</div>`;
+        return `<div class="hm-val" style="background:${colorCell(val)};color:#e0f4ff" data-org="${org}" data-l2="${l2}">${val}</div>`;
+      });
+      return `<div class="hm-row">${orgCell}${cells.join('')}</div>`;
+    });
+
+    container.innerHTML = `
+      <div class="hm-grid">
+        ${headerCells.join('')}
+        ${rows.join('')}
+      </div>
+      <div class="hm-legend">
+        <span class="hm-legend-label">낮음</span>
+        <div class="hm-legend-bar"></div>
+        <span class="hm-legend-label">높음</span>
+        <span class="hm-legend-label" style="margin-left:8px;color:#8a9aaa">최대 ${globalMax}개 프로그램</span>
+      </div>
+    `;
+
+    container.querySelectorAll('.hm-val[data-org]').forEach(cell => {
+      cell.addEventListener('click', () => {
+        this._showHeatmapCellDetail(
+          cell.dataset.org, cell.dataset.l2,
+          (cellProgs[cell.dataset.org] || {})[cell.dataset.l2] || []
+        );
+      });
+    });
+  },
+
+  _showHeatmapCellDetail(org, l2Key, progs) {
+    const l2Name = this._COMP_L2_LABEL[l2Key] || l2Key;
+    const progHtml = progs.length
+      ? progs.map(p => `
+          <div class="detail-list-item detail-clickable" data-program-id="${p.id}">
+            <span class="detail-dot"></span>
+            <span style="flex:1;font-size:11px">${p.name}</span>
+            <span style="color:#a0aab8;font-size:10px">${p.org || ''}</span>
+          </div>`).join('')
+      : '<span class="detail-empty">프로그램 없음</span>';
+
+    this._openDetail(`
+      <div class="detail-header-block">
+        <div class="detail-strategy-label">기관 × 역량군</div>
+        <h2 class="detail-title">${org}</h2>
+        <div class="detail-en">${l2Name}</div>
+      </div>
+      <div class="detail-section">
+        <div class="detail-section-title">연관 교육 프로그램 (${progs.length}개)</div>
+        <div class="detail-list">${progHtml}</div>
+      </div>
+    `);
+
+    const body = document.getElementById('detailBody');
+    if (!body) return;
+    body.querySelectorAll('[data-program-id]').forEach(el => {
+      el.addEventListener('click', () => {
+        const program = HRDData.programs.find(p => p.id === el.dataset.programId);
         if (program) this._pushProgramDetail(program);
       });
     });

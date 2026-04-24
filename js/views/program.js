@@ -46,27 +46,21 @@ Object.assign(App, {
       split.appendChild(legendDiv);
     }
 
+    if (view && !view.querySelector('.top10-section')) {
+      const listContainer = view.querySelector('.list-container');
+      if (listContainer) {
+        const sec = document.createElement('div');
+        sec.className = 'top10-section';
+        listContainer.parentNode.insertBefore(sec, listContainer);
+      }
+    }
+
     if (!this._programClassMode) this._programClassMode = 'org';
     this._updateProgramChart();
 
-    const listEl = document.getElementById('programList');
-    if (listEl) {
-      listEl.innerHTML = d.programs.map(p => {
-        const stratName = p.alignedStrategy
-          ? (d.strategies.find(s => s.id === p.alignedStrategy) || {}).name || p.alignedStrategy
-          : '';
-        return `<div class="item item-clickable" data-program-id="${p.id}">
-          <div class="item-name">${p.name}</div>
-          <div class="item-detail">${p.org || ''}${stratName ? ' · ' + stratName : ''} · ${p.hours || '?'}h</div>
-        </div>`;
-      }).join('');
-      listEl.querySelectorAll('.item-clickable').forEach(el => {
-        el.addEventListener('click', () => {
-          const prog = d.programs.find(p => p.id === el.dataset.programId);
-          if (prog) this._showProgramDetail(prog);
-        });
-      });
-    }
+    const top10El = view ? view.querySelector('.top10-section') : null;
+    if (top10El) this._renderTop10Recommendations(top10El);
+    this._renderProgramList(view);
   },
 
   _updateProgramChart() {
@@ -273,6 +267,97 @@ Object.assign(App, {
       el.addEventListener('click', () => {
         const budget = d.budgets.find(b => b.id === el.dataset.budgetId);
         if (budget) this._pushBudgetDetail(budget);
+      });
+    });
+  },
+
+  _renderProgramList(view) {
+    const d = HRDData;
+    const listEl = document.getElementById('programList');
+    if (!listEl) return;
+
+    const listContainer = view ? view.querySelector('.list-container') : null;
+    if (listContainer && !listContainer.querySelector('.prog-sort-toggle')) {
+      const h3 = listContainer.querySelector('h3');
+      if (h3) {
+        const btn = document.createElement('button');
+        btn.className = 'prog-sort-toggle';
+        btn.dataset.sortMode = 'name';
+        btn.textContent = '갭 커버리지순';
+        h3.appendChild(btn);
+        btn.addEventListener('click', () => {
+          const next = btn.dataset.sortMode === 'name' ? 'score' : 'name';
+          btn.dataset.sortMode = next;
+          btn.classList.toggle('active', next === 'score');
+          this._programSortMode = next;
+          this._renderProgramList(view);
+        });
+      }
+    }
+
+    const { scoreMap, maxScore } = this.calcCoverageScore();
+    let programs = [...d.programs];
+    if (this._programSortMode === 'score') {
+      programs.sort((a, b) => (scoreMap[b.id] || 0) - (scoreMap[a.id] || 0));
+    }
+
+    listEl.innerHTML = programs.map(p => {
+      const stratName = p.alignedStrategy
+        ? (d.strategies.find(s => s.id === p.alignedStrategy) || {}).name || p.alignedStrategy
+        : '';
+      const score = scoreMap[p.id] || 0;
+      const barPct = maxScore > 0 ? Math.round(score / maxScore * 100) : 0;
+      const scoreBadge = score > 0
+        ? `<span class="score-badge">${score}%</span><span class="score-bar-wrap"><span class="score-bar-fill" style="width:${barPct}%"></span></span>`
+        : '';
+      return `<div class="item item-clickable" data-program-id="${p.id}">
+        <div class="item-name">${p.name}${scoreBadge}</div>
+        <div class="item-detail">${p.org || ''}${stratName ? ' · ' + stratName : ''} · ${p.hours || '?'}h</div>
+      </div>`;
+    }).join('');
+
+    listEl.querySelectorAll('.item-clickable').forEach(el => {
+      el.addEventListener('click', () => {
+        const prog = d.programs.find(p => p.id === el.dataset.programId);
+        if (prog) this._showProgramDetail(prog);
+      });
+    });
+  },
+
+  _renderTop10Recommendations(container) {
+    if (!container) return;
+    const { scored, maxScore } = this.calcCoverageScore();
+    const top10 = scored.filter(x => x.score > 0).slice(0, 10);
+    if (!top10.length) return;
+
+    const rankClass = i => i === 0 ? 'top10-rank gold' : i === 1 ? 'top10-rank silver' : i === 2 ? 'top10-rank bronze' : 'top10-rank';
+    const rankText = i => i === 0 ? '🥇 #1' : i === 1 ? '🥈 #2' : i === 2 ? '🥉 #3' : `#${i + 1}`;
+
+    container.innerHTML = `
+      <div class="top10-header">
+        <strong>갭 해소 추천 Top 10</strong>
+        <span>역량 갭 커버리지가 높은 프로그램</span>
+      </div>
+      <div class="top10-grid">
+        ${top10.map(({ program: p, score }, i) => {
+          const barPct = maxScore > 0 ? Math.round(score / maxScore * 100) : 0;
+          return `<div class="top10-card" data-program-id="${p.id}">
+            <div class="${rankClass(i)}">${rankText(i)}</div>
+            <div class="top10-name" title="${p.name}">${p.name}</div>
+            <div class="top10-meta">${p.org || ''} · ${p.competencyCategory || ''}</div>
+            <div class="top10-score-row">
+              <span class="top10-score-val">${score}%</span>
+              <div class="top10-score-track"><div class="top10-score-bar" style="width:${barPct}%"></div></div>
+            </div>
+          </div>`;
+        }).join('')}
+      </div>
+    `;
+
+    container.querySelectorAll('.top10-card').forEach(card => {
+      card.addEventListener('click', () => {
+        const prog = HRDData.programs.find(p => p.id === card.dataset.programId);
+        if (prog) this._showProgramDetail(prog);
       });
     });
   },
