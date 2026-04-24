@@ -500,7 +500,7 @@ Object.assign(App, {
 
     const rows = topOrgs.map(org => {
       const meta  = orgMeta[org];
-      const short = meta?.abbr || (org.length > 10 ? org.slice(0, 9) + '…' : org);
+      const short = org.length > 8 ? org.slice(0, 7) + '…' : org;
       const orgCell = `<div class="hm-org-label" title="${org}">${short}</div>`;
       const cells   = L2_KEYS.map(l2 => {
         const val = (matrix[org] || {})[l2] || 0;
