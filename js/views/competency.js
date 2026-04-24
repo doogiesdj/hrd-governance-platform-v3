@@ -448,7 +448,7 @@ Object.assign(App, {
 
     const topOrgs = Object.entries(orgTotals)
       .sort((a, b) => b[1] - a[1])
-      .slice(0, 12)
+      .slice(0, 30)
       .map(e => e[0]);
 
     let globalMax = 0;
@@ -495,9 +495,11 @@ Object.assign(App, {
     container.innerHTML = `
       <div class="hm-split">
         <div class="hm-chart-panel">
-          <div class="hm-grid">
-            ${headerCells.join('')}
-            ${rows.join('')}
+          <div class="hm-grid-scroll">
+            <div class="hm-grid">
+              ${headerCells.join('')}
+              ${rows.join('')}
+            </div>
           </div>
           <div class="hm-legend">
             <span class="hm-legend-label">낮음</span>
@@ -510,7 +512,7 @@ Object.assign(App, {
           <div class="split-info-panel">
             <h3 class="split-info-title">기관 × 역량군 히트맵</h3>
             <p class="split-info-desc">
-              프로그램 수 상위 12개 <strong>기관</strong>(세로)과 9개 <strong>역량군 L2</strong>(가로)의 교차 빈도를 색상 강도로 표현합니다.
+              프로그램 수 상위 30개 <strong>기관</strong>(세로)과 9개 <strong>역량군 L2</strong>(가로)의 교차 빈도를 색상 강도로 표현합니다.
               셀을 클릭하면 해당 기관·역량군의 프로그램 목록을 확인할 수 있습니다.
             </p>
             <div class="split-info-stats">
