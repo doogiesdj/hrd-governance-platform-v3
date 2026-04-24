@@ -68,6 +68,18 @@ const OntoGraf = (() => {
     COMPCAT_Leadership: 'CompetencyCategory', COMPCAT_Management: 'CompetencyCategory',
     COMPCAT_Thinking_Skill: 'CompetencyCategory', COMPCAT_ICT: 'CompetencyCategory',
     COMPCAT_Manufacturing: 'CompetencyCategory', COMPCAT_Service: 'CompetencyCategory',
+    COMPCAT_AI_and_Infrastructure: 'CompetencyCategory', COMPCAT_Adaptability: 'CompetencyCategory',
+    COMPCAT_AdminLaw: 'CompetencyCategory', COMPCAT_Basic_Academic: 'CompetencyCategory',
+    COMPCAT_BioHealth: 'CompetencyCategory', COMPCAT_CS_Foundation: 'CompetencyCategory',
+    COMPCAT_Collaboration: 'CompetencyCategory', COMPCAT_Creativity: 'CompetencyCategory',
+    COMPCAT_Data_Fluency: 'CompetencyCategory', COMPCAT_Defense_Industry: 'CompetencyCategory',
+    COMPCAT_Design: 'CompetencyCategory', COMPCAT_Digital_Literacy: 'CompetencyCategory',
+    COMPCAT_Green_Tech: 'CompetencyCategory', COMPCAT_Marketing_Sales: 'CompetencyCategory',
+    COMPCAT_Marketing_Strategy: 'CompetencyCategory', COMPCAT_Mobility: 'CompetencyCategory',
+    COMPCAT_Reliability: 'CompetencyCategory', COMPCAT_Semiconductor_Design: 'CompetencyCategory',
+    COMPCAT_Service_Public: 'CompetencyCategory', COMPCAT_Shipbuilding: 'CompetencyCategory',
+    COMPCAT_Social_Value: 'CompetencyCategory', COMPCAT_Software: 'CompetencyCategory',
+    COMPCAT_Space_Aerospace: 'CompetencyCategory', COMPCAT_Tech_Security: 'CompetencyCategory',
   };
 
   const ROOT_CLASSES = [
@@ -233,6 +245,8 @@ const OntoGraf = (() => {
     ['CareerHistory', 'ofPerson',           'HumanResource','경력인원'],
     // ── 국가전략(NationalStrategy) ───────────────
     ['NationalStrategy', 'targetCompetency', 'Competency', '목표역량'],
+    ['NationalStrategy', 'hasImplementingOrg', 'Organization', '집행기관'],
+    ['Recommendation', 'addressesCompetencyGap', 'CompetencyGap', '대응역량갭'],
   ];
 
   function _textColor(hex) {

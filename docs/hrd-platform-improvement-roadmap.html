@@ -1,0 +1,1088 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HRD 플랫폼 개선 로드맵 — 단계별 실행 절차</title>
+  <style>
+    :root {
+      --primary:      #1a3a5c;
+      --accent:       #0077b6;
+      --accent-light: #00b4d8;
+      --bg:           #f4f6f9;
+      --card:         #ffffff;
+      --text:         #1e2833;
+      --muted:        #5a6a7a;
+      --border:       #d0dae5;
+
+      --p0: #6c3483; /* Foundation */
+      --p1: #27ae60; /* Phase 1 */
+      --p2: #2980b9; /* Phase 2 */
+      --p3: #e67e22; /* Phase 3 */
+      --p4: #c0392b; /* Phase 4 */
+
+      --done:   #27ae60;
+      --todo:   #95a5a6;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.75;
+      font-size: 15px;
+    }
+
+    /* ── Action bar ── */
+    .action-bar {
+      background: #fff;
+      border-bottom: 2px solid var(--accent);
+      padding: 10px 40px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      box-shadow: 0 2px 8px rgba(0,0,0,.08);
+    }
+    .action-bar .doc-title { font-size: 13px; color: var(--muted); margin-right: auto; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 16px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      text-decoration: none;
+      transition: all .2s;
+    }
+    .btn-primary  { background: var(--accent); color: #fff; }
+    .btn-primary:hover { background: #005f9e; }
+    .btn-outline  { background: #fff; color: var(--accent); border: 1.5px solid var(--accent); }
+    .btn-outline:hover { background: #f0f7ff; }
+
+    /* ── Cover ── */
+    .cover {
+      background: linear-gradient(135deg, #0a1628 0%, #1a3a5c 55%, #0077b6 100%);
+      color: #fff;
+      padding: 64px 60px 52px;
+      position: relative;
+      overflow: hidden;
+    }
+    .cover::before {
+      content: '';
+      position: absolute;
+      top: -80px; right: -80px;
+      width: 360px; height: 360px;
+      border-radius: 50%;
+      background: rgba(0,180,216,.1);
+    }
+    .cover-badge {
+      display: inline-block;
+      background: rgba(0,180,216,.25);
+      border: 1px solid rgba(0,180,216,.6);
+      color: #00b4d8;
+      padding: 3px 14px;
+      border-radius: 20px;
+      font-size: 11px;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .cover h1 { font-size: 2.1rem; font-weight: 700; line-height: 1.3; margin-bottom: 14px; }
+    .cover .sub { font-size: 1rem; opacity: .72; margin-bottom: 30px; }
+    .cover-meta { display: flex; gap: 28px; flex-wrap: wrap; }
+    .cover-meta-item { font-size: 12.5px; opacity: .8; }
+    .cover-meta-item strong { display: block; font-size: 13px; color: #00b4d8; opacity: 1; }
+
+    /* ── Layout ── */
+    .container {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 44px 40px 64px;
+    }
+
+    /* ── Phase timeline strip ── */
+    .timeline {
+      display: flex;
+      gap: 0;
+      margin: 36px 0 48px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0,0,0,.08);
+    }
+    .tl-cell {
+      flex: 1;
+      padding: 16px 14px;
+      color: #fff;
+      font-size: 12.5px;
+      position: relative;
+    }
+    .tl-cell::after {
+      content: '';
+      position: absolute;
+      top: 50%; right: -10px;
+      transform: translateY(-50%);
+      border: 10px solid transparent;
+      z-index: 10;
+    }
+    .tl-cell:last-child::after { display: none; }
+    .tl-cell .tl-phase { font-size: 10px; letter-spacing: 1px; text-transform: uppercase; opacity: .8; margin-bottom: 4px; }
+    .tl-cell .tl-name  { font-weight: 700; font-size: 13.5px; }
+    .tl-cell .tl-dur   { font-size: 11px; opacity: .75; margin-top: 4px; }
+
+    .tl-p0 { background: var(--p0); } .tl-p0::after { border-left-color: var(--p0); }
+    .tl-p1 { background: var(--p1); } .tl-p1::after { border-left-color: var(--p1); }
+    .tl-p2 { background: var(--p2); } .tl-p2::after { border-left-color: var(--p2); }
+    .tl-p3 { background: var(--p3); } .tl-p3::after { border-left-color: var(--p3); }
+    .tl-p4 { background: var(--p4); }
+
+    /* ── Section headings ── */
+    .phase-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 18px 22px;
+      border-radius: 10px 10px 0 0;
+      color: #fff;
+      margin-top: 52px;
+    }
+    .phase-header .ph-num {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.2);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; font-weight: 700;
+      flex-shrink: 0;
+    }
+    .phase-header .ph-info h2 { font-size: 1.2rem; font-weight: 700; }
+    .phase-header .ph-info .ph-meta { font-size: 12px; opacity: .8; margin-top: 2px; }
+    .phase-header .ph-tag {
+      margin-left: auto;
+      background: rgba(255,255,255,.18);
+      border: 1px solid rgba(255,255,255,.3);
+      padding: 3px 12px;
+      border-radius: 12px;
+      font-size: 11.5px;
+    }
+
+    .ph-p0 { background: var(--p0); }
+    .ph-p1 { background: var(--p1); }
+    .ph-p2 { background: var(--p2); }
+    .ph-p3 { background: var(--p3); }
+    .ph-p4 { background: var(--p4); }
+
+    .phase-body {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-top: none;
+      border-radius: 0 0 10px 10px;
+      padding: 28px 28px;
+      margin-bottom: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,.04);
+    }
+
+    /* ── Step cards ── */
+    .step {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 18px;
+      overflow: hidden;
+    }
+    .step-head {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 14px 18px;
+      background: #f8fafc;
+      border-bottom: 1px solid var(--border);
+      cursor: pointer;
+      user-select: none;
+    }
+    .step-num {
+      width: 26px; height: 26px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .step-head h3 { font-size: 0.97rem; color: var(--primary); flex: 1; }
+    .step-head .step-tag {
+      font-size: 11px;
+      padding: 2px 9px;
+      border-radius: 10px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .tag-infra   { background: #f3e5f5; color: #7b1fa2; }
+    .tag-backend { background: #e3f2fd; color: #1565c0; }
+    .tag-frontend{ background: #e8f5e9; color: #2e7d32; }
+    .tag-data    { background: #fff3e0; color: #e65100; }
+    .tag-ai      { background: #fce4ec; color: #b71c1c; }
+    .tag-design  { background: #e0f2f1; color: #00695c; }
+    .tag-ops     { background: #ede7f6; color: #4527a0; }
+
+    .step-body { padding: 16px 18px; }
+    .step-body p { font-size: 14px; color: var(--muted); margin-bottom: 10px; }
+
+    /* ── Checklist ── */
+    .checklist { list-style: none; padding: 0; margin: 10px 0; }
+    .checklist li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 6px 0;
+      font-size: 13.5px;
+      color: var(--text);
+      border-bottom: 1px dashed #eee;
+    }
+    .checklist li:last-child { border-bottom: none; }
+    .checklist .chk {
+      width: 18px; height: 18px;
+      border: 2px solid var(--border);
+      border-radius: 4px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* ── Code blocks ── */
+    .code {
+      background: #1a1e2e;
+      color: #a8d8a8;
+      padding: 14px 18px;
+      border-radius: 8px;
+      font-family: 'Consolas','D2Coding',monospace;
+      font-size: 12.5px;
+      line-height: 1.65;
+      margin: 10px 0;
+      overflow-x: auto;
+    }
+    .code .c  { color: #6a9f6a; }
+    .code .k  { color: #88c0d0; }
+    .code .s  { color: #f0c27f; }
+    .code .h  { color: #81a1c1; }
+
+    /* ── Sub-section label ── */
+    .sub-label {
+      font-size: 11.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .8px;
+      color: var(--accent);
+      margin: 14px 0 6px;
+    }
+
+    /* ── Info box ── */
+    .info-box {
+      border-radius: 8px;
+      padding: 14px 18px;
+      font-size: 13.5px;
+      margin: 12px 0;
+    }
+    .info-box.prereq  { background: #fff8e1; border-left: 4px solid #f9a825; color: #5d4037; }
+    .info-box.output  { background: #e8f5e9; border-left: 4px solid #43a047; color: #2e7d32; }
+    .info-box.warning { background: #fce4ec; border-left: 4px solid #e53935; color: #b71c1c; }
+    .info-box.tip     { background: #e3f2fd; border-left: 4px solid #1e88e5; color: #0d47a1; }
+    .info-box strong  { display: block; margin-bottom: 4px; }
+
+    /* ── Dependency table ── */
+    .dep-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13.5px;
+      margin: 16px 0;
+    }
+    .dep-table th {
+      background: var(--primary);
+      color: #fff;
+      padding: 10px 14px;
+      text-align: left;
+    }
+    .dep-table td {
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--border);
+    }
+    .dep-table tr:nth-child(even) td { background: #f8fafc; }
+
+    /* ── Effort badges ── */
+    .effort {
+      display: inline-block;
+      padding: 2px 9px;
+      border-radius: 10px;
+      font-size: 11px;
+      font-weight: 700;
+    }
+    .ef-low  { background: #e8f5e9; color: #2e7d32; }
+    .ef-mid  { background: #fff8e1; color: #f57f17; }
+    .ef-high { background: #fce4ec; color: #c62828; }
+
+    /* ── Architecture arrow ── */
+    .arch-flow {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 6px;
+      margin: 12px 0;
+      font-size: 13px;
+    }
+    .arch-node {
+      background: #e8f4fd;
+      border: 1px solid #b3d7f0;
+      color: var(--primary);
+      padding: 5px 12px;
+      border-radius: 18px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .arch-node.hl { background: var(--accent); color: #fff; border-color: var(--accent); }
+    .arch-arrow { color: var(--accent-light); font-size: 17px; font-weight: bold; }
+
+    /* ── Summary table at end ── */
+    .summary-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13.5px;
+      margin: 24px 0;
+    }
+    .summary-table th {
+      background: var(--primary);
+      color: #fff;
+      padding: 11px 14px;
+      text-align: left;
+    }
+    .summary-table td {
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .summary-table tr:nth-child(even) td { background: #f8fafc; }
+    .dot {
+      display: inline-block;
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      margin-right: 5px;
+      vertical-align: middle;
+    }
+
+    footer {
+      background: var(--primary);
+      color: rgba(255,255,255,.6);
+      padding: 26px 40px;
+      text-align: center;
+      font-size: 13px;
+    }
+    footer strong { color: #fff; }
+
+    @media print {
+      .action-bar { display: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Action bar -->
+<div class="action-bar">
+  <span class="doc-title">HRD 플랫폼 개선 로드맵 · 단계별 실행 절차서 · 2026-04-24</span>
+  <button class="btn btn-outline" onclick="window.print()">🖨️ 인쇄 / PDF</button>
+  <button class="btn btn-primary" onclick="dl()">⬇️ HTML 다운로드</button>
+</div>
+
+<!-- Cover -->
+<div class="cover">
+  <div class="cover-badge">Implementation Roadmap</div>
+  <h1>HRD 거버넌스 플랫폼<br>개선 로드맵</h1>
+  <div class="sub">전문가 평가 보고서 기반 · 단계별 실행 절차 및 체크리스트</div>
+  <div class="cover-meta">
+    <div class="cover-meta-item"><strong>총 단계</strong>사전 준비 + 4단계 (Phase 0 ~ 4)</div>
+    <div class="cover-meta-item"><strong>총 예상 기간</strong>12 ~ 18개월</div>
+    <div class="cover-meta-item"><strong>기준 문서</strong>HRD 플랫폼 전문가 평가 보고서 (2026-04-24)</div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- Timeline strip -->
+  <div class="timeline">
+    <div class="tl-cell tl-p0">
+      <div class="tl-phase">Phase 0</div>
+      <div class="tl-name">기반 정비</div>
+      <div class="tl-dur">~ 2주</div>
+    </div>
+    <div class="tl-cell tl-p1">
+      <div class="tl-phase">Phase 1</div>
+      <div class="tl-name">빠른 개선</div>
+      <div class="tl-dur">2 ~ 6주</div>
+    </div>
+    <div class="tl-cell tl-p2">
+      <div class="tl-phase">Phase 2</div>
+      <div class="tl-name">아키텍처 전환</div>
+      <div class="tl-dur">2 ~ 4개월</div>
+    </div>
+    <div class="tl-cell tl-p3">
+      <div class="tl-phase">Phase 3</div>
+      <div class="tl-name">지능화</div>
+      <div class="tl-dur">3 ~ 6개월</div>
+    </div>
+    <div class="tl-cell tl-p4">
+      <div class="tl-phase">Phase 4</div>
+      <div class="tl-name">생태계 연계</div>
+      <div class="tl-dur">6 ~ 12개월</div>
+    </div>
+  </div>
+
+  <!-- ╔══════════════════╗
+       ║  PHASE 0         ║
+       ╚══════════════════╝ -->
+  <div class="phase-header ph-p0">
+    <div class="ph-num">0</div>
+    <div class="ph-info">
+      <h2>Phase 0 · 기반 정비 (Foundation)</h2>
+      <div class="ph-meta">모든 후속 단계의 전제 조건 · 기간: 약 2주</div>
+    </div>
+    <div class="ph-tag">사전 준비</div>
+  </div>
+  <div class="phase-body">
+
+    <div class="step">
+      <div class="step-head">
+        <div class="step-num">0-1</div>
+        <h3>현재 코드베이스 및 데이터 현황 정확히 문서화</h3>
+        <span class="step-tag tag-ops">운영</span>
+      </div>
+      <div class="step-body">
+        <p>이후 모든 작업의 기준점(baseline)을 만듭니다. 현재 무엇이 있는지 명확히 파악해야 무엇을 바꿔야 하는지 결정할 수 있습니다.</p>
+        <div class="sub-label">체크리스트</div>
+        <ul class="checklist">
+          <li><span class="chk"></span>플랫폼 파일 구조 및 JS 모듈 의존성 다이어그램 작성 (app.js, ontograf.js, protegraf.js, nlq.js)</li>
+          <li><span class="chk"></span>RDF 온톨로지 클래스 수 · 속성 수 · 인스턴스 수 집계표 작성</li>
+          <li><span class="chk"></span>현재 정적 JSON 파일 목록 및 생성 스크립트 매핑 문서화</li>
+          <li><span class="chk"></span>현재 기능 목록 (구현됨 / 미구현 / 부분 구현) 정리</li>
+          <li><span class="chk"></span>GitHub Pages 배포 파이프라인 흐름도 작성</li>
+        </ul>
+        <div class="info-box output"><strong>산출물</strong>docs/architecture-baseline.md, docs/data-inventory.md</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-head">
+        <div class="step-num">0-2</div>
+        <h3>개발 환경 구성 및 로컬 실행 환경 표준화</h3>
+        <span class="step-tag tag-infra">인프라</span>
+      </div>
+      <div class="step-body">
+        <p>현재 플랫폼은 정적 파일이라 로컬에서 file:// 프로토콜로도 동작하지만, Phase 2 이후 백엔드 도입 시 환경이 필요합니다.</p>
+        <div class="sub-label">체크리스트</div>
+        <ul class="checklist">
+          <li><span class="chk"></span>Node.js 개발 서버(예: http-server, live-server) 또는 Python SimpleHTTPServer 표준화</li>
+          <li><span class="chk"></span><code>.env.example</code> 파일 생성 (Claude API key, Gemini API key 환경변수 정의)</li>
+          <li><span class="chk"></span>API 키를 localStorage에서 환경 변수 기반으로 로드하도록 수정 준비</li>
+          <li><span class="chk"></span>Git 브랜치 전략 수립 (main / develop / feature/* 구조)</li>
+          <li><span class="chk"></span>GitHub Actions CI 기본 워크플로우 설정 (정적 분석, 빌드 검증)</li>
+        </ul>
+        <div class="info-box output"><strong>산출물</strong>.env.example, .github/workflows/ci.yml, README.md 갱신</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-head">
+        <div class="step-num">0-3</div>
+        <h3>온톨로지 품질 검증 및 정제</h3>
+        <span class="step-tag tag-data">데이터</span>
+      </div>
+      <div class="step-body">
+        <p>Phase 2에서 추론 엔진을 도입하기 전, 현재 RDF가 OWL 2 DL 표준을 준수하는지 점검합니다.</p>
+        <div class="sub-label">체크리스트</div>
+        <ul class="checklist">
+          <li><span class="chk"></span>Protégé(Desktop)에서 HRD_Governance_Extended_v2.rdf 열기 및 OWL DL 일관성 검사(HermiT/Pellet)</li>
+          <li><span class="chk"></span>Domain/Range 누락 속성 목록 작성 및 보완</li>
+          <li><span class="chk"></span>중복 클래스 및 오타 URI 식별 및 수정</li>
+          <li><span class="chk"></span>시간 차원 누락 확인: <code>hasStartDate</code>, <code>hasEndDate</code> 데이터 속성 추가 여부 결정</li>
+          <li><span class="chk"></span>SHACL 또는 OWL 제약 조건으로 필수 속성 정의 (예: Policy는 반드시 hasAllocatedBudget 가져야 함)</li>
+        </ul>
+        <div class="info-box prereq"><strong>사용 도구</strong>Protégé 5.x (무료), Apache Jena CLI (<code>riot --validate</code>), ROBOT 온톨로지 도구</div>
+        <div class="info-box output"><strong>산출물</strong>HRD_Governance_v3.rdf (정제본), ontology-quality-report.md</div>
+      </div>
+    </div>
+
+  </div><!-- /phase-body -->
+
+
+  <!-- ╔══════════════════╗
+       ║  PHASE 1         ║
+       ╚══════════════════╝ -->
+  <div class="phase-header ph-p1">
+    <div class="ph-num">1</div>
+    <div class="ph-info">
+      <h2>Phase 1 · 빠른 개선 (Quick Wins)</h2>
+      <div class="ph-meta">현재 아키텍처 유지 · 즉각적 사용성 향상 · 기간: 2 ~ 6주</div>
+    </div>
+    <div class="ph-tag">노력 대비 효과 최대</div>
+  </div>
+  <div class="phase-body">
+
+    <div class="step">
+      <div class="step-head">
+        <div class="step-num">1-1</div>
+        <h3>역량 갭 히트맵 시각화 추가</h3>
+        <span class="step-tag tag-frontend">프론트엔드</span>
+      </div>
+      <div class="step-body">
+        <p>현재 1,248개의 역량 갭 데이터가 있지만 목록으로만 표시됩니다. 기관별 × 역량별 히트맵으로 갭 집중 영역을 한눈에 파악할 수 있게 합니다.</p>
+        <div class="sub-label">구현 절차</div>
+        <ul class="checklist">
+          <li><span class="chk"></span>ontology_data.js에서 competencyGaps를 (기관ID, 역량ID) 쌍으로 집계하는 함수 작성</li>
+          <li><span class="chk"></span>D3.js <code>scaleBand</code> + <code>scaleSequential</code>을 사용하여 히트맵 SVG 렌더링</li>
+          <li><span class="chk"></span>역량 뷰(<code>view-competency</code>)에 히트맵 컨테이너 추가</li>
+          <li><span class="chk"></span>셀 hover 시 툴팁: 기관명, 역량명, 갭 수, 심각도 표시</li>
+          <li><span class="chk"></span>색상 스케일: 갭 없음(흰색) → 갭 많음(진한 빨간색)</li>
+        </ul>
+        <div class="code"><span class="c">// 기관 × 역량 갭 집계 (app.js 또는 별도 heatmap.js)</span>
+<span class="k">function</span> buildGapMatrix(gaps, orgs, competencies) {
+  <span class="k">const</span> matrix = {};
+  gaps.forEach(g => {
+    <span class="k">const</span> key = `${g.organizationId}_${g.competencyId}`;
+    matrix[key] = (matrix[key] || 0) + 1;
+  });
+  <span class="k">return</span> matrix;
+}</div>
+        <div class="info-box output"><strong>산출물</strong>js/heatmap.js, 역량 뷰에 히트맵 섹션 추가</div>
+        <div class="effort ef-low">노력: 낮음</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-head">
+        <div class="step-num">1-2</div>
+        <h3>예산 흐름 Sankey 다이어그램 추가</h3>
+        <span class="step-tag tag-frontend">프론트엔드</span>
+      </div>
+      <div class="step-body">
+        <p>현재 예산 뷰는 bar chart로 금액만 표시합니다. 전략 → 정책 → 프로그램으로 이어지는 자금 흐름을 Sankey로 시각화하면 예산 배분 구조를 직관적으로 파악할 수 있습니다.</p>
+        <div class="sub-label">구현 절차</div>
+        <ul class="checklist">
+          <li><span class="chk"></span>D3.js <code>d3-sankey</code> 플러그인 추가 (CDN 또는 번들)</li>
+          <li><span class="chk"></span>budget_analysis.json에서 노드(Strategy, Policy, Program)와 링크(예산 금액) 데이터 추출 함수 작성</li>
+          <li><span class="chk"></span>예산 뷰에 "흐름도" 탭 추가 (<code>data-tab="flow"</code>)</li>
+          <li><span class="chk"></span>노드 클릭 시 해당 전략/정책/프로그램 상세 패널 열기</li>
+          <li><span class="chk"></span>금액 포맷팅: 기존 <code>formatWon()</code> 함수 재사용</li>
+        </ul>
+        <div class="info-box prereq"><strong>라이브러리</strong>d3-sankey (d3-plugins 또는 @observablehq/plot의 Sankey)</div>
+        <div class="info-box output"><strong>산출물</strong>js/sankey.js, 예산 뷰에 흐름도 탭 추가</div>
+        <div class="effort ef-low">노력: 낮음</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-head">
+        <div class="step-num">1-3</div>
+        <h3>프로그램-역량 정합도 점수 계산 및 표시</h3>
+        <span class="step-tag tag-data">데이터 · 프론트엔드</span>
+      </div>
+      <div class="step-body">
+        <p>190개 프로그램이 현재 역량 갭 해소에 얼마나 기여하는지 정량적으로 보여줍니다. 프로그램 선택 우선순위 결정에 직접 활용됩니다.</p>
+        <div class="sub-label">구현 절차</div>
+        <ul class="checklist">
+          <li><span class="chk"></span>각 프로그램의 <code>developsCompetency</code> 목록 추출</li>
+          <li><span class="chk"></span>전체 역량 갭에서 언급된 역량 ID 빈도 집계 (갭 가중치 계산)</li>
+          <li><span class="chk"></span>정합도 = Σ(프로그램이 개발하는 역량의 갭 가중치) / 전체 갭 가중치 합계 × 100</li>
+          <li><span class="chk"></span>프로그램 뷰에 정합도 점수 컬럼 및 정렬 기능 추가</li>
+          <li><span class="chk"></span>상위 10개 프로그램 "갭 해소 추천" 카드 섹션 생성</li>
+        </ul>
+        <div class="info-box output"><strong>산출물</strong>app.js에 <code>calcCoverageScore()</code> 함수, 프로그램 뷰 UI 갱신</div>
+        <div class="effort ef-low">노력: 낮음</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-head">
+        <div class="step-num">1-4</div>
+        <h3>역량 갭 해결 현황 워크플로우 뷰 추가</h3>
+        <span class="step-tag tag-frontend">프론트엔드</span>
+      </div>
+      <div class="step-body">
+        <p>현재 갭 존재 여부만 보여주지만, 각 갭이 어떤 해결 단계에 있는지 시각화합니다. <code>ProgramEnrollment</code>, <code>ProgramCompletion</code> 인스턴스를 활용합니다.</p>
+        <div class="sub-label">상태 단계 정의</div>
+        <div class="arch-flow">
+          <div class="arch-node">갭 식별</div><span class="arch-arrow">→</span>
+          <div class="arch-node">프로그램 매칭</div><span class="arch-arrow">→</span>
+          <div class="arch-node">수강 중</div><span class="arch-arrow">→</span>
+          <div class="arch-node">이수 완료</div><span class="arch-arrow">→</span>
+          <div class="arch-node hl">갭 해소</div>
+        </div>
+        <ul class="checklist">
+          <li><span class="chk"></span>각 갭 인스턴스에 현재 단계 필드 추가 (ontology_data.js 업데이트 스크립트 수정)</li>
+          <li><span class="chk"></span>Kanban 스타일 또는 퍼널 차트로 단계별 갭 수 표시</li>
+          <li><span class="chk"></span>갭 뷰에 "워크플로우 현황" 서브탭 추가</li>
+          <li><span class="chk"></span>단계별 색상 코딩 (식별=빨강, 매칭=주황, 수강=파랑, 이수=초록)</li>
+        </ul>
+        <div class="info-box output"><strong>산출물</strong>js/workflow.js, 역량 뷰에 워크플로우 탭 추가</div>
+        <div class="effort ef-mid">노력: 중간</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-head">
+        <div class="step-num">1-5</div>
+        <h3>VOWL 그래프 엣지 가중치 시각화 개선</h3>
+        <span class="step-tag tag-frontend">프론트엔드</span>
+      </div>
+      <div class="step-body">
+        <p>현재 온톨로지 그래프의 모든 관계 엣지가 동일한 두께와 색상입니다. 관계 빈도/중요도에 따라 차별화합니다.</p>
+        <ul class="checklist">
+          <li><span class="chk"></span>각 Object Property의 인스턴스 수 집계 (예: <code>hasCompetencyGap</code>가 1,248번 → 두꺼운 엣지)</li>
+          <li><span class="chk"></span>D3 force simulation의 <code>linkStrength</code>와 <code>stroke-width</code>를 빈도에 비례하여 설정</li>
+          <li><span class="chk"></span>핵심 관계(상위 5개)는 별도 색상으로 강조</li>
+          <li><span class="chk"></span>그래프 범례(legend) 추가: 색상 = 관계 유형, 두께 = 사용 빈도</li>
+        </ul>
+        <div class="effort ef-low">노력: 낮음</div>
+      </div>
+    </div>
+
+  </div><!-- /phase-body p1 -->
+
+
+  <!-- ╔══════════════════╗
+       ║  PHASE 2         ║
+       ╚══════════════════╝ -->
+  <div class="phase-header ph-p2">
+    <div class="ph-num">2</div>
+    <div class="ph-info">
+      <h2>Phase 2 · 아키텍처 전환 (Architecture Upgrade)</h2>
+      <div class="ph-meta">정적 데이터 → 실시간 · 추론 엔진 도입 · 기간: 2 ~ 4개월</div>
+    </div>
+    <div class="ph-tag">핵심 전환점</div>
+  </div>
+  <div class="phase-body">
+
+    <div class="step">
+      <div class="step-head">
+        <div class="step-num">2-1</div>
+        <h3>RDF 트리플스토어 백엔드 구축 (Apache Jena Fuseki)</h3>
+        <span class="step-tag tag-infra">인프라 · 백엔드</span>
+      </div>
+      <div class="step-body">
+        <p>가장 중요한 아키텍처 전환입니다. 정적 JSON 대신 live SPARQL endpoint를 통해 온톨로지 데이터에 접근합니다.</p>
+        <div class="sub-label">현재 vs 목표 아키텍처</div>
+        <div class="arch-flow">
+          <div class="arch-node">RDF 파일</div>
+          <span class="arch-arrow">→</span>
+          <div class="arch-node">Python 파싱</div>
+          <span class="arch-arrow">→</span>
+          <div class="arch-node">정적 JSON</div>
+          <span class="arch-arrow">→</span>
+          <div class="arch-node">브라우저</div>
+        </div>
+        <div class="arch-flow" style="margin-top:6px;">
+          <div class="arch-node hl">Fuseki 서버</div>
+          <span class="arch-arrow">→</span>
+          <div class="arch-node hl">SPARQL Endpoint</div>
+          <span class="arch-arrow">→</span>
+          <div class="arch-node hl">fetch() 브라우저</div>
+          <span class="arch-arrow">→</span>
+          <div class="arch-node hl">실시간 렌더링</div>
+        </div>
+
+        <div class="sub-label">구현 절차</div>
+        <ul class="checklist">
+          <li><span class="chk"></span>Apache Jena Fuseki 3.x 다운로드 및 설치</li>
+          <li><span class="chk"></span>HRD_Governance_v3.rdf를 Fuseki 데이터셋으로 로드</li>
+          <li><span class="chk"></span>OWL 추론 어셈블러 설정 파일 작성 (<code>hrd-assembler.ttl</code>): Pellet 또는 OWL 2 RL 추론기 설정</li>
+          <li><span class="chk"></span>SPARQL 엔드포인트 URL 확인: <code>http://localhost:3030/hrd/sparql</code></li>
+          <li><span class="chk"></span>CORS 헤더 설정 (브라우저에서 직접 호출 허용)</li>
+          <li><span class="chk"></span>프론트엔드 <code>data.js</code> 수정: JSON 로드 → SPARQL fetch 호출로 교체</li>
+          <li><span class="chk"></span>공통 SPARQL 쿼리 라이브러리 파일 작성 (<code>js/sparql-queries.js</code>)</li>
+          <li><span class="chk"></span>오프라인 폴백 유지: 네트워크 실패 시 기존 정적 JSON으로 fallback</li>
+        </ul>
+        <div class="code"><span class="c"># Fuseki 실행 예시 (OWL 추론 포함)</span>
+./fuseki-server --config=hrd-assembler.ttl
+
+<span class="c"># assembler 설정 핵심 부분 (hrd-assembler.ttl)</span>
+:hrdDataset a ja:RDFDataset ;
+  ja:defaultGraph [
+    a ja:InfModel ;
+    ja:reasoner [ ja:reasonerURL pellet: ] ;
+    ja:content [ja:externalContent &lt;file:HRD_Governance_v3.rdf&gt;]
+  ] .</div>
+        <div class="info-box prereq"><strong>전제 조건</strong>Phase 0-3 (온톨로지 품질 검증) 완료, Java 11+ 설치</div>
+        <div class="info-box warning"><strong>주의</strong>GitHub Pages는 정적 호스팅이므로 Fuseki는 별도 서버(로컬 또는 클라우드)에서 실행해야 합니다. 배포 시 CORS 설정 필수.</div>
+        <div class="effort ef-high">노력: 높음</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-head">
+        <div class="step-num">2-2</div>
+        <h3>SWRL 규칙 작성 및 자동 추론 경보 시스템</h3>
+        <span class="step-tag tag-backend">백엔드 · 데이터</span>
+      </div>
+      <div class="step-body">
+        <p>온톨로지 추론 규칙을 작성하여 시스템이 스스로 상황을 판단하고 경보를 생성하게 합니다.</p>
+        <div class="sub-label">우선 구현할 SWRL 규칙 목록</div>
+        <table class="dep-table">
+          <thead><tr><th>규칙 ID</th><th>조건</th><th>결론(추론 결과)</th><th>우선순위</th></tr></thead>
+          <tbody>
+            <tr><td>R-01</td><td>Person의 역량 갭이 3개 이상이고 재직자인 경우</td><td>:CriticalGapPerson 으로 분류</td><td>★★★</td></tr>
+            <tr><td>R-02</td><td>정책 예산이 목표 대비 50% 미만인 경우</td><td>:UnderFundedPolicy 로 분류</td><td>★★★</td></tr>
+            <tr><td>R-03</td><td>교육 프로그램의 수료율이 60% 미만인 경우</td><td>:LowCompletionProgram 으로 분류</td><td>★★</td></tr>
+            <tr><td>R-04</td><td>역량을 개발하는 프로그램이 없는 갭이 있는 경우</td><td>:UnmatchedGap 으로 분류</td><td>★★★</td></tr>
+            <tr><td>R-05</td><td>전략이 관련 정책을 2개 미만으로 가진 경우</td><td>:WeaklyImplementedStrategy 로 분류</td><td>★★</td></tr>
+          </tbody>
+        </table>
+        <ul class="checklist">
+          <li><span class="chk"></span>Protégé에서 위 5개 SWRL 규칙 작성 및 테스트</li>
+          <li><span class="chk"></span>Fuseki 추론 결과에서 신규 분류 클래스 인스턴스 SPARQL로 조회</li>
+          <li><span class="chk"></span>플랫폼 헤더에 "경보 알림 아이콘" 추가 (경보 수 뱃지 표시)</li>
+          <li><span class="chk"></span>경보 패널 UI 구현: 경보 유형별 목록, 심각도 색상 코딩</li>
+          <li><span class="chk"></span>경보 클릭 시 관련 인스턴스 상세 패널 연결</li>
+        </ul>
+        <div class="effort ef-high">노력: 높음</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-head">
+        <div class="step-num">2-3</div>
+        <h3>NLQ를 Live SPARQL 생성으로 업그레이드 (Text2SPARQL)</h3>
+        <span class="step-tag tag-ai">AI</span>
+      </div>
+      <div class="step-body">
+        <p>현재 RAG는 사전 실행 결과를 검색합니다. LLM이 직접 SPARQL 쿼리를 생성하고 Fuseki에 실행하는 방식으로 전환합니다.</p>
+        <div class="sub-label">구현 절차</div>
+        <ul class="checklist">
+          <li><span class="chk"></span>LLM 프롬프트에 온톨로지 스키마 컨텍스트 제공 (클래스/속성 정의 요약)</li>
+          <li><span class="chk"></span>Claude API에 "자연어 질문 → SPARQL 쿼리 생성" 프롬프트 템플릿 작성</li>
+          <li><span class="chk"></span>생성된 SPARQL을 Fuseki에 전송하고 결과를 받아 LLM에 다시 전달하여 자연어 답변 생성</li>
+          <li><span class="chk"></span>생성된 SPARQL 쿼리를 UI에 표시 (투명성/디버깅)</li>
+          <li><span class="chk"></span>쿼리 실행 실패 시 오류 메시지와 함께 수정 요청 재시도 로직 구현</li>
+          <li><span class="chk"></span>자주 사용되는 쿼리를 캐싱하여 API 비용 절감</li>
+        </ul>
+        <div class="code"><span class="c">// Text2SPARQL 프롬프트 구조 (nlq.js 수정)</span>
+<span class="k">const</span> systemPrompt = `
+당신은 HRD 온톨로지 전문가입니다.
+아래 온톨로지 스키마를 바탕으로 사용자 질문을 SPARQL 쿼리로 변환하세요.
+
+PREFIX hrd: &lt;http://example.org/hrd#&gt;
+클래스: NationalStrategy, Policy, Budget, EducationProgram,
+       HumanResource, Competency, CompetencyGap ...
+주요 속성: hasAllocatedBudget, developsCompetency, hasCompetencyGap ...
+
+규칙: SELECT 쿼리만 생성, LIMIT 100 추가, 설명 없이 쿼리만 출력
+`;</div>
+        <div class="info-box prereq"><strong>전제 조건</strong>Phase 2-1 (Fuseki 구축) 완료</div>
+        <div class="effort ef-mid">노력: 중간</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-head">
+        <div class="step-num">2-4</div>
+        <h3>이벤트 기반 온톨로지 업데이트 파이프라인 구축</h3>
+        <span class="step-tag tag-backend">백엔드</span>
+      </div>
+      <div class="step-body">
+        <p>실세계 HRD 이벤트가 발생할 때 온톨로지 트리플이 자동으로 추가되는 파이프라인을 만듭니다.</p>
+        <div class="sub-label">이벤트 유형 및 처리 방식</div>
+        <table class="dep-table">
+          <thead><tr><th>이벤트</th><th>입력 방식</th><th>생성되는 트리플</th></tr></thead>
+          <tbody>
+            <tr><td>교육 프로그램 수강 신청</td><td>웹 폼 또는 CSV 업로드</td><td>ProgramEnrollment 인스턴스 생성</td></tr>
+            <tr><td>프로그램 이수 완료</td><td>웹 폼 또는 CSV 업로드</td><td>ProgramCompletion 인스턴스 생성</td></tr>
+            <tr><td>역량 평가 실시</td><td>평가 결과 CSV 업로드</td><td>CompetencyAssessment 인스턴스 생성/갱신</td></tr>
+            <tr><td>취업/창업 성과</td><td>관리자 입력</td><td>Outcome 인스턴스 생성</td></tr>
+          </tbody>
+        </table>
+        <ul class="checklist">
+          <li><span class="chk"></span>Python FastAPI 또는 Flask로 간단한 데이터 입력 API 구현</li>
+          <li><span class="chk"></span>입력 데이터 → RDF 트리플 변환 모듈 작성 (rdflib 사용)</li>
+          <li><span class="chk"></span>Fuseki SPARQL Update (<code>INSERT DATA</code>) 를 통한 트리플 저장</li>
+          <li><span class="chk"></span>플랫폼에 "데이터 입력" 관리자 전용 패널 추가</li>
+          <li><span class="chk"></span>CSV 일괄 업로드 기능 (pandas로 파싱 후 RDF 변환)</li>
+        </ul>
+        <div class="effort ef-high">노력: 높음</div>
+      </div>
+    </div>
+
+  </div><!-- /phase-body p2 -->
+
+
+  <!-- ╔══════════════════╗
+       ║  PHASE 3         ║
+       ╚══════════════════╝ -->
+  <div class="phase-header ph-p3">
+    <div class="ph-num">3</div>
+    <div class="ph-info">
+      <h2>Phase 3 · 지능화 (Intelligence)</h2>
+      <div class="ph-meta">개인화 · 예측 · 시뮬레이션 · 기간: 3 ~ 6개월</div>
+    </div>
+    <div class="ph-tag">AIHRD 핵심 기능</div>
+  </div>
+  <div class="phase-body">
+
+    <div class="step">
+      <div class="step-head">
+        <div class="step-num">3-1</div>
+        <h3>개인화된 역량 개발 로드맵 생성기</h3>
+        <span class="step-tag tag-ai">AI · 프론트엔드</span>
+      </div>
+      <div class="step-body">
+        <p>개인(HumanResource)을 선택하면 AI + 온톨로지 추론이 결합하여 맞춤 학습 경로를 자동 생성합니다.</p>
+        <ul class="checklist">
+          <li><span class="chk"></span>개인 프로파일 조회: 현재 역량, 역량 갭, 목표 직위/직무 (SPARQL)</li>
+          <li><span class="chk"></span>갭 심각도 및 시장 수요 기반 우선순위 정렬 알고리즘 작성</li>
+          <li><span class="chk"></span>각 갭에 대해 <code>developsCompetency</code> 역방향 조회로 적합 프로그램 목록 생성</li>
+          <li><span class="chk"></span>프로그램 간 선수 학습 관계(prerequisite) 온톨로지 속성 추가 후 위상 정렬(topological sort)로 학습 순서 결정</li>
+          <li><span class="chk"></span>학습 로드맵을 타임라인 시각화 (D3.js Gantt 스타일)</li>
+          <li><span class="chk"></span>로드맵을 PDF/HTML로 내보내기 기능</li>
+        </ul>
+        <div class="effort ef-high">노력: 높음</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-head">
+        <div class="step-num">3-2</div>
+        <h3>정책 임팩트 시뮬레이션 (What-If Analysis)</h3>
+        <span class="step-tag tag-ai">AI · 분석</span>
+      </div>
+      <div class="step-body">
+        <p>정책 입안자가 파라미터를 조정하면 예상 결과가 실시간으로 시뮬레이션됩니다.</p>
+        <ul class="checklist">
+          <li><span class="chk"></span>시뮬레이션 모델 설계: 예산 증가율 → 수용 인원 증가 → 역량 갭 해소 수 추정 수식 정의</li>
+          <li><span class="chk"></span>Python 시뮬레이션 엔진 구현 (FastAPI 엔드포인트로 노출)</li>
+          <li><span class="chk"></span>프론트엔드 슬라이더 UI: 예산 증감률, 프로그램 확대 수, 목표 연도</li>
+          <li><span class="chk"></span>시뮬레이션 결과: 갭 해소율, ROI, 예상 취업 증가 인원을 Chart.js로 표시</li>
+          <li><span class="chk"></span>시나리오 저장 및 비교 기능 (최대 3개 시나리오 병렬 비교)</li>
+        </ul>
+        <div class="effort ef-high">노력: 높음</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-head">
+        <div class="step-num">3-3</div>
+        <h3>설명 가능한 AI 추천 (Explainable AI)</h3>
+        <span class="step-tag tag-ai">AI · 프론트엔드</span>
+      </div>
+      <div class="step-body">
+        <p>AI 추천의 근거를 온톨로지 경로로 시각적으로 설명합니다. "왜 이 프로그램을 추천했는가?"에 대한 투명한 답변을 제공합니다.</p>
+        <ul class="checklist">
+          <li><span class="chk"></span>추천 생성 시 근거 경로 추출: (Person → Gap → Competency → Program) SPARQL 경로 쿼리</li>
+          <li><span class="chk"></span>D3.js로 추천 근거 미니 그래프 렌더링 (상세 패널에 포함)</li>
+          <li><span class="chk"></span>각 엣지에 관계 레이블 표시 (한국어)</li>
+          <li><span class="chk"></span>관련 정책 및 예산 연결 노드까지 확장 표시</li>
+          <li><span class="chk"></span>이 경로에서 "약한 고리" (예: 예산 부족 구간) 하이라이트</li>
+        </ul>
+        <div class="effort ef-mid">노력: 중간</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-head">
+        <div class="step-num">3-4</div>
+        <h3>역할 기반 뷰 및 개인화 대시보드</h3>
+        <span class="step-tag tag-frontend">프론트엔드</span>
+      </div>
+      <div class="step-body">
+        <p>사용자 역할에 따라 다른 초기 화면과 맞춤 정보를 제공합니다.</p>
+        <table class="dep-table">
+          <thead><tr><th>역할</th><th>기본 대시보드</th><th>특화 기능</th></tr></thead>
+          <tbody>
+            <tr><td>정책 입안자</td><td>전략↔정책 정합도, 예산 분배</td><td>What-If 시뮬레이션, 경보 패널</td></tr>
+            <tr><td>HR 실무자</td><td>기관별 역량 갭 히트맵</td><td>갭 워크플로우 관리, 개인별 로드맵</td></tr>
+            <tr><td>프로그램 담당자</td><td>프로그램 정합도 순위</td><td>수강 등록 관리, 이수율 추적</td></tr>
+            <tr><td>연구자/분석가</td><td>전체 그래프 뷰</td><td>SPARQL 직접 쿼리, 데이터 내보내기</td></tr>
+          </tbody>
+        </table>
+        <ul class="checklist">
+          <li><span class="chk"></span>localStorage 기반 역할 선택 설정 저장 (로그인 없이 시범 구현)</li>
+          <li><span class="chk"></span>역할별 기본 뷰 설정 (<code>App.init()</code>에 역할 분기 추가)</li>
+          <li><span class="chk"></span>역할 선택 온보딩 모달 추가 (최초 방문 시)</li>
+        </ul>
+        <div class="effort ef-mid">노력: 중간</div>
+      </div>
+    </div>
+
+  </div><!-- /phase-body p3 -->
+
+
+  <!-- ╔══════════════════╗
+       ║  PHASE 4         ║
+       ╚══════════════════╝ -->
+  <div class="phase-header ph-p4">
+    <div class="ph-num">4</div>
+    <div class="ph-info">
+      <h2>Phase 4 · 생태계 연계 (Ecosystem Integration)</h2>
+      <div class="ph-meta">외부 데이터 연동 · 표준화 · 기간: 6 ~ 12개월</div>
+    </div>
+    <div class="ph-tag">장기 목표</div>
+  </div>
+  <div class="phase-body">
+
+    <div class="step">
+      <div class="step-head">
+        <div class="step-num">4-1</div>
+        <h3>NCS(국가직무능력표준) 온톨로지 매핑</h3>
+        <span class="step-tag tag-data">데이터 · 온톨로지</span>
+      </div>
+      <div class="step-body">
+        <p>HRD 온톨로지의 Competency 클래스를 NCS 표준 직무역량과 <code>owl:sameAs</code>로 연결하여 국가 표준과의 정합성을 확보합니다.</p>
+        <ul class="checklist">
+          <li><span class="chk"></span>NCS 포털(ncs.go.kr) API 또는 공개 데이터로 NCS 역량 체계 수집</li>
+          <li><span class="chk"></span>문자열 유사도(cosine similarity) 기반 자동 매핑 후 수동 검수</li>
+          <li><span class="chk"></span>매핑 결과를 <code>owl:sameAs</code> 트리플로 RDF에 추가</li>
+          <li><span class="chk"></span>NCS 코드로 역량 검색 기능 추가 (코드 참조 뷰 연동)</li>
+        </ul>
+        <div class="effort ef-high">노력: 높음</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-head">
+        <div class="step-num">4-2</div>
+        <h3>워크넷 채용공고 데이터 연계 (실시간 시장 수요 반영)</h3>
+        <span class="step-tag tag-data">데이터 · 백엔드</span>
+      </div>
+      <div class="step-body">
+        <p>채용공고에서 요구하는 직무 역량을 주기적으로 수집하여 "시장 수요 역량"으로 온톨로지에 반영합니다.</p>
+        <ul class="checklist">
+          <li><span class="chk"></span>워크넷 오픈 API 연동 모듈 개발 (Python requests + 공공데이터포털 API 키)</li>
+          <li><span class="chk"></span>채용공고 직무 키워드 → 온톨로지 역량 클래스 매핑 AI 분류기 구현</li>
+          <li><span class="chk"></span>주 1회 자동 수집 스케줄러 설정 (cron + Python)</li>
+          <li><span class="chk"></span>"시장 수요 역량" vs "현재 역량 갭" 비교 뷰 추가</li>
+          <li><span class="chk"></span>채용 수요 증가 역량에 "급증" 태그 표시</li>
+        </ul>
+        <div class="info-box tip"><strong>대안</strong>워크넷 API 접근이 어려울 경우 공공데이터포털의 "국가 직업 정보" 데이터셋 활용</div>
+        <div class="effort ef-high">노력: 높음</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-head">
+        <div class="step-num">4-3</div>
+        <h3>모바일 반응형 레이아웃 및 접근성(WCAG) 개선</h3>
+        <span class="step-tag tag-design">디자인 · 프론트엔드</span>
+      </div>
+      <div class="step-body">
+        <p>정책 담당자의 현장 태블릿 사용을 고려한 반응형 레이아웃과 WCAG 2.1 AA 준수로 접근성을 개선합니다.</p>
+        <ul class="checklist">
+          <li><span class="chk"></span>CSS media query 추가: 768px 이하 사이드바 하단 탭 네비게이션으로 전환</li>
+          <li><span class="chk"></span>색상 대비 비율 4.5:1 이상으로 다크 테마 팔레트 조정</li>
+          <li><span class="chk"></span>키보드 탐색 지원: <code>tabindex</code>, <code>aria-label</code>, <code>role</code> 속성 추가</li>
+          <li><span class="chk"></span>그래프 시각화의 대체 텍스트 및 데이터 테이블 형식 토글 제공</li>
+          <li><span class="chk"></span>Lighthouse 접근성 점수 90+ 달성 목표</li>
+        </ul>
+        <div class="effort ef-mid">노력: 중간</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-head">
+        <div class="step-num">4-4</div>
+        <h3>온톨로지 구동 UI (Ontology-Driven UI) 구현</h3>
+        <span class="step-tag tag-frontend">프론트엔드 · 온톨로지</span>
+      </div>
+      <div class="step-body">
+        <p>온톨로지에 UI 메타데이터 어노테이션을 추가하여 새 클래스/속성 추가 시 UI가 자동으로 업데이트되게 합니다.</p>
+        <ul class="checklist">
+          <li><span class="chk"></span>커스텀 OWL 어노테이션 속성 정의: <code>ui:defaultView</code>, <code>ui:groupBy</code>, <code>ui:chartType</code></li>
+          <li><span class="chk"></span>온톨로지에서 UI 메타데이터 SPARQL로 조회하는 함수 작성</li>
+          <li><span class="chk"></span>클래스별 기본 뷰 유형 자동 결정 로직 구현 (숫자 속성 → 차트, 관계 → 그래프 등)</li>
+          <li><span class="chk"></span>새 RDF 클래스 추가 시 자동 사이드바 탭 생성 메커니즘 구현</li>
+        </ul>
+        <div class="info-box warning"><strong>난이도 주의</strong>이 기능은 가장 복잡한 구현 중 하나입니다. Phase 4의 다른 작업이 완료된 후 마지막에 구현을 권장합니다.</div>
+        <div class="effort ef-high">노력: 매우 높음</div>
+      </div>
+    </div>
+
+  </div><!-- /phase-body p4 -->
+
+
+  <!-- ── Summary Table ── -->
+  <h2 style="font-size:1.4rem; color:var(--primary); margin-top:52px; margin-bottom:20px; padding-bottom:12px; border-bottom:2px solid var(--border);">전체 단계 요약표</h2>
+
+  <table class="summary-table">
+    <thead>
+      <tr>
+        <th>단계</th><th>주요 작업</th><th>기간</th><th>전제 조건</th><th>핵심 산출물</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="dot" style="background:var(--p0)"></span><strong>Phase 0</strong><br><small>기반 정비</small></td>
+        <td>코드 문서화, 환경 구성, 온톨로지 품질 검증</td>
+        <td>2주</td>
+        <td>없음</td>
+        <td>architecture-baseline.md, HRD_Governance_v3.rdf</td>
+      </tr>
+      <tr>
+        <td><span class="dot" style="background:var(--p1)"></span><strong>Phase 1</strong><br><small>빠른 개선</small></td>
+        <td>히트맵, Sankey, 정합도 점수, 워크플로우 뷰, 그래프 개선</td>
+        <td>2~6주</td>
+        <td>Phase 0</td>
+        <td>heatmap.js, sankey.js, workflow.js, UI 갱신</td>
+      </tr>
+      <tr>
+        <td><span class="dot" style="background:var(--p2)"></span><strong>Phase 2</strong><br><small>아키텍처 전환</small></td>
+        <td>Fuseki 구축, SWRL 규칙, Text2SPARQL, 이벤트 파이프라인</td>
+        <td>2~4개월</td>
+        <td>Phase 0</td>
+        <td>Fuseki 서버, SWRL 규칙 5개, FastAPI 백엔드</td>
+      </tr>
+      <tr>
+        <td><span class="dot" style="background:var(--p3)"></span><strong>Phase 3</strong><br><small>지능화</small></td>
+        <td>학습 로드맵, 정책 시뮬레이션, XAI, 역할 기반 뷰</td>
+        <td>3~6개월</td>
+        <td>Phase 2</td>
+        <td>개인화 대시보드, 시뮬레이션 엔진, XAI 경로 뷰</td>
+      </tr>
+      <tr>
+        <td><span class="dot" style="background:var(--p4)"></span><strong>Phase 4</strong><br><small>생태계 연계</small></td>
+        <td>NCS 매핑, 워크넷 연계, 모바일 접근성, Ontology-Driven UI</td>
+        <td>6~12개월</td>
+        <td>Phase 2, 3</td>
+        <td>NCS 매핑 트리플, 워크넷 수집기, WCAG AA 달성</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div style="background:linear-gradient(135deg,#f0f7ff,#e8f4fd); border-left:4px solid var(--accent); border-radius:8px; padding:20px 24px; margin-top:28px;">
+    <h3 style="color:var(--accent); font-size:1rem; margin-bottom:8px;">권장 시작 순서</h3>
+    <p style="font-size:14px; color:var(--muted);">
+      <strong>즉시 시작 가능:</strong> Phase 0 전체 + Phase 1의 1-1(히트맵), 1-2(Sankey), 1-3(정합도 점수) — 아키텍처 변경 없이 현재 코드베이스에서 바로 구현 가능하며 사용자에게 즉각적인 가치를 제공합니다.<br><br>
+      <strong>우선 투자:</strong> Phase 2-1(Fuseki)은 이후 모든 기능의 토대이므로, Phase 1 완료 직후 착수하는 것을 강력히 권장합니다.
+    </p>
+  </div>
+
+</div><!-- /container -->
+
+<footer>
+  <strong>HRD 거버넌스 플랫폼 개선 로드맵</strong> &nbsp;·&nbsp;
+  전문가 평가 보고서 기반 단계별 실행 절차서 &nbsp;·&nbsp;
+  2026년 4월 24일
+</footer>
+
+<script>
+  function dl() {
+    const blob = new Blob([document.documentElement.outerHTML], { type: 'text/html;charset=utf-8' });
+    const url  = URL.createObjectURL(blob);
+    const a    = document.createElement('a');
+    a.href     = url;
+    a.download = 'HRD-Platform-Improvement-Roadmap-2026-04-24.html';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }
+</script>
+</body>
+</html>

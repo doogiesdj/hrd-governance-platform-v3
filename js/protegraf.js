@@ -58,6 +58,18 @@ const ProteGraf = (() => {
     COMPCAT_Leadership: 'CompetencyCategory', COMPCAT_Management: 'CompetencyCategory',
     COMPCAT_Thinking_Skill: 'CompetencyCategory', COMPCAT_ICT: 'CompetencyCategory',
     COMPCAT_Manufacturing: 'CompetencyCategory', COMPCAT_Service: 'CompetencyCategory',
+    COMPCAT_AI_and_Infrastructure: 'CompetencyCategory', COMPCAT_Adaptability: 'CompetencyCategory',
+    COMPCAT_AdminLaw: 'CompetencyCategory', COMPCAT_Basic_Academic: 'CompetencyCategory',
+    COMPCAT_BioHealth: 'CompetencyCategory', COMPCAT_CS_Foundation: 'CompetencyCategory',
+    COMPCAT_Collaboration: 'CompetencyCategory', COMPCAT_Creativity: 'CompetencyCategory',
+    COMPCAT_Data_Fluency: 'CompetencyCategory', COMPCAT_Defense_Industry: 'CompetencyCategory',
+    COMPCAT_Design: 'CompetencyCategory', COMPCAT_Digital_Literacy: 'CompetencyCategory',
+    COMPCAT_Green_Tech: 'CompetencyCategory', COMPCAT_Marketing_Sales: 'CompetencyCategory',
+    COMPCAT_Marketing_Strategy: 'CompetencyCategory', COMPCAT_Mobility: 'CompetencyCategory',
+    COMPCAT_Reliability: 'CompetencyCategory', COMPCAT_Semiconductor_Design: 'CompetencyCategory',
+    COMPCAT_Service_Public: 'CompetencyCategory', COMPCAT_Shipbuilding: 'CompetencyCategory',
+    COMPCAT_Social_Value: 'CompetencyCategory', COMPCAT_Software: 'CompetencyCategory',
+    COMPCAT_Space_Aerospace: 'CompetencyCategory', COMPCAT_Tech_Security: 'CompetencyCategory',
   };
 
   const ROOT_CLASSES = [
@@ -121,6 +133,8 @@ const ProteGraf = (() => {
     ['CareerHistory', 'acquiredCompetency', 'Competency',    '습득역량'],
     ['CareerHistory', 'ofPerson',           'HumanResource', '경력인원'],
     ['NationalStrategy', 'targetCompetency', 'Competency', '목표역량'],
+    ['NationalStrategy', 'hasImplementingOrg', 'Organization', '집행기관'],
+    ['Recommendation', 'addressesCompetencyGap', 'CompetencyGap', '대응역량갭'],
   ];
 
   // ── Edge color palette ──────────────────────────────────────────────────────
@@ -310,6 +324,30 @@ const ProteGraf = (() => {
     COMPCAT_ICT: 'ICT 역량',
     COMPCAT_Manufacturing: '제조 역량',
     COMPCAT_Service: '서비스 역량',
+    COMPCAT_AI_and_Infrastructure: 'AI·인프라 역량 분류',
+    COMPCAT_Adaptability: '적응력 역량 분류',
+    COMPCAT_AdminLaw: '행정·법무 역량 분류',
+    COMPCAT_Basic_Academic: '기초학문 역량 분류',
+    COMPCAT_BioHealth: '바이오·헬스 역량 분류',
+    COMPCAT_CS_Foundation: 'CS 기초 역량 분류',
+    COMPCAT_Collaboration: '협업 역량 분류',
+    COMPCAT_Creativity: '창의성 역량 분류',
+    COMPCAT_Data_Fluency: '데이터 활용 역량 분류',
+    COMPCAT_Defense_Industry: '방위산업 역량 분류',
+    COMPCAT_Design: '디자인 역량 분류',
+    COMPCAT_Digital_Literacy: '디지털 리터러시 역량 분류',
+    COMPCAT_Green_Tech: '친환경·녹색 역량 분류',
+    COMPCAT_Marketing_Sales: '마케팅·영업 역량 분류',
+    COMPCAT_Marketing_Strategy: '마케팅 전략 역량 분류',
+    COMPCAT_Mobility: '모빌리티 역량 분류',
+    COMPCAT_Reliability: '신뢰성 역량 분류',
+    COMPCAT_Semiconductor_Design: '반도체 설계 역량 분류',
+    COMPCAT_Service_Public: '공공서비스 역량 분류',
+    COMPCAT_Shipbuilding: '조선·해양 역량 분류',
+    COMPCAT_Social_Value: '사회적 가치 역량 분류',
+    COMPCAT_Software: '소프트웨어 역량 분류',
+    COMPCAT_Space_Aerospace: '우주·항공 역량 분류',
+    COMPCAT_Tech_Security: '기술보안 역량 분류',
   };
 
   function _textColor(hex) {
