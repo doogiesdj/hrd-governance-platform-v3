@@ -3199,6 +3199,21 @@ mark.coderef-hl { background: #e3b34133; color: #e3b341; border-radius: 2px; pad
 .split-info-howto { margin-top: 12px; }
 .split-howto-title { color: #6a7f90; font-size: 9px; font-weight: 600; letter-spacing: 0.06em; margin-bottom: 6px; text-transform: uppercase; }
 .split-howto-list { color: #6a7f90; font-size: 10px; line-height: 1.75; margin: 0; padding-left: 14px; }
+.sankey-toolbar { align-items: center; display: flex; gap: 8px; margin-bottom: 10px; }
+.sankey-toolbar-label { color: #6a7f90; font-size: 11px; }
+.sankey-level-btn { background: rgba(255,255,255,0.06); border: 1px solid rgba(0,212,255,0.25); border-radius: 4px; color: #8a9aaa; cursor: pointer; font-size: 11px; padding: 4px 10px; transition: all 0.15s; }
+.sankey-level-btn:hover { background: rgba(0,212,255,0.12); color: #c0ccd8; }
+.sankey-level-btn.active { background: rgba(0,212,255,0.18); border-color: rgba(0,212,255,0.6); color: #00d4ff; font-weight: 600; }
+.dd-bar-chart { display: flex; flex-direction: column; gap: 5px; margin-top: 6px; }
+.dd-bar-row { align-items: center; display: flex; gap: 6px; }
+.dd-bar-label { color: #8a9aaa; flex: 0 0 72px; font-size: 10px; overflow: hidden; text-align: right; text-overflow: ellipsis; white-space: nowrap; }
+.dd-bar-track { background: rgba(255,255,255,0.07); border-radius: 2px; flex: 1; height: 8px; overflow: hidden; }
+.dd-bar-fill { background: linear-gradient(90deg, #00d4ff, #0099cc); border-radius: 2px; height: 100%; transition: width 0.3s ease; }
+.dd-bar-val { color: #00d4ff; flex: 0 0 24px; font-size: 10px; font-weight: 600; text-align: right; }
+.dd-comp-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 10px; }
+.dd-comp-tag { background: rgba(0,212,255,0.09); border: 1px solid rgba(0,212,255,0.2); border-radius: 3px; color: #8acce8; font-size: 9px; padding: 2px 6px; }
+.dd-back-btn { background: transparent; border: 1px solid rgba(0,212,255,0.25); border-radius: 4px; color: #6a7f90; cursor: pointer; font-size: 10px; margin-top: 12px; padding: 4px 10px; transition: color 0.15s; }
+.dd-back-btn:hover { color: #00d4ff; }
 @media (max-width: 800px) {
   .sankey-split, .hm-split { flex-direction: column; }
   .sankey-chart-panel, .hm-chart-panel { flex: none; width: 100%; }

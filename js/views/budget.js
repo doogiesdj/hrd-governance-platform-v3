@@ -359,6 +359,8 @@ Object.assign(App, {
     });
   },
 
+  _sankeyLevel: 'l2',
+
   _showSankeyMode() {
     const catContent = document.getElementById('budgetCatContent');
     if (!catContent) return;
@@ -370,10 +372,29 @@ Object.assign(App, {
     if (!sankeyEl) {
       sankeyEl = document.createElement('div');
       sankeyEl.id = 'sankey-container';
-      sankeyEl.innerHTML = '<div class="sankey-split"><div class="sankey-chart-panel" id="sankey-chart-panel"></div><div class="sankey-info-panel" id="sankey-info-panel"></div></div>';
+      sankeyEl.innerHTML = `
+        <div class="sankey-toolbar" id="sankey-toolbar">
+          <span class="sankey-toolbar-label">역량 레벨:</span>
+          <button class="sankey-level-btn active" data-level="l2">L2 (9개 대분류)</button>
+          <button class="sankey-level-btn" data-level="l3">L3 (세분류)</button>
+        </div>
+        <div class="sankey-split">
+          <div class="sankey-chart-panel" id="sankey-chart-panel"></div>
+          <div class="sankey-info-panel" id="sankey-info-panel"></div>
+        </div>`;
       catContent.appendChild(sankeyEl);
     }
     sankeyEl.style.display = 'block';
+    sankeyEl.querySelectorAll('.sankey-level-btn').forEach(btn => {
+      btn.onclick = () => {
+        this._sankeyLevel = btn.dataset.level;
+        sankeyEl.querySelectorAll('.sankey-level-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const cp = document.getElementById('sankey-chart-panel');
+        this._renderSankey(cp);
+        this._renderSankeyInfo(document.getElementById('sankey-info-panel'));
+      };
+    });
     const chartPanel = document.getElementById('sankey-chart-panel');
     chartPanel.getBoundingClientRect();
     this._renderSankey(chartPanel);
@@ -391,33 +412,55 @@ Object.assign(App, {
     if (sankeyEl)  sankeyEl.style.display  = 'none';
   },
 
-  _buildSankeyData() {
+  _COMP_LABEL: {
+    'Business_Admin':        '비즈니스행정',
+    'ICT_Dev':               'ICT개발',
+    'Industrial_Tech':       '산업기술',
+    'Basic_Academic':        '기초학업',
+    'Civic_Literacy':        '시민역량',
+    'Digital_Literacy':      '디지털',
+    'Interpersonal':         '대인관계',
+    'Problem_Solving':       '문제해결',
+    'Self_Management':       '자기관리',
+    'AI_and_Infrastructure': 'AI/인프라',
+    'Adaptability':          '적응력',
+    'Collaboration':         '협업',
+    'Data_Fluency':          '데이터활용',
+    'Language_and_Math':     '언어수리',
+    'Leadership':            '리더십',
+    'Management':            '경영관리',
+    'Manufacturing':         '제조기술',
+    'Marketing_Strategy':    '마케팅전략',
+    'Service_Public':        '공공서비스',
+    'Social_Value':          '사회가치',
+    'Software':              '소프트웨어',
+    'Tech_Security':         '보안기술',
+    'Thinking_Skill':        '사고력',
+  },
+
+  _buildSankeyData(level) {
+    const useLevel = level || this._sankeyLevel || 'l2';
     const d = HRDData;
-    const L2_KEYS = ['Business_Admin','ICT_Dev','Industrial_Tech','Basic_Academic','Civic_Literacy','Digital_Literacy','Interpersonal','Problem_Solving','Self_Management'];
-    const L2_SHORT = {
-      'Business_Admin':   '비즈니스',
-      'ICT_Dev':          'ICT개발',
-      'Industrial_Tech':  '산업기술',
-      'Basic_Academic':   '기초학업',
-      'Civic_Literacy':   '시민',
-      'Digital_Literacy': '디지털',
-      'Interpersonal':    '대인관계',
-      'Problem_Solving':  '문제해결',
-      'Self_Management':  '자기관리',
-    };
-    const compL2 = {};
-    d.competencies.forEach(c => { compL2[c.id] = c.level2; });
+
+    const compMap = {};
+    d.competencies.forEach(c => {
+      compMap[c.id] = useLevel === 'l3' ? (c.level3 || c.level2) : c.level2;
+    });
 
     const stratNames = [...new Set(d.programs.map(p => p.alignedStrategy).filter(Boolean))];
+    const compKeys   = [...new Set(d.competencies.map(c => useLevel === 'l3' ? (c.level3 || c.level2) : c.level2).filter(Boolean))].sort();
+
+    const label = k => this._COMP_LABEL[k] || k;
+
     const nodes = [
-      ...stratNames.map(name => ({ name })),
-      ...L2_KEYS.map(k => ({ name: L2_SHORT[k] })),
+      ...stratNames.map(name => ({ name, isStrat: true })),
+      ...compKeys.map(k => ({ name: label(k), key: k, isComp: true })),
     ];
 
     const stratIdx = {};
     stratNames.forEach((name, i) => { stratIdx[name] = i; });
-    const l2Idx = {};
-    L2_KEYS.forEach((k, i) => { l2Idx[k] = stratNames.length + i; });
+    const compIdx = {};
+    compKeys.forEach((k, i) => { compIdx[k] = stratNames.length + i; });
 
     const linkMap = {};
     d.programs.forEach(p => {
@@ -425,11 +468,11 @@ Object.assign(App, {
       if (!strat || stratIdx[strat] === undefined) return;
       const ids = Array.isArray(p.relatedCompetencyIds) ? p.relatedCompetencyIds
                   : (p.targetCompetencyId ? [p.targetCompetencyId] : []);
-      const l2Set = new Set();
-      ids.forEach(id => { const l2 = compL2[id]; if (l2) l2Set.add(l2); });
-      l2Set.forEach(l2 => {
-        if (l2Idx[l2] === undefined) return;
-        const key = `${stratIdx[strat]}_${l2Idx[l2]}`;
+      const seen = new Set();
+      ids.forEach(id => { const ck = compMap[id]; if (ck) seen.add(ck); });
+      seen.forEach(ck => {
+        if (compIdx[ck] === undefined) return;
+        const key = `${stratIdx[strat]}_${compIdx[ck]}`;
         linkMap[key] = (linkMap[key] || 0) + 1;
       });
     });
@@ -438,23 +481,34 @@ Object.assign(App, {
       const [source, target] = key.split('_').map(Number);
       return { source, target, value: val };
     });
-    return { nodes, links };
+    return { nodes, links, stratNames, compKeys };
   },
+
+  _sankeyCompColors: [
+    '#00d4ff','#0099cc','#006699','#ffd700','#ffaa00','#ff8800',
+    '#00ff41','#00cc33','#009922','#ee82ee','#cc44cc','#aa22aa',
+    '#ff6b6b','#ff4444','#ffb347',
+  ],
 
   _renderSankey(el) {
     if (typeof d3 === 'undefined' || typeof d3.sankey !== 'function') {
       el.innerHTML = '<div class="sankey-empty">d3-sankey 라이브러리를 로딩 중입니다. 잠시 후 다시 시도해주세요.</div>';
       return;
     }
-    const { nodes, links } = this._buildSankeyData();
+    const { nodes, links, compKeys } = this._buildSankeyData();
     if (!nodes.length || !links.length) {
       el.innerHTML = '<div class="sankey-empty">전략–역량 연결 데이터가 없습니다.</div>';
       return;
     }
     el.innerHTML = '';
     const W = el.clientWidth || 560;
-    const H = Math.max(480, nodes.length * 18);
-    const margin = { top: 10, right: 100, bottom: 20, left: 100 };
+    const nodePad = this._sankeyLevel === 'l3' ? 5 : 8;
+    const H = Math.max(480, nodes.length * (nodePad + 12));
+    const margin = { top: 10, right: 120, bottom: 20, left: 120 };
+
+    const colorByKey = {};
+    compKeys.forEach((k, i) => { colorByKey[k] = this._sankeyCompColors[i % this._sankeyCompColors.length]; });
+    const nodeColor = n => n.isStrat ? '#4a90d9' : (colorByKey[n.key] || '#00d4ff');
 
     const svg = d3.select(el)
       .append('svg')
@@ -463,19 +517,13 @@ Object.assign(App, {
 
     const sankey = d3.sankey()
       .nodeWidth(14)
-      .nodePadding(8)
+      .nodePadding(nodePad)
       .extent([[margin.left, margin.top], [W - margin.right, H - margin.bottom]]);
 
     const graph = sankey({
       nodes: nodes.map(n => Object.assign({}, n)),
       links: links.map(l => Object.assign({}, l)),
     });
-
-    const l2Names  = ['비즈니스','ICT개발','산업기술','기초학업','시민','디지털','대인관계','문제해결','자기관리'];
-    const l2Colors = ['#00d4ff','#0099cc','#006699','#ffd700','#ffaa00','#ff8800','#00ff41','#00cc33','#009922'];
-    const colorByName = {};
-    l2Names.forEach((n, i) => { colorByName[n] = l2Colors[i]; });
-    const nodeColor = n => colorByName[n.name] || '#00d4ff';
 
     svg.append('g')
       .attr('fill', 'none')
@@ -489,6 +537,7 @@ Object.assign(App, {
       .append('title')
       .text(l => `${l.source.name} → ${l.target.name}: ${l.value}개 프로그램`);
 
+    const self = this;
     svg.append('g')
       .selectAll('rect')
       .data(graph.nodes)
@@ -500,8 +549,14 @@ Object.assign(App, {
       .attr('fill', n => nodeColor(n))
       .attr('opacity', 0.85)
       .attr('rx', 2)
+      .style('cursor', 'pointer')
+      .on('click', function(event, n) {
+        svg.selectAll('rect').attr('opacity', 0.45);
+        d3.select(this).attr('opacity', 1);
+        self._renderSankeyDrilldown(document.getElementById('sankey-info-panel'), n);
+      })
       .append('title')
-      .text(n => `${n.name}: ${n.value}개 프로그램`);
+      .text(n => `${n.name}: ${n.value}개 프로그램 (클릭하면 상세)`);
 
     svg.append('g')
       .selectAll('text')
@@ -513,7 +568,8 @@ Object.assign(App, {
       .attr('text-anchor', n => n.x0 < W / 2 ? 'start' : 'end')
       .attr('fill', '#c0ccd8')
       .attr('font-size', 11)
-      .text(n => n.name.length > 15 ? n.name.slice(0, 14) + '…' : n.name);
+      .style('pointer-events', 'none')
+      .text(n => n.name.length > 16 ? n.name.slice(0, 15) + '…' : n.name);
   },
 
   _buildSankeyInsight() {
@@ -536,12 +592,13 @@ Object.assign(App, {
   _renderSankeyInfo(el) {
     if (!el) return;
     const ins = this._buildSankeyInsight();
+    const lvLabel = this._sankeyLevel === 'l3' ? 'L3 세분류' : 'L2 대분류';
     if (!ins) { el.innerHTML = '<p style="color:#6a7f90;padding:20px;font-size:12px">데이터 없음</p>'; return; }
     el.innerHTML = `
       <div class="split-info-panel">
         <h3 class="split-info-title">전략–역량 Sankey 차트</h3>
         <p class="split-info-desc">
-          HRD <strong>추진전략</strong>(좌측 노드)과 <strong>역량군 L2</strong>(우측 노드)의 연결 흐름을 시각화합니다.
+          HRD <strong>추진전략</strong>(좌측 노드)과 <strong>역량군 ${lvLabel}</strong>(우측 노드)의 연결 흐름을 시각화합니다.
           흐름의 두께는 해당 전략에서 특정 역량군을 다루는 프로그램 수에 비례합니다.
         </p>
         <div class="split-info-stats">
@@ -566,12 +623,110 @@ Object.assign(App, {
           <div class="split-howto-title">읽는 방법</div>
           <ul class="split-howto-list">
             <li>왼쪽 막대 — 추진전략 노드</li>
-            <li>오른쪽 막대 — 역량군 L2 노드</li>
+            <li>오른쪽 막대 — 역량군 ${lvLabel} 노드</li>
             <li>흐름 두께 ∝ 연결 프로그램 수</li>
             <li>색상은 역량군 종류를 구분</li>
+            <li><strong>노드를 클릭</strong>하면 상세 드릴다운</li>
           </ul>
         </div>
       </div>
     `;
+  },
+
+  _renderSankeyDrilldown(el, node) {
+    if (!el) return;
+    const d = HRDData;
+    const isStrat = node.isStrat;
+    const label = k => this._COMP_LABEL[k] || k;
+
+    if (isStrat) {
+      const stratName = node.name;
+      const progs = d.programs.filter(p => p.alignedStrategy === stratName);
+
+      const compCount = {};
+      progs.forEach(p => {
+        const ids = Array.isArray(p.relatedCompetencyIds) ? p.relatedCompetencyIds
+                    : (p.targetCompetencyId ? [p.targetCompetencyId] : []);
+        ids.forEach(id => {
+          const comp = d.competencies.find(c => c.id === id);
+          if (!comp) return;
+          const key = this._sankeyLevel === 'l3' ? (comp.level3 || comp.level2) : comp.level2;
+          if (key) compCount[key] = (compCount[key] || 0) + 1;
+        });
+      });
+
+      const sorted = Object.entries(compCount).sort((a, b) => b[1] - a[1]);
+      const maxVal = sorted[0]?.[1] || 1;
+
+      const barsHtml = sorted.map(([k, v]) => `
+        <div class="dd-bar-row">
+          <span class="dd-bar-label">${label(k)}</span>
+          <div class="dd-bar-track">
+            <div class="dd-bar-fill" style="width:${(v/maxVal*100).toFixed(1)}%"></div>
+          </div>
+          <span class="dd-bar-val">${v}</span>
+        </div>`).join('');
+
+      el.innerHTML = `
+        <div class="split-info-panel">
+          <h3 class="split-info-title" style="font-size:13px">📌 ${stratName}</h3>
+          <p class="split-info-desc" style="font-size:11px">이 전략에 속한 <strong>${progs.length}개</strong> 프로그램의 역량 분포</p>
+          <div class="dd-bar-chart">${barsHtml || '<p style="color:#6a7f90;font-size:11px">역량 연결 없음</p>'}</div>
+          <button class="dd-back-btn" onclick="App._renderSankeyInfo(document.getElementById('sankey-info-panel'))">← 전체 요약으로</button>
+        </div>`;
+    } else {
+      const compKey = node.key;
+      const compLabel = node.name;
+      const matchField = this._sankeyLevel === 'l3' ? 'level3' : 'level2';
+
+      const relComps = d.competencies.filter(c => (c[matchField] || c.level2) === compKey);
+      const progSet = new Set();
+      relComps.forEach(comp => {
+        d.programs.forEach(p => {
+          const ids = Array.isArray(p.relatedCompetencyIds) ? p.relatedCompetencyIds
+                      : (p.targetCompetencyId ? [p.targetCompetencyId] : []);
+          if (ids.includes(comp.id)) progSet.add(p.alignedStrategy || '미분류');
+        });
+      });
+
+      const stratCount = {};
+      progSet.forEach(s => stratCount[s] = (stratCount[s] || 0));
+      d.programs.forEach(p => {
+        const ids = Array.isArray(p.relatedCompetencyIds) ? p.relatedCompetencyIds
+                    : (p.targetCompetencyId ? [p.targetCompetencyId] : []);
+        const matchesComp = ids.some(id => {
+          const comp = d.competencies.find(c => c.id === id);
+          return comp && (comp[matchField] || comp.level2) === compKey;
+        });
+        if (matchesComp && p.alignedStrategy) {
+          stratCount[p.alignedStrategy] = (stratCount[p.alignedStrategy] || 0) + 1;
+        }
+      });
+
+      const sorted = Object.entries(stratCount).sort((a, b) => b[1] - a[1]);
+      const maxVal = sorted[0]?.[1] || 1;
+
+      const compsHtml = relComps.map(c => `<span class="dd-comp-tag">${c.name || c.en || c.id}</span>`).join('');
+      const barsHtml = sorted.map(([k, v]) => `
+        <div class="dd-bar-row">
+          <span class="dd-bar-label" style="font-size:10px">${k.length > 18 ? k.slice(0,17)+'…' : k}</span>
+          <div class="dd-bar-track">
+            <div class="dd-bar-fill" style="width:${(v/maxVal*100).toFixed(1)}%"></div>
+          </div>
+          <span class="dd-bar-val">${v}</span>
+        </div>`).join('');
+
+      el.innerHTML = `
+        <div class="split-info-panel">
+          <h3 class="split-info-title" style="font-size:13px">🎯 ${compLabel}</h3>
+          <p class="split-info-desc" style="font-size:11px">세부 역량 <strong>${relComps.length}개</strong> · 연결 전략 <strong>${sorted.length}개</strong></p>
+          <div class="dd-comp-tags">${compsHtml}</div>
+          <div class="split-info-howto" style="margin-top:10px">
+            <div class="split-howto-title">전략별 프로그램 수</div>
+            <div class="dd-bar-chart">${barsHtml || '<p style="color:#6a7f90;font-size:11px">연결 전략 없음</p>'}</div>
+          </div>
+          <button class="dd-back-btn" onclick="App._renderSankeyInfo(document.getElementById('sankey-info-panel'))">← 전체 요약으로</button>
+        </div>`;
+    }
   },
 });
