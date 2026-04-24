@@ -47,9 +47,9 @@
 
 ```xml
 <!-- 예시: requiresCompetency 속성에 Domain/Range 추가 -->
-<owl:ObjectProperty rdf:about="http://example.org/ontology/hrd#requiresCompetency">
-  <rdfs:domain rdf:resource="http://example.org/ontology/hrd#Occupation"/>
-  <rdfs:range rdf:resource="http://example.org/ontology/hrd#Competency"/>
+<owl:ObjectProperty rdf:about="http://www.human-resource.go.kr/ontology/hrd#requiresCompetency">
+  <rdfs:domain rdf:resource="http://www.human-resource.go.kr/ontology/hrd#Occupation"/>
+  <rdfs:range rdf:resource="http://www.human-resource.go.kr/ontology/hrd#Competency"/>
 </owl:ObjectProperty>
 ```
 
@@ -79,20 +79,20 @@
 ### 추가 권장 속성
 
 ```xml
-<owl:DatatypeProperty rdf:about="http://example.org/ontology/hrd#hasStartDate">
+<owl:DatatypeProperty rdf:about="http://www.human-resource.go.kr/ontology/hrd#hasStartDate">
   <rdfs:domain>
     <owl:Class>
       <owl:unionOf rdf:parseType="Collection">
-        <owl:Class rdf:about="http://example.org/ontology/hrd#Policy"/>
-        <owl:Class rdf:about="http://example.org/ontology/hrd#Budget"/>
-        <owl:Class rdf:about="http://example.org/ontology/hrd#EducationProgram"/>
+        <owl:Class rdf:about="http://www.human-resource.go.kr/ontology/hrd#Policy"/>
+        <owl:Class rdf:about="http://www.human-resource.go.kr/ontology/hrd#Budget"/>
+        <owl:Class rdf:about="http://www.human-resource.go.kr/ontology/hrd#EducationProgram"/>
       </owl:unionOf>
     </owl:Class>
   </rdfs:domain>
   <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
 </owl:DatatypeProperty>
 
-<owl:DatatypeProperty rdf:about="http://example.org/ontology/hrd#hasEndDate">
+<owl:DatatypeProperty rdf:about="http://www.human-resource.go.kr/ontology/hrd#hasEndDate">
   <!-- 동일한 domain 정의 -->
   <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
 </owl:DatatypeProperty>
@@ -163,7 +163,7 @@ Phase 2 이전에 데이터 품질을 강제하기 위한 SHACL 규칙 초안:
 
 ```turtle
 @prefix sh: <http://www.w3.org/ns/shacl#> .
-@prefix hrd: <http://example.org/ontology/hrd#> .
+@prefix hrd: <http://www.human-resource.go.kr/ontology/hrd#> .
 
 hrd:PolicyShape a sh:NodeShape ;
   sh:targetClass hrd:Policy ;
