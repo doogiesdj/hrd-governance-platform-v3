@@ -110,7 +110,43 @@
           "targetGroup": "일반인",
           "org": "고용노동부",
           "competency": "녹색기술·탄소중립",
-          "hours": "40"
+          "hours": "60"
+        },
+        {
+          "id": "LT_BLM_08",
+          "name": "프레젠테이션스킬",
+          "en": "Presentation Skills",
+          "targetGroup": "일반인",
+          "org": "고용노동부",
+          "competency": "녹색기술·탄소중립",
+          "hours": "80"
+        },
+        {
+          "id": "SS_SMA_04",
+          "name": "자기주도학습기법",
+          "en": "Self-Directed Learning",
+          "targetGroup": "다문화가정",
+          "org": "인사혁신처",
+          "competency": "디지털 마케팅",
+          "hours": "16"
+        },
+        {
+          "id": "SS_SMR_06",
+          "name": "감정지능관리",
+          "en": "Emotional Intelligence",
+          "targetGroup": "다문화가정",
+          "org": "인사혁신처",
+          "competency": "UX/UI 디자인",
+          "hours": "16"
+        },
+        {
+          "id": "SS_SMA_02",
+          "name": "변화적응력워크숍",
+          "en": "Change Adaptability",
+          "targetGroup": "다문화가정",
+          "org": "인사혁신처",
+          "competency": "디지털 마케팅",
+          "hours": "8"
         },
         {
           "id": "LT_BLM_05",
@@ -261,6 +297,12 @@
           "role": "직업훈련·고용서비스·국민역량 평생학습"
         },
         {
+          "id": "ORG_MINISTRY_01",
+          "name": "과학기술정보통신부",
+          "abbr": "MSIT",
+          "role": "디지털 전환·AI·ICT 인재 양성 정책 총괄"
+        },
+        {
           "id": "ORG_MINISTRY_05",
           "name": "기획재정부",
           "abbr": "MOF",
@@ -274,10 +316,10 @@
       ],
       "competencies": [
         {
-          "id": "COMP_SW_01",
-          "name": "파이썬 프로그래밍",
-          "en": "Python Programming",
-          "category": "소프트웨어 개발 역량"
+          "id": "COMP_Design",
+          "name": "UX/UI 디자인",
+          "en": "UX/UI Design",
+          "category": "디자인 역량"
         },
         {
           "id": "COMP_DigitalMkt",
@@ -292,10 +334,10 @@
           "category": "소프트웨어 개발 역량"
         },
         {
-          "id": "COMP_Design",
-          "name": "UX/UI 디자인",
-          "en": "UX/UI Design",
-          "category": "디자인 역량"
+          "id": "COMP_SW_01",
+          "name": "파이썬 프로그래밍",
+          "en": "Python Programming",
+          "category": "소프트웨어 개발 역량"
         }
       ],
       "performanceGoals": [
@@ -325,36 +367,6 @@
       "type": "NationalStrategy",
       "policies": [
         {
-          "id": "POLICY_10",
-          "name": "K-컬처 콘텐츠 기획 인재 양성",
-          "en": "K-Culture Content Planning Talent Development"
-        },
-        {
-          "id": "POLICY_49",
-          "name": "AI 융합 의료·제약 전문인력 양성 정책",
-          "en": "AI Convergence Medical and Pharmaceutical Professional Workforce Policy"
-        },
-        {
-          "id": "POLICY_19",
-          "name": "K-디지털 크레딧",
-          "en": "K-Digital Credit Program"
-        },
-        {
-          "id": "POLICY_07",
-          "name": "중장년 디지털 문해력 교육",
-          "en": "Middle-Aged Digital Literacy Education Program"
-        },
-        {
-          "id": "POLICY_22",
-          "name": "평생학습 활성화 방안",
-          "en": "Lifelong Learning Promotion Plan"
-        },
-        {
-          "id": "POLICY_55",
-          "name": "과학기술 외교 및 ODA 인재양성 정책",
-          "en": "Science and Technology Diplomacy and ODA Talent Development Policy"
-        },
-        {
           "id": "POLICY_02",
           "name": "디지털 전환 교육 프로그램 / 디지털 전환 교육 프로그램",
           "en": "Digital Transformation Education Program"
@@ -383,6 +395,21 @@
           "id": "POLICY_19",
           "name": "K-디지털 크레딧",
           "en": "K-Digital Credit Program"
+        },
+        {
+          "id": "POLICY_55",
+          "name": "과학기술 외교 및 ODA 인재양성 정책",
+          "en": "Science and Technology Diplomacy and ODA Talent Development Policy"
+        },
+        {
+          "id": "POLICY_07",
+          "name": "중장년 디지털 문해력 교육",
+          "en": "Middle-Aged Digital Literacy Education Program"
+        },
+        {
+          "id": "POLICY_11",
+          "name": "디지털 인재양성 종합방안",
+          "en": "Digital Talent Development Master Plan"
         },
         {
           "id": "POLICY_29",
@@ -515,8 +542,8 @@
           "en": "System Dynamics",
           "targetGroup": "청소년",
           "org": "교육부",
-          "competency": "프롬프트 엔지니어링",
-          "hours": "8"
+          "competency": "파이썬 프로그래밍",
+          "hours": "16"
         },
         {
           "id": "SS_PST_07",
@@ -573,9 +600,9 @@
           "hours": "16"
         },
         {
-          "id": "SS_PSC_10",
-          "name": "창의적조직문화",
-          "en": "Creative Organizational Culture",
+          "id": "SS_PSC_08",
+          "name": "마인드맵과시각화",
+          "en": "Mind Mapping & Visualization",
           "targetGroup": "청소년",
           "org": "교육부",
           "competency": "파이썬 프로그래밍",
@@ -588,7 +615,7 @@
           "targetGroup": "재직자",
           "org": "과학기술정보통신부",
           "competency": "프롬프트 엔지니어링",
-          "hours": "32"
+          "hours": "24"
         },
         {
           "id": "SS_PST_09",
@@ -600,9 +627,9 @@
           "hours": "24"
         },
         {
-          "id": "SS_PSC_01",
-          "name": "디자인싱킹워크숍",
-          "en": "Design Thinking Workshop",
+          "id": "SS_PSC_02",
+          "name": "아이디어발상기법",
+          "en": "Idea Generation Techniques",
           "targetGroup": "청소년",
           "org": "교육부",
           "competency": "파이썬 프로그래밍",
@@ -717,10 +744,10 @@
       ],
       "performanceGoals": [
         {
-          "code": "OUT_198",
-          "name": "K-컬처 콘텐츠 인재 양성",
-          "type": "교육성과",
-          "value": "2400"
+          "code": "OUT_02",
+          "name": "파이썬 숙련도 향상 / 파이썬 숙련도 향상 성과\n성과 명칭\n성과 측정일",
+          "type": "역량성과",
+          "value": "10000000"
         },
         {
           "code": "OUT_19",
@@ -856,16 +883,7 @@
           "targetGroup": "취약계층",
           "org": "인사혁신처",
           "competency": "행정법무",
-          "hours": "60"
-        },
-        {
-          "id": "LT_CSV_02",
-          "name": "기술윤리론",
-          "en": "Technology Ethics",
-          "targetGroup": "취약계층",
-          "org": "인사혁신처",
-          "competency": "행정법무",
-          "hours": "40"
+          "hours": "80"
         },
         {
           "id": "LT_CSV_07",
@@ -976,9 +994,9 @@
       "type": "NationalStrategy",
       "policies": [
         {
-          "id": "POLICY_39",
-          "name": "수소경제 인력양성 종합계획",
-          "en": "Hydrogen Economy Workforce Development Master Plan"
+          "id": "POLICY_40",
+          "name": "원자력 인재양성 및 전문성 강화 계획",
+          "en": "Nuclear Energy Talent Development and Expertise Enhancement Plan"
         },
         {
           "id": "POLICY_38",
@@ -986,9 +1004,9 @@
           "en": "Carbon Neutral Green Technology Professional Workforce Development Plan"
         },
         {
-          "id": "POLICY_40",
-          "name": "원자력 인재양성 및 전문성 강화 계획",
-          "en": "Nuclear Energy Talent Development and Expertise Enhancement Plan"
+          "id": "POLICY_39",
+          "name": "수소경제 인력양성 종합계획",
+          "en": "Hydrogen Economy Workforce Development Master Plan"
         }
       ],
       "programs": [
@@ -1065,9 +1083,18 @@
           "hours": "8"
         },
         {
-          "id": "SS_IPC_08",
-          "name": "비폭력대화법",
-          "en": "Nonviolent Communication",
+          "id": "SS_IPC_09",
+          "name": "그룹의사결정론",
+          "en": "Group Decision Making",
+          "targetGroup": "경력단절여성",
+          "org": "인사혁신처",
+          "competency": "디지털 마케팅",
+          "hours": "24"
+        },
+        {
+          "id": "SS_IPC_10",
+          "name": "워크숍디자인",
+          "en": "Workshop Design",
           "targetGroup": "경력단절여성",
           "org": "인사혁신처",
           "competency": "디지털 마케팅",
@@ -1141,10 +1168,10 @@
       ],
       "performanceGoals": [
         {
-          "code": "OUT_181",
-          "name": "수소경제 인력 양성",
+          "code": "OUT_182",
+          "name": "원자력 전문인력 양성",
           "type": "교육성과",
-          "value": "3500"
+          "value": "2000"
         },
         {
           "code": "OUT_180",
@@ -1153,10 +1180,10 @@
           "value": "8000"
         },
         {
-          "code": "OUT_182",
-          "name": "원자력 전문인력 양성",
+          "code": "OUT_181",
+          "name": "수소경제 인력 양성",
           "type": "교육성과",
-          "value": "2000"
+          "value": "3500"
         }
       ],
       "policyCount": 3,
@@ -1182,9 +1209,14 @@
           "en": "Space and Aerospace Talent Development Plan"
         },
         {
-          "id": "POLICY_26",
-          "name": "방위산업 전문인력 양성 계획",
-          "en": "Defense Industry Workforce Development Plan"
+          "id": "POLICY_51",
+          "name": "국방·안보 사이버 인재양성 정책",
+          "en": "Defense and Security Cyber Talent Development Policy"
+        },
+        {
+          "id": "POLICY_52",
+          "name": "해양 스마트·디지털 기술인력 양성 정책",
+          "en": "Maritime Smart and Digital Technology Workforce Development Policy"
         },
         {
           "id": "POLICY_09",
@@ -1379,9 +1411,90 @@
           "hours": "40"
         },
         {
-          "id": "HS_BAM_06",
-          "name": "ESG경영전략",
-          "en": "ESG Management Strategy",
+          "id": "SS_IPL_08",
+          "name": "코칭및멘토링",
+          "en": "Coaching & Mentoring",
+          "targetGroup": "취약계층",
+          "org": "국방부",
+          "competency": "데이터 분석",
+          "hours": "24"
+        },
+        {
+          "id": "LT_DTS_03",
+          "name": "사이버보안인식",
+          "en": "Cyber Security Awareness",
+          "targetGroup": "일반인",
+          "org": "문화체육관광부",
+          "competency": "파이썬 프로그래밍",
+          "hours": "40"
+        },
+        {
+          "id": "SS_IPL_04",
+          "name": "변화관리전략",
+          "en": "Change Management",
+          "targetGroup": "취약계층",
+          "org": "국방부",
+          "competency": "데이터 분석",
+          "hours": "16"
+        },
+        {
+          "id": "SS_IPL_02",
+          "name": "애자일코칭실무",
+          "en": "Agile Coaching",
+          "targetGroup": "취약계층",
+          "org": "국방부",
+          "competency": "데이터 분석",
+          "hours": "8"
+        },
+        {
+          "id": "SS_IPL_05",
+          "name": "리더의피드백기술",
+          "en": "Effective Feedback for Leaders",
+          "targetGroup": "취약계층",
+          "org": "국방부",
+          "competency": "데이터 분석",
+          "hours": "16"
+        },
+        {
+          "id": "LT_DTS_09",
+          "name": "네트워크보안기초",
+          "en": "Network Security Fundamentals",
+          "targetGroup": "일반인",
+          "org": "문화체육관광부",
+          "competency": "파이썬 프로그래밍",
+          "hours": "80"
+        },
+        {
+          "id": "HS_BAM_10",
+          "name": "창업시뮬레이션",
+          "en": "Startup Business Simulation",
+          "targetGroup": "전문가",
+          "org": "고용노동부",
+          "competency": "행정법무",
+          "hours": "40"
+        },
+        {
+          "id": "HS_BAM_08",
+          "name": "프로젝트파이낸싱",
+          "en": "Project Financing",
+          "targetGroup": "전문가",
+          "org": "고용노동부",
+          "competency": "행정법무",
+          "hours": "40"
+        },
+        {
+          "id": "LT_DTS_10",
+          "name": "패스워드및계정관리",
+          "en": "Password & Account Security",
+          "targetGroup": "일반인",
+          "org": "문화체육관광부",
+          "competency": "파이썬 프로그래밍",
+          "hours": "80"
+        },
+        {
+          "id": "HS_BAM_07",
+          "name": "재무제표분석",
+          "en": "Financial Statement Analysis",
           "targetGroup": "전문가",
           "org": "고용노동부",
           "competency": "행정법무",
@@ -1579,16 +1692,22 @@
           "value": "1500"
         },
         {
-          "code": "OUT_21",
-          "name": "창업 후 연간 매출 10억 달성",
-          "type": "창업성과",
-          "value": "1000000000"
+          "code": "OUT_192",
+          "name": "사이버보안 핵심인재 양성",
+          "type": "교육성과",
+          "value": "6000"
         },
         {
-          "code": "OUT_168",
-          "name": "방위산업 전문인력 배출",
+          "code": "OUT_193",
+          "name": "국방 사이버 인재 양성",
           "type": "교육성과",
-          "value": "3200"
+          "value": "1800"
+        },
+        {
+          "code": "OUT_194",
+          "name": "해양 스마트 기술인력 배출",
+          "type": "교육성과",
+          "value": "3500"
         },
         {
           "code": "OUT_152",
@@ -1728,21 +1847,12 @@
           "targetGroup": "전문가",
           "org": "과학기술정보통신부",
           "competency": "데이터 분석",
-          "hours": "32"
-        },
-        {
-          "id": "HS_ITM_09",
-          "name": "정밀공정공학",
-          "en": "Precision Process Engineering",
-          "targetGroup": "재직자",
-          "org": "산업통상자원부",
-          "competency": "반도체 설계·공정",
           "hours": "40"
         },
         {
-          "id": "HS_ITM_10",
-          "name": "스마트물류자동화",
-          "en": "Smart Logistics Automation",
+          "id": "HS_ITM_08",
+          "name": "3D설계CAD",
+          "en": "3D Design with CAD",
           "targetGroup": "재직자",
           "org": "산업통상자원부",
           "competency": "반도체 설계·공정",
@@ -1758,13 +1868,49 @@
           "hours": "24"
         },
         {
-          "id": "HS_ITM_03",
-          "name": "생산품질관리",
-          "en": "Production Quality Management",
+          "id": "HS_BMS_10",
+          "name": "이커머스구축전략",
+          "en": "E-Commerce Strategy",
+          "targetGroup": "전문가",
+          "org": "국방부",
+          "competency": "바이오헬스",
+          "hours": "40"
+        },
+        {
+          "id": "HS_ITM_09",
+          "name": "정밀공정공학",
+          "en": "Precision Process Engineering",
           "targetGroup": "재직자",
           "org": "산업통상자원부",
           "competency": "반도체 설계·공정",
+          "hours": "40"
+        },
+        {
+          "id": "HS_BMS_08",
+          "name": "마케팅ROI분석",
+          "en": "Marketing ROI Analysis",
+          "targetGroup": "전문가",
+          "org": "국방부",
+          "competency": "바이오헬스",
+          "hours": "40"
+        },
+        {
+          "id": "HS_BMS_03",
+          "name": "통합마케팅커뮤니케이션",
+          "en": "Integrated Marketing Communications",
+          "targetGroup": "전문가",
+          "org": "국방부",
+          "competency": "바이오헬스",
           "hours": "24"
+        },
+        {
+          "id": "HS_BAS_09",
+          "name": "판매촉진전략",
+          "en": "Sales Promotion Strategy",
+          "targetGroup": "전문가",
+          "org": "과학기술정보통신부",
+          "competency": "데이터 분석",
+          "hours": "40"
         },
         {
           "id": "HS_BMS_07",
@@ -1879,16 +2025,16 @@
       "totalBudgetStr": "730억원",
       "implementingOrgs": [
         {
-          "id": "ORG_MINISTRY_08",
-          "name": "국방부",
-          "abbr": "MoD",
-          "role": "군 인력 교육훈련·방산 전문인력 개발"
-        },
-        {
           "id": "ORG_MINISTRY_03",
           "name": "산업통상자원부",
           "abbr": "MOTIE",
           "role": "전략기술 인재·산업 전문인력 양성"
+        },
+        {
+          "id": "ORG_MINISTRY_08",
+          "name": "국방부",
+          "abbr": "MoD",
+          "role": "군 인력 교육훈련·방산 전문인력 개발"
         },
         {
           "id": "ORG_MINISTRY_01",
@@ -1915,16 +2061,16 @@
       ],
       "competencies": [
         {
-          "id": "COMP_BioHealth",
-          "name": "바이오헬스",
-          "en": "BioHealth",
-          "category": "바이오헬스 역량"
-        },
-        {
           "id": "COMP_Semiconductor",
           "name": "반도체 설계·공정",
           "en": "Semiconductor Design & Process",
           "category": "반도체 설계 역량"
+        },
+        {
+          "id": "COMP_BioHealth",
+          "name": "바이오헬스",
+          "en": "BioHealth",
+          "category": "바이오헬스 역량"
         },
         {
           "id": "COMP_DataAnalysis",
@@ -2247,9 +2393,9 @@
           "en": "Senior and Middle-Aged Re-employment Competency Enhancement Policy"
         },
         {
-          "id": "POLICY_31",
-          "name": "장애인 직업재활 및 고용 지원 정책",
-          "en": "Disabled Person Vocational Rehabilitation and Employment Support Policy"
+          "id": "POLICY_34",
+          "name": "사회서비스 종사자 처우개선 및 역량강화 정책",
+          "en": "Social Service Worker Treatment Improvement and Capacity Enhancement Policy"
         },
         {
           "id": "POLICY_24",
@@ -2351,10 +2497,10 @@
           "value": "35000"
         },
         {
-          "code": "OUT_173",
-          "name": "장애인 고용 역량 강화",
-          "type": "고용성과",
-          "value": "8500"
+          "code": "OUT_176",
+          "name": "사회서비스 종사자 역량 향상",
+          "type": "역량성과",
+          "value": "45000"
         },
         {
           "code": "OUT_27",
@@ -2408,24 +2554,9 @@
           "en": "Regional University Innovation Capacity Enhancement Plan"
         },
         {
-          "id": "POLICY_37",
-          "name": "스마트빌리지 및 농촌 디지털 전환 지원 정책",
-          "en": "Smart Village and Rural Digital Transformation Support Policy"
-        },
-        {
-          "id": "POLICY_05",
-          "name": "지역사회 기술봉사 마일리지",
-          "en": "Community Technology Volunteering Mileage Program"
-        },
-        {
-          "id": "POLICY_36",
-          "name": "지역산업 맞춤형 인력양성 사업",
-          "en": "Region-Customized Industrial Workforce Development Project"
-        },
-        {
-          "id": "POLICY_37",
-          "name": "스마트빌리지 및 농촌 디지털 전환 지원 정책",
-          "en": "Smart Village and Rural Digital Transformation Support Policy"
+          "id": "POLICY_28",
+          "name": "지역 주도형 청년 일자리 사업",
+          "en": "Region-Led Youth Employment Program"
         }
       ],
       "programs": [],
@@ -2530,9 +2661,9 @@
       "type": "NationalStrategy",
       "policies": [
         {
-          "id": "POLICY_41",
-          "name": "육아휴직 후 경력복귀 지원 정책",
-          "en": "Post-Parental Leave Career Return Support Policy"
+          "id": "POLICY_42",
+          "name": "보육교사 전문성 제고 및 처우개선 방안",
+          "en": "Childcare Teacher Professionalism Enhancement and Treatment Improvement Plan"
         },
         {
           "id": "POLICY_43",
@@ -2540,9 +2671,9 @@
           "en": "Work-Family Balance Supporting Company HR Manager Capacity Policy"
         },
         {
-          "id": "POLICY_42",
-          "name": "보육교사 전문성 제고 및 처우개선 방안",
-          "en": "Childcare Teacher Professionalism Enhancement and Treatment Improvement Plan"
+          "id": "POLICY_41",
+          "name": "육아휴직 후 경력복귀 지원 정책",
+          "en": "Post-Parental Leave Career Return Support Policy"
         }
       ],
       "programs": [],
@@ -2598,10 +2729,10 @@
       "competencies": [],
       "performanceGoals": [
         {
-          "code": "OUT_183",
-          "name": "경력복귀 지원 성과",
-          "type": "고용성과",
-          "value": "18000"
+          "code": "OUT_184",
+          "name": "보육교사 전문성 향상",
+          "type": "역량성과",
+          "value": "42000"
         },
         {
           "code": "OUT_185",
@@ -2610,10 +2741,10 @@
           "value": "5500"
         },
         {
-          "code": "OUT_184",
-          "name": "보육교사 전문성 향상",
-          "type": "역량성과",
-          "value": "42000"
+          "code": "OUT_183",
+          "name": "경력복귀 지원 성과",
+          "type": "고용성과",
+          "value": "18000"
         }
       ],
       "policyCount": 3,
@@ -2629,6 +2760,11 @@
       "type": "NationalStrategy",
       "policies": [
         {
+          "id": "POLICY_47",
+          "name": "금융 소비자 보호 전문인력 양성 정책",
+          "en": "Financial Consumer Protection Professional Workforce Development Policy"
+        },
+        {
           "id": "POLICY_46",
           "name": "소상공인 디지털 전환 역량강화 지원 정책",
           "en": "Small Business Digital Transformation Capacity Enhancement Support Policy"
@@ -2637,11 +2773,6 @@
           "id": "POLICY_48",
           "name": "노동권 보호 및 노사관계 전문인력 역량강화 정책",
           "en": "Labor Rights Protection and Industrial Relations Professional Capacity Policy"
-        },
-        {
-          "id": "POLICY_47",
-          "name": "금융 소비자 보호 전문인력 양성 정책",
-          "en": "Financial Consumer Protection Professional Workforce Development Policy"
         }
       ],
       "programs": [],
@@ -2697,6 +2828,12 @@
       "competencies": [],
       "performanceGoals": [
         {
+          "code": "OUT_189",
+          "name": "금융소비자 보호 전문인력",
+          "type": "교육성과",
+          "value": "2800"
+        },
+        {
           "code": "OUT_188",
           "name": "소상공인 디지털 전환",
           "type": "역량성과",
@@ -2707,12 +2844,6 @@
           "name": "노동권 전문인력 역량 향상",
           "type": "역량성과",
           "value": "3200"
-        },
-        {
-          "code": "OUT_189",
-          "name": "금융소비자 보호 전문인력",
-          "type": "교육성과",
-          "value": "2800"
         }
       ],
       "policyCount": 3,
@@ -13571,6 +13702,136 @@
       ],
       "budgetCode": "",
       "hours": "24"
+    },
+    {
+      "id": "RD_LYJ_01",
+      "name": "지역주도형청년일자리사업",
+      "en": "Local-led Youth Job Program",
+      "type": "WorkshopSeminar",
+      "targetGroupId": "",
+      "targetGroup": "",
+      "targetGroupEn": "",
+      "orgId": "ORG_MINISTRY_11",
+      "org": "행정안전부",
+      "orgAbbr": "MOIS",
+      "alignedStrategy": "지역균형발전",
+      "competency": "프로젝트관리",
+      "competencyEn": "Project Management",
+      "competencyCategory": "",
+      "targetCompetencyId": "COMP_35",
+      "fieldCatCode": "COMPCAT_Technical",
+      "relatedCompetencyIds": [
+        "COMP_35",
+        "COMP_60",
+        "COMP_64",
+        "COMP_22"
+      ],
+      "budgetCode": "",
+      "hours": "36"
+    },
+    {
+      "id": "LB_CHD_01",
+      "name": "보육교직원양성과정",
+      "en": "Childcare Staff Training Program",
+      "type": "WorkshopSeminar",
+      "targetGroupId": "",
+      "targetGroup": "",
+      "targetGroupEn": "",
+      "orgId": "ORG_MINISTRY_02",
+      "org": "교육부",
+      "orgAbbr": "MOE",
+      "alignedStrategy": "저출생극복",
+      "competency": "학습능력",
+      "competencyEn": "Learning Ability",
+      "competencyCategory": "",
+      "targetCompetencyId": "COMP_30",
+      "fieldCatCode": "COMPCAT_Learning",
+      "relatedCompetencyIds": [
+        "COMP_30",
+        "COMP_31",
+        "COMP_34",
+        "COMP_52"
+      ],
+      "budgetCode": "",
+      "hours": "280"
+    },
+    {
+      "id": "WT_WLF_02",
+      "name": "사회서비스투자사업",
+      "en": "Community Services Investment Program",
+      "type": "WorkshopSeminar",
+      "targetGroupId": "",
+      "targetGroup": "",
+      "targetGroupEn": "",
+      "orgId": "ORG_MINISTRY_07",
+      "org": "보건복지부",
+      "orgAbbr": "MoHW",
+      "alignedStrategy": "포용적복지국가",
+      "competency": "협력정신",
+      "competencyEn": "Collaboration Spirit",
+      "competencyCategory": "",
+      "targetCompetencyId": "COMP_51",
+      "fieldCatCode": "COMPCAT_Values",
+      "relatedCompetencyIds": [
+        "COMP_51",
+        "COMP_52",
+        "COMP_53",
+        "COMP_24"
+      ],
+      "budgetCode": "",
+      "hours": "32"
+    },
+    {
+      "id": "WT_WLF_01",
+      "name": "청년사회서비스사업",
+      "en": "Youth Social Service Program",
+      "type": "WorkshopSeminar",
+      "targetGroupId": "",
+      "targetGroup": "",
+      "targetGroupEn": "",
+      "orgId": "ORG_MINISTRY_07",
+      "org": "보건복지부",
+      "orgAbbr": "MoHW",
+      "alignedStrategy": "포용적복지국가",
+      "competency": "공동체의식",
+      "competencyEn": "Community Awareness",
+      "competencyCategory": "",
+      "targetCompetencyId": "COMP_52",
+      "fieldCatCode": "COMPCAT_Values",
+      "relatedCompetencyIds": [
+        "COMP_52",
+        "COMP_51",
+        "COMP_22",
+        "COMP_79"
+      ],
+      "budgetCode": "",
+      "hours": "40"
+    },
+    {
+      "id": "FE_FTC_01",
+      "name": "공정거래기본종합과정",
+      "en": "Fair Trade Fundamentals Course",
+      "type": "WorkshopSeminar",
+      "targetGroupId": "",
+      "targetGroup": "",
+      "targetGroupEn": "",
+      "orgId": "ORG_MINISTRY_05",
+      "org": "기획재정부",
+      "orgAbbr": "MOF",
+      "alignedStrategy": "공정경제민주화",
+      "competency": "윤리경영",
+      "competencyEn": "Ethical Business Practice",
+      "competencyCategory": "",
+      "targetCompetencyId": "COMP_54",
+      "fieldCatCode": "COMPCAT_Values",
+      "relatedCompetencyIds": [
+        "COMP_54",
+        "COMP_89",
+        "COMP_90",
+        "COMP_43"
+      ],
+      "budgetCode": "",
+      "hours": "48"
     },
     {
       "id": "WT_WLF_04",
