@@ -426,11 +426,19 @@
         ],
         "rows": [
           [
-            "N2e3511c5c07243e5a0da6dc8d8dae259",
+            "N23a7a155f57f4d999347626afb3fa369",
             null
           ],
           [
-            "N9ce374ccff7e47928ef2658c9edf9f3c",
+            "N40488619cbbd481ba4dd60625120d142",
+            null
+          ],
+          [
+            "N7c17614b3f3e4fffa4d5717b315aed26",
+            null
+          ],
+          [
+            "Ne0f8a741159f4b48a65ce2a851b38b9d",
             null
           ],
           [
@@ -43550,77 +43558,77 @@
           [
             "교육성과",
             "3",
-            "0"
+            "4"
           ],
           [
             "고용성과",
             "3",
-            "0"
+            "22666667"
           ],
           [
             "자격취득성과",
             "3",
-            "0"
+            "5000001"
           ],
           [
             "역량성과",
             "3",
-            "0"
+            "12333333.33333333333333333333"
           ],
           [
             "생산성과",
             "3",
-            "0"
+            "3833340"
           ],
           [
             "경영성과",
             "3",
-            "0"
+            "18333400"
           ],
           [
             "기술성과",
             "2",
-            "0"
+            "1.5"
           ],
           [
             "지식재산성과",
             "2",
-            "0"
+            "4000001"
           ],
           [
             "인증성과",
             "2",
-            "0"
+            "1"
           ],
           [
             "연구성과",
             "1",
-            "0"
+            "3"
           ],
           [
             "환경성과",
             "1",
-            "0"
+            "15"
           ],
           [
             "창업성과",
             "1",
-            "0"
+            "1000000000"
           ],
           [
             "경력성과",
             "1",
-            "0"
+            "1"
           ],
           [
             "수출성과",
             "1",
-            "0"
+            "25000000"
           ],
           [
             "사회성과",
             "1",
-            "0"
+            "3000000"
           ],
           [
             "기술성과",
@@ -43652,246 +43660,6 @@
           "compLabel"
         ],
         "rows": [
-          [
-            "hrd:OUT_07",
-            "지식재산성과",
-            "8000000",
-            "hrd:PERSON_07",
-            "hrd:COMP_DataAnalysis",
-            "데이터 분석"
-          ],
-          [
-            "hrd:OUT_18",
-            "생산성과",
-            "7500000",
-            "hrd:PERSON_18",
-            "hrd:COMP_Shipbuilding",
-            "조선해양 설계"
-          ],
-          [
-            "hrd:OUT_06",
-            "고용성과",
-            "50000000",
-            "hrd:PERSON_06",
-            "hrd:COMP_DigitalMkt",
-            "디지털 마케팅"
-          ],
-          [
-            "hrd:OUT_01",
-            "경영성과",
-            "50000000",
-            "hrd:PERSON_01",
-            "hrd:COMP_AI_01",
-            "프롬프트 엔지니어링"
-          ],
-          [
-            "hrd:OUT_03",
-            "경영성과",
-            "5000000",
-            "hrd:PERSON_03",
-            "hrd:COMP_AI_01",
-            "프롬프트 엔지니어링"
-          ],
-          [
-            "hrd:OUT_08",
-            "생산성과",
-            "4000000",
-            "hrd:PERSON_08",
-            "hrd:COMP_AI_01",
-            "프롬프트 엔지니어링"
-          ],
-          [
-            "hrd:OUT_09",
-            "사회성과",
-            "3000000",
-            "hrd:PERSON_09",
-            "hrd:COMP_Design",
-            "UX/UI 디자인"
-          ],
-          [
-            "hrd:OUT_14",
-            "연구성과",
-            "3",
-            "hrd:PERSON_14",
-            "hrd:COMP_BioHealth",
-            "바이오헬스"
-          ],
-          [
-            "hrd:OUT_05",
-            "수출성과",
-            "25000000",
-            "hrd:PERSON_05",
-            "hrd:COMP_BioHealth",
-            "바이오헬스"
-          ],
-          [
-            "hrd:OUT_19",
-            "경영성과",
-            "200",
-            "hrd:PERSON_19",
-            "hrd:COMP_DigitalMkt",
-            "디지털 마케팅"
-          ],
-          [
-            "hrd:OUT_23",
-            "생산성과",
-            "20",
-            "hrd:PERSON_23",
-            "hrd:COMP_Space",
-            "우주항공 기술"
-          ],
-          [
-            "hrd:OUT_15",
-            "자격취득성과",
-            "2",
-            "hrd:PERSON_15",
-            "hrd:COMP_DataAnalysis",
-            "데이터 분석"
-          ],
-          [
-            "hrd:OUT_22",
-            "기술성과",
-            "2",
-            "hrd:PERSON_22",
-            "hrd:COMP_Bio",
-            null
-          ],
-          [
-            "hrd:OUT_24",
-            "지식재산성과",
-            "2",
-            "hrd:PERSON_24",
-            "hrd:COMP_Defense",
-            "방위산업·방산기술"
-          ],
-          [
-            "hrd:OUT_12",
-            "고용성과",
-            "18000000",
-            "hrd:PERSON_12",
-            "hrd:COMP_SW_01",
-            "파이썬 프로그래밍"
-          ],
-          [
-            "hrd:OUT_17",
-            "역량성과",
-            "15000000",
-            "hrd:PERSON_17",
-            "hrd:COMP_AdminLaw",
-            "행정법무"
-          ],
-          [
-            "hrd:OUT_10",
-            "자격취득성과",
-            "15000000",
-            "hrd:PERSON_10",
-            "hrd:COMP_SW_01",
-            "파이썬 프로그래밍"
-          ],
-          [
-            "hrd:OUT_20",
-            "환경성과",
-            "15",
-            "hrd:PERSON_20",
-            "hrd:COMP_Green",
-            "녹색기술·탄소중립"
-          ],
-          [
-            "hrd:OUT_04",
-            "역량성과",
-            "12000000",
-            "hrd:PERSON_04",
-            "hrd:COMP_SW_01",
-            "파이썬 프로그래밍"
-          ],
-          [
-            "hrd:OUT_21",
-            "창업성과",
-            "1000000000",
-            "hrd:PERSON_21",
-            "hrd:COMP_Semiconductor",
-            "반도체 설계·공정"
-          ],
-          [
-            "hrd:OUT_02",
-            "역량성과",
-            "10000000",
-            "hrd:PERSON_02",
-            "hrd:COMP_SW_01",
-            "파이썬 프로그래밍"
-          ],
-          [
-            "hrd:OUT_29",
-            "교육성과",
-            "10",
-            "hrd:PERSON_29",
-            "hrd:COMP_BioHealth",
-            "바이오헬스"
-          ],
-          [
-            "hrd:OUT_11",
-            "교육성과",
-            "1",
-            "hrd:PERSON_11",
-            "hrd:COMP_AI_01",
-            "프롬프트 엔지니어링"
-          ],
-          [
-            "hrd:OUT_13",
-            "자격취득성과",
-            "1",
-            "hrd:PERSON_13",
-            "hrd:COMP_Design",
-            "UX/UI 디자인"
-          ],
-          [
-            "hrd:OUT_16",
-            "기술성과",
-            "1",
-            "hrd:PERSON_16",
-            "hrd:COMP_CloudSec",
-            "클라우드 보안"
-          ],
-          [
-            "hrd:OUT_25",
-            "인증성과",
-            "1",
-            "hrd:PERSON_25",
-            "hrd:COMP_Mobility",
-            "미래 모빌리티"
-          ],
-          [
-            "hrd:OUT_26",
-            "인증성과",
-            "1",
-            "hrd:PERSON_26",
-            "hrd:COMP_AI_01",
-            "프롬프트 엔지니어링"
-          ],
-          [
-            "hrd:OUT_27",
-            "고용성과",
-            "1",
-            "hrd:PERSON_27",
-            "hrd:COMP_SW_01",
-            "파이썬 프로그래밍"
-          ],
-          [
-            "hrd:OUT_28",
-            "교육성과",
-            "1",
-            "hrd:PERSON_28",
-            "hrd:COMP_Design",
-            "UX/UI 디자인"
-          ],
-          [
-            "hrd:OUT_30",
-            "경력성과",
-            "1",
-            "hrd:PERSON_30",
-            "hrd:COMP_DataAnalysis",
-            "데이터 분석"
-          ],
           [
             "hrd:OUT_163",
             "고용성과",
@@ -45251,6 +45019,246 @@
             "hrd:PERSON_473",
             "hrd:COMP_AdminLaw",
             "행정법무"
+          ],
+          [
+            "hrd:OUT_21",
+            "창업성과",
+            "1000000000",
+            "hrd:PERSON_21",
+            "hrd:COMP_Semiconductor",
+            "반도체 설계·공정"
+          ],
+          [
+            "hrd:OUT_06",
+            "고용성과",
+            "50000000",
+            "hrd:PERSON_06",
+            "hrd:COMP_DigitalMkt",
+            "디지털 마케팅"
+          ],
+          [
+            "hrd:OUT_01",
+            "경영성과",
+            "50000000",
+            "hrd:PERSON_01",
+            "hrd:COMP_AI_01",
+            "프롬프트 엔지니어링"
+          ],
+          [
+            "hrd:OUT_05",
+            "수출성과",
+            "25000000",
+            "hrd:PERSON_05",
+            "hrd:COMP_BioHealth",
+            "바이오헬스"
+          ],
+          [
+            "hrd:OUT_12",
+            "고용성과",
+            "18000000",
+            "hrd:PERSON_12",
+            "hrd:COMP_SW_01",
+            "파이썬 프로그래밍"
+          ],
+          [
+            "hrd:OUT_17",
+            "역량성과",
+            "15000000",
+            "hrd:PERSON_17",
+            "hrd:COMP_AdminLaw",
+            "행정법무"
+          ],
+          [
+            "hrd:OUT_10",
+            "자격취득성과",
+            "15000000",
+            "hrd:PERSON_10",
+            "hrd:COMP_SW_01",
+            "파이썬 프로그래밍"
+          ],
+          [
+            "hrd:OUT_04",
+            "역량성과",
+            "12000000",
+            "hrd:PERSON_04",
+            "hrd:COMP_SW_01",
+            "파이썬 프로그래밍"
+          ],
+          [
+            "hrd:OUT_02",
+            "역량성과",
+            "10000000",
+            "hrd:PERSON_02",
+            "hrd:COMP_SW_01",
+            "파이썬 프로그래밍"
+          ],
+          [
+            "hrd:OUT_07",
+            "지식재산성과",
+            "8000000",
+            "hrd:PERSON_07",
+            "hrd:COMP_DataAnalysis",
+            "데이터 분석"
+          ],
+          [
+            "hrd:OUT_18",
+            "생산성과",
+            "7500000",
+            "hrd:PERSON_18",
+            "hrd:COMP_Shipbuilding",
+            "조선해양 설계"
+          ],
+          [
+            "hrd:OUT_03",
+            "경영성과",
+            "5000000",
+            "hrd:PERSON_03",
+            "hrd:COMP_AI_01",
+            "프롬프트 엔지니어링"
+          ],
+          [
+            "hrd:OUT_08",
+            "생산성과",
+            "4000000",
+            "hrd:PERSON_08",
+            "hrd:COMP_AI_01",
+            "프롬프트 엔지니어링"
+          ],
+          [
+            "hrd:OUT_09",
+            "사회성과",
+            "3000000",
+            "hrd:PERSON_09",
+            "hrd:COMP_Design",
+            "UX/UI 디자인"
+          ],
+          [
+            "hrd:OUT_19",
+            "경영성과",
+            "200",
+            "hrd:PERSON_19",
+            "hrd:COMP_DigitalMkt",
+            "디지털 마케팅"
+          ],
+          [
+            "hrd:OUT_23",
+            "생산성과",
+            "20",
+            "hrd:PERSON_23",
+            "hrd:COMP_Space",
+            "우주항공 기술"
+          ],
+          [
+            "hrd:OUT_20",
+            "환경성과",
+            "15",
+            "hrd:PERSON_20",
+            "hrd:COMP_Green",
+            "녹색기술·탄소중립"
+          ],
+          [
+            "hrd:OUT_29",
+            "교육성과",
+            "10",
+            "hrd:PERSON_29",
+            "hrd:COMP_BioHealth",
+            "바이오헬스"
+          ],
+          [
+            "hrd:OUT_14",
+            "연구성과",
+            "3",
+            "hrd:PERSON_14",
+            "hrd:COMP_BioHealth",
+            "바이오헬스"
+          ],
+          [
+            "hrd:OUT_15",
+            "자격취득성과",
+            "2",
+            "hrd:PERSON_15",
+            "hrd:COMP_DataAnalysis",
+            "데이터 분석"
+          ],
+          [
+            "hrd:OUT_22",
+            "기술성과",
+            "2",
+            "hrd:PERSON_22",
+            "hrd:COMP_Bio",
+            null
+          ],
+          [
+            "hrd:OUT_24",
+            "지식재산성과",
+            "2",
+            "hrd:PERSON_24",
+            "hrd:COMP_Defense",
+            "방위산업·방산기술"
+          ],
+          [
+            "hrd:OUT_11",
+            "교육성과",
+            "1",
+            "hrd:PERSON_11",
+            "hrd:COMP_AI_01",
+            "프롬프트 엔지니어링"
+          ],
+          [
+            "hrd:OUT_13",
+            "자격취득성과",
+            "1",
+            "hrd:PERSON_13",
+            "hrd:COMP_Design",
+            "UX/UI 디자인"
+          ],
+          [
+            "hrd:OUT_16",
+            "기술성과",
+            "1",
+            "hrd:PERSON_16",
+            "hrd:COMP_CloudSec",
+            "클라우드 보안"
+          ],
+          [
+            "hrd:OUT_25",
+            "인증성과",
+            "1",
+            "hrd:PERSON_25",
+            "hrd:COMP_Mobility",
+            "미래 모빌리티"
+          ],
+          [
+            "hrd:OUT_26",
+            "인증성과",
+            "1",
+            "hrd:PERSON_26",
+            "hrd:COMP_AI_01",
+            "프롬프트 엔지니어링"
+          ],
+          [
+            "hrd:OUT_27",
+            "고용성과",
+            "1",
+            "hrd:PERSON_27",
+            "hrd:COMP_SW_01",
+            "파이썬 프로그래밍"
+          ],
+          [
+            "hrd:OUT_28",
+            "교육성과",
+            "1",
+            "hrd:PERSON_28",
+            "hrd:COMP_Design",
+            "UX/UI 디자인"
+          ],
+          [
+            "hrd:OUT_30",
+            "경력성과",
+            "1",
+            "hrd:PERSON_30",
+            "hrd:COMP_DataAnalysis",
+            "데이터 분석"
           ]
         ],
         "error": null,
@@ -46156,16 +46164,16 @@
           [
             "hrd:POLICY_03",
             "글로벌 기술수출 바우처",
-            "hrd:OUT_07",
-            "지식재산성과",
-            "8000000"
+            "hrd:OUT_05",
+            "수출성과",
+            "25000000"
           ],
           [
             "hrd:POLICY_03",
             "글로벌 기술수출 바우처",
-            "hrd:OUT_05",
-            "수출성과",
-            "25000000"
+            "hrd:OUT_07",
+            "지식재산성과",
+            "8000000"
           ],
           [
             "hrd:POLICY_04",
@@ -46233,23 +46241,16 @@
           [
             "hrd:POLICY_13",
             "AI 일상화 및 산업 고도화 계획",
-            "hrd:OUT_22",
-            "기술성과",
-            "2"
-          ],
-          [
-            "hrd:POLICY_13",
-            "AI 일상화 및 산업 고도화 계획",
             "hrd:OUT_155",
             "역량성과",
             "80000"
           ],
           [
-            "hrd:POLICY_14",
-            "제5차 국가인적자원개발기본계획",
-            "hrd:OUT_16",
+            "hrd:POLICY_13",
+            "AI 일상화 및 산업 고도화 계획",
+            "hrd:OUT_22",
             "기술성과",
-            "1"
+            "2"
           ],
           [
             "hrd:POLICY_14",
@@ -46259,11 +46260,11 @@
             "1"
           ],
           [
-            "hrd:POLICY_15",
-            "바이오헬스 인재양성 종합방안",
-            "hrd:OUT_14",
-            "연구성과",
-            "3"
+            "hrd:POLICY_14",
+            "제5차 국가인적자원개발기본계획",
+            "hrd:OUT_16",
+            "기술성과",
+            "1"
           ],
           [
             "hrd:POLICY_15",
@@ -46273,11 +46274,11 @@
             "8000"
           ],
           [
-            "hrd:POLICY_16",
-            "미래 모빌리티 인재양성 전략",
-            "hrd:OUT_18",
-            "생산성과",
-            "7500000"
+            "hrd:POLICY_15",
+            "바이오헬스 인재양성 종합방안",
+            "hrd:OUT_14",
+            "연구성과",
+            "3"
           ],
           [
             "hrd:POLICY_16",
@@ -46287,11 +46288,11 @@
             "5000"
           ],
           [
-            "hrd:POLICY_17",
-            "우주항공 전문인력 양성 계획",
-            "hrd:OUT_24",
-            "지식재산성과",
-            "2"
+            "hrd:POLICY_16",
+            "미래 모빌리티 인재양성 전략",
+            "hrd:OUT_18",
+            "생산성과",
+            "7500000"
           ],
           [
             "hrd:POLICY_17",
@@ -46299,6 +46300,20 @@
             "hrd:OUT_159",
             "교육성과",
             "1500"
+          ],
+          [
+            "hrd:POLICY_17",
+            "우주항공 전문인력 양성 계획",
+            "hrd:OUT_24",
+            "지식재산성과",
+            "2"
+          ],
+          [
+            "hrd:POLICY_18",
+            "K-디지털 트레이닝",
+            "hrd:OUT_160",
+            "교육성과",
+            "35000"
           ],
           [
             "hrd:POLICY_18",
@@ -46315,11 +46330,11 @@
             "1"
           ],
           [
-            "hrd:POLICY_18",
-            "K-디지털 트레이닝",
-            "hrd:OUT_160",
+            "hrd:POLICY_19",
+            "K-디지털 크레딧",
+            "hrd:OUT_161",
             "교육성과",
-            "35000"
+            "120000"
           ],
           [
             "hrd:POLICY_19",
@@ -46329,11 +46344,11 @@
             "1"
           ],
           [
-            "hrd:POLICY_19",
-            "K-디지털 크레딧",
-            "hrd:OUT_161",
+            "hrd:POLICY_20",
+            "그린뉴딜 인재양성 사업",
+            "hrd:OUT_162",
             "교육성과",
-            "120000"
+            "18000"
           ],
           [
             "hrd:POLICY_20",
@@ -46350,11 +46365,11 @@
             "1"
           ],
           [
-            "hrd:POLICY_20",
-            "그린뉴딜 인재양성 사업",
-            "hrd:OUT_162",
-            "교육성과",
-            "18000"
+            "hrd:POLICY_21",
+            "직업훈련 혁신 방안",
+            "hrd:OUT_163",
+            "고용성과",
+            "95000"
           ],
           [
             "hrd:POLICY_21",
@@ -46371,11 +46386,11 @@
             "1"
           ],
           [
-            "hrd:POLICY_21",
-            "직업훈련 혁신 방안",
-            "hrd:OUT_163",
-            "고용성과",
-            "95000"
+            "hrd:POLICY_22",
+            "평생학습 활성화 방안",
+            "hrd:OUT_164",
+            "역량성과",
+            "15000000"
           ],
           [
             "hrd:POLICY_22",
@@ -46385,11 +46400,11 @@
             "15000000"
           ],
           [
-            "hrd:POLICY_22",
-            "평생학습 활성화 방안",
-            "hrd:OUT_164",
-            "역량성과",
-            "15000000"
+            "hrd:POLICY_23",
+            "국가기술자격제도 혁신방안",
+            "hrd:OUT_165",
+            "자격취득성과",
+            "280000"
           ],
           [
             "hrd:POLICY_23",
@@ -46399,11 +46414,11 @@
             "2"
           ],
           [
-            "hrd:POLICY_23",
-            "국가기술자격제도 혁신방안",
-            "hrd:OUT_165",
-            "자격취득성과",
-            "280000"
+            "hrd:POLICY_24",
+            "청년 취업역량 강화 지원사업",
+            "hrd:OUT_166",
+            "고용성과",
+            "45000"
           ],
           [
             "hrd:POLICY_24",
@@ -46413,11 +46428,11 @@
             "1"
           ],
           [
-            "hrd:POLICY_24",
-            "청년 취업역량 강화 지원사업",
-            "hrd:OUT_166",
+            "hrd:POLICY_25",
+            "스마트제조 인재양성 방안",
+            "hrd:OUT_167",
             "고용성과",
-            "45000"
+            "18000000"
           ],
           [
             "hrd:POLICY_25",
@@ -46427,11 +46442,11 @@
             "18000000"
           ],
           [
-            "hrd:POLICY_25",
-            "스마트제조 인재양성 방안",
-            "hrd:OUT_167",
-            "고용성과",
-            "18000000"
+            "hrd:POLICY_26",
+            "방위산업 전문인력 양성 계획",
+            "hrd:OUT_168",
+            "교육성과",
+            "3200"
           ],
           [
             "hrd:POLICY_26",
@@ -46441,11 +46456,11 @@
             "1000000000"
           ],
           [
-            "hrd:POLICY_26",
-            "방위산업 전문인력 양성 계획",
-            "hrd:OUT_168",
+            "hrd:POLICY_27",
+            "이러닝 산업 발전 및 인재양성",
+            "hrd:OUT_169",
             "교육성과",
-            "3200"
+            "6000"
           ],
           [
             "hrd:POLICY_27",
@@ -46455,11 +46470,11 @@
             "20"
           ],
           [
-            "hrd:POLICY_27",
-            "이러닝 산업 발전 및 인재양성",
-            "hrd:OUT_169",
-            "교육성과",
-            "6000"
+            "hrd:POLICY_28",
+            "지역 주도형 청년 일자리 사업",
+            "hrd:OUT_170",
+            "고용성과",
+            "25000"
           ],
           [
             "hrd:POLICY_28",
@@ -46469,11 +46484,11 @@
             "1"
           ],
           [
-            "hrd:POLICY_28",
-            "지역 주도형 청년 일자리 사업",
-            "hrd:OUT_170",
-            "고용성과",
-            "25000"
+            "hrd:POLICY_29",
+            "공공부문 AI·디지털 인재 육성",
+            "hrd:OUT_171",
+            "역량성과",
+            "12000"
           ],
           [
             "hrd:POLICY_29",
@@ -46481,13 +46496,6 @@
             "hrd:OUT_29",
             "교육성과",
             "10"
-          ],
-          [
-            "hrd:POLICY_29",
-            "공공부문 AI·디지털 인재 육성",
-            "hrd:OUT_171",
-            "역량성과",
-            "12000"
           ],
           [
             "hrd:POLICY_30",
@@ -46693,91 +46701,91 @@
             "hrd:COMP_DataAnalysis",
             "데이터 분석",
             "38",
-            "0"
+            "2666667.666666666666666666667"
           ],
           [
             "hrd:COMP_SW_01",
             "파이썬 프로그래밍",
             "35",
-            "0"
+            "11000000.2"
           ],
           [
             "hrd:COMP_AI_01",
             "프롬프트 엔지니어링",
             "21",
-            "0"
+            "11800000.4"
           ],
           [
             "hrd:COMP_AdminLaw",
             "행정법무",
             "21",
-            "0"
+            "15000000"
           ],
           [
             "hrd:COMP_DigitalMkt",
             "디지털 마케팅",
             "19",
-            "0"
+            "25000100"
           ],
           [
             "hrd:COMP_Design",
             "UX/UI 디자인",
             "15",
-            "0"
+            "1000000.666666666666666666667"
           ],
           [
             "hrd:COMP_Green",
             "녹색기술·탄소중립",
             "13",
-            "0"
+            "15"
           ],
           [
             "hrd:COMP_BioHealth",
             "바이오헬스",
             "8",
-            "0"
+            "8333337.666666666666666666667"
           ],
           [
             "hrd:COMP_Mobility",
             "미래 모빌리티",
             "8",
-            "0"
+            "1"
           ],
           [
             "hrd:COMP_Semiconductor",
             "반도체 설계·공정",
             "6",
-            "0"
+            "1000000000"
           ],
           [
             "hrd:COMP_Space",
             "우주항공 기술",
             "5",
-            "0"
+            "20"
           ],
           [
             "hrd:COMP_Defense",
             "방위산업·방산기술",
             "5",
-            "0"
+            "2"
           ],
           [
             "hrd:COMP_Shipbuilding",
             "조선해양 설계",
             "3",
-            "0"
+            "7500000"
           ],
           [
             "hrd:COMP_CloudSec",
             "클라우드 보안",
             "2",
-            "0"
+            "1"
           ],
           [
             "hrd:COMP_Bio",
             null,
             "1",
-            "0"
+            "2"
           ]
         ],
         "error": null,
@@ -46888,144 +46896,144 @@
         ],
         "rows": [
           [
-            "hrd:OUT_07",
-            "지식재산성과",
-            "8000000",
-            "hrd:PERSON_07",
+            "hrd:OUT_163",
+            "고용성과",
+            "95000",
+            "hrd:PERSON_522",
             "hrd:COMP_DataAnalysis"
           ],
           [
-            "hrd:OUT_18",
-            "생산성과",
-            "7500000",
-            "hrd:PERSON_18",
-            "hrd:COMP_Shipbuilding"
+            "hrd:OUT_39",
+            "교육성과",
+            "9",
+            "hrd:PERSON_509",
+            "hrd:COMP_DataAnalysis"
           ],
           [
-            "hrd:OUT_06",
-            "고용성과",
-            "50000000",
-            "hrd:PERSON_06",
+            "hrd:OUT_49",
+            "교육성과",
+            "9",
+            "hrd:PERSON_519",
+            "hrd:COMP_SW_01"
+          ],
+          [
+            "hrd:OUT_59",
+            "취업성과",
+            "9",
+            "hrd:PERSON_529",
             "hrd:COMP_DigitalMkt"
           ],
           [
-            "hrd:OUT_01",
-            "경영성과",
-            "50000000",
-            "hrd:PERSON_01",
-            "hrd:COMP_AI_01"
+            "hrd:OUT_69",
+            "취업성과",
+            "9",
+            "hrd:PERSON_539",
+            "hrd:COMP_SW_01"
           ],
           [
-            "hrd:OUT_03",
-            "경영성과",
-            "5000000",
-            "hrd:PERSON_03",
-            "hrd:COMP_AI_01"
-          ],
-          [
-            "hrd:OUT_08",
-            "생산성과",
-            "4000000",
-            "hrd:PERSON_08",
-            "hrd:COMP_AI_01"
-          ],
-          [
-            "hrd:OUT_09",
+            "hrd:OUT_79",
             "사회성과",
-            "3000000",
-            "hrd:PERSON_09",
-            "hrd:COMP_Design"
+            "9",
+            "hrd:PERSON_549",
+            "hrd:COMP_Mobility"
           ],
           [
-            "hrd:OUT_14",
-            "연구성과",
-            "3",
-            "hrd:PERSON_14",
-            "hrd:COMP_BioHealth"
-          ],
-          [
-            "hrd:OUT_05",
-            "수출성과",
-            "25000000",
-            "hrd:PERSON_05",
-            "hrd:COMP_BioHealth"
-          ],
-          [
-            "hrd:OUT_19",
-            "경영성과",
-            "200",
-            "hrd:PERSON_19",
-            "hrd:COMP_DigitalMkt"
-          ],
-          [
-            "hrd:OUT_23",
-            "생산성과",
-            "20",
-            "hrd:PERSON_23",
-            "hrd:COMP_Space"
-          ],
-          [
-            "hrd:OUT_15",
-            "자격취득성과",
-            "2",
-            "hrd:PERSON_15",
+            "hrd:OUT_94",
+            "역량성과",
+            "9",
+            "hrd:PERSON_564",
             "hrd:COMP_DataAnalysis"
           ],
           [
-            "hrd:OUT_22",
-            "기술성과",
-            "2",
-            "hrd:PERSON_22",
-            "hrd:COMP_Bio"
-          ],
-          [
-            "hrd:OUT_24",
-            "지식재산성과",
-            "2",
-            "hrd:PERSON_24",
-            "hrd:COMP_Defense"
-          ],
-          [
-            "hrd:OUT_12",
-            "고용성과",
-            "18000000",
-            "hrd:PERSON_12",
-            "hrd:COMP_SW_01"
-          ],
-          [
-            "hrd:OUT_17",
+            "hrd:OUT_104",
             "역량성과",
-            "15000000",
-            "hrd:PERSON_17",
-            "hrd:COMP_AdminLaw"
-          ],
-          [
-            "hrd:OUT_10",
-            "자격취득성과",
-            "15000000",
-            "hrd:PERSON_10",
-            "hrd:COMP_SW_01"
-          ],
-          [
-            "hrd:OUT_20",
-            "환경성과",
-            "15",
-            "hrd:PERSON_20",
+            "9",
+            "hrd:PERSON_574",
             "hrd:COMP_Green"
           ],
           [
-            "hrd:OUT_04",
-            "역량성과",
-            "12000000",
-            "hrd:PERSON_04",
-            "hrd:COMP_SW_01"
+            "hrd:OUT_114",
+            "사회성과",
+            "9",
+            "hrd:PERSON_584",
+            "hrd:COMP_Design"
           ],
           [
-            "hrd:OUT_21",
-            "창업성과",
-            "1000000000",
+            "hrd:OUT_129",
+            "복지성과",
+            "9",
+            "hrd:PERSON_599",
+            "hrd:COMP_AdminLaw"
+          ],
+          [
+            "hrd:OUT_144",
+            "연구성과",
+            "9",
+            "hrd:PERSON_614",
+            "hrd:COMP_Space"
+          ],
+          [
+            "hrd:OUT_188",
+            "역량성과",
+            "85000",
+            "hrd:PERSON_077",
+            "hrd:COMP_DataAnalysis"
+          ],
+          [
+            "hrd:OUT_173",
+            "고용성과",
+            "8500",
+            "hrd:PERSON_592",
+            "hrd:COMP_DataAnalysis"
+          ],
+          [
+            "hrd:OUT_155",
+            "역량성과",
+            "80000",
+            "hrd:PERSON_466",
+            "hrd:COMP_AI_01"
+          ],
+          [
+            "hrd:OUT_157",
+            "교육성과",
+            "8000",
+            "hrd:PERSON_480",
+            "hrd:COMP_BioHealth"
+          ],
+          [
+            "hrd:OUT_180",
+            "교육성과",
+            "8000",
             "hrd:PERSON_21",
-            "hrd:COMP_Semiconductor"
+            "hrd:COMP_BioHealth"
+          ],
+          [
+            "hrd:OUT_38",
+            "교육성과",
+            "8",
+            "hrd:PERSON_508",
+            "hrd:COMP_AI_01"
+          ],
+          [
+            "hrd:OUT_48",
+            "교육성과",
+            "8",
+            "hrd:PERSON_518",
+            "hrd:COMP_DataAnalysis"
+          ],
+          [
+            "hrd:OUT_58",
+            "취업성과",
+            "8",
+            "hrd:PERSON_528",
+            "hrd:COMP_Design"
+          ],
+          [
+            "hrd:OUT_68",
+            "취업성과",
+            "8",
+            "hrd:PERSON_538",
+            "hrd:COMP_DataAnalysis"
           ]
         ],
         "error": null,
@@ -48898,214 +48906,6 @@
         ],
         "rows": [
           [
-            "hrd:PERSON_07",
-            "hrd:COMP_DataAnalysis",
-            "데이터 분석",
-            "hrd:OUT_07",
-            "지식재산성과",
-            "8000000"
-          ],
-          [
-            "hrd:PERSON_18",
-            "hrd:COMP_Shipbuilding",
-            "조선해양 설계",
-            "hrd:OUT_18",
-            "생산성과",
-            "7500000"
-          ],
-          [
-            "hrd:PERSON_06",
-            "hrd:COMP_DigitalMkt",
-            "디지털 마케팅",
-            "hrd:OUT_06",
-            "고용성과",
-            "50000000"
-          ],
-          [
-            "hrd:PERSON_01",
-            "hrd:COMP_AI_01",
-            "프롬프트 엔지니어링",
-            "hrd:OUT_01",
-            "경영성과",
-            "50000000"
-          ],
-          [
-            "hrd:PERSON_09",
-            "hrd:COMP_Design",
-            "UX/UI 디자인",
-            "hrd:OUT_09",
-            "사회성과",
-            "3000000"
-          ],
-          [
-            "hrd:PERSON_14",
-            "hrd:COMP_BioHealth",
-            "바이오헬스",
-            "hrd:OUT_14",
-            "연구성과",
-            "3"
-          ],
-          [
-            "hrd:PERSON_05",
-            "hrd:COMP_BioHealth",
-            "바이오헬스",
-            "hrd:OUT_05",
-            "수출성과",
-            "25000000"
-          ],
-          [
-            "hrd:PERSON_19",
-            "hrd:COMP_DigitalMkt",
-            "디지털 마케팅",
-            "hrd:OUT_19",
-            "경영성과",
-            "200"
-          ],
-          [
-            "hrd:PERSON_23",
-            "hrd:COMP_Space",
-            "우주항공 기술",
-            "hrd:OUT_23",
-            "생산성과",
-            "20"
-          ],
-          [
-            "hrd:PERSON_15",
-            "hrd:COMP_DataAnalysis",
-            "데이터 분석",
-            "hrd:OUT_15",
-            "자격취득성과",
-            "2"
-          ],
-          [
-            "hrd:PERSON_22",
-            "hrd:COMP_Bio",
-            null,
-            "hrd:OUT_22",
-            "기술성과",
-            "2"
-          ],
-          [
-            "hrd:PERSON_24",
-            "hrd:COMP_Defense",
-            "방위산업·방산기술",
-            "hrd:OUT_24",
-            "지식재산성과",
-            "2"
-          ],
-          [
-            "hrd:PERSON_12",
-            "hrd:COMP_SW_01",
-            "파이썬 프로그래밍",
-            "hrd:OUT_12",
-            "고용성과",
-            "18000000"
-          ],
-          [
-            "hrd:PERSON_17",
-            "hrd:COMP_AdminLaw",
-            "행정법무",
-            "hrd:OUT_17",
-            "역량성과",
-            "15000000"
-          ],
-          [
-            "hrd:PERSON_20",
-            "hrd:COMP_Green",
-            "녹색기술·탄소중립",
-            "hrd:OUT_20",
-            "환경성과",
-            "15"
-          ],
-          [
-            "hrd:PERSON_21",
-            "hrd:COMP_Semiconductor",
-            "반도체 설계·공정",
-            "hrd:OUT_21",
-            "창업성과",
-            "1000000000"
-          ],
-          [
-            "hrd:PERSON_02",
-            "hrd:COMP_SW_01",
-            "파이썬 프로그래밍",
-            "hrd:OUT_02",
-            "역량성과",
-            "10000000"
-          ],
-          [
-            "hrd:PERSON_29",
-            "hrd:COMP_BioHealth",
-            "바이오헬스",
-            "hrd:OUT_29",
-            "교육성과",
-            "10"
-          ],
-          [
-            "hrd:PERSON_11",
-            "hrd:COMP_AI_01",
-            "프롬프트 엔지니어링",
-            "hrd:OUT_11",
-            "교육성과",
-            "1"
-          ],
-          [
-            "hrd:PERSON_13",
-            "hrd:COMP_Design",
-            "UX/UI 디자인",
-            "hrd:OUT_13",
-            "자격취득성과",
-            "1"
-          ],
-          [
-            "hrd:PERSON_16",
-            "hrd:COMP_CloudSec",
-            "클라우드 보안",
-            "hrd:OUT_16",
-            "기술성과",
-            "1"
-          ],
-          [
-            "hrd:PERSON_25",
-            "hrd:COMP_Mobility",
-            "미래 모빌리티",
-            "hrd:OUT_25",
-            "인증성과",
-            "1"
-          ],
-          [
-            "hrd:PERSON_26",
-            "hrd:COMP_AI_01",
-            "프롬프트 엔지니어링",
-            "hrd:OUT_26",
-            "인증성과",
-            "1"
-          ],
-          [
-            "hrd:PERSON_27",
-            "hrd:COMP_SW_01",
-            "파이썬 프로그래밍",
-            "hrd:OUT_27",
-            "고용성과",
-            "1"
-          ],
-          [
-            "hrd:PERSON_28",
-            "hrd:COMP_Design",
-            "UX/UI 디자인",
-            "hrd:OUT_28",
-            "교육성과",
-            "1"
-          ],
-          [
-            "hrd:PERSON_30",
-            "hrd:COMP_DataAnalysis",
-            "데이터 분석",
-            "hrd:OUT_30",
-            "경력성과",
-            "1"
-          ],
-          [
             "hrd:PERSON_509",
             "hrd:COMP_DataAnalysis",
             "데이터 분석",
@@ -50063,6 +49863,214 @@
             "프롬프트 엔지니어링",
             "hrd:OUT_146",
             "연구성과",
+            "1"
+          ],
+          [
+            "hrd:PERSON_21",
+            "hrd:COMP_Semiconductor",
+            "반도체 설계·공정",
+            "hrd:OUT_21",
+            "창업성과",
+            "1000000000"
+          ],
+          [
+            "hrd:PERSON_06",
+            "hrd:COMP_DigitalMkt",
+            "디지털 마케팅",
+            "hrd:OUT_06",
+            "고용성과",
+            "50000000"
+          ],
+          [
+            "hrd:PERSON_01",
+            "hrd:COMP_AI_01",
+            "프롬프트 엔지니어링",
+            "hrd:OUT_01",
+            "경영성과",
+            "50000000"
+          ],
+          [
+            "hrd:PERSON_05",
+            "hrd:COMP_BioHealth",
+            "바이오헬스",
+            "hrd:OUT_05",
+            "수출성과",
+            "25000000"
+          ],
+          [
+            "hrd:PERSON_12",
+            "hrd:COMP_SW_01",
+            "파이썬 프로그래밍",
+            "hrd:OUT_12",
+            "고용성과",
+            "18000000"
+          ],
+          [
+            "hrd:PERSON_17",
+            "hrd:COMP_AdminLaw",
+            "행정법무",
+            "hrd:OUT_17",
+            "역량성과",
+            "15000000"
+          ],
+          [
+            "hrd:PERSON_02",
+            "hrd:COMP_SW_01",
+            "파이썬 프로그래밍",
+            "hrd:OUT_02",
+            "역량성과",
+            "10000000"
+          ],
+          [
+            "hrd:PERSON_07",
+            "hrd:COMP_DataAnalysis",
+            "데이터 분석",
+            "hrd:OUT_07",
+            "지식재산성과",
+            "8000000"
+          ],
+          [
+            "hrd:PERSON_18",
+            "hrd:COMP_Shipbuilding",
+            "조선해양 설계",
+            "hrd:OUT_18",
+            "생산성과",
+            "7500000"
+          ],
+          [
+            "hrd:PERSON_09",
+            "hrd:COMP_Design",
+            "UX/UI 디자인",
+            "hrd:OUT_09",
+            "사회성과",
+            "3000000"
+          ],
+          [
+            "hrd:PERSON_19",
+            "hrd:COMP_DigitalMkt",
+            "디지털 마케팅",
+            "hrd:OUT_19",
+            "경영성과",
+            "200"
+          ],
+          [
+            "hrd:PERSON_23",
+            "hrd:COMP_Space",
+            "우주항공 기술",
+            "hrd:OUT_23",
+            "생산성과",
+            "20"
+          ],
+          [
+            "hrd:PERSON_20",
+            "hrd:COMP_Green",
+            "녹색기술·탄소중립",
+            "hrd:OUT_20",
+            "환경성과",
+            "15"
+          ],
+          [
+            "hrd:PERSON_29",
+            "hrd:COMP_BioHealth",
+            "바이오헬스",
+            "hrd:OUT_29",
+            "교육성과",
+            "10"
+          ],
+          [
+            "hrd:PERSON_14",
+            "hrd:COMP_BioHealth",
+            "바이오헬스",
+            "hrd:OUT_14",
+            "연구성과",
+            "3"
+          ],
+          [
+            "hrd:PERSON_15",
+            "hrd:COMP_DataAnalysis",
+            "데이터 분석",
+            "hrd:OUT_15",
+            "자격취득성과",
+            "2"
+          ],
+          [
+            "hrd:PERSON_22",
+            "hrd:COMP_Bio",
+            null,
+            "hrd:OUT_22",
+            "기술성과",
+            "2"
+          ],
+          [
+            "hrd:PERSON_24",
+            "hrd:COMP_Defense",
+            "방위산업·방산기술",
+            "hrd:OUT_24",
+            "지식재산성과",
+            "2"
+          ],
+          [
+            "hrd:PERSON_11",
+            "hrd:COMP_AI_01",
+            "프롬프트 엔지니어링",
+            "hrd:OUT_11",
+            "교육성과",
+            "1"
+          ],
+          [
+            "hrd:PERSON_13",
+            "hrd:COMP_Design",
+            "UX/UI 디자인",
+            "hrd:OUT_13",
+            "자격취득성과",
+            "1"
+          ],
+          [
+            "hrd:PERSON_16",
+            "hrd:COMP_CloudSec",
+            "클라우드 보안",
+            "hrd:OUT_16",
+            "기술성과",
+            "1"
+          ],
+          [
+            "hrd:PERSON_25",
+            "hrd:COMP_Mobility",
+            "미래 모빌리티",
+            "hrd:OUT_25",
+            "인증성과",
+            "1"
+          ],
+          [
+            "hrd:PERSON_26",
+            "hrd:COMP_AI_01",
+            "프롬프트 엔지니어링",
+            "hrd:OUT_26",
+            "인증성과",
+            "1"
+          ],
+          [
+            "hrd:PERSON_27",
+            "hrd:COMP_SW_01",
+            "파이썬 프로그래밍",
+            "hrd:OUT_27",
+            "고용성과",
+            "1"
+          ],
+          [
+            "hrd:PERSON_28",
+            "hrd:COMP_Design",
+            "UX/UI 디자인",
+            "hrd:OUT_28",
+            "교육성과",
+            "1"
+          ],
+          [
+            "hrd:PERSON_30",
+            "hrd:COMP_DataAnalysis",
+            "데이터 분석",
+            "hrd:OUT_30",
+            "경력성과",
             "1"
           ]
         ],
@@ -51282,216 +51290,6 @@
         ],
         "rows": [
           [
-            "hrd:PERSON_07",
-            "hrd:COMP_DataAnalysis",
-            "데이터 분석",
-            "8000000",
-            "1.00"
-          ],
-          [
-            "hrd:PERSON_18",
-            "hrd:COMP_Shipbuilding",
-            "조선해양 설계",
-            "7500000",
-            "0.80"
-          ],
-          [
-            "hrd:PERSON_06",
-            "hrd:COMP_DigitalMkt",
-            "디지털 마케팅",
-            "50000000",
-            "1.00"
-          ],
-          [
-            "hrd:PERSON_01",
-            "hrd:COMP_AI_01",
-            "프롬프트 엔지니어링",
-            "50000000",
-            "1.00"
-          ],
-          [
-            "hrd:PERSON_03",
-            "hrd:COMP_Shipbuilding",
-            "조선해양 설계",
-            "5000000",
-            "1.00"
-          ],
-          [
-            "hrd:PERSON_08",
-            "hrd:COMP_AdminLaw",
-            "행정법무",
-            "4000000",
-            "1.00"
-          ],
-          [
-            "hrd:PERSON_09",
-            "hrd:COMP_Design",
-            "UX/UI 디자인",
-            "3000000",
-            "1.00"
-          ],
-          [
-            "hrd:PERSON_14",
-            "hrd:COMP_BioHealth",
-            "바이오헬스",
-            "3",
-            "0.80"
-          ],
-          [
-            "hrd:PERSON_05",
-            "hrd:COMP_BioHealth",
-            "바이오헬스",
-            "25000000",
-            "1.00"
-          ],
-          [
-            "hrd:PERSON_19",
-            "hrd:COMP_DigitalMkt",
-            "디지털 마케팅",
-            "200",
-            "0.80"
-          ],
-          [
-            "hrd:PERSON_23",
-            "hrd:COMP_Space",
-            "우주항공 기술",
-            "20",
-            "0.80"
-          ],
-          [
-            "hrd:PERSON_15",
-            "hrd:COMP_DataAnalysis",
-            "데이터 분석",
-            "2",
-            "0.80"
-          ],
-          [
-            "hrd:PERSON_22",
-            "hrd:COMP_Bio",
-            null,
-            "2",
-            "0.80"
-          ],
-          [
-            "hrd:PERSON_24",
-            "hrd:COMP_Defense",
-            "방위산업·방산기술",
-            "2",
-            "0.80"
-          ],
-          [
-            "hrd:PERSON_12",
-            "hrd:COMP_SW_01",
-            "파이썬 프로그래밍",
-            "18000000",
-            "0.80"
-          ],
-          [
-            "hrd:PERSON_17",
-            "hrd:COMP_AdminLaw",
-            "행정법무",
-            "15000000",
-            "0.80"
-          ],
-          [
-            "hrd:PERSON_10",
-            "hrd:COMP_CloudSec",
-            "클라우드 보안",
-            "15000000",
-            "1.00"
-          ],
-          [
-            "hrd:PERSON_20",
-            "hrd:COMP_Green",
-            "녹색기술·탄소중립",
-            "15",
-            "0.80"
-          ],
-          [
-            "hrd:PERSON_04",
-            "hrd:COMP_AI_01",
-            "프롬프트 엔지니어링",
-            "12000000",
-            "1.00"
-          ],
-          [
-            "hrd:PERSON_21",
-            "hrd:COMP_Semiconductor",
-            "반도체 설계·공정",
-            "1000000000",
-            "0.80"
-          ],
-          [
-            "hrd:PERSON_02",
-            "hrd:COMP_SW_01",
-            "파이썬 프로그래밍",
-            "10000000",
-            "1.00"
-          ],
-          [
-            "hrd:PERSON_29",
-            "hrd:COMP_BioHealth",
-            "바이오헬스",
-            "10",
-            "0.80"
-          ],
-          [
-            "hrd:PERSON_11",
-            "hrd:COMP_AI_01",
-            "프롬프트 엔지니어링",
-            "1",
-            "0.80"
-          ],
-          [
-            "hrd:PERSON_13",
-            "hrd:COMP_Design",
-            "UX/UI 디자인",
-            "1",
-            "0.80"
-          ],
-          [
-            "hrd:PERSON_16",
-            "hrd:COMP_CloudSec",
-            "클라우드 보안",
-            "1",
-            "0.80"
-          ],
-          [
-            "hrd:PERSON_25",
-            "hrd:COMP_Mobility",
-            "미래 모빌리티",
-            "1",
-            "0.80"
-          ],
-          [
-            "hrd:PERSON_26",
-            "hrd:COMP_AI_01",
-            "프롬프트 엔지니어링",
-            "1",
-            "0.80"
-          ],
-          [
-            "hrd:PERSON_27",
-            "hrd:COMP_SW_01",
-            "파이썬 프로그래밍",
-            "1",
-            "0.80"
-          ],
-          [
-            "hrd:PERSON_28",
-            "hrd:COMP_Design",
-            "UX/UI 디자인",
-            "1",
-            "0.80"
-          ],
-          [
-            "hrd:PERSON_30",
-            "hrd:COMP_DataAnalysis",
-            "데이터 분석",
-            "1",
-            "0.80"
-          ],
-          [
             "hrd:PERSON_509",
             "hrd:COMP_DataAnalysis",
             "데이터 분석",
@@ -51629,6 +51427,216 @@
             "hrd:COMP_Semiconductor",
             "반도체 설계·공정",
             "8",
+            "1.00"
+          ],
+          [
+            "hrd:PERSON_507",
+            "hrd:COMP_SW_01",
+            "파이썬 프로그래밍",
+            "7",
+            "1.00"
+          ],
+          [
+            "hrd:PERSON_517",
+            "hrd:COMP_AI_01",
+            "프롬프트 엔지니어링",
+            "7",
+            "1.00"
+          ],
+          [
+            "hrd:PERSON_527",
+            "hrd:COMP_SW_01",
+            "파이썬 프로그래밍",
+            "7",
+            "1.00"
+          ],
+          [
+            "hrd:PERSON_537",
+            "hrd:COMP_DigitalMkt",
+            "디지털 마케팅",
+            "7",
+            "1.00"
+          ],
+          [
+            "hrd:PERSON_547",
+            "hrd:COMP_AdminLaw",
+            "행정법무",
+            "7",
+            "1.00"
+          ],
+          [
+            "hrd:PERSON_562",
+            "hrd:COMP_Green",
+            "녹색기술·탄소중립",
+            "7",
+            "1.00"
+          ],
+          [
+            "hrd:PERSON_572",
+            "hrd:COMP_DataAnalysis",
+            "데이터 분석",
+            "7",
+            "1.00"
+          ],
+          [
+            "hrd:PERSON_582",
+            "hrd:COMP_AdminLaw",
+            "행정법무",
+            "7",
+            "1.00"
+          ],
+          [
+            "hrd:PERSON_597",
+            "hrd:COMP_DataAnalysis",
+            "데이터 분석",
+            "7",
+            "1.00"
+          ],
+          [
+            "hrd:PERSON_612",
+            "hrd:COMP_BioHealth",
+            "바이오헬스",
+            "7",
+            "1.00"
+          ],
+          [
+            "hrd:PERSON_506",
+            "hrd:COMP_DataAnalysis",
+            "데이터 분석",
+            "6",
+            "1.00"
+          ],
+          [
+            "hrd:PERSON_516",
+            "hrd:COMP_SW_01",
+            "파이썬 프로그래밍",
+            "6",
+            "1.00"
+          ],
+          [
+            "hrd:PERSON_526",
+            "hrd:COMP_DataAnalysis",
+            "데이터 분석",
+            "6",
+            "1.00"
+          ],
+          [
+            "hrd:PERSON_536",
+            "hrd:COMP_Design",
+            "UX/UI 디자인",
+            "6",
+            "1.00"
+          ],
+          [
+            "hrd:PERSON_546",
+            "hrd:COMP_Mobility",
+            "미래 모빌리티",
+            "6",
+            "1.00"
+          ],
+          [
+            "hrd:PERSON_561",
+            "hrd:COMP_SW_01",
+            "파이썬 프로그래밍",
+            "6",
+            "1.00"
+          ],
+          [
+            "hrd:PERSON_571",
+            "hrd:COMP_DigitalMkt",
+            "디지털 마케팅",
+            "6",
+            "1.00"
+          ],
+          [
+            "hrd:PERSON_581",
+            "hrd:COMP_Design",
+            "UX/UI 디자인",
+            "6",
+            "1.00"
+          ],
+          [
+            "hrd:PERSON_596",
+            "hrd:COMP_AdminLaw",
+            "행정법무",
+            "6",
+            "1.00"
+          ],
+          [
+            "hrd:PERSON_611",
+            "hrd:COMP_AI_01",
+            "프롬프트 엔지니어링",
+            "6",
+            "1.00"
+          ],
+          [
+            "hrd:PERSON_505",
+            "hrd:COMP_AI_01",
+            "프롬프트 엔지니어링",
+            "5",
+            "1.00"
+          ],
+          [
+            "hrd:PERSON_515",
+            "hrd:COMP_DataAnalysis",
+            "데이터 분석",
+            "5",
+            "1.00"
+          ],
+          [
+            "hrd:PERSON_525",
+            "hrd:COMP_DigitalMkt",
+            "디지털 마케팅",
+            "5",
+            "1.00"
+          ],
+          [
+            "hrd:PERSON_535",
+            "hrd:COMP_SW_01",
+            "파이썬 프로그래밍",
+            "5",
+            "1.00"
+          ],
+          [
+            "hrd:PERSON_545",
+            "hrd:COMP_Green",
+            "녹색기술·탄소중립",
+            "5",
+            "1.00"
+          ],
+          [
+            "hrd:PERSON_555",
+            "hrd:COMP_Mobility",
+            "미래 모빌리티",
+            "5",
+            "1.00"
+          ],
+          [
+            "hrd:PERSON_560",
+            "hrd:COMP_DataAnalysis",
+            "데이터 분석",
+            "5",
+            "1.00"
+          ],
+          [
+            "hrd:PERSON_570",
+            "hrd:COMP_Green",
+            "녹색기술·탄소중립",
+            "5",
+            "1.00"
+          ],
+          [
+            "hrd:PERSON_580",
+            "hrd:COMP_DigitalMkt",
+            "디지털 마케팅",
+            "5",
+            "1.00"
+          ],
+          [
+            "hrd:PERSON_590",
+            "hrd:COMP_Design",
+            "UX/UI 디자인",
+            "5",
             "1.00"
           ]
         ],
