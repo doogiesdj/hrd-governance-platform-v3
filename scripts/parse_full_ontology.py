@@ -14,7 +14,7 @@ sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 _SCRIPTS_DIR = Path(__file__).parent
 _REPO_ROOT = _SCRIPTS_DIR.parent
 _EXCEL_PATH = str(_REPO_ROOT / "src" / "HRD_CodeMapping_v2.xlsx")
-_RDF_PATH = str(_REPO_ROOT / "src" / "HRD_Governance_Extended_v2.rdf")
+_RDF_PATH = str(_REPO_ROOT / "src" / "HRD_Governance_Extended_v3.rdf")
 _ONTOLOGY_JSON = str(_REPO_ROOT / "data" / "ontology.json")
 _ONTOLOGY_JS = str(_REPO_ROOT / "js" / "ontology_data.js")
 

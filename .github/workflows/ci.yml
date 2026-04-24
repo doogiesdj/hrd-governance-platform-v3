@@ -35,7 +35,7 @@ jobs:
           import rdflib
           from rdflib.namespace import RDF, OWL
           g = rdflib.Graph()
-          g.parse('src/HRD_Governance_Extended_v2.rdf')
+          g.parse('src/HRD_Governance_Extended_v3.rdf')
           classes = len(list(g.subjects(RDF.type, OWL.Class)))
           triples = len(g)
           print(f"RDF OK — classes: {classes}, triples: {triples}")

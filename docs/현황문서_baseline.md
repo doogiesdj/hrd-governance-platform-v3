@@ -38,7 +38,7 @@ platform/
 │   ├── run_sparql_queries.py     # SPARQL 실행 → sparql_results.json 변환
 │   └── requirements.txt          # Python 의존성 (rdflib>=6.0.0, openpyxl>=3.0.0)
 └── src/
-    ├── HRD_Governance_Extended_v2.rdf  # 마스터 온톨로지
+    ├── HRD_Governance_Extended_v3.rdf  # 마스터 온톨로지
     ├── HRD_CodeMapping_v2.xlsx         # 코드 매핑 원본 Excel
     └── HRD_SPARQL_Queries_v5.sparql    # SPARQL 쿼리 모음
 ```
@@ -105,12 +105,12 @@ index.html (SPA shell)
 
 | JSON 파일 | 생성 스크립트 | 소스 파일 |
 |-----------|--------------|-----------|
-| data/ontology.json | scripts/parse_full_ontology.py | src/HRD_Governance_Extended_v2.rdf |
-| data/budget_analysis.json | scripts/extract_budget_analysis.py | src/HRD_Governance_Extended_v2.rdf |
+| data/ontology.json | scripts/parse_full_ontology.py | src/HRD_Governance_Extended_v3.rdf |
+| data/budget_analysis.json | scripts/extract_budget_analysis.py | src/HRD_Governance_Extended_v3.rdf |
 | data/code_reference.json | scripts/extract_code_reference.py | src/HRD_CodeMapping_v2.xlsx |
 | data/sparql_results.json | scripts/run_sparql_queries.py | src/HRD_SPARQL_Queries_v5.sparql |
-| js/ontology_data.js | scripts/parse_full_ontology.py | src/HRD_Governance_Extended_v2.rdf |
-| js/budget_data.js | scripts/extract_budget_analysis.py | src/HRD_Governance_Extended_v2.rdf |
+| js/ontology_data.js | scripts/parse_full_ontology.py | src/HRD_Governance_Extended_v3.rdf |
+| js/budget_data.js | scripts/extract_budget_analysis.py | src/HRD_Governance_Extended_v3.rdf |
 
 > **빌드 명령어**: `cd scripts && pip install -r requirements.txt && python parse_full_ontology.py`
 
@@ -168,7 +168,7 @@ index.html (SPA shell)
 ```
 [로컬 개발]
   │
-  ├── RDF 수정 (src/HRD_Governance_Extended_v2.rdf)
+  ├── RDF 수정 (src/HRD_Governance_Extended_v3.rdf)
   │   └── python scripts/parse_full_ontology.py → js/ontology_data.js 갱신
   │
   ├── JS/CSS 수정 (platform/js/*.js, platform/css/*.css)

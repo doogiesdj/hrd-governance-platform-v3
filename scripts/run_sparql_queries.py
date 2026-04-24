@@ -14,7 +14,7 @@ import rdflib
 
 _SCRIPTS_DIR = Path(__file__).parent
 _REPO_ROOT = _SCRIPTS_DIR.parent
-RDF_PATH = str(_REPO_ROOT / "src" / "HRD_Governance_Extended_v2.rdf")
+RDF_PATH = str(_REPO_ROOT / "src" / "HRD_Governance_Extended_v3.rdf")
 SPARQL_PATH = str(_REPO_ROOT / "src" / "HRD_SPARQL_Queries_v5.sparql")
 OUTPUT_PATH = str(_REPO_ROOT / "data" / "sparql_results.json")
 
