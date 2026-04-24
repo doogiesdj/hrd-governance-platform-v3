@@ -1,0 +1,34 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "RDF 자동 감시 시작",
+      "type": "shell",
+      "command": "python scripts/rdf_watch.py",
+      "group": "build",
+      "isBackground": true,
+      "problemMatcher": [],
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "dedicated",
+        "showReuseMessage": false
+      },
+      "runOptions": {
+        "runOn": "folderOpen"
+      }
+    },
+    {
+      "label": "데이터 수동 빌드 (파싱 + 커밋 + push)",
+      "type": "shell",
+      "command": "python scripts/parse_full_ontology.py && python scripts/extract_code_reference.py && python scripts/run_sparql_queries.py && python scripts/extract_budget_analysis.py && echo 파싱 완료",
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "panel": "shared"
+      }
+    }
+  ]
+}
