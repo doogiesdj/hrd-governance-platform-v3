@@ -156,6 +156,16 @@ for prog_id, strats in program_to_strategy.items():
     for s in strats:
         strategy_to_programs.setdefault(s, set()).add(prog_id)
 
+# Also register RDF-only programs (not in Excel) that have alignedWithStrategy
+rdf_only_prog_ids = set()
+for _rid, _rp in rdf_data.items():
+    if _rid in xl_programs:
+        continue
+    _strat = _rp.get('alignedWithStrategy')
+    if _strat and _strat in xl_strategies:
+        strategy_to_programs.setdefault(_strat, set()).add(_rid)
+        rdf_only_prog_ids.add(_rid)
+
 # Build strategy→budgets from OrgBudget Excel (관련전략)
 strategy_to_budgets = {}
 for bud_id, bud in xl_org_budgets.items():
@@ -548,6 +558,53 @@ for prog_id, prog in xl_programs.items():
         'relatedCompetencyIds': rdf_list(prog_id, 'developsCompetency'),
         'budgetCode': budget_code,
         'hours': prog.get('교육시간', ''),
+    })
+
+# Append RDF-only programs (aligned with a strategy but not in the Excel sheet)
+for _rname in rdf_only_prog_ids:
+    _rp = rdf_data[_rname]
+    _org_id = _rp.get('operatedBy', '')
+    _org = xl_orgs.get(_org_id, {})
+    _comp_ids = rdf_list(_rname, 'targetCompetency')
+    _primary_comp_id = _comp_ids[0] if _comp_ids else ''
+    _comp = xl_comps.get(_primary_comp_id, {})
+    _cat = xl_comp_cats.get(_comp.get('역량분류', ''), {})
+    _labels = _rp.get('label', [])
+    if isinstance(_labels, str):
+        _labels = [_labels]
+    _ko = next((l for l in _labels if not l.isascii()), _labels[0] if _labels else _rname)
+    _en = next((l for l in _labels if l.isascii() and ' ' in l), '')
+    _rdf_type = _rp.get('type', '')
+    if isinstance(_rdf_type, list):
+        _rdf_type = next((t for t in _rdf_type if t in (
+            'K_DigitalTraining', 'DegreeCourse', 'JobRetraining', 'OnlineModule', 'WorkshopSeminar'
+        )), 'EducationProgram')
+    _subclass = _rdf_type if _rdf_type in (
+        'K_DigitalTraining', 'DegreeCourse', 'JobRetraining', 'OnlineModule', 'WorkshopSeminar'
+    ) else 'EducationProgram'
+    _strat_id = _rp.get('alignedWithStrategy', '')
+    _tg_id = _rp.get('targetGroup', '')
+    _tg = xl_tgroups.get(_tg_id, {})
+    programs_out.append({
+        'id': _rname,
+        'name': _ko,
+        'en': _en,
+        'type': _subclass,
+        'targetGroupId': _tg_id,
+        'targetGroup': _tg.get('한글명', _tg_id),
+        'targetGroupEn': _tg.get('영문명', ''),
+        'orgId': _org_id,
+        'org': _org.get('한글명', _org_id),
+        'orgAbbr': _org.get('약칭', ''),
+        'alignedStrategy': _strat_id,
+        'competency': _comp.get('한글명', _primary_comp_id),
+        'competencyEn': _comp.get('영문명', ''),
+        'competencyCategory': _cat.get('한글명', ''),
+        'targetCompetencyId': _primary_comp_id,
+        'fieldCatCode': _comp.get('역량분류', ''),
+        'relatedCompetencyIds': _comp_ids,
+        'budgetCode': '',
+        'hours': str(_rp.get('trainingHours', '')),
     })
 
 CATCODE_TO_PROTEGE = {
