@@ -103,6 +103,25 @@ const App = {
     this._coderefInited = true;
     CodeRef.init();
   },
+
+  calcCoverageScore() {
+    if (this._coverageScoreCache) return this._coverageScoreCache;
+    const d = HRDData;
+    const gapWeights = {};
+    d.competencyGaps.forEach(g => {
+      if (g.gapCompetencyId) gapWeights[g.gapCompetencyId] = (gapWeights[g.gapCompetencyId] || 0) + 1;
+    });
+    const totalWeight = d.competencyGaps.length || 1;
+    const scored = d.programs.map(p => ({
+      program: p,
+      score: Math.round((gapWeights[p.fieldCatCode] || 0) / totalWeight * 1000) / 10,
+    })).sort((a, b) => b.score - a.score);
+    const maxScore = scored[0]?.score || 1;
+    const scoreMap = {};
+    scored.forEach(({ program, score }) => { scoreMap[program.id] = score; });
+    this._coverageScoreCache = { scored, scoreMap, maxScore };
+    return this._coverageScoreCache;
+  },
 };
 
 document.addEventListener('DOMContentLoaded', () => App.init());
