@@ -426,19 +426,19 @@
         ],
         "rows": [
           [
-            "N23a7a155f57f4d999347626afb3fa369",
+            "N3fc7dc7f44cb40069d5f4b0e90833ee7",
             null
           ],
           [
-            "N40488619cbbd481ba4dd60625120d142",
+            "Nb57add1e95ae49f7a880715aceebea53",
             null
           ],
           [
-            "N7c17614b3f3e4fffa4d5717b315aed26",
+            "Nd54ff4c6d363421fa6950e4e13c0e1da",
             null
           ],
           [
-            "Ne0f8a741159f4b48a65ce2a851b38b9d",
+            "Ne825f65c536646eeaf335095f3dad40a",
             null
           ],
           [
@@ -50375,10 +50375,5020 @@
       "title": "역량 격차 → 추천 → 등록 → 성과 완전 체인",
       "sparql": "PREFIX hrd:  <http://www.human-resource.go.kr/ontology/hrd#>\nPREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX owl:  <http://www.w3.org/2002/07/owl#>\nPREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>\n\nSELECT ?person ?gapComp ?gapLabel ?prog ?progLabel ?enrollStatus ?outcome ?outcomeValue\nWHERE {\n  ?person rdf:type hrd:Person ;\n          hrd:hasCompetencyGap ?gap .\n  ?gap hrd:gapCompetency ?gapComp .\n  OPTIONAL { ?gapComp rdfs:label ?gapLabel . FILTER(LANG(?gapLabel) = \"ko\") }\n  OPTIONAL {\n    ?rec rdf:type hrd:Recommendation ;\n         hrd:recommendationTarget ?person ;\n         hrd:addressesCompetencyGap ?gap ;\n         hrd:recommendedProgram ?prog .\n    OPTIONAL { ?prog rdfs:label ?progLabel . FILTER(LANG(?progLabel) = \"ko\") }\n    OPTIONAL {\n      ?enroll rdf:type hrd:ProgramEnrollment ;\n              hrd:enrolledPerson ?person ;\n              hrd:enrolledProgram ?prog ;\n              hrd:completionStatus ?enrollStatus .\n    }\n    OPTIONAL {\n      ?outcome rdf:type hrd:Outcome ;\n               hrd:achievedBy ?person ;\n               hrd:improves ?gapComp ;\n               hrd:outcomeValue ?outcomeValue .\n    }\n  }\n}\nORDER BY ?person",
       "result": {
-        "columns": [],
-        "rows": [],
-        "error": "Timeout (30s)",
-        "truncated": false
+        "columns": [
+          "person",
+          "gapComp",
+          "gapLabel",
+          "prog",
+          "progLabel",
+          "enrollStatus",
+          "outcome",
+          "outcomeValue"
+        ],
+        "rows": [
+          [
+            "hrd:PERSON_01",
+            "hrd:COMPCAT_Leadership",
+            "리더십 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_01",
+            "hrd:COMPCAT_Management",
+            "경영·기획 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_01",
+            "hrd:COMPCAT_Thinking_Skill",
+            "논리·전략적 사고 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_02",
+            "hrd:COMPCAT_Collaboration",
+            "협업·대인관계 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_02",
+            "hrd:COMPCAT_Data_Fluency",
+            "데이터 활용 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_02",
+            "hrd:COMPCAT_Digital_Literacy",
+            "디지털 리터러시 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_03",
+            "hrd:COMPCAT_Leadership",
+            "리더십 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_03",
+            "hrd:COMPCAT_Management",
+            "경영·기획 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_03",
+            "hrd:COMPCAT_Marketing_Sales",
+            "마케팅·영업 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_04",
+            "hrd:COMPCAT_Adaptability",
+            "적응·자기주도 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_04",
+            "hrd:COMPCAT_Digital_Literacy",
+            "디지털 리터러시 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_041",
+            "hrd:COMPCAT_BioHealth",
+            "바이오헬스 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_041",
+            "hrd:COMPCAT_CS_Foundation",
+            "컴퓨터과학 기초 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_042",
+            "hrd:COMPCAT_Defense_Industry",
+            "방위산업 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_042",
+            "hrd:COMPCAT_Design",
+            "디자인 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_043",
+            "hrd:COMPCAT_Manufacturing",
+            "제조·자동화 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_043",
+            "hrd:COMPCAT_Marketing_Strategy",
+            "마케팅 전략 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_044",
+            "hrd:COMPCAT_Reliability",
+            "신뢰성·업무완결 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_044",
+            "hrd:COMPCAT_Semiconductor_Design",
+            "반도체 설계 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_045",
+            "hrd:COMPCAT_Shipbuilding",
+            "조선해양 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_045",
+            "hrd:COMPCAT_Social_Value",
+            "사회적 가치 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_046",
+            "hrd:COMPCAT_Space_Aerospace",
+            "우주항공 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_046",
+            "hrd:COMPCAT_Tech_Security",
+            "기술보안 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_047",
+            "hrd:COMPCAT_Management",
+            "경영·기획 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_047",
+            "hrd:COMPCAT_Thinking_Skill",
+            "논리·전략적 사고 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_048",
+            "hrd:COMPCAT_Data_Fluency",
+            "데이터 활용 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_048",
+            "hrd:COMPCAT_Digital_Literacy",
+            "디지털 리터러시 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_049",
+            "hrd:COMPCAT_Basic_Academic",
+            "기초학문·수학적 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_049",
+            "hrd:COMPCAT_AI_and_Infrastructure",
+            "AI·인프라 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_05",
+            "hrd:COMPCAT_Basic_Academic",
+            "기초학문·수학적 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_05",
+            "hrd:COMPCAT_Collaboration",
+            "협업·대인관계 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_05",
+            "hrd:COMPCAT_Marketing_Sales",
+            "마케팅·영업 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_050",
+            "hrd:COMPCAT_AdminLaw",
+            "행정법무 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_050",
+            "hrd:COMPCAT_BioHealth",
+            "바이오헬스 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_051",
+            "hrd:COMPCAT_Creativity",
+            "창의·혁신 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_051",
+            "hrd:COMPCAT_Defense_Industry",
+            "방위산업 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_052",
+            "hrd:COMPCAT_Green_Tech",
+            "녹색기술·탄소중립 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_052",
+            "hrd:COMPCAT_Manufacturing",
+            "제조·자동화 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_053",
+            "hrd:COMPCAT_Mobility",
+            "미래 모빌리티 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_053",
+            "hrd:COMPCAT_Reliability",
+            "신뢰성·업무완결 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_054",
+            "hrd:COMPCAT_Service_Public",
+            "공공서비스·스마트시티 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_054",
+            "hrd:COMPCAT_Shipbuilding",
+            "조선해양 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_055",
+            "hrd:COMPCAT_Software",
+            "소프트웨어 개발 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_055",
+            "hrd:COMPCAT_Space_Aerospace",
+            "우주항공 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_056",
+            "hrd:COMPCAT_Leadership",
+            "리더십 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_056",
+            "hrd:COMPCAT_Management",
+            "경영·기획 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_057",
+            "hrd:COMPCAT_Collaboration",
+            "협업·대인관계 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_057",
+            "hrd:COMPCAT_Data_Fluency",
+            "데이터 활용 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_058",
+            "hrd:COMPCAT_Marketing_Sales",
+            "마케팅·영업 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_058",
+            "hrd:COMPCAT_Basic_Academic",
+            "기초학문·수학적 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_059",
+            "hrd:COMPCAT_Adaptability",
+            "적응·자기주도 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_059",
+            "hrd:COMPCAT_AdminLaw",
+            "행정법무 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_06",
+            "hrd:COMPCAT_Creativity",
+            "창의·혁신 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_06",
+            "hrd:COMPCAT_Management",
+            "경영·기획 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_06",
+            "hrd:COMPCAT_Reliability",
+            "신뢰성·업무완결 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_060",
+            "hrd:COMPCAT_CS_Foundation",
+            "컴퓨터과학 기초 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_060",
+            "hrd:COMPCAT_Creativity",
+            "창의·혁신 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_061",
+            "hrd:COMPCAT_Design",
+            "디자인 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_061",
+            "hrd:COMPCAT_Green_Tech",
+            "녹색기술·탄소중립 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_062",
+            "hrd:COMPCAT_Marketing_Strategy",
+            "마케팅 전략 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_062",
+            "hrd:COMPCAT_Mobility",
+            "미래 모빌리티 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_063",
+            "hrd:COMPCAT_Semiconductor_Design",
+            "반도체 설계 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_063",
+            "hrd:COMPCAT_Service_Public",
+            "공공서비스·스마트시티 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_064",
+            "hrd:COMPCAT_Social_Value",
+            "사회적 가치 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_064",
+            "hrd:COMPCAT_Software",
+            "소프트웨어 개발 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_065",
+            "hrd:COMPCAT_Tech_Security",
+            "기술보안 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_065",
+            "hrd:COMPCAT_Leadership",
+            "리더십 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_066",
+            "hrd:COMPCAT_Thinking_Skill",
+            "논리·전략적 사고 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_066",
+            "hrd:COMPCAT_Collaboration",
+            "협업·대인관계 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_067",
+            "hrd:COMPCAT_Digital_Literacy",
+            "디지털 리터러시 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_067",
+            "hrd:COMPCAT_Marketing_Sales",
+            "마케팅·영업 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_068",
+            "hrd:COMPCAT_AI_and_Infrastructure",
+            "AI·인프라 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_068",
+            "hrd:COMPCAT_Adaptability",
+            "적응·자기주도 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_069",
+            "hrd:COMPCAT_BioHealth",
+            "바이오헬스 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_069",
+            "hrd:COMPCAT_CS_Foundation",
+            "컴퓨터과학 기초 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_07",
+            "hrd:COMPCAT_Creativity",
+            "창의·혁신 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_07",
+            "hrd:COMPCAT_Digital_Literacy",
+            "디지털 리터러시 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_07",
+            "hrd:COMPCAT_Thinking_Skill",
+            "논리·전략적 사고 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_070",
+            "hrd:COMPCAT_Defense_Industry",
+            "방위산업 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_070",
+            "hrd:COMPCAT_Design",
+            "디자인 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_071",
+            "hrd:COMPCAT_Manufacturing",
+            "제조·자동화 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_071",
+            "hrd:COMPCAT_Marketing_Strategy",
+            "마케팅 전략 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_072",
+            "hrd:COMPCAT_Reliability",
+            "신뢰성·업무완결 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_072",
+            "hrd:COMPCAT_Semiconductor_Design",
+            "반도체 설계 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_073",
+            "hrd:COMPCAT_Shipbuilding",
+            "조선해양 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_073",
+            "hrd:COMPCAT_Social_Value",
+            "사회적 가치 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_074",
+            "hrd:COMPCAT_Space_Aerospace",
+            "우주항공 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_074",
+            "hrd:COMPCAT_Tech_Security",
+            "기술보안 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_075",
+            "hrd:COMPCAT_Management",
+            "경영·기획 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_075",
+            "hrd:COMPCAT_Thinking_Skill",
+            "논리·전략적 사고 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_076",
+            "hrd:COMPCAT_Data_Fluency",
+            "데이터 활용 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_076",
+            "hrd:COMPCAT_Digital_Literacy",
+            "디지털 리터러시 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_077",
+            "hrd:COMPCAT_Basic_Academic",
+            "기초학문·수학적 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_077",
+            "hrd:COMPCAT_AI_and_Infrastructure",
+            "AI·인프라 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_078",
+            "hrd:COMPCAT_AdminLaw",
+            "행정법무 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_078",
+            "hrd:COMPCAT_BioHealth",
+            "바이오헬스 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_079",
+            "hrd:COMPCAT_Creativity",
+            "창의·혁신 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_079",
+            "hrd:COMPCAT_Defense_Industry",
+            "방위산업 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_08",
+            "hrd:COMPCAT_Collaboration",
+            "협업·대인관계 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_08",
+            "hrd:COMPCAT_Digital_Literacy",
+            "디지털 리터러시 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_08",
+            "hrd:COMPCAT_Leadership",
+            "리더십 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_080",
+            "hrd:COMPCAT_Green_Tech",
+            "녹색기술·탄소중립 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_080",
+            "hrd:COMPCAT_Manufacturing",
+            "제조·자동화 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_081",
+            "hrd:COMPCAT_Mobility",
+            "미래 모빌리티 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_081",
+            "hrd:COMPCAT_Reliability",
+            "신뢰성·업무완결 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_082",
+            "hrd:COMPCAT_Service_Public",
+            "공공서비스·스마트시티 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_082",
+            "hrd:COMPCAT_Shipbuilding",
+            "조선해양 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_083",
+            "hrd:COMPCAT_Software",
+            "소프트웨어 개발 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_083",
+            "hrd:COMPCAT_Space_Aerospace",
+            "우주항공 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_084",
+            "hrd:COMPCAT_Leadership",
+            "리더십 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_084",
+            "hrd:COMPCAT_Management",
+            "경영·기획 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_085",
+            "hrd:COMPCAT_Collaboration",
+            "협업·대인관계 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_085",
+            "hrd:COMPCAT_Data_Fluency",
+            "데이터 활용 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_086",
+            "hrd:COMPCAT_Marketing_Sales",
+            "마케팅·영업 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_086",
+            "hrd:COMPCAT_Basic_Academic",
+            "기초학문·수학적 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_087",
+            "hrd:COMPCAT_Adaptability",
+            "적응·자기주도 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_087",
+            "hrd:COMPCAT_AdminLaw",
+            "행정법무 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_088",
+            "hrd:COMPCAT_CS_Foundation",
+            "컴퓨터과학 기초 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_088",
+            "hrd:COMPCAT_Creativity",
+            "창의·혁신 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_089",
+            "hrd:COMPCAT_Design",
+            "디자인 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_089",
+            "hrd:COMPCAT_Green_Tech",
+            "녹색기술·탄소중립 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_09",
+            "hrd:COMPCAT_Collaboration",
+            "협업·대인관계 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_09",
+            "hrd:COMPCAT_Leadership",
+            "리더십 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_09",
+            "hrd:COMPCAT_Social_Value",
+            "사회적 가치 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_090",
+            "hrd:COMPCAT_Marketing_Strategy",
+            "마케팅 전략 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_090",
+            "hrd:COMPCAT_Mobility",
+            "미래 모빌리티 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_091",
+            "hrd:COMPCAT_Semiconductor_Design",
+            "반도체 설계 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_091",
+            "hrd:COMPCAT_Service_Public",
+            "공공서비스·스마트시티 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_092",
+            "hrd:COMPCAT_Social_Value",
+            "사회적 가치 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_092",
+            "hrd:COMPCAT_Software",
+            "소프트웨어 개발 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_093",
+            "hrd:COMPCAT_Tech_Security",
+            "기술보안 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_093",
+            "hrd:COMPCAT_Leadership",
+            "리더십 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_094",
+            "hrd:COMPCAT_Thinking_Skill",
+            "논리·전략적 사고 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_094",
+            "hrd:COMPCAT_Collaboration",
+            "협업·대인관계 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_095",
+            "hrd:COMPCAT_Digital_Literacy",
+            "디지털 리터러시 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_095",
+            "hrd:COMPCAT_Marketing_Sales",
+            "마케팅·영업 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_096",
+            "hrd:COMPCAT_AI_and_Infrastructure",
+            "AI·인프라 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_096",
+            "hrd:COMPCAT_Adaptability",
+            "적응·자기주도 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_097",
+            "hrd:COMPCAT_BioHealth",
+            "바이오헬스 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_097",
+            "hrd:COMPCAT_CS_Foundation",
+            "컴퓨터과학 기초 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_098",
+            "hrd:COMPCAT_Defense_Industry",
+            "방위산업 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_098",
+            "hrd:COMPCAT_Design",
+            "디자인 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_099",
+            "hrd:COMPCAT_Manufacturing",
+            "제조·자동화 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_099",
+            "hrd:COMPCAT_Marketing_Strategy",
+            "마케팅 전략 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_10",
+            "hrd:COMPCAT_CS_Foundation",
+            "컴퓨터과학 기초 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_10",
+            "hrd:COMPCAT_Software",
+            "소프트웨어 개발 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_100",
+            "hrd:COMPCAT_Reliability",
+            "신뢰성·업무완결 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_100",
+            "hrd:COMPCAT_Semiconductor_Design",
+            "반도체 설계 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_101",
+            "hrd:COMPCAT_Shipbuilding",
+            "조선해양 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_101",
+            "hrd:COMPCAT_Social_Value",
+            "사회적 가치 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_102",
+            "hrd:COMPCAT_Space_Aerospace",
+            "우주항공 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_102",
+            "hrd:COMPCAT_Tech_Security",
+            "기술보안 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_103",
+            "hrd:COMPCAT_Management",
+            "경영·기획 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_103",
+            "hrd:COMPCAT_Thinking_Skill",
+            "논리·전략적 사고 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_104",
+            "hrd:COMPCAT_Data_Fluency",
+            "데이터 활용 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_104",
+            "hrd:COMPCAT_Digital_Literacy",
+            "디지털 리터러시 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_105",
+            "hrd:COMPCAT_Basic_Academic",
+            "기초학문·수학적 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_105",
+            "hrd:COMPCAT_AI_and_Infrastructure",
+            "AI·인프라 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_106",
+            "hrd:COMPCAT_AdminLaw",
+            "행정법무 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_106",
+            "hrd:COMPCAT_BioHealth",
+            "바이오헬스 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_107",
+            "hrd:COMPCAT_Creativity",
+            "창의·혁신 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_107",
+            "hrd:COMPCAT_Defense_Industry",
+            "방위산업 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_108",
+            "hrd:COMPCAT_Green_Tech",
+            "녹색기술·탄소중립 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_108",
+            "hrd:COMPCAT_Manufacturing",
+            "제조·자동화 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_109",
+            "hrd:COMPCAT_Mobility",
+            "미래 모빌리티 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_109",
+            "hrd:COMPCAT_Reliability",
+            "신뢰성·업무완결 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_110",
+            "hrd:COMPCAT_Service_Public",
+            "공공서비스·스마트시티 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_110",
+            "hrd:COMPCAT_Shipbuilding",
+            "조선해양 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_111",
+            "hrd:COMPCAT_Software",
+            "소프트웨어 개발 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_111",
+            "hrd:COMPCAT_Space_Aerospace",
+            "우주항공 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_112",
+            "hrd:COMPCAT_Leadership",
+            "리더십 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_112",
+            "hrd:COMPCAT_Management",
+            "경영·기획 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_113",
+            "hrd:COMPCAT_Collaboration",
+            "협업·대인관계 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_113",
+            "hrd:COMPCAT_Data_Fluency",
+            "데이터 활용 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_114",
+            "hrd:COMPCAT_Marketing_Sales",
+            "마케팅·영업 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_114",
+            "hrd:COMPCAT_Basic_Academic",
+            "기초학문·수학적 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_115",
+            "hrd:COMPCAT_Adaptability",
+            "적응·자기주도 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_115",
+            "hrd:COMPCAT_AdminLaw",
+            "행정법무 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_116",
+            "hrd:COMPCAT_CS_Foundation",
+            "컴퓨터과학 기초 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_116",
+            "hrd:COMPCAT_Creativity",
+            "창의·혁신 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_117",
+            "hrd:COMPCAT_Design",
+            "디자인 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_117",
+            "hrd:COMPCAT_Green_Tech",
+            "녹색기술·탄소중립 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_118",
+            "hrd:COMPCAT_Marketing_Strategy",
+            "마케팅 전략 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_118",
+            "hrd:COMPCAT_Mobility",
+            "미래 모빌리티 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_119",
+            "hrd:COMPCAT_Semiconductor_Design",
+            "반도체 설계 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_119",
+            "hrd:COMPCAT_Service_Public",
+            "공공서비스·스마트시티 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_120",
+            "hrd:COMPCAT_Social_Value",
+            "사회적 가치 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_120",
+            "hrd:COMPCAT_Software",
+            "소프트웨어 개발 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_121",
+            "hrd:COMPCAT_Tech_Security",
+            "기술보안 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_121",
+            "hrd:COMPCAT_Leadership",
+            "리더십 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_122",
+            "hrd:COMPCAT_Thinking_Skill",
+            "논리·전략적 사고 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_122",
+            "hrd:COMPCAT_Collaboration",
+            "협업·대인관계 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_123",
+            "hrd:COMPCAT_Digital_Literacy",
+            "디지털 리터러시 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_123",
+            "hrd:COMPCAT_Marketing_Sales",
+            "마케팅·영업 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_124",
+            "hrd:COMPCAT_AI_and_Infrastructure",
+            "AI·인프라 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_124",
+            "hrd:COMPCAT_Adaptability",
+            "적응·자기주도 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_125",
+            "hrd:COMPCAT_BioHealth",
+            "바이오헬스 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_125",
+            "hrd:COMPCAT_CS_Foundation",
+            "컴퓨터과학 기초 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_126",
+            "hrd:COMPCAT_Defense_Industry",
+            "방위산업 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_126",
+            "hrd:COMPCAT_Design",
+            "디자인 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_127",
+            "hrd:COMPCAT_Manufacturing",
+            "제조·자동화 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_127",
+            "hrd:COMPCAT_Marketing_Strategy",
+            "마케팅 전략 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_128",
+            "hrd:COMPCAT_Reliability",
+            "신뢰성·업무완결 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_128",
+            "hrd:COMPCAT_Semiconductor_Design",
+            "반도체 설계 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_129",
+            "hrd:COMPCAT_Shipbuilding",
+            "조선해양 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_129",
+            "hrd:COMPCAT_Social_Value",
+            "사회적 가치 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_130",
+            "hrd:COMPCAT_Space_Aerospace",
+            "우주항공 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_130",
+            "hrd:COMPCAT_Tech_Security",
+            "기술보안 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_131",
+            "hrd:COMPCAT_Management",
+            "경영·기획 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_131",
+            "hrd:COMPCAT_Thinking_Skill",
+            "논리·전략적 사고 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_132",
+            "hrd:COMPCAT_Data_Fluency",
+            "데이터 활용 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_132",
+            "hrd:COMPCAT_Digital_Literacy",
+            "디지털 리터러시 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_133",
+            "hrd:COMPCAT_Basic_Academic",
+            "기초학문·수학적 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_133",
+            "hrd:COMPCAT_AI_and_Infrastructure",
+            "AI·인프라 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_134",
+            "hrd:COMPCAT_AdminLaw",
+            "행정법무 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_134",
+            "hrd:COMPCAT_BioHealth",
+            "바이오헬스 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_135",
+            "hrd:COMPCAT_Creativity",
+            "창의·혁신 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_135",
+            "hrd:COMPCAT_Defense_Industry",
+            "방위산업 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_136",
+            "hrd:COMPCAT_Green_Tech",
+            "녹색기술·탄소중립 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_136",
+            "hrd:COMPCAT_Manufacturing",
+            "제조·자동화 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_137",
+            "hrd:COMPCAT_Mobility",
+            "미래 모빌리티 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_137",
+            "hrd:COMPCAT_Reliability",
+            "신뢰성·업무완결 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_138",
+            "hrd:COMPCAT_Service_Public",
+            "공공서비스·스마트시티 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_138",
+            "hrd:COMPCAT_Shipbuilding",
+            "조선해양 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_139",
+            "hrd:COMPCAT_Software",
+            "소프트웨어 개발 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_139",
+            "hrd:COMPCAT_Space_Aerospace",
+            "우주항공 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_140",
+            "hrd:COMPCAT_Leadership",
+            "리더십 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_140",
+            "hrd:COMPCAT_Management",
+            "경영·기획 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_141",
+            "hrd:COMPCAT_Collaboration",
+            "협업·대인관계 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_141",
+            "hrd:COMPCAT_Data_Fluency",
+            "데이터 활용 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_142",
+            "hrd:COMPCAT_Marketing_Sales",
+            "마케팅·영업 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_142",
+            "hrd:COMPCAT_Basic_Academic",
+            "기초학문·수학적 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_143",
+            "hrd:COMPCAT_Adaptability",
+            "적응·자기주도 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_143",
+            "hrd:COMPCAT_AdminLaw",
+            "행정법무 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_144",
+            "hrd:COMPCAT_CS_Foundation",
+            "컴퓨터과학 기초 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_144",
+            "hrd:COMPCAT_Creativity",
+            "창의·혁신 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_145",
+            "hrd:COMPCAT_Design",
+            "디자인 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_145",
+            "hrd:COMPCAT_Green_Tech",
+            "녹색기술·탄소중립 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_146",
+            "hrd:COMPCAT_Marketing_Strategy",
+            "마케팅 전략 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_146",
+            "hrd:COMPCAT_Mobility",
+            "미래 모빌리티 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_147",
+            "hrd:COMPCAT_Semiconductor_Design",
+            "반도체 설계 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_147",
+            "hrd:COMPCAT_Service_Public",
+            "공공서비스·스마트시티 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_148",
+            "hrd:COMPCAT_Social_Value",
+            "사회적 가치 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_148",
+            "hrd:COMPCAT_Software",
+            "소프트웨어 개발 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_149",
+            "hrd:COMPCAT_Tech_Security",
+            "기술보안 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_149",
+            "hrd:COMPCAT_Leadership",
+            "리더십 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_150",
+            "hrd:COMPCAT_Thinking_Skill",
+            "논리·전략적 사고 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_150",
+            "hrd:COMPCAT_Collaboration",
+            "협업·대인관계 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_151",
+            "hrd:COMPCAT_Digital_Literacy",
+            "디지털 리터러시 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_151",
+            "hrd:COMPCAT_Marketing_Sales",
+            "마케팅·영업 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_152",
+            "hrd:COMPCAT_AI_and_Infrastructure",
+            "AI·인프라 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_152",
+            "hrd:COMPCAT_Adaptability",
+            "적응·자기주도 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_153",
+            "hrd:COMPCAT_BioHealth",
+            "바이오헬스 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_153",
+            "hrd:COMPCAT_CS_Foundation",
+            "컴퓨터과학 기초 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_154",
+            "hrd:COMPCAT_Defense_Industry",
+            "방위산업 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_154",
+            "hrd:COMPCAT_Design",
+            "디자인 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_155",
+            "hrd:COMPCAT_Manufacturing",
+            "제조·자동화 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_155",
+            "hrd:COMPCAT_Marketing_Strategy",
+            "마케팅 전략 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_156",
+            "hrd:COMPCAT_Reliability",
+            "신뢰성·업무완결 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_156",
+            "hrd:COMPCAT_Semiconductor_Design",
+            "반도체 설계 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_157",
+            "hrd:COMPCAT_Shipbuilding",
+            "조선해양 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_157",
+            "hrd:COMPCAT_Social_Value",
+            "사회적 가치 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_158",
+            "hrd:COMPCAT_Space_Aerospace",
+            "우주항공 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_158",
+            "hrd:COMPCAT_Tech_Security",
+            "기술보안 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_159",
+            "hrd:COMPCAT_Management",
+            "경영·기획 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_159",
+            "hrd:COMPCAT_Thinking_Skill",
+            "논리·전략적 사고 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_160",
+            "hrd:COMPCAT_Data_Fluency",
+            "데이터 활용 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_160",
+            "hrd:COMPCAT_Digital_Literacy",
+            "디지털 리터러시 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_161",
+            "hrd:COMPCAT_Basic_Academic",
+            "기초학문·수학적 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_161",
+            "hrd:COMPCAT_AI_and_Infrastructure",
+            "AI·인프라 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_162",
+            "hrd:COMPCAT_AdminLaw",
+            "행정법무 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_162",
+            "hrd:COMPCAT_BioHealth",
+            "바이오헬스 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_163",
+            "hrd:COMPCAT_Creativity",
+            "창의·혁신 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_163",
+            "hrd:COMPCAT_Defense_Industry",
+            "방위산업 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_164",
+            "hrd:COMPCAT_Green_Tech",
+            "녹색기술·탄소중립 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_164",
+            "hrd:COMPCAT_Manufacturing",
+            "제조·자동화 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_165",
+            "hrd:COMPCAT_Mobility",
+            "미래 모빌리티 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_165",
+            "hrd:COMPCAT_Reliability",
+            "신뢰성·업무완결 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_166",
+            "hrd:COMPCAT_Service_Public",
+            "공공서비스·스마트시티 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_166",
+            "hrd:COMPCAT_Shipbuilding",
+            "조선해양 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_167",
+            "hrd:COMPCAT_Software",
+            "소프트웨어 개발 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_167",
+            "hrd:COMPCAT_Space_Aerospace",
+            "우주항공 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_168",
+            "hrd:COMPCAT_Leadership",
+            "리더십 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_168",
+            "hrd:COMPCAT_Management",
+            "경영·기획 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_169",
+            "hrd:COMPCAT_Collaboration",
+            "협업·대인관계 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_169",
+            "hrd:COMPCAT_Data_Fluency",
+            "데이터 활용 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_170",
+            "hrd:COMPCAT_Marketing_Sales",
+            "마케팅·영업 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_170",
+            "hrd:COMPCAT_Basic_Academic",
+            "기초학문·수학적 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_171",
+            "hrd:COMPCAT_Adaptability",
+            "적응·자기주도 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_171",
+            "hrd:COMPCAT_AdminLaw",
+            "행정법무 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_172",
+            "hrd:COMPCAT_CS_Foundation",
+            "컴퓨터과학 기초 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_172",
+            "hrd:COMPCAT_Creativity",
+            "창의·혁신 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_173",
+            "hrd:COMPCAT_Design",
+            "디자인 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_173",
+            "hrd:COMPCAT_Green_Tech",
+            "녹색기술·탄소중립 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_174",
+            "hrd:COMPCAT_Marketing_Strategy",
+            "마케팅 전략 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_174",
+            "hrd:COMPCAT_Mobility",
+            "미래 모빌리티 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_175",
+            "hrd:COMPCAT_Semiconductor_Design",
+            "반도체 설계 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_175",
+            "hrd:COMPCAT_Service_Public",
+            "공공서비스·스마트시티 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_176",
+            "hrd:COMPCAT_Social_Value",
+            "사회적 가치 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_176",
+            "hrd:COMPCAT_Software",
+            "소프트웨어 개발 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_177",
+            "hrd:COMPCAT_Tech_Security",
+            "기술보안 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_177",
+            "hrd:COMPCAT_Leadership",
+            "리더십 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_178",
+            "hrd:COMPCAT_Thinking_Skill",
+            "논리·전략적 사고 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_178",
+            "hrd:COMPCAT_Collaboration",
+            "협업·대인관계 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_179",
+            "hrd:COMPCAT_Digital_Literacy",
+            "디지털 리터러시 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_179",
+            "hrd:COMPCAT_Marketing_Sales",
+            "마케팅·영업 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_180",
+            "hrd:COMPCAT_AI_and_Infrastructure",
+            "AI·인프라 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_180",
+            "hrd:COMPCAT_Adaptability",
+            "적응·자기주도 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_181",
+            "hrd:COMPCAT_BioHealth",
+            "바이오헬스 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_181",
+            "hrd:COMPCAT_CS_Foundation",
+            "컴퓨터과학 기초 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_182",
+            "hrd:COMPCAT_Defense_Industry",
+            "방위산업 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_182",
+            "hrd:COMPCAT_Design",
+            "디자인 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_183",
+            "hrd:COMPCAT_Manufacturing",
+            "제조·자동화 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_183",
+            "hrd:COMPCAT_Marketing_Strategy",
+            "마케팅 전략 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_184",
+            "hrd:COMPCAT_Reliability",
+            "신뢰성·업무완결 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_184",
+            "hrd:COMPCAT_Semiconductor_Design",
+            "반도체 설계 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_185",
+            "hrd:COMPCAT_Shipbuilding",
+            "조선해양 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_185",
+            "hrd:COMPCAT_Social_Value",
+            "사회적 가치 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_186",
+            "hrd:COMPCAT_Space_Aerospace",
+            "우주항공 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_186",
+            "hrd:COMPCAT_Tech_Security",
+            "기술보안 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_187",
+            "hrd:COMPCAT_Management",
+            "경영·기획 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_187",
+            "hrd:COMPCAT_Thinking_Skill",
+            "논리·전략적 사고 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_188",
+            "hrd:COMPCAT_Data_Fluency",
+            "데이터 활용 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_188",
+            "hrd:COMPCAT_Digital_Literacy",
+            "디지털 리터러시 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_189",
+            "hrd:COMPCAT_Basic_Academic",
+            "기초학문·수학적 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_189",
+            "hrd:COMPCAT_AI_and_Infrastructure",
+            "AI·인프라 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_190",
+            "hrd:COMPCAT_AdminLaw",
+            "행정법무 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_190",
+            "hrd:COMPCAT_BioHealth",
+            "바이오헬스 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_191",
+            "hrd:COMPCAT_Creativity",
+            "창의·혁신 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_191",
+            "hrd:COMPCAT_Defense_Industry",
+            "방위산업 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_192",
+            "hrd:COMPCAT_Green_Tech",
+            "녹색기술·탄소중립 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_192",
+            "hrd:COMPCAT_Manufacturing",
+            "제조·자동화 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_193",
+            "hrd:COMPCAT_Mobility",
+            "미래 모빌리티 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_193",
+            "hrd:COMPCAT_Reliability",
+            "신뢰성·업무완결 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_194",
+            "hrd:COMPCAT_Service_Public",
+            "공공서비스·스마트시티 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_194",
+            "hrd:COMPCAT_Shipbuilding",
+            "조선해양 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_195",
+            "hrd:COMPCAT_Software",
+            "소프트웨어 개발 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_195",
+            "hrd:COMPCAT_Space_Aerospace",
+            "우주항공 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_196",
+            "hrd:COMPCAT_Leadership",
+            "리더십 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_196",
+            "hrd:COMPCAT_Management",
+            "경영·기획 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_197",
+            "hrd:COMPCAT_Collaboration",
+            "협업·대인관계 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_197",
+            "hrd:COMPCAT_Data_Fluency",
+            "데이터 활용 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_198",
+            "hrd:COMPCAT_Marketing_Sales",
+            "마케팅·영업 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_198",
+            "hrd:COMPCAT_Basic_Academic",
+            "기초학문·수학적 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_199",
+            "hrd:COMPCAT_Adaptability",
+            "적응·자기주도 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_199",
+            "hrd:COMPCAT_AdminLaw",
+            "행정법무 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_200",
+            "hrd:COMPCAT_CS_Foundation",
+            "컴퓨터과학 기초 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_200",
+            "hrd:COMPCAT_Creativity",
+            "창의·혁신 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_201",
+            "hrd:COMPCAT_Design",
+            "디자인 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_201",
+            "hrd:COMPCAT_Green_Tech",
+            "녹색기술·탄소중립 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_202",
+            "hrd:COMPCAT_Marketing_Strategy",
+            "마케팅 전략 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_202",
+            "hrd:COMPCAT_Mobility",
+            "미래 모빌리티 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_203",
+            "hrd:COMPCAT_Semiconductor_Design",
+            "반도체 설계 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_203",
+            "hrd:COMPCAT_Service_Public",
+            "공공서비스·스마트시티 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_204",
+            "hrd:COMPCAT_Social_Value",
+            "사회적 가치 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_204",
+            "hrd:COMPCAT_Software",
+            "소프트웨어 개발 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_205",
+            "hrd:COMPCAT_Tech_Security",
+            "기술보안 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_205",
+            "hrd:COMPCAT_Leadership",
+            "리더십 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_206",
+            "hrd:COMPCAT_Thinking_Skill",
+            "논리·전략적 사고 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_206",
+            "hrd:COMPCAT_Collaboration",
+            "협업·대인관계 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_207",
+            "hrd:COMPCAT_Digital_Literacy",
+            "디지털 리터러시 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_207",
+            "hrd:COMPCAT_Marketing_Sales",
+            "마케팅·영업 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_208",
+            "hrd:COMPCAT_AI_and_Infrastructure",
+            "AI·인프라 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_208",
+            "hrd:COMPCAT_Adaptability",
+            "적응·자기주도 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_209",
+            "hrd:COMPCAT_BioHealth",
+            "바이오헬스 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_209",
+            "hrd:COMPCAT_CS_Foundation",
+            "컴퓨터과학 기초 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_210",
+            "hrd:COMPCAT_Defense_Industry",
+            "방위산업 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_210",
+            "hrd:COMPCAT_Design",
+            "디자인 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_211",
+            "hrd:COMPCAT_Manufacturing",
+            "제조·자동화 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_211",
+            "hrd:COMPCAT_Marketing_Strategy",
+            "마케팅 전략 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_212",
+            "hrd:COMPCAT_Reliability",
+            "신뢰성·업무완결 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_212",
+            "hrd:COMPCAT_Semiconductor_Design",
+            "반도체 설계 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_213",
+            "hrd:COMPCAT_Shipbuilding",
+            "조선해양 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_213",
+            "hrd:COMPCAT_Social_Value",
+            "사회적 가치 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_214",
+            "hrd:COMPCAT_Space_Aerospace",
+            "우주항공 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_214",
+            "hrd:COMPCAT_Tech_Security",
+            "기술보안 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_215",
+            "hrd:COMPCAT_Management",
+            "경영·기획 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_215",
+            "hrd:COMPCAT_Thinking_Skill",
+            "논리·전략적 사고 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_216",
+            "hrd:COMPCAT_Data_Fluency",
+            "데이터 활용 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_216",
+            "hrd:COMPCAT_Digital_Literacy",
+            "디지털 리터러시 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_217",
+            "hrd:COMPCAT_Basic_Academic",
+            "기초학문·수학적 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_217",
+            "hrd:COMPCAT_AI_and_Infrastructure",
+            "AI·인프라 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_218",
+            "hrd:COMPCAT_AdminLaw",
+            "행정법무 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_218",
+            "hrd:COMPCAT_BioHealth",
+            "바이오헬스 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_219",
+            "hrd:COMPCAT_Creativity",
+            "창의·혁신 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_219",
+            "hrd:COMPCAT_Defense_Industry",
+            "방위산업 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_220",
+            "hrd:COMPCAT_Green_Tech",
+            "녹색기술·탄소중립 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_220",
+            "hrd:COMPCAT_Manufacturing",
+            "제조·자동화 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_221",
+            "hrd:COMPCAT_Mobility",
+            "미래 모빌리티 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_221",
+            "hrd:COMPCAT_Reliability",
+            "신뢰성·업무완결 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_222",
+            "hrd:COMPCAT_Service_Public",
+            "공공서비스·스마트시티 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_222",
+            "hrd:COMPCAT_Shipbuilding",
+            "조선해양 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_223",
+            "hrd:COMPCAT_Software",
+            "소프트웨어 개발 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_223",
+            "hrd:COMPCAT_Space_Aerospace",
+            "우주항공 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_224",
+            "hrd:COMPCAT_Leadership",
+            "리더십 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_224",
+            "hrd:COMPCAT_Management",
+            "경영·기획 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_225",
+            "hrd:COMPCAT_Collaboration",
+            "협업·대인관계 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_225",
+            "hrd:COMPCAT_Data_Fluency",
+            "데이터 활용 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_226",
+            "hrd:COMPCAT_Marketing_Sales",
+            "마케팅·영업 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_226",
+            "hrd:COMPCAT_Basic_Academic",
+            "기초학문·수학적 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_227",
+            "hrd:COMPCAT_Adaptability",
+            "적응·자기주도 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_227",
+            "hrd:COMPCAT_AdminLaw",
+            "행정법무 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_228",
+            "hrd:COMPCAT_CS_Foundation",
+            "컴퓨터과학 기초 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_228",
+            "hrd:COMPCAT_Creativity",
+            "창의·혁신 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_229",
+            "hrd:COMPCAT_Design",
+            "디자인 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_229",
+            "hrd:COMPCAT_Green_Tech",
+            "녹색기술·탄소중립 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_230",
+            "hrd:COMPCAT_Marketing_Strategy",
+            "마케팅 전략 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_230",
+            "hrd:COMPCAT_Mobility",
+            "미래 모빌리티 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_231",
+            "hrd:COMPCAT_Semiconductor_Design",
+            "반도체 설계 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_231",
+            "hrd:COMPCAT_Service_Public",
+            "공공서비스·스마트시티 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_232",
+            "hrd:COMPCAT_Social_Value",
+            "사회적 가치 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_232",
+            "hrd:COMPCAT_Software",
+            "소프트웨어 개발 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_233",
+            "hrd:COMPCAT_Tech_Security",
+            "기술보안 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_233",
+            "hrd:COMPCAT_Leadership",
+            "리더십 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_234",
+            "hrd:COMPCAT_Thinking_Skill",
+            "논리·전략적 사고 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_234",
+            "hrd:COMPCAT_Collaboration",
+            "협업·대인관계 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_235",
+            "hrd:COMPCAT_Digital_Literacy",
+            "디지털 리터러시 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_235",
+            "hrd:COMPCAT_Marketing_Sales",
+            "마케팅·영업 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_236",
+            "hrd:COMPCAT_AI_and_Infrastructure",
+            "AI·인프라 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_236",
+            "hrd:COMPCAT_Adaptability",
+            "적응·자기주도 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_237",
+            "hrd:COMPCAT_BioHealth",
+            "바이오헬스 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_237",
+            "hrd:COMPCAT_CS_Foundation",
+            "컴퓨터과학 기초 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_238",
+            "hrd:COMPCAT_Defense_Industry",
+            "방위산업 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_238",
+            "hrd:COMPCAT_Design",
+            "디자인 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_239",
+            "hrd:COMPCAT_Manufacturing",
+            "제조·자동화 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_239",
+            "hrd:COMPCAT_Marketing_Strategy",
+            "마케팅 전략 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_240",
+            "hrd:COMPCAT_Reliability",
+            "신뢰성·업무완결 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_240",
+            "hrd:COMPCAT_Semiconductor_Design",
+            "반도체 설계 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_241",
+            "hrd:COMPCAT_Shipbuilding",
+            "조선해양 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_241",
+            "hrd:COMPCAT_Social_Value",
+            "사회적 가치 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_242",
+            "hrd:COMPCAT_Space_Aerospace",
+            "우주항공 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_242",
+            "hrd:COMPCAT_Tech_Security",
+            "기술보안 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_243",
+            "hrd:COMPCAT_Management",
+            "경영·기획 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_243",
+            "hrd:COMPCAT_Thinking_Skill",
+            "논리·전략적 사고 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_244",
+            "hrd:COMPCAT_Data_Fluency",
+            "데이터 활용 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_244",
+            "hrd:COMPCAT_Digital_Literacy",
+            "디지털 리터러시 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_245",
+            "hrd:COMPCAT_Basic_Academic",
+            "기초학문·수학적 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_245",
+            "hrd:COMPCAT_AI_and_Infrastructure",
+            "AI·인프라 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_246",
+            "hrd:COMPCAT_AdminLaw",
+            "행정법무 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_246",
+            "hrd:COMPCAT_BioHealth",
+            "바이오헬스 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_247",
+            "hrd:COMPCAT_Creativity",
+            "창의·혁신 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_247",
+            "hrd:COMPCAT_Defense_Industry",
+            "방위산업 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_248",
+            "hrd:COMPCAT_Green_Tech",
+            "녹색기술·탄소중립 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_248",
+            "hrd:COMPCAT_Manufacturing",
+            "제조·자동화 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_249",
+            "hrd:COMPCAT_Mobility",
+            "미래 모빌리티 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_249",
+            "hrd:COMPCAT_Reliability",
+            "신뢰성·업무완결 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_250",
+            "hrd:COMPCAT_Service_Public",
+            "공공서비스·스마트시티 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_250",
+            "hrd:COMPCAT_Shipbuilding",
+            "조선해양 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_251",
+            "hrd:COMPCAT_Software",
+            "소프트웨어 개발 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_251",
+            "hrd:COMPCAT_Space_Aerospace",
+            "우주항공 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_252",
+            "hrd:COMPCAT_Leadership",
+            "리더십 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_252",
+            "hrd:COMPCAT_Management",
+            "경영·기획 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_253",
+            "hrd:COMPCAT_Collaboration",
+            "협업·대인관계 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_253",
+            "hrd:COMPCAT_Data_Fluency",
+            "데이터 활용 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_254",
+            "hrd:COMPCAT_Marketing_Sales",
+            "마케팅·영업 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_254",
+            "hrd:COMPCAT_Basic_Academic",
+            "기초학문·수학적 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_255",
+            "hrd:COMPCAT_Adaptability",
+            "적응·자기주도 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_255",
+            "hrd:COMPCAT_AdminLaw",
+            "행정법무 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_256",
+            "hrd:COMPCAT_CS_Foundation",
+            "컴퓨터과학 기초 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_256",
+            "hrd:COMPCAT_Creativity",
+            "창의·혁신 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_257",
+            "hrd:COMPCAT_Design",
+            "디자인 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_257",
+            "hrd:COMPCAT_Green_Tech",
+            "녹색기술·탄소중립 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_258",
+            "hrd:COMPCAT_Marketing_Strategy",
+            "마케팅 전략 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_258",
+            "hrd:COMPCAT_Mobility",
+            "미래 모빌리티 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_259",
+            "hrd:COMPCAT_Semiconductor_Design",
+            "반도체 설계 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_259",
+            "hrd:COMPCAT_Service_Public",
+            "공공서비스·스마트시티 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_260",
+            "hrd:COMPCAT_Social_Value",
+            "사회적 가치 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_260",
+            "hrd:COMPCAT_Software",
+            "소프트웨어 개발 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_261",
+            "hrd:COMPCAT_Tech_Security",
+            "기술보안 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_261",
+            "hrd:COMPCAT_Leadership",
+            "리더십 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_262",
+            "hrd:COMPCAT_Thinking_Skill",
+            "논리·전략적 사고 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_262",
+            "hrd:COMPCAT_Collaboration",
+            "협업·대인관계 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_263",
+            "hrd:COMPCAT_Digital_Literacy",
+            "디지털 리터러시 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_263",
+            "hrd:COMPCAT_Marketing_Sales",
+            "마케팅·영업 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_264",
+            "hrd:COMPCAT_AI_and_Infrastructure",
+            "AI·인프라 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_264",
+            "hrd:COMPCAT_Adaptability",
+            "적응·자기주도 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_265",
+            "hrd:COMPCAT_BioHealth",
+            "바이오헬스 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_265",
+            "hrd:COMPCAT_CS_Foundation",
+            "컴퓨터과학 기초 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_266",
+            "hrd:COMPCAT_Defense_Industry",
+            "방위산업 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_266",
+            "hrd:COMPCAT_Design",
+            "디자인 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_267",
+            "hrd:COMPCAT_Manufacturing",
+            "제조·자동화 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_267",
+            "hrd:COMPCAT_Marketing_Strategy",
+            "마케팅 전략 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_268",
+            "hrd:COMPCAT_Reliability",
+            "신뢰성·업무완결 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_268",
+            "hrd:COMPCAT_Semiconductor_Design",
+            "반도체 설계 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_269",
+            "hrd:COMPCAT_Shipbuilding",
+            "조선해양 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_269",
+            "hrd:COMPCAT_Social_Value",
+            "사회적 가치 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_270",
+            "hrd:COMPCAT_Space_Aerospace",
+            "우주항공 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_270",
+            "hrd:COMPCAT_Tech_Security",
+            "기술보안 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_271",
+            "hrd:COMPCAT_Management",
+            "경영·기획 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_271",
+            "hrd:COMPCAT_Thinking_Skill",
+            "논리·전략적 사고 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_272",
+            "hrd:COMPCAT_Data_Fluency",
+            "데이터 활용 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_272",
+            "hrd:COMPCAT_Digital_Literacy",
+            "디지털 리터러시 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_273",
+            "hrd:COMPCAT_Basic_Academic",
+            "기초학문·수학적 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_273",
+            "hrd:COMPCAT_AI_and_Infrastructure",
+            "AI·인프라 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_274",
+            "hrd:COMPCAT_AdminLaw",
+            "행정법무 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_274",
+            "hrd:COMPCAT_BioHealth",
+            "바이오헬스 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_275",
+            "hrd:COMPCAT_Creativity",
+            "창의·혁신 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_275",
+            "hrd:COMPCAT_Defense_Industry",
+            "방위산업 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_276",
+            "hrd:COMPCAT_Green_Tech",
+            "녹색기술·탄소중립 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "hrd:PERSON_276",
+            "hrd:COMPCAT_Manufacturing",
+            "제조·자동화 역량",
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        ],
+        "error": null,
+        "truncated": true
       }
     },
     "K1": {
