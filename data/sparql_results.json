@@ -426,19 +426,19 @@
         ],
         "rows": [
           [
-            "N3c14b23265524e99af0923abb4fdf2be",
+            "N6492bad708744f81b9d327bde01b17f1",
             null
           ],
           [
-            "N695b062a3fe64d06862a68ab52d1caa5",
+            "N9a71b5fc87634166b5b65036104ff43f",
             null
           ],
           [
-            "Ne69b9ae8aa72404c88e84823f3064311",
+            "Ne827384c367845b2991853d4294c4fc2",
             null
           ],
           [
-            "Ned7fa6ef672a425baf612abc33c0df5b",
+            "Ne83698fe135f42eea2ecd47002258f5a",
             null
           ],
           [
@@ -4176,6 +4176,10 @@
             "200"
           ],
           [
+            "hrd:WorkshopSeminar",
+            "95"
+          ],
+          [
             "hrd:Competency",
             "94"
           ],
@@ -4186,10 +4190,6 @@
           [
             "hrd:MatchScore",
             "90"
-          ],
-          [
-            "hrd:WorkshopSeminar",
-            "82"
           ],
           [
             "hrd:K_DigitalTraining",
@@ -50392,7 +50392,7 @@
         ],
         "rows": [
           [
-            "5896"
+            "5909"
           ]
         ],
         "error": null,
