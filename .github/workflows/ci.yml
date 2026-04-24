@@ -1,0 +1,71 @@
+name: CI — Static Validation
+
+on:
+  push:
+    branches: [main, phase-*]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    name: Validate Static Assets
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Python dependencies
+        run: pip install -r scripts/requirements.txt
+
+      - name: Validate JSON files
+        run: |
+          for f in data/*.json; do
+            echo "Checking $f..."
+            python3 -c "import json,sys; json.load(open('$f'))" && echo "  ✓ valid" || (echo "  ✗ invalid JSON" && exit 1)
+          done
+
+      - name: Validate RDF ontology loads
+        run: |
+          python3 - <<'EOF'
+          import rdflib
+          from rdflib.namespace import RDF, OWL
+          g = rdflib.Graph()
+          g.parse('src/HRD_Governance_Extended_v3.rdf')
+          classes = len(list(g.subjects(RDF.type, OWL.Class)))
+          triples = len(g)
+          print(f"RDF OK — classes: {classes}, triples: {triples}")
+          assert classes > 100, f"Too few classes: {classes}"
+          assert triples > 10000, f"Too few triples: {triples}"
+          EOF
+
+      - name: Check for secrets in source files
+        run: |
+          if grep -rn "sk-ant-\|AIza\|AKIA\|ghp_" js/ index.html 2>/dev/null; then
+            echo "ERROR: Possible secret found in source files!"
+            exit 1
+          fi
+          echo "✓ No secrets detected"
+
+      - name: Check JS file sizes
+        run: |
+          python3 - <<'EOF'
+          import os
+          warn_limit = 800
+          files = [f for f in os.listdir('js') if f.endswith('.js')]
+          has_error = False
+          for f in sorted(files):
+            path = f'js/{f}'
+            lines = open(path).read().count('\n')
+            status = '✓' if lines <= warn_limit else '⚠️'
+            print(f"  {status} {f}: {lines} lines")
+            if lines > warn_limit * 2:
+              print(f"    ERROR: {f} exceeds {warn_limit*2} lines — refactoring required")
+              has_error = True
+          if has_error:
+            exit(1)
+          EOF
