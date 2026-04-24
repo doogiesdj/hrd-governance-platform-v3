@@ -426,19 +426,19 @@
         ],
         "rows": [
           [
-            "N3cd3f81f487b4232ac1bcc7097b6989a",
+            "N21068f1486254e24a752c8d4b5b9f908",
             null
           ],
           [
-            "N4d35d742504c48f6ba603fa35332e839",
+            "N3ea7260a214f4574bc27fa3cfcebc553",
             null
           ],
           [
-            "N6dd66a689e14415cbcb15e7fa2365cec",
+            "N588611bf585f4be392d8600a9bce9edc",
             null
           ],
           [
-            "N916dfe6c32ed48a5b7353fc814a6df65",
+            "Nf319145e03c34d7ca372def6d1491eb7",
             null
           ],
           [
@@ -4177,7 +4177,7 @@
           ],
           [
             "hrd:WorkshopSeminar",
-            "95"
+            "140"
           ],
           [
             "hrd:Competency",
@@ -4193,7 +4193,7 @@
           ],
           [
             "hrd:K_DigitalTraining",
-            "71"
+            "89"
           ],
           [
             "hrd:Policy",
@@ -4202,6 +4202,10 @@
           [
             "hrd:Organization",
             "35"
+          ],
+          [
+            "hrd:OnlineModule",
+            "32"
           ],
           [
             "hrd:Benefit",
@@ -4214,10 +4218,6 @@
           [
             "hrd:CompetencyCategory",
             "28"
-          ],
-          [
-            "hrd:OnlineModule",
-            "20"
           ],
           [
             "hrd:JobRetraining",
@@ -50392,7 +50392,7 @@
         ],
         "rows": [
           [
-            "5909"
+            "5984"
           ]
         ],
         "error": null,
